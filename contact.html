@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Contact | Yasas Nirmitha</title>
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">YWANIGA</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="tech.html">Tech</a>
+                <a href="project.html">Projects</a>
+                <a href="github.html">GitHub</a>
+                <a href="contact.html" class="active">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <section class="container reveal">
+        <h2 style="font-size: 3rem; margin-bottom: 40px; text-align: center;">Get In <span style="color: var(--accent-cyan);">Touch</span></h2>
+        <div class="grid-2">
+            <div class="glass" style="display: flex; flex-direction: column; gap: 30px;">
+                <h3><i class="fa-solid fa-envelope" style="color: var(--accent-purple);"></i> Contact Information</h3>
+                <p>Feel free to reach out to me for collaborations, open source contributions, or just a friendly chat!</p>
+                <div>
+                    <p style="margin-bottom: 10px;"><i class="fa-solid fa-location-dot" style="color: var(--accent-cyan); width: 25px;"></i> Colombo, Sri Lanka</p>
+                    <p style="margin-bottom: 10px;"><i class="fa-solid fa-envelope-open" style="color: var(--accent-cyan); width: 25px;"></i> hello@ywaniga.com</p>
+                    <p><i class="fa-solid fa-phone" style="color: var(--accent-cyan); width: 25px;"></i> +94 77 123 4567</p>
+                </div>
+            </div>
+            <div class="glass">
+                <form action="#" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <label for="name" style="font-weight: 600;">Name</label>
+                        <input type="text" id="name" placeholder="Your Name" style="padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.05); color: #fff; font-family: 'Outfit', sans-serif;">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <label for="email" style="font-weight: 600;">Email</label>
+                        <input type="email" id="email" placeholder="Your Email" style="padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.05); color: #fff; font-family: 'Outfit', sans-serif;">
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <label for="message" style="font-weight: 600;">Message</label>
+                        <textarea id="message" rows="5" placeholder="Your Message" style="padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.05); color: #fff; font-family: 'Outfit', sans-serif; resize: none;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top: 10px; border: none; font-family: 'Outfit', sans-serif;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <footer style="margin-top: 80px; padding: 40px 0; border-top: 1px solid var(--glass-border); background: rgba(10, 10, 15, 0.5); text-align: center;">
+        <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <a href="index.html" class="logo" style="font-size: 1.5rem;">YWANIGA</a>
+            <div class="nav-links" style="justify-content: center; flex-wrap: wrap;">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="tech.html">Tech</a>
+                <a href="project.html">Projects</a>
+                <a href="github.html">GitHub</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Yasas Nirmitha Wanigaarachchi. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
