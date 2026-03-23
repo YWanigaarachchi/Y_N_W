@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Projects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Projects | Yasas Nirmitha</title>
 </head>
 <body>
     <nav>
@@ -12,24 +15,52 @@
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <a href="tech.html">Tech</a>
-                <a href="project.html">Projects</a>
+                <a href="project.html" class="active">Projects</a>
                 <a href="github.html">GitHub</a>
             </div>
         </div>
     </nav>
-    <section class="container">
-        <h2>My Projects</h2>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-            <div class="glass">
-                <h3>Distributed Hub</h3>
-                <p>Microservices logistics system with Shop Nodes.</p>
+    <section class="container reveal">
+        <h2 style="font-size: 3rem; margin-bottom: 40px; text-align: center;">Featured <span style="color: var(--accent-cyan);">Projects</span></h2>
+        <div class="grid-3">
+            <div class="glass" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                <div style="height: 200px; background: url('https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=800') center/cover;"></div>
+                <div style="padding: 30px;">
+                    <h3>Distributed Hub</h3>
+                    <p style="margin: 15px 0;">Microservices logistics system built with modern scalable architecture involving Shop Nodes.</p>
+                    <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">Source Code <i class="fa-brands fa-github"></i></a>
+                </div>
             </div>
-            <div class="glass">
-                <h3>Waram.lk</h3>
-                <p>Tamil community matrimony platform.</p>
+            <div class="glass" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                <div style="height: 200px; background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800') center/cover;"></div>
+                <div style="padding: 30px;">
+                    <h3>Waram.lk</h3>
+                    <p style="margin: 15px 0;">A dedicated Tamil community matrimony platform bridging people with modern tech.</p>
+                    <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.9rem;">Source Code <i class="fa-brands fa-github"></i></a>
+                </div>
+            </div>
+            <div class="glass" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                <div style="padding: 30px;">
+                    <h3><i class="fa-solid fa-rocket" style="font-size: 2rem; color: var(--accent-purple); margin-bottom: 15px;"></i></h3>
+                    <h3>More to Come</h3>
+                    <p style="margin: 15px 0;">Continuously building and learning new technologies to solve real-world problems.</p>
+                </div>
             </div>
         </div>
     </section>
+    <footer style="margin-top: 80px; padding: 40px 0; border-top: 1px solid var(--glass-border); background: rgba(10, 10, 15, 0.5); text-align: center;">
+        <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <a href="index.html" class="logo" style="font-size: 1.5rem;">YWANIGA</a>
+            <div class="nav-links" style="justify-content: center; flex-wrap: wrap;">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="tech.html">Tech</a>
+                <a href="project.html" class="active">Projects</a>
+                <a href="github.html">GitHub</a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Yasas Nirmitha Wanigaarachchi. All Rights Reserved.</p>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

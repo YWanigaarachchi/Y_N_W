@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Tech Stack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Tech Stack | Yasas Nirmitha</title>
 </head>
 <body>
     <nav>
@@ -11,18 +14,32 @@
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="about.html">About</a>
-                <a href="tech.html">Tech</a>
+                <a href="tech.html" class="active">Tech</a>
                 <a href="project.html">Projects</a>
                 <a href="github.html">GitHub</a>
             </div>
         </div>
     </nav>
-    <section class="container">
-        <h2 style="text-align: center;">Technologies I Use</h2>
-        <div class="glass" style="text-align: center;">
-            <img src="https://skillicons.dev/icons?i=react,nextjs,python,java,php,nodejs,aws,docker,linux,git&perline=5" />
+    <section class="container reveal">
+        <h2 style="font-size: 3rem; margin-bottom: 40px; text-align: center;">My <span style="color: var(--accent-purple);">Tech Stack</span></h2>
+        <div class="glass" style="text-align: center; padding: 60px;">
+            <p style="margin-bottom: 30px; font-size: 1.2rem;">Tools and technologies I use to build scalable applications.</p>
+            <img src="https://skillicons.dev/icons?i=react,nextjs,python,java,php,nodejs,aws,docker,linux,git&perline=5" style="filter: drop-shadow(0 0 20px rgba(138,43,226,0.3)); max-width: 100%;" />
         </div>
     </section>
+    <footer style="margin-top: 80px; padding: 40px 0; border-top: 1px solid var(--glass-border); background: rgba(10, 10, 15, 0.5); text-align: center;">
+        <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <a href="index.html" class="logo" style="font-size: 1.5rem;">YWANIGA</a>
+            <div class="nav-links" style="justify-content: center; flex-wrap: wrap;">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="tech.html" class="active">Tech</a>
+                <a href="project.html">Projects</a>
+                <a href="github.html">GitHub</a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Yasas Nirmitha Wanigaarachchi. All Rights Reserved.</p>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

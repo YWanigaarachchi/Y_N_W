@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>About Me</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>About Me | Yasas Nirmitha</title>
 </head>
 <body>
     <nav>
@@ -10,24 +13,48 @@
             <a href="index.html" class="logo">YWANIGA</a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="about.html">About</a>
+                <a href="about.html" class="active">About</a>
                 <a href="tech.html">Tech</a>
                 <a href="project.html">Projects</a>
                 <a href="github.html">GitHub</a>
             </div>
         </div>
     </nav>
-    <section class="container">
-        <div class="glass">
-            <h2><i class="fa-solid fa-user"></i> About Me</h2>
-            <p>I am a Software Engineering Student at ICBT and an Open Source Contributor.</p>
-            <ul style="margin-top: 20px; color: var(--text-secondary); line-height: 2;">
-                <li>Specialized in Full-Stack Web Development</li>
-                <li>Focusing on Microservices & System Design</li>
-                <li>AWS Cloud Enthusiast</li>
-            </ul>
+    <section class="container reveal">
+        <h2 style="font-size: 3rem; margin-bottom: 40px; text-align: center;"><span style="color: var(--accent-cyan);">About</span> Me</h2>
+        <div class="grid-2">
+            <div class="glass">
+                <h3><i class="fa-solid fa-graduation-cap" style="color: var(--accent-purple);"></i> Education</h3>
+                <p style="margin-top: 15px;">Software Engineering Student at ICBT Campus.</p>
+                <div style="margin-top: 30px;">
+                    <h3><i class="fa-solid fa-code-branch" style="color: var(--accent-purple);"></i> Open Source</h3>
+                    <p style="margin-top: 15px;">Active open source contributor, focusing on backend systems and robust architecture.</p>
+                </div>
+            </div>
+            <div class="glass">
+                <h3><i class="fa-solid fa-bullseye" style="color: var(--accent-cyan);"></i> My Focus</h3>
+                <ul style="margin-top: 20px; color: var(--text-secondary); line-height: 2; list-style-position: inside;">
+                    <li><i class="fa-solid fa-check" style="color: var(--accent-cyan); margin-right: 10px;"></i> Full-Stack Web Development</li>
+                    <li><i class="fa-solid fa-check" style="color: var(--accent-cyan); margin-right: 10px;"></i> Microservices & System Design</li>
+                    <li><i class="fa-solid fa-check" style="color: var(--accent-cyan); margin-right: 10px;"></i> AWS Cloud Architecture</li>
+                    <li><i class="fa-solid fa-check" style="color: var(--accent-cyan); margin-right: 10px;"></i> Continuous Integration & Deployment</li>
+                </ul>
+            </div>
         </div>
     </section>
+    <footer style="margin-top: 80px; padding: 40px 0; border-top: 1px solid var(--glass-border); background: rgba(10, 10, 15, 0.5); text-align: center;">
+        <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <a href="index.html" class="logo" style="font-size: 1.5rem;">YWANIGA</a>
+            <div class="nav-links" style="justify-content: center; flex-wrap: wrap;">
+                <a href="index.html">Home</a>
+                <a href="about.html" class="active">About</a>
+                <a href="tech.html">Tech</a>
+                <a href="project.html">Projects</a>
+                <a href="github.html">GitHub</a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Yasas Nirmitha Wanigaarachchi. All Rights Reserved.</p>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>

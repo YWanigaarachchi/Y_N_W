@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>GitHub Stats</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>GitHub Stats | Yasas Nirmitha</title>
 </head>
 <body>
     <nav>
@@ -13,19 +16,34 @@
                 <a href="about.html">About</a>
                 <a href="tech.html">Tech</a>
                 <a href="project.html">Projects</a>
-                <a href="github.html">GitHub</a>
+                <a href="github.html" class="active">GitHub</a>
             </div>
         </div>
     </nav>
-    <section class="container" style="text-align: center;">
-        <h2>My GitHub Analytics</h2>
-        <div class="glass" style="margin-bottom: 20px;">
-            <img src="https://github-readme-stats.vercel.app/api?username=YWanigaarachchi&theme=tokyonight&show_icons=true" style="max-width: 100%;">
-        </div>
-        <div class="glass">
-            <img src="https://streak-stats.demolab.com?user=YWanigaarachchi&theme=tokyonight" style="max-width: 100%;">
+    <section class="container reveal">
+        <h2 style="font-size: 3rem; margin-bottom: 40px; text-align: center;">Open <span style="color: #2dba4e;">Source</span> Analytics</h2>
+        <div class="grid-2">
+            <div class="glass" style="display: flex; justify-content: center;">
+                <img src="https://github-readme-stats.vercel.app/api?username=YWanigaarachchi&theme=tokyonight&show_icons=true&hide_border=true&bg_color=0,00000000" style="max-width: 100%; filter: drop-shadow(0 10px 20px rgba(0,240,255,0.2));">
+            </div>
+            <div class="glass" style="display: flex; justify-content: center;">
+                <img src="https://streak-stats.demolab.com?user=YWanigaarachchi&theme=tokyonight&hide_border=true&background=00000000" style="max-width: 100%; filter: drop-shadow(0 10px 20px rgba(138,43,226,0.2));">
+            </div>
         </div>
     </section>
+    <footer style="margin-top: 80px; padding: 40px 0; border-top: 1px solid var(--glass-border); background: rgba(10, 10, 15, 0.5); text-align: center;">
+        <div class="container" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+            <a href="index.html" class="logo" style="font-size: 1.5rem;">YWANIGA</a>
+            <div class="nav-links" style="justify-content: center; flex-wrap: wrap;">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="tech.html">Tech</a>
+                <a href="project.html">Projects</a>
+                <a href="github.html" class="active">GitHub</a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Yasas Nirmitha Wanigaarachchi. All Rights Reserved.</p>
+        </div>
+    </footer>
     <script src="script.js"></script>
 </body>
 </html>
