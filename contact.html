@@ -6,6 +6,29 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Contact | Yasas Nirmitha</title>
+    <style>
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        .contact-form input::placeholder, .contact-form textarea::placeholder {
+            color: var(--text-secondary);
+        }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 108, 230, 0.2);
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -21,38 +44,63 @@
             </div>
         </div>
     </nav>
+
     <section class="container reveal">
-        <h2 style="font-size: 3rem; margin-bottom: 40px; text-align: center;">Get In <span style="color: var(--accent-cyan);">Touch</span></h2>
-        <div class="grid-2">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 15px;">Get In <span style="background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Touch</span></h2>
+            <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">Have a question or want to work together? Leave your details and I'll get back to you as soon as possible.</p>
+        </div>
+
+        <div class="grid-2" style="max-width: 1000px; margin: 0 auto; align-items: stretch;">
+            <!-- Contact Info -->
             <div class="glass" style="display: flex; flex-direction: column; gap: 30px;">
-                <h3><i class="fa-solid fa-envelope" style="color: var(--accent-purple);"></i> Contact Information</h3>
-                <p>Feel free to reach out to me for collaborations, open source contributions, or just a friendly chat!</p>
-                <div>
-                    <p style="margin-bottom: 10px;"><i class="fa-solid fa-location-dot" style="color: var(--accent-cyan); width: 25px;"></i> Colombo, Sri Lanka</p>
-                    <p style="margin-bottom: 10px;"><i class="fa-solid fa-envelope-open" style="color: var(--accent-cyan); width: 25px;"></i> hello@ywaniga.com</p>
-                    <p><i class="fa-solid fa-phone" style="color: var(--accent-cyan); width: 25px;"></i> +94 77 123 4567</p>
+                <h3 style="font-size: 1.8rem; margin-bottom: 10px;">Contact Information</h3>
+                
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple)); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff;">
+                        <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 5px;">Email Me</h4>
+                        <p style="color: var(--text-secondary);">y.wanigaarachchi@example.com</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple)); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff;">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 5px;">Call Me</h4>
+                        <p style="color: var(--text-secondary);">+94 77 123 4567</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; gap: 20px;">
+                    <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple)); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff;">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div>
+                        <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-bottom: 5px;">Location</h4>
+                        <p style="color: var(--text-secondary);">Colombo, Sri Lanka</p>
+                    </div>
                 </div>
             </div>
-            <div class="glass">
-                <form action="#" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
-                    <div style="display: flex; flex-direction: column; gap: 5px;">
-                        <label for="name" style="font-weight: 600;">Name</label>
-                        <input type="text" id="name" placeholder="Your Name" style="padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.05); color: #fff; font-family: 'Outfit', sans-serif;">
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 5px;">
-                        <label for="email" style="font-weight: 600;">Email</label>
-                        <input type="email" id="email" placeholder="Your Email" style="padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.05); color: #fff; font-family: 'Outfit', sans-serif;">
-                    </div>
-                    <div style="display: flex; flex-direction: column; gap: 5px;">
-                        <label for="message" style="font-weight: 600;">Message</label>
-                        <textarea id="message" rows="5" placeholder="Your Message" style="padding: 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(255, 255, 255, 0.05); color: #fff; font-family: 'Outfit', sans-serif; resize: none;"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="margin-top: 10px; border: none; font-family: 'Outfit', sans-serif;">Send Message</button>
+
+            <!-- Contact Form -->
+            <div class="glass contact-form">
+                <form action="#" method="POST">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <input type="text" name="subject" placeholder="Subject">
+                    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
                 </form>
             </div>
         </div>
     </section>
-    <footer style="margin-top: 100px; padding: 60px 0 20px; border-top: 1px solid var(--glass-border); background: linear-gradient(to top, rgba(10, 10, 15, 0.9), transparent); position: relative; overflow: hidden;">
+
+    <footer style="margin-top: 100px; padding: 60px 0 20px; border-top: 1px solid var(--glass-border); background: linear-gradient(to top, rgba(240, 245, 255, 0.9), transparent); position: relative; overflow: hidden;">
         <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 2px; background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent); opacity: 0.5;"></div>
         
         <div class="container">
@@ -68,7 +116,7 @@
                 </div>
                 
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                    <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: #fff;">Quick Links</h4>
+                    <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: var(--text-primary);">Quick Links</h4>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         <a href="index.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">Home</a>
                         <a href="about.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">About Me</a>
@@ -77,7 +125,7 @@
                 </div>
 
                 <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                    <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: #fff;">Resources</h4>
+                    <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: var(--text-primary);">Resources</h4>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         <a href="project.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-purple)'" onmouseout="this.style.color='var(--text-secondary)'">Projects</a>
                         <a href="github.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-purple)'" onmouseout="this.style.color='var(--text-secondary)'">GitHub Stats</a>
@@ -86,7 +134,7 @@
                 </div>
             </div>
             
-            <div style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.05);">
+            <div style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(0,0,0,0.05);">
                 <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 Yasas Nirmitha Wanigaarachchi. All Rights Reserved.</p>
             </div>
         </div>
