@@ -8,15 +8,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const preloader = document.createElement('div');
     preloader.id = 'preloader';
     const isGithubPage = window.location.pathname.includes('github.html');
+    const isContactPage = window.location.pathname.includes('contact.html');
     
     // Choose logo content
-    const logoHtml = isGithubPage ? `
-        <svg height="40" viewBox="0 0 16 16" version="1.1" width="40" aria-hidden="true" style="fill: var(--accent-blue);">
-            <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9 1.4 1.11.21.07.47.11.75.11.51 0 .97-.15 1.3-.43 0 .69.01 1.33.01 1.57 0 .21-.15.46-.55.38A8.013 8.013 0 0 1 0 8c0-4.42 3.58-8 8-8z"></path>
-        </svg>
-    ` : `
-        <span style="font-size: 1.8rem; font-weight: 800; color: var(--accent-blue); letter-spacing: -1px;">YNW</span>
-    `;
+    let logoHtml = '';
+    if (isGithubPage) {
+        logoHtml = `
+            <svg height="40" viewBox="0 0 16 16" version="1.1" width="40" aria-hidden="true" style="fill: var(--accent-blue);">
+                <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9 1.4 1.11.21.07.47.11.75.11.51 0 .97-.15 1.3-.43 0 .69.01 1.33.01 1.57 0 .21-.15.46-.55.38A8.013 8.013 0 0 1 0 8c0-4.42 3.58-8 8-8z"></path>
+            </svg>
+        `;
+    } else if (isContactPage) {
+        logoHtml = `<i class="fa-solid fa-paper-plane" style="font-size: 1.8rem; color: var(--accent-blue);"></i>`;
+    } else {
+        logoHtml = `<span style="font-size: 1.8rem; font-weight: 800; color: var(--accent-blue); letter-spacing: -1px;">YNW</span>`;
+    }
+
+    const loaderLabel = isGithubPage ? 'Initializing' : (isContactPage ? 'Connecting' : 'Loading');
 
     preloader.innerHTML = `
         <div class="loader-content">
@@ -25,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${logoHtml}
                 </div>
             </div>
-            <div class="loader-text">${isGithubPage ? 'Initializing' : 'Loading'} Portfolio</div>
+            <div class="loader-text">${loaderLabel} Portfolio</div>
         </div>
     `;
 
@@ -430,5 +438,41 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     createMoon();
+
+    // ── 17. BIRD GENERATOR (Light Mode Only) ──────────────
+    const createBirds = () => {
+        const birdContainer = document.createElement('div');
+        birdContainer.id = 'bird-container';
+        document.body.prepend(birdContainer);
+
+        const count = 8;
+        for (let i = 0; i < count; i++) {
+            const bird = document.createElement('div');
+            bird.className = 'bird';
+            
+            // Random properties
+            const duration = Math.random() * 10 + 15 + 's';
+            const flapSpeed = Math.random() * 0.4 + 0.3 + 's';
+            const topStart = Math.random() * 70 + 5 + '%';
+            const topEnd = Math.random() * 70 + 5 + '%';
+            const delay = Math.random() * 20 + 's';
+
+            bird.style.setProperty('--duration', duration);
+            bird.style.setProperty('--flap-speed', flapSpeed);
+            bird.style.setProperty('--top-start', topStart);
+            bird.style.setProperty('--top-end', topEnd);
+            bird.style.animationDelay = delay;
+
+            bird.innerHTML = `
+                <svg viewBox="0 0 32 32">
+                    <path class="bird-body" d="M2,16 Q8,8 16,16 Q24,8 30,16"></path>
+                </svg>
+            `;
+            
+            birdContainer.appendChild(bird);
+        }
+    };
+
+    createBirds();
 
 });

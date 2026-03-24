@@ -1201,3 +1201,47 @@ body.dark-mode::before {
     pointer-events: none;
     z-index: -2;
 }
+
+/* ========== BIRD EFFECT (Light Mode) ========== */
+#bird-container {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+body.dark-mode #bird-container {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.bird {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    animation: bird-fly var(--duration) linear infinite;
+    transform: translate(-50px, 0); /* Start off-screen */
+}
+
+.bird-body {
+    fill: none;
+    stroke: var(--accent-blue);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    animation: bird-wing var(--flap-speed) ease-in-out infinite;
+    opacity: 0.4;
+}
+
+@keyframes bird-fly {
+    0% { left: -50px; top: var(--top-start); }
+    100% { left: 110vw; top: var(--top-end); }
+}
+
+@keyframes bird-wing {
+    0%, 100% { d: path("M2,16 Q8,8 16,16 Q24,8 30,16"); }
+    50% { d: path("M2,16 Q8,24 16,16 Q24,24 30,16"); }
+}
