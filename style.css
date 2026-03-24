@@ -126,6 +126,48 @@ nav {
     box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
 }
 
+/* ========== GZC COMPANY NAV BUTTON ========== */
+.btn-gzc-nav {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    margin-left: 10px;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    box-shadow: 0 8px 20px -5px rgba(59, 130, 246, 0.5);
+    border: none;
+    transition: var(--transition);
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+.btn-gzc-nav::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.btn-gzc-nav:hover::before { opacity: 1; }
+.btn-gzc-nav:hover {
+    transform: translateY(-3px) scale(1.04);
+    box-shadow: 0 15px 30px -8px rgba(139, 92, 246, 0.55);
+    color: #fff;
+}
+.btn-gzc-nav i {
+    font-size: 0.8rem;
+    position: relative;
+    z-index: 1;
+}
+.btn-gzc-nav span, .btn-gzc-nav { position: relative; }
+
 /* ========== GLASS CARDS — Blue Outline ========== */
 .glass {
     background: var(--glass-bg);
