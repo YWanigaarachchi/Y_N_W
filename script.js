@@ -213,4 +213,33 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ── 11. DARK / LIGHT MODE TOGGLE ──────────────────────
+    const themeBtn = document.getElementById('theme-btn');
+    if (themeBtn) {
+        const themeIcon = themeBtn.querySelector('i');
+        
+        // Check localStorage for saved theme
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
+
+        themeBtn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            // Swap icon and save state
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+    }
+
 });

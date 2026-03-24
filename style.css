@@ -13,6 +13,30 @@
     --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* --- DARK MODE VARIABLES --- */
+body.dark-mode {
+    --bg-light: #0f172a; /* Deep slate */
+    --bg-gradient: radial-gradient(circle at top right, #1e293b 0%, #0f172a 60%);
+    --glass-bg: rgba(30, 41, 59, 0.7);
+    --glass-border: rgba(59, 130, 246, 0.25);
+    --accent-blue: #60a5fa; /* Lighter blue for better contrast on dark */
+    --accent-cyan: #38bdf8;
+    --accent-purple: #a78bfa;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+}
+
+body.dark-mode .nav-links {
+    background: rgba(30, 41, 59, 0.95);
+}
+body.dark-mode .btn-outline {
+    background: transparent;
+}
+body.dark-mode .contact-form input, body.dark-mode .contact-form textarea {
+    background: rgba(30, 41, 59, 0.5);
+    color: var(--text-primary);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -28,6 +52,7 @@ body {
     color: var(--text-primary);
     overflow-x: hidden;
     line-height: 1.7;
+    transition: background 0.5s ease, background-image 0.5s ease, color 0.5s ease;
 }
 
 /* --- Page Load Progress Bar --- */
@@ -384,6 +409,28 @@ nav {
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
+}
+
+/* --- Theme Toggle Button --- */
+.theme-toggle {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    margin-left: auto; /* Push it next to hamburger/GZC btn */
+    margin-right: -5px; /* fine tuning */
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+}
+.theme-toggle:hover {
+    color: var(--accent-blue);
+    background: rgba(59, 130, 246, 0.1);
+    transform: rotate(15deg);
 }
 
 /* ========== RESPONSIVE ========== */
