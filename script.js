@@ -4,34 +4,37 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ── 0. PRE-LOADER (Only for github.html) ──────────
+    // ── 0. PRE-LOADER (Dynamic Logo) ──────────────────
     const preloader = document.createElement('div');
     preloader.id = 'preloader';
+    const isGithubPage = window.location.pathname.includes('github.html');
+    
+    // Choose logo content
+    const logoHtml = isGithubPage ? `
+        <svg height="40" viewBox="0 0 16 16" version="1.1" width="40" aria-hidden="true" style="fill: var(--accent-blue);">
+            <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9 1.4 1.11.21.07.47.11.75.11.51 0 .97-.15 1.3-.43 0 .69.01 1.33.01 1.57 0 .21-.15.46-.55.38A8.013 8.013 0 0 1 0 8c0-4.42 3.58-8 8-8z"></path>
+        </svg>
+    ` : `
+        <span style="font-size: 1.8rem; font-weight: 800; color: var(--accent-blue); letter-spacing: -1px;">YNW</span>
+    `;
+
     preloader.innerHTML = `
         <div class="loader-content">
             <div class="loader-ring">
-                <svg height="40" viewBox="0 0 16 16" version="1.1" width="40" aria-hidden="true" style="fill: var(--accent-blue); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-                    <path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9 1.4 1.11.21.07.47.11.75.11.51 0 .97-.15 1.3-.43 0 .69.01 1.33.01 1.57 0 .21-.15.46-.55.38A8.013 8.013 0 0 1 0 8c0-4.42 3.58-8 8-8z"></path>
-                </svg>
+                <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                    ${logoHtml}
+                </div>
             </div>
-            <div class="loader-text">Initializing Portfolio</div>
+            <div class="loader-text">${isGithubPage ? 'Initializing' : 'Loading'} Portfolio</div>
         </div>
     `;
 
-    const isGithubPage = window.location.pathname.includes('github.html');
-    
-    if (isGithubPage) {
-        document.body.prepend(preloader);
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                preloader.classList.add('fade-out');
-            }, 500); 
-        });
-    } else {
-        // Quickly remove if somehow injected (CSS still exists)
-        preloader.style.display = 'none';
-        preloader.style.visibility = 'hidden';
-    }
+    document.body.prepend(preloader);
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+        }, 500); 
+    });
 
     // ── 1. PAGE PROGRESS BAR ──────────────────────────────
     const progressBar = document.createElement('div');
