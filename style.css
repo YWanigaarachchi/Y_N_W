@@ -62,7 +62,6 @@ body.dark-mode .contact-form input:focus, body.dark-mode .contact-form textarea:
     box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.15), inset 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-/* --- Fast Custom Cursor --- */
 .custom-cursor, .custom-cursor-outline {
     position: fixed;
     top: 0;
@@ -70,8 +69,8 @@ body.dark-mode .contact-form input:focus, body.dark-mode .contact-form textarea:
     border-radius: 50%;
     pointer-events: none;
     z-index: 99999;
-    transition: transform 0.05s linear, opacity 0.3s ease; /* Ultra fast delay */
     opacity: 0;
+    will-change: transform;
 }
 .custom-cursor {
     width: 6px;

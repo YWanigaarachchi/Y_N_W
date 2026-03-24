@@ -39,14 +39,30 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursorOutline = document.querySelector('.custom-cursor-outline');
 
     if (cursor && cursorOutline) {
+        let mouseX = 0, mouseY = 0;
+        let curX = 0, curY = 0;
+
         window.addEventListener('mousemove', (e) => {
-            // High-speed point follow using direct style for lowest latency
-            const posX = e.clientX;
-            const posY = e.clientY;
+            mouseX = e.clientX;
+            mouseY = e.clientY;
             
-            cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
-            cursorOutline.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
+            // The dot stays 100% "Live"
+            cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+            cursor.style.opacity = '1';
         });
+
+        const animateCursor = () => {
+            // Give the outline just a tiny, tiny bit of smooth following
+            // Use 0.2 for "Very close" or 1.0 for "Instant"
+            curX += (mouseX - curX) * 0.8; 
+            curY += (mouseY - curY) * 0.8;
+
+            cursorOutline.style.transform = `translate3d(${curX}px, ${curY}px, 0)`;
+            cursorOutline.style.opacity = '1';
+
+            requestAnimationFrame(animateCursor);
+        };
+        animateCursor();
 
         // Speed-up hover responsiveness
         document.querySelectorAll('a, button, .clickable, .logo').forEach(el => {
