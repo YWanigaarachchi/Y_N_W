@@ -6,6 +6,36 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Contact | Yasas Nirmitha</title>
+    <style>
+        /* Colombo / Lotus Tower Background Effect */
+        .lotus-effect {
+            position: fixed;
+            bottom: -5vh; 
+            right: -10vw; 
+            width: 70vw;
+            height: 90vh;
+            min-width: 600px;
+            background-image: url('https://images.unsplash.com/photo-1587313632739-c89420ddff0e?auto=format&fit=crop&q=80&w=1200');
+            background-size: cover;
+            background-position: right center;
+            opacity: 0.25;
+            z-index: -1;
+            filter: contrast(1.2) sepia(0.3) hue-rotate(200deg);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 65%);
+            mask-image: radial-gradient(ellipse at center, black 0%, transparent 65%);
+            animation: floating-lotus 12s ease-in-out infinite;
+            pointer-events: none; /* Let clicks pass through */
+        }
+        body.dark-mode .lotus-effect {
+            opacity: 0.15;
+            filter: contrast(1.2) sepia(0) hue-rotate(0deg);
+        }
+
+        @keyframes floating-lotus {
+            0%, 100% { transform: translateY(0) scale(1) rotate(0deg); }
+            50% { transform: translateY(-30px) scale(1.03) rotate(1deg); }
+        }
+    </style>
 </head>
 <body>
     <nav>
@@ -23,6 +53,8 @@
             <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
         </div>
     </nav>
+
+    <div class="lotus-effect"></div>
 
     <section class="container reveal">
         <div style="text-align: center; margin-bottom: 50px;">
