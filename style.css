@@ -1067,3 +1067,30 @@ body.dark-mode .monitor-top-bar {
     opacity: 0.95;
     border-radius: 50%;
 }
+
+/* ========== STAR FIELD BACKGROUND (Dark Mode) ========== */
+#star-field {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    display: none;
+}
+
+body.dark-mode #star-field {
+    display: block;
+}
+
+.star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    animation: star-twinkle var(--duration) ease-in-out infinite;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes star-twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: var(--max-opacity); transform: scale(1.1); }
+}

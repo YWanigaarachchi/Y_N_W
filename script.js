@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const rocket = document.createElement('div');
         rocket.className = 'rocket-container';
-        rocket.innerHTML = `🚀<div class="rocket-trail"></div>`;
+        rocket.innerHTML = `✈️<div class="rocket-trail"></div>`;
         document.body.appendChild(rocket);
 
         const launchRocket = () => {
@@ -355,6 +355,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    createRocket();
+    // ── 14. STAR FIELD GENERATOR (Dark Mode Only) ────────
+    const createStarField = () => {
+        const starField = document.createElement('div');
+        starField.id = 'star-field';
+        document.body.prepend(starField);
+
+        const starCount = 150;
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            
+            // Random styling
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.top = Math.random() * 100 + 'vh';
+            
+            // Random animation params using CSS variables
+            const duration = Math.random() * 3 + 2 + 's';
+            const delay = Math.random() * 5 + 's';
+            const opacity = Math.random() * 0.7 + 0.3;
+            
+            star.style.setProperty('--duration', duration);
+            star.style.setProperty('--max-opacity', opacity);
+            star.style.animationDelay = delay;
+            
+            starField.appendChild(star);
+        }
+    };
+
+    createStarField();
 
 });
