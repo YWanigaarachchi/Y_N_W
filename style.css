@@ -387,14 +387,74 @@ nav {
 }
 
 /* ========== RESPONSIVE ========== */
-@media (max-width: 900px) {
-    nav { max-width: 90%; margin: 15px auto; padding: 10px 20px; }
+.hamburger {
+    display: none;
+    font-size: 1.6rem;
+    color: var(--accent-blue);
+    cursor: pointer;
+    margin-left: 12px;
+    transition: var(--transition);
 }
+
+@media (max-width: 900px) {
+    nav { max-width: 95%; margin: 15px auto; padding: 10px 20px; }
+}
+
 @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .grid-2 { grid-template-columns: 1fr; gap: 40px; }
-    h1 { font-size: 2.8rem !important; }
-    section { padding: 80px 0 60px; }
+    .hamburger { display: block; }
+
+    /* Mobile Nav Dropdown */
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid rgba(59, 130, 246, 0.1);
+        box-shadow: 0 15px 35px -10px rgba(59, 130, 246, 0.2);
+        gap: 15px;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        text-align: center;
+    }
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(10px);
+    }
+    
+    .btn-gzc-nav {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+    }
+    
+    .grid-2 { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    h1 { font-size: 2.6rem !important; }
+    h2 { font-size: 2.2rem !important; }
+    h3 { font-size: 1.5rem !important; }
+    section { padding: 90px 0 60px; }
+    
+    /* Reduce floating buttons bulk on mobile */
+    .whatsapp-chat {
+        width: 50px; height: 50px; font-size: 26px;
+        bottom: 20px; right: 20px;
+    }
+    .contact-float-btn {
+        width: 50px; height: 50px; font-size: 1.2rem;
+        bottom: 85px; right: 20px;
+    }
+    
+    .glass { padding: 25px; }
+    .glass:hover { transform: translateY(-3px); }
 }
 
 /* Hide contact float btn on the contact page itself */
@@ -450,17 +510,18 @@ nav {
 .btn-gzc-nav::after {
     content: '';
     position: absolute;
-    inset: -4px;
+    inset: -2px;
     border-radius: 100px;
     background: linear-gradient(135deg, #3b82f6, #8b5cf6, #0ea5e9);
     background-size: 300% 300%;
     animation: gzc-grad 3.5s ease infinite, gzc-ring-pulse 2.5s ease-in-out infinite;
     z-index: -1;
-    filter: blur(10px);
+    filter: blur(6px);
+    pointer-events: none; /* Crucial: stops the glow from blocking clicks on other links */
 }
 @keyframes gzc-ring-pulse {
-    0%, 100% { opacity: 0.5; transform: scale(1); }
-    50%       { opacity: 0.85; transform: scale(1.08); }
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50%       { opacity: 0.7; transform: scale(1.05); }
 }
 
 /* Shimmer sweep on hover */
@@ -481,6 +542,7 @@ nav {
     border-radius: 100px;
     transition: left 0.55s ease;
     z-index: 2;
+    pointer-events: none; /* Prevent shimmer from blocking clicks */
 }
 .btn-gzc-nav:hover::before { left: 140%; }
 

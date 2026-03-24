@@ -141,4 +141,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ── 9. MOBILE RESPONSIVE HAMBURGER MENU ───────────────
+    const hamburger = document.querySelector('.hamburger');
+    const navLinksContainer = document.querySelector('.nav-links');
+    
+    if (hamburger && navLinksContainer) {
+        hamburger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            navLinksContainer.classList.toggle('active');
+            
+            // Toggle hamburger icon (bars to x)
+            const icon = hamburger.querySelector('i');
+            if (navLinksContainer.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navLinksContainer.contains(e.target) && !hamburger.contains(e.target)) {
+                navLinksContainer.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        });
+    }
+
 });
