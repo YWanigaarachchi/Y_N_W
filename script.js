@@ -475,4 +475,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createBirds();
 
+    // ── 18. AI CHATBOT LOGIC ────────────────────────────
+    const createChatbot = () => {
+        const trigger = document.createElement('div');
+        trigger.className = 'chatbot-trigger';
+        trigger.innerHTML = `<i class="fa-solid fa-robot"></i>`;
+        document.body.appendChild(trigger);
+        const win = document.createElement('div');
+        win.className = 'chat-window';
+        win.innerHTML = `
+            <div class="chat-header">
+                <h3><i class="fa-solid fa-robot"></i> Assistant</h3>
+                <i class="fa-solid fa-xmark close-chat" style="cursor: pointer;"></i>
+            </div>
+            <div class="chat-messages" id="chat-messages"><div class="message bot">Hello! How can I help? ✨</div></div>
+            <div class="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Ask me...">
+                <button class="chat-send-btn" id="send-btn"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>`;
+        document.body.appendChild(win);
+        const input = win.querySelector('#chat-input'), sendBtn = win.querySelector('#send-btn'), box = win.querySelector('#chat-messages');
+        const closeBtn = win.querySelector('.close-chat');
+        trigger.onclick = () => win.classList.toggle('active');
+        closeBtn.onclick = () => win.classList.remove('active');
+        const add = (t, s) => {
+            const m = document.createElement('div'); m.className = `message ${s}`; m.innerText = t;
+            box.appendChild(m); box.scrollTop = box.scrollHeight;
+        };
+        const handle = () => {
+            const v = input.value.trim(); if (!v) return;
+            add(v, 'user'); input.value = '';
+            setTimeout(() => {
+                let r = "I'm the YNW Assistant! How can I help? Ask about 'projects' or 'contact'!";
+                const t = v.toLowerCase();
+                if (t.includes('hi') || t.includes('hello')) r = "Hi there! I'm Yasas's personal AI! ✨";
+                else if (t.includes('project')) r = "Check out the Projects page for some amazing work! 🚀";
+                else if (t.includes('contact')) r = "Contact Yasas via the Contact page or WhatsApp button! 📩";
+                add(r, 'bot');
+            }, 600);
+        };
+        sendBtn.onclick = handle;
+        input.onkeypress = (e) => (e.key === 'Enter') && handle();
+    };
+    createChatbot();
+
 });
