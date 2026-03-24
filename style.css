@@ -1099,7 +1099,7 @@ body.dark-mode #star-field {
 #sun-container {
     position: fixed;
     top: -150px;
-    right: -150px;
+    right: -150px; /* Sun on right */
     width: 600px;
     height: 600px;
     background: radial-gradient(circle, rgba(255, 204, 0, 0.4) 0%, rgba(255, 126, 0, 0.1) 40%, transparent 70%);
@@ -1151,7 +1151,7 @@ body:not(.dark-mode)::before {
 #moon-container {
     position: fixed;
     top: 50px;
-    left: -100px; /* Starts slightly off screen for drifting feel */
+    right: -100px; /* Starts on the right */
     width: 250px;
     height: 250px;
     background: radial-gradient(circle at 35% 35%, #f8fafc 0%, #e2e8f0 40%, #94a3b8 100%);
@@ -1162,7 +1162,7 @@ body:not(.dark-mode)::before {
     opacity: 0;
     visibility: hidden;
     transition: opacity 1.5s ease, visibility 1.5s;
-    animation: moon-drift 120s linear infinite;
+    animation: moon-drift-reverse 120s linear infinite;
 }
 
 body.dark-mode #moon-container {
@@ -1183,9 +1183,9 @@ body.dark-mode #moon-container {
     opacity: 0.9;
 }
 
-@keyframes moon-drift {
+@keyframes moon-drift-reverse {
     0% { transform: translate(0, 0) rotate(0deg); }
-    100% { transform: translate(120vw, 30vh) rotate(360deg); } /* Slow drift across sky */
+    100% { transform: translate(-120vw, 30vh) rotate(-360deg); } /* Drift from Right to Left */
 }
 
 /* Ambient cool glows for dark mode sky */
