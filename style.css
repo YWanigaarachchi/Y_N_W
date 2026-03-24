@@ -1278,8 +1278,8 @@ body.dark-mode #bird-container {
 
 .chat-window {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    bottom: 175px;
+    right: 30px;
     width: 380px;
     height: 550px;
     background: var(--glass-bg);
@@ -1292,14 +1292,15 @@ body.dark-mode #bird-container {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transform: translate(-50%, -50%) scale(0.9);
+    transform: translateY(30px) scale(0.9);
     opacity: 0;
     visibility: hidden;
     transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-origin: bottom right;
 }
 
 .chat-window.active {
-    transform: translate(-50%, -50%) scale(1);
+    transform: translateY(0) scale(1);
     opacity: 1;
     visibility: visible;
 }
