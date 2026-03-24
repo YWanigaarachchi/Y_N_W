@@ -389,4 +389,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createStarField();
 
+    // ── 15. SUN GENERATOR (Light Mode Only) ───────────────
+    const createSun = () => {
+        const sun = document.createElement('div');
+        sun.id = 'sun-container';
+        sun.innerHTML = `<div class="sun-core"></div>`;
+        document.body.prepend(sun);
+    };
+
+    createSun();
+
 });
