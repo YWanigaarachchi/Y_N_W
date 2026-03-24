@@ -17,6 +17,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    // ── HIGH-SPEED CUSTOM CURSOR ──────────────────────────
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorOutline = document.querySelector('.custom-cursor-outline');
+
+    if (cursor && cursorOutline) {
+        window.addEventListener('mousemove', (e) => {
+            // High-speed point follow using direct style for lowest latency
+            const posX = e.clientX;
+            const posY = e.clientY;
+            
+            cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
+            cursorOutline.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
+        });
+
+        // Speed-up hover responsiveness
+        document.querySelectorAll('a, button, .clickable, .logo').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursorOutline.style.width = '45px';
+                cursorOutline.style.height = '45px';
+                cursorOutline.style.marginLeft = '-20px';
+                cursorOutline.style.marginTop = '-20px';
+                cursorOutline.style.background = 'rgba(59, 130, 246, 0.1)';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursorOutline.style.width = '32px';
+                cursorOutline.style.height = '32px';
+                cursorOutline.style.marginLeft = '-13px';
+                cursorOutline.style.marginTop = '-13px';
+                cursorOutline.style.background = 'transparent';
+            });
+        });
+    }
+
+
     // ── 2. SCROLL REVEAL ANIMATION ────────────────────────
     const revealElements = () => {
         document.querySelectorAll('.reveal').forEach(el => {
