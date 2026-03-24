@@ -399,4 +399,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createSun();
 
+    // ── 16. MOON GENERATOR (Dark Mode Only) ──────────────
+    const createMoon = () => {
+        const moon = document.createElement('div');
+        moon.id = 'moon-container';
+        document.body.prepend(moon);
+    };
+
+    createMoon();
+
 });
