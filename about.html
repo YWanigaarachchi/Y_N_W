@@ -23,25 +23,77 @@
         </div>
     </nav>
     <section class="container reveal">
-        <h2 style="font-size: 3rem; margin-bottom: 40px; text-align: center;"><span style="color: var(--accent-cyan);">About</span> Me</h2>
-        <div class="grid-2">
-            <div class="glass">
-                <h3><i class="fa-solid fa-graduation-cap" style="color: var(--accent-purple);"></i> Education</h3>
-                <p style="margin-top: 15px;">Software Engineering Student at ICBT Campus.</p>
-                <div style="margin-top: 30px;">
-                    <h3><i class="fa-solid fa-code-branch" style="color: var(--accent-purple);"></i> Open Source</h3>
-                    <p style="margin-top: 15px;">Active open source contributor, focusing on backend systems and robust architecture.</p>
+        <div style="text-align: center; margin-bottom: 60px;">
+            <h2 style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 15px;"><span style="background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">About</span> Me</h2>
+            <p style="font-size: 1.15rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
+                Passionate about bridging the gap between elegant design and complex backend infrastructure. I thrive on architecting scalable, resilient systems that drive real-world impact.
+            </p>
+        </div>
+
+        <div class="grid-2" style="align-items: stretch; margin-bottom: 50px;">
+            <!-- Profile Info / Journey -->
+            <div class="glass" style="display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; text-align: left;">
+                <div style="position: absolute; top: -30%; right: -20%; width: 300px; height: 300px; background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%); border-radius: 50%;"></div>
+                
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px;"><i class="fa-solid fa-user-astronaut" style="color: var(--accent-blue); margin-right: 10px;"></i> The Journey</h3>
+                <p style="margin-bottom: 20px; line-height: 1.8; color: var(--text-secondary);">
+                    I'm currently pushing the boundaries of software engineering at <b style="color: var(--text-primary);">ICBT Campus</b>. What started as simple curiosity has grown into a deep obsession with <b>Microservices</b>, <b>Distributed Systems</b>, and building architecture on <b style="color: #f59e0b;">AWS Cloud</b>.
+                </p>
+                <div style="background: rgba(59, 130, 246, 0.05); border-left: 3px solid var(--accent-blue); padding: 15px 20px; border-radius: 0 15px 15px 0; margin-top: auto;">
+                    <p style="font-weight: 500; color: var(--text-primary); margin: 0; font-size: 1rem;">
+                        <i class="fa-solid fa-quote-left" style="color: var(--accent-cyan); opacity: 0.5; margin-right: 5px;"></i> Active open source contributor, focusing on backend systems and clean, maintainable codebases.
+                    </p>
                 </div>
             </div>
-            <div class="glass">
-                <h3><i class="fa-solid fa-bullseye" style="color: var(--accent-cyan);"></i> My Focus</h3>
-                <ul style="margin-top: 20px; color: var(--text-secondary); line-height: 2; list-style-position: inside;">
-                    <li><i class="fa-solid fa-check" style="color: var(--accent-cyan); margin-right: 10px;"></i> Full-Stack Web Development</li>
-                    <li><i class="fa-solid fa-check" style="color: var(--accent-cyan); margin-right: 10px;"></i> Microservices & System Design</li>
-                    <li><i class="fa-solid fa-check" style="color: var(--accent-cyan); margin-right: 10px;"></i> AWS Cloud Architecture</li>
-                    <li><i class="fa-solid fa-check" style="color: var(--accent-cyan); margin-right: 10px;"></i> Continuous Integration & Deployment</li>
-                </ul>
+
+            <!-- Focus Matrix -->
+            <div class="glass" style="text-align: left;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 25px;"><i class="fa-solid fa-bullseye" style="color: var(--accent-purple); margin-right: 10px;"></i> Core Competencies</h3>
+                
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <div style="display: flex; align-items: flex-start; gap: 15px;">
+                        <div style="width: 45px; height: 45px; min-width: 45px; border-radius: 12px; background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-blue); font-size: 1.2rem;">
+                            <i class="fa-solid fa-layer-group"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;">Full-Stack Web Development</h4>
+                            <p style="font-size: 0.95rem; line-height: 1.5;">Building seamless end-to-end applications with modern frameworks and eye-catching UIs.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: flex-start; gap: 15px;">
+                        <div style="width: 45px; height: 45px; min-width: 45px; border-radius: 12px; background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); display: flex; align-items: center; justify-content: center; color: var(--accent-purple); font-size: 1.2rem;">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;">Microservices & System Design</h4>
+                            <p style="font-size: 0.95rem; line-height: 1.5;">Decomposing monolithic structures into scalable, highly available independent services.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: flex-start; gap: 15px;">
+                        <div style="width: 45px; height: 45px; min-width: 45px; border-radius: 12px; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); display: flex; align-items: center; justify-content: center; color: #f59e0b; font-size: 1.2rem;">
+                            <i class="fa-brands fa-aws"></i>
+                        </div>
+                        <div>
+                            <h4 style="font-size: 1.1rem; margin-bottom: 4px;">AWS Cloud Architecture</h4>
+                            <p style="font-size: 0.95rem; line-height: 1.5;">Deploying and managing resilient cloud infrastructure using the latest AWS technologies.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+        
+        <!-- Experience / Connect -->
+        <div class="glass" style="text-align: center; padding: 50px 30px; position: relative; overflow: hidden;">
+            <div style="position: absolute; bottom: -50px; left: 50%; transform: translateX(-50%); width: 80%; height: 100px; background: radial-gradient(ellipse, rgba(139, 92, 246, 0.15) 0%, transparent 70%); z-index: 0;"></div>
+            
+            <div style="font-size: 3rem; color: var(--accent-blue); margin-bottom: 15px; position: relative; z-index: 1;"><i class="fa-solid fa-handshake-angle"></i></div>
+            <h3 style="font-size: 1.8rem; margin-bottom: 15px; position: relative; z-index: 1;">Let's Build Something Extraordinary</h3>
+            <p style="max-width: 600px; margin: 0 auto 30px; line-height: 1.8; position: relative; z-index: 1;">
+                Whether you need a full-scale microservice architecture rebuilt, a modern web app from scratch, or someone to spearhead your cloud deployment — I'm ready for the challenge.
+            </p>
+            <a href="contact.html" class="btn btn-primary" style="background: linear-gradient(135deg, #3b82f6, #8b5cf6); border: none; position: relative; z-index: 1; padding: 14px 40px;">Connect with Me <i class="fa-solid fa-arrow-right" style="margin-left: 8px;"></i></a>
         </div>
     </section>
     
