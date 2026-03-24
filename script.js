@@ -4,6 +4,23 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ── 0. PRE-LOADER ──────────────────────────────────
+    const preloader = document.createElement('div');
+    preloader.id = 'preloader';
+    preloader.innerHTML = `
+        <div class="loader-content">
+            <div class="loader-ring"></div>
+            <div class="loader-text">Loading YNW</div>
+        </div>
+    `;
+    document.body.prepend(preloader);
+
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+        }, 500); // Small buffer for visual smoothness
+    });
+
     // ── 1. PAGE PROGRESS BAR ──────────────────────────────
     const progressBar = document.createElement('div');
     progressBar.id = 'progress-bar';
