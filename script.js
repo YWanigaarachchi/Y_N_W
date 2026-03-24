@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ── 0. PRE-LOADER ──────────────────────────────────
+    // ── 0. PRE-LOADER (Only for github.html) ──────────
     const preloader = document.createElement('div');
     preloader.id = 'preloader';
     preloader.innerHTML = `
@@ -17,13 +17,21 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="loader-text">Initializing Portfolio</div>
         </div>
     `;
-    document.body.prepend(preloader);
 
-    window.addEventListener('load', () => {
-        setTimeout(() => {
-            preloader.classList.add('fade-out');
-        }, 500); // Small buffer for visual smoothness
-    });
+    const isGithubPage = window.location.pathname.includes('github.html');
+    
+    if (isGithubPage) {
+        document.body.prepend(preloader);
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+            }, 500); 
+        });
+    } else {
+        // Quickly remove if somehow injected (CSS still exists)
+        preloader.style.display = 'none';
+        preloader.style.visibility = 'hidden';
+    }
 
     // ── 1. PAGE PROGRESS BAR ──────────────────────────────
     const progressBar = document.createElement('div');
