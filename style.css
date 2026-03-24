@@ -397,13 +397,18 @@ nav {
     section { padding: 80px 0 60px; }
 }
 
+/* Hide contact float btn on the contact page itself */
+.contact-float-hidden {
+    display: none !important;
+}
+
 /* ========== GZC COMPANY NAVBAR BUTTON — Customer Attention ========== */
 .btn-gzc-nav {
     display: inline-flex;
     align-items: center;
     gap: 8px;
     padding: 10px 20px;
-    margin-left: 14px;
+    margin-left: auto;   /* push to far right of navbar */
     border-radius: 100px;
     font-size: 0.92rem;
     font-weight: 800;
@@ -532,4 +537,84 @@ nav {
 @keyframes gzc-live {
     0%, 100% { opacity: 1; transform: scale(1); }
     50%       { opacity: 0.5; transform: scale(0.7); }
+}
+
+/* ========== FLOATING CONTACT BUTTON ========== */
+.contact-float-btn {
+    position: fixed;
+    bottom: 105px;            /* sits just above the WhatsApp button */
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    text-decoration: none;
+    z-index: 1000;
+    border: 2px solid rgba(255,255,255,0.3);
+    box-shadow:
+        0 10px 25px -5px rgba(59, 130, 246, 0.5),
+        0 0 0 0 rgba(59, 130, 246, 0.4);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    animation: contact-ring 2.5s ease-out infinite;
+}
+
+/* Ripple ring animation */
+@keyframes contact-ring {
+    0%  { box-shadow: 0 10px 25px -5px rgba(59,130,246,0.5), 0 0 0 0 rgba(59,130,246,0.35); }
+    70% { box-shadow: 0 10px 25px -5px rgba(59,130,246,0.5), 0 0 0 16px rgba(59,130,246,0); }
+    100%{ box-shadow: 0 10px 25px -5px rgba(59,130,246,0.5), 0 0 0 0 rgba(59,130,246,0); }
+}
+
+.contact-float-btn:hover {
+    transform: translateY(-6px) scale(1.1);
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+    box-shadow: 0 18px 35px -8px rgba(59, 130, 246, 0.65);
+    animation: none;
+    color: white;
+}
+
+/* Paper plane icon wobble on hover */
+.contact-float-btn i {
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.contact-float-btn:hover i {
+    transform: rotate(-35deg) translate(3px, -3px);
+}
+
+/* Tooltip */
+.contact-float-tooltip {
+    position: absolute;
+    right: 75px;
+    background: white;
+    color: #1d4ed8;
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 5px 20px rgba(59,130,246,0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(59,130,246,0.15);
+    pointer-events: none;
+}
+.contact-float-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-left-color: white;
+}
+.contact-float-btn:hover .contact-float-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-6px);
 }
