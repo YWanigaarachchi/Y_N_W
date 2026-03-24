@@ -17,37 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
-    // ── CUSTOM CURSOR MOVEMENT ────────────────────────────
-    const cursor = document.querySelector('.custom-cursor');
-    const cursorOutline = document.querySelector('.custom-cursor-outline');
-
-    if (cursor && cursorOutline) {
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-
-            // Simple point follow
-            cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
-            
-            // Outline follow with slight delay (handled by transition in CSS)
-            cursorOutline.style.transform = `translate3d(${posX}px, ${posY}px, 0)`;
-        });
-
-        // Add hover effect on interactive elements
-        const interactiveElements = document.querySelectorAll('a, button, .clickable, .logo');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorOutline.style.transform += ' scale(1.5)';
-                cursorOutline.style.background = 'rgba(59, 130, 246, 0.1)';
-            });
-            el.addEventListener('mouseleave', () => {
-                // reset scale
-                cursorOutline.style.background = 'transparent';
-            });
-        });
-    }
-
-
     // ── 2. SCROLL REVEAL ANIMATION ────────────────────────
     const revealElements = () => {
         document.querySelectorAll('.reveal').forEach(el => {
