@@ -322,5 +322,40 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Run if in New Year month (April) - or just run it now for the user
     createNewYearEffect();
+    // ── 13. ROCKET LAUNCH EFFECT ─────────────────────────
+    const createRocket = () => {
+        const rocket = document.createElement('div');
+        rocket.className = 'rocket-container';
+        rocket.innerHTML = `🚀<div class="rocket-trail"></div>`;
+        document.body.appendChild(rocket);
+
+        const launchRocket = (e) => {
+            rocket.style.display = 'block';
+            rocket.classList.remove('launch');
+            void rocket.offsetWidth; // Trigger reflow
+            rocket.style.left = e.clientX + 'px';
+            rocket.classList.add('launch');
+        };
+
+        const triggerButtons = document.querySelectorAll('.contact-float-btn, .btn-primary, .btn-outline');
+        
+        triggerButtons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const href = btn.getAttribute('href');
+                if (href && href !== '#' && !btn.hasAttribute('target')) {
+                    e.preventDefault();
+                    launchRocket(e);
+                    
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 800);
+                } else {
+                    launchRocket(e);
+                }
+            });
+        });
+    };
+
+    createRocket();
 
 });
