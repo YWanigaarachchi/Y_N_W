@@ -313,18 +313,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ── 13. ROCKET LAUNCH EFFECT ─────────────────────────
+    // ── 13. ROCKET LAUNCH EFFECT (Centered & Blur) ───────
     const createRocket = () => {
+        // Create blur overlay
+        const overlay = document.createElement('div');
+        overlay.id = 'rocket-overlay';
+        document.body.appendChild(overlay);
+
         const rocket = document.createElement('div');
         rocket.className = 'rocket-container';
         rocket.innerHTML = `🚀<div class="rocket-trail"></div>`;
         document.body.appendChild(rocket);
 
-        const launchRocket = (e) => {
+        const launchRocket = () => {
+            overlay.classList.add('active');
             rocket.style.display = 'block';
             rocket.classList.remove('launch');
-            void rocket.offsetWidth; // Trigger reflow
-            rocket.style.left = e.clientX + 'px';
+            void rocket.offsetWidth; 
             rocket.classList.add('launch');
         };
 
@@ -335,13 +340,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 const href = btn.getAttribute('href');
                 if (href && href !== '#' && !btn.hasAttribute('target')) {
                     e.preventDefault();
-                    launchRocket(e);
+                    launchRocket();
                     
                     setTimeout(() => {
                         window.location.href = href;
-                    }, 800);
+                    }, 1200);
                 } else {
-                    launchRocket(e);
+                    launchRocket();
+                    setTimeout(() => {
+                        overlay.classList.remove('active');
+                    }, 2000);
                 }
             });
         });

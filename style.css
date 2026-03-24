@@ -1003,63 +1003,68 @@ body.dark-mode .monitor-top-bar {
     transform: scale(1.05); /* Subtle zoom when hovered inside the monitor */
 }
 
-/* ========== NEW YEAR EFFECT: ERABADU BLOSSOMS ========== */
-.blossom-container {
+/* ========== ROCKET LAUNCH EFFECT (Centered & Blur) ========== */
+#rocket-overlay {
     position: fixed;
-    top: -50px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 9999;
-    overflow: hidden;
-}
-
-.petal {
-    position: absolute;
-    background: linear-gradient(135deg, #ff4d4d, #da291c);
-    border-radius: 150% 0 150% 0; /* Petal shape */
-    opacity: 0.8;
-    filter: drop-shadow(0 0 5px rgba(218, 41, 28, 0.3));
+    inset: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    background: rgba(0, 0, 0, 0);
     z-index: 10000;
+    pointer-events: none;
+    transition: all 0.5s ease;
+    visibility: hidden;
 }
 
-@keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(360deg);
-    }
+#rocket-overlay.active {
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.4);
+    visibility: visible;
 }
 
-@keyframes sway {
-    0%, 100% {
-        margin-left: -50px;
-    }
-    50% {
-        margin-left: 50px;
-    }
-}
-
-.new-year-badge {
+.rocket-container {
     position: fixed;
-    top: 100px;
-    left: 20px;
-    background: linear-gradient(135deg, #da291c, #ffcc00);
-    color: white;
-    padding: 10px 18px;
-    border-radius: 50px;
-    font-weight: 800;
-    font-size: 0.9rem;
-    z-index: 1001;
-    box-shadow: 0 5px 20px rgba(218, 41, 28, 0.4);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    animation: badge-bounce 2s infinite ease-in-out;
+    bottom: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10001;
+    pointer-events: none;
+    font-size: 6rem; /* Bigger Rocket */
+    display: none;
+    filter: drop-shadow(0 0 20px var(--accent-blue));
 }
 
-@keyframes badge-bounce {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-12px) scale(1.05); }
+.rocket-container.launch {
+    display: block;
+    animation: rocket-fly-centered 1.4s cubic-bezier(0.47, 0, 0.745, 0.715) forwards;
+}
+
+@keyframes rocket-fly-centered {
+    0% {
+        bottom: -150px;
+        transform: translateX(-50%) rotate(0deg) scale(0.8);
+    }
+    30% {
+        bottom: 20%;
+        transform: translateX(-50%) rotate(-5deg) scale(1.2);
+    }
+    100% {
+        bottom: 150vh;
+        transform: translateX(-50%) rotate(0deg) scale(1);
+    }
+}
+
+.rocket-trail {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 150px;
+    background: linear-gradient(to bottom, var(--accent-blue), var(--accent-purple), transparent);
+    filter: blur(10px);
+    opacity: 0.9;
 }
 
 /* ========== ROCKET LAUNCH EFFECT ========== */
