@@ -475,4 +475,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     createBirds();
 
+    // ── 18. PRIVACY MODAL ───────────────────────────────
+    const createPrivacyModal = () => {
+        // Only show once per session
+        if (sessionStorage.getItem('privacy_accepted')) return;
+
+        const overlay = document.createElement('div');
+        overlay.className = 'modal-overlay';
+        overlay.innerHTML = `
+            <div class="privacy-modal">
+                <i class="fa-solid fa-shield-halved" style="font-size: 3rem; color: var(--accent-blue); margin-bottom: 20px;"></i>
+                <h2>Privacy & Terms</h2>
+                <div class="privacy-content">
+                    <p>Welcome to Yasas Nirmitha's Portfolio. To provide the best experience, we want to let you know how we handle your data:</p>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> We use local storage for your <b>Theme Preferences</b>.</li>
+                        <li><i class="fa-solid fa-check"></i> <b>Contact Form</b> data is sent securely to our systems.</li>
+                        <li><i class="fa-solid fa-check"></i> No third-party tracking or invasive cookies.</li>
+                    </ul>
+                </div>
+                <button class="modal-btn">I Understand & Accept</button>
+            </div>
+        `;
+        document.body.appendChild(overlay);
+
+        const btn = overlay.querySelector('.modal-btn');
+        btn.addEventListener('click', () => {
+            overlay.classList.remove('active');
+            sessionStorage.setItem('privacy_accepted', 'true');
+            setTimeout(() => overlay.remove(), 600);
+        });
+
+        // Trigger after preloader is gone
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                overlay.classList.add('active');
+            }, 1800); // Show shortly after preloader fades
+        });
+    };
+
+    createPrivacyModal();
+
 });
