@@ -411,28 +411,6 @@ nav {
     50% { opacity: 0; }
 }
 
-/* --- Theme Toggle Button --- */
-.theme-toggle {
-    font-size: 1.4rem;
-    color: var(--text-secondary);
-    cursor: pointer;
-    margin-left: auto; /* Push it next to hamburger/GZC btn */
-    margin-right: -5px; /* fine tuning */
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: transparent;
-}
-.theme-toggle:hover {
-    color: var(--accent-blue);
-    background: rgba(59, 130, 246, 0.1);
-    transform: rotate(15deg);
-}
-
 /* ========== RESPONSIVE ========== */
 .hamburger {
     display: none;
@@ -507,6 +485,10 @@ nav {
     .contact-float-btn {
         width: 50px; height: 50px; font-size: 1.2rem;
         bottom: 140px; right: 20px;
+    }
+    .theme-float-btn {
+        width: 50px; height: 50px; font-size: 1.3rem;
+        bottom: 195px; right: 20px;
     }
     
     #scroll-top {
@@ -662,7 +644,79 @@ nav {
     50%       { opacity: 0.5; transform: scale(0.7); }
 }
 
-/* ========== FLOATING CONTACT BUTTON ========== */
+/* ========== FLOATING CONTACT & THEME BUTTONS ========== */
+.theme-float-btn {
+    position: fixed;
+    bottom: 240px;            /* sits above the Contact button */
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--text-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    z-index: 1000;
+    border: 2px solid rgba(59, 130, 246, 0.2);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+}
+body.dark-mode .theme-float-btn {
+    background: #1e293b;
+    border-color: rgba(59, 130, 246, 0.25);
+}
+.theme-float-btn:hover {
+    transform: translateY(-6px) scale(1.1);
+    box-shadow: 0 18px 35px -8px rgba(0, 0, 0, 0.15);
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-blue);
+}
+
+/* Tooltip for theme button */
+.theme-float-tooltip {
+    position: absolute;
+    right: 75px;
+    background: white;
+    color: var(--text-primary);
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    border: 1px solid rgba(0,0,0,0.1);
+    pointer-events: none;
+}
+body.dark-mode .theme-float-tooltip {
+    background: #1e293b;
+    color: #f8fafc;
+    border-color: rgba(255,255,255,0.1);
+}
+.theme-float-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-left-color: white;
+}
+body.dark-mode .theme-float-tooltip::after {
+    border-left-color: #1e293b;
+}
+.theme-float-btn:hover .theme-float-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-6px);
+}
+
 .contact-float-btn {
     position: fixed;
     bottom: 170px;            /* moved up to allow scroll-top to comfortably sit below it */

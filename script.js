@@ -217,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeBtn = document.getElementById('theme-btn');
     if (themeBtn) {
         const themeIcon = themeBtn.querySelector('i');
+        const themeTooltip = themeBtn.querySelector('.theme-float-tooltip');
         
         // Check localStorage for saved theme
         const currentTheme = localStorage.getItem('theme');
@@ -224,6 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.add('dark-mode');
             themeIcon.classList.remove('fa-moon');
             themeIcon.classList.add('fa-sun');
+            if(themeTooltip) themeTooltip.textContent = 'Light Mode';
         }
 
         themeBtn.addEventListener('click', () => {
@@ -233,10 +235,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (document.body.classList.contains('dark-mode')) {
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
+                if(themeTooltip) themeTooltip.textContent = 'Light Mode';
                 localStorage.setItem('theme', 'dark');
             } else {
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
+                if(themeTooltip) themeTooltip.textContent = 'Dark Mode';
                 localStorage.setItem('theme', 'light');
             }
         });
