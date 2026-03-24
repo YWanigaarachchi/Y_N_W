@@ -397,79 +397,94 @@ nav {
     section { padding: 80px 0 60px; }
 }
 
-/* ========== GZC COMPANY FIXED FLOATING BUTTON (Right Side) ========== */
-.gzc-float-btn {
-    position: fixed;
-    right: -148px;            /* hidden off-screen initially */
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 999;
-    display: flex;
+/* ========== GZC COMPANY NAVBAR BUTTON — Premium Style ========== */
+.btn-gzc-nav {
+    display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 14px 20px 14px 16px;
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 40px 0 0 40px;   /* pill on left, flush on right */
-    font-size: 0.95rem;
+    gap: 8px;
+    padding: 11px 22px;
+    margin-left: 12px;
+    border-radius: 100px;
+    font-size: 0.92rem;
     font-weight: 700;
-    letter-spacing: 0.01em;
-    box-shadow: -6px 0 30px rgba(59, 130, 246, 0.45);
-    transition: right 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-                box-shadow 0.4s ease,
-                background 0.4s ease;
-    animation: gzc-entrance 0.8s 1s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* Slide in on page load */
-@keyframes gzc-entrance {
-    from { right: -200px; opacity: 0; }
-    to   { right: -148px; opacity: 1; }
-}
-
-/* Hover: slide fully into view */
-.gzc-float-btn:hover {
-    right: 0;
-    box-shadow: -10px 0 40px rgba(139, 92, 246, 0.55);
-    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    text-decoration: none;
     color: #fff;
+    letter-spacing: 0.02em;
+    position: relative;
+    overflow: hidden;
+    /* Animated gradient border using pseudo-element trick */
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #0ea5e9);
+    background-size: 200% 200%;
+    animation: gzc-grad 4s ease infinite;
+    box-shadow:
+        0 4px 15px rgba(59, 130, 246, 0.4),
+        0 0 0 2px rgba(255,255,255,0.25) inset;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
 }
 
-/* Pulsing glow ring to draw attention */
-.gzc-float-btn::after {
+/* Flowing animated gradient */
+@keyframes gzc-grad {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Shimmer sweep effect */
+.btn-gzc-nav::before {
     content: '';
     position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 60px;
-    height: 60px;
-    background: rgba(59, 130, 246, 0.25);
-    border-radius: 50%;
-    animation: gzc-pulse 2.5s ease-in-out infinite;
-    pointer-events: none;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255,255,255,0.35) 50%,
+        transparent 100%
+    );
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
 }
-@keyframes gzc-pulse {
-    0%, 100% { transform: translateY(-50%) scale(1);   opacity: 0.6; }
-    50%       { transform: translateY(-50%) scale(1.5); opacity: 0; }
-}
-
-.gzc-icon {
-    font-size: 1.3rem;
-    min-width: 22px;
-    text-align: center;
-}
-.gzc-label {
-    white-space: nowrap;
-}
-.gzc-arrow {
-    font-size: 0.75rem;
-    margin-left: 2px;
-    opacity: 0.85;
+.btn-gzc-nav:hover::before {
+    left: 130%;
 }
 
-/* Tab peek: always show icon, label reveals on hover */
-@media (max-width: 768px) {
-    .gzc-float-btn { padding: 12px 14px 12px 12px; font-size: 0.88rem; right: -140px; }
+/* Outer glow ring pulse */
+.btn-gzc-nav::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 100px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #0ea5e9);
+    background-size: 200% 200%;
+    animation: gzc-grad 4s ease infinite;
+    z-index: -1;
+    filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.btn-gzc-nav:hover::after {
+    opacity: 0.7;
+}
+
+/* Hover lift + scale */
+.btn-gzc-nav:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow:
+        0 12px 30px rgba(59, 130, 246, 0.5),
+        0 0 0 2px rgba(255,255,255,0.3) inset;
+    color: #fff;
+}
+
+/* Icon spin on hover */
+.btn-gzc-nav i {
+    font-size: 0.8rem;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.btn-gzc-nav:hover i {
+    transform: rotate(45deg) scale(1.2);
 }
