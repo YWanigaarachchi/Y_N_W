@@ -450,6 +450,11 @@ nav {
     }
     .contact-float-btn {
         width: 50px; height: 50px; font-size: 1.2rem;
+        bottom: 140px; right: 20px;
+    }
+    
+    #scroll-top {
+        width: 40px; height: 40px; font-size: 1rem;
         bottom: 85px; right: 20px;
     }
     
@@ -604,7 +609,7 @@ nav {
 /* ========== FLOATING CONTACT BUTTON ========== */
 .contact-float-btn {
     position: fixed;
-    bottom: 105px;            /* sits just above the WhatsApp button */
+    bottom: 170px;            /* moved up to allow scroll-top to comfortably sit below it */
     right: 30px;
     width: 60px;
     height: 60px;
