@@ -373,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
             rocket.classList.add('launch');
         };
 
-        const triggerButtons = document.querySelectorAll('.contact-float-btn, .btn-primary, .btn-outline');
+        const triggerButtons = document.querySelectorAll('.contact-float-btn');
         
         triggerButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
