@@ -438,10 +438,19 @@ nav {
     }
     
     .grid-2 { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-    h1 { font-size: 2.6rem !important; }
-    h2 { font-size: 2.2rem !important; }
-    h3 { font-size: 1.5rem !important; }
-    section { padding: 90px 0 60px; }
+    .grid-3 { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+    
+    h1 { font-size: 2.4rem !important; }
+    h2 { font-size: 2.0rem !important; }
+    h3 { font-size: 1.4rem !important; }
+    p { font-size: 0.95rem; }
+    section { padding: 80px 0 50px; min-height: auto; }
+    
+    /* Center align everything in footer components */
+    footer div[style*="align-items: flex-start"] {
+        align-items: center !important;
+        text-align: center !important;
+    }
     
     /* Reduce floating buttons bulk on mobile */
     .whatsapp-chat {
