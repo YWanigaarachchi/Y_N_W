@@ -396,3 +396,80 @@ nav {
     h1 { font-size: 2.8rem !important; }
     section { padding: 80px 0 60px; }
 }
+
+/* ========== GZC COMPANY FIXED FLOATING BUTTON (Right Side) ========== */
+.gzc-float-btn {
+    position: fixed;
+    right: -148px;            /* hidden off-screen initially */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px 14px 16px;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 40px 0 0 40px;   /* pill on left, flush on right */
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    box-shadow: -6px 0 30px rgba(59, 130, 246, 0.45);
+    transition: right 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+                box-shadow 0.4s ease,
+                background 0.4s ease;
+    animation: gzc-entrance 0.8s 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Slide in on page load */
+@keyframes gzc-entrance {
+    from { right: -200px; opacity: 0; }
+    to   { right: -148px; opacity: 1; }
+}
+
+/* Hover: slide fully into view */
+.gzc-float-btn:hover {
+    right: 0;
+    box-shadow: -10px 0 40px rgba(139, 92, 246, 0.55);
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    color: #fff;
+}
+
+/* Pulsing glow ring to draw attention */
+.gzc-float-btn::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(59, 130, 246, 0.25);
+    border-radius: 50%;
+    animation: gzc-pulse 2.5s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes gzc-pulse {
+    0%, 100% { transform: translateY(-50%) scale(1);   opacity: 0.6; }
+    50%       { transform: translateY(-50%) scale(1.5); opacity: 0; }
+}
+
+.gzc-icon {
+    font-size: 1.3rem;
+    min-width: 22px;
+    text-align: center;
+}
+.gzc-label {
+    white-space: nowrap;
+}
+.gzc-arrow {
+    font-size: 0.75rem;
+    margin-left: 2px;
+    opacity: 0.85;
+}
+
+/* Tab peek: always show icon, label reveals on hover */
+@media (max-width: 768px) {
+    .gzc-float-btn { padding: 12px 14px 12px 12px; font-size: 0.88rem; right: -140px; }
+}
