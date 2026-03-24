@@ -172,4 +172,45 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ── 10. PROJECTS: SHOW MORE BUTTON ────────────────────
+    const showMoreBtn = document.getElementById('showMoreBtn');
+    const hiddenProjects = document.querySelectorAll('.hidden-project');
+    
+    if (showMoreBtn && hiddenProjects.length > 0) {
+        let isShowingMore = false;
+        
+        showMoreBtn.addEventListener('click', () => {
+            isShowingMore = !isShowingMore;
+            
+            if (isShowingMore) {
+                // Show projects
+                hiddenProjects.forEach((proj, idx) => {
+                    proj.style.display = 'block';
+                    // force reflow before adding opacity for smooth transition if needed
+                    setTimeout(() => {
+                        proj.style.opacity = '1';
+                        proj.style.transform = 'translateY(0)';
+                    }, idx * 100); 
+                });
+                showMoreBtn.innerHTML = 'Show Less Projects <i class="fa-solid fa-angle-up" style="margin-left: 8px;"></i>';
+            } else {
+                // Hide projects
+                hiddenProjects.forEach(proj => {
+                    proj.style.display = 'none';
+                });
+                showMoreBtn.innerHTML = 'Show More Projects <i class="fa-solid fa-angle-down" style="margin-left: 8px;"></i>';
+                
+                // Scroll back up to the grid lightly
+                const grid = document.querySelector('.grid-3');
+                if(grid){
+                    const rect = grid.getBoundingClientRect();
+                    window.scrollTo({
+                        top: window.scrollY + rect.top - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    }
+
 });
