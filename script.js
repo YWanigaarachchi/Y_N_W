@@ -487,7 +487,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <i class="fa-solid fa-shield-halved" style="font-size: 3rem; color: var(--accent-blue); margin-bottom: 20px;"></i>
                 <h2>Privacy & Terms</h2>
                 <div class="privacy-content">
-                    <p>Welcome to Yasas Nirmitha's Portfolio. To provide the best experience, we want to let you know how we handle your data:</p>
+                    <p>Welcome to Yasas Nirmitha's Portfolio. To provide the best experience, we want to let you know how we handle your data (Read our <a href="privacy.html" style="color: var(--accent-blue); text-decoration: underline;">Full Policy</a> here):</p>
                     <ul>
                         <li><i class="fa-solid fa-check"></i> We use local storage for your <b>Theme Preferences</b>.</li>
                         <li><i class="fa-solid fa-check"></i> <b>Contact Form</b> data is sent securely to our systems.</li>
