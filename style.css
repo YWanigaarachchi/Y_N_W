@@ -397,94 +397,139 @@ nav {
     section { padding: 80px 0 60px; }
 }
 
-/* ========== GZC COMPANY NAVBAR BUTTON — Premium Style ========== */
+/* ========== GZC COMPANY NAVBAR BUTTON — Customer Attention ========== */
 .btn-gzc-nav {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 11px 22px;
-    margin-left: 12px;
+    padding: 10px 20px;
+    margin-left: 14px;
     border-radius: 100px;
     font-size: 0.92rem;
-    font-weight: 700;
+    font-weight: 800;
     text-decoration: none;
     color: #fff;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
     position: relative;
-    overflow: hidden;
-    /* Animated gradient border using pseudo-element trick */
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #0ea5e9);
-    background-size: 200% 200%;
-    animation: gzc-grad 4s ease infinite;
+    overflow: visible; /* allow outer pulse ring */
+    background: linear-gradient(135deg, #1d4ed8, #7c3aed, #0ea5e9);
+    background-size: 300% 300%;
+    animation: gzc-grad 3.5s ease infinite, gzc-attention 6s 2s ease-in-out infinite;
     box-shadow:
-        0 4px 15px rgba(59, 130, 246, 0.4),
-        0 0 0 2px rgba(255,255,255,0.25) inset;
+        0 6px 20px rgba(59, 130, 246, 0.5),
+        0 0 0 2px rgba(255,255,255,0.3) inset;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     white-space: nowrap;
     border: none;
     cursor: pointer;
+    z-index: 1;
 }
 
-/* Flowing animated gradient */
+/* Flowing gradient animation */
 @keyframes gzc-grad {
     0%   { background-position: 0% 50%; }
     50%  { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* Shimmer sweep effect */
+/* Attention-grabbing subtle shake/bounce to catch customer eye */
+@keyframes gzc-attention {
+    0%, 90%, 100% { transform: translateY(0) scale(1); }
+    92%           { transform: translateY(-5px) scale(1.06); }
+    94%           { transform: translateY(0) scale(1); }
+    96%           { transform: translateY(-3px) scale(1.03); }
+    98%           { transform: translateY(0) scale(1); }
+}
+
+/* Outer pulsing glow ring — draws customer eyes */
+.btn-gzc-nav::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 100px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #0ea5e9);
+    background-size: 300% 300%;
+    animation: gzc-grad 3.5s ease infinite, gzc-ring-pulse 2.5s ease-in-out infinite;
+    z-index: -1;
+    filter: blur(10px);
+}
+@keyframes gzc-ring-pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50%       { opacity: 0.85; transform: scale(1.08); }
+}
+
+/* Shimmer sweep on hover */
 .btn-gzc-nav::before {
     content: '';
     position: absolute;
     top: 0;
-    left: -75%;
-    width: 50%;
+    left: -80%;
+    width: 55%;
     height: 100%;
     background: linear-gradient(
         120deg,
         transparent 0%,
-        rgba(255,255,255,0.35) 50%,
+        rgba(255,255,255,0.4) 50%,
         transparent 100%
     );
     transform: skewX(-20deg);
-    transition: left 0.6s ease;
-}
-.btn-gzc-nav:hover::before {
-    left: 130%;
-}
-
-/* Outer glow ring pulse */
-.btn-gzc-nav::after {
-    content: '';
-    position: absolute;
-    inset: -3px;
     border-radius: 100px;
-    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #0ea5e9);
-    background-size: 200% 200%;
-    animation: gzc-grad 4s ease infinite;
-    z-index: -1;
-    filter: blur(8px);
-    opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: left 0.55s ease;
+    z-index: 2;
 }
-.btn-gzc-nav:hover::after {
-    opacity: 0.7;
-}
+.btn-gzc-nav:hover::before { left: 140%; }
 
-/* Hover lift + scale */
+/* Hover: big lift + stronger glow */
 .btn-gzc-nav:hover {
-    transform: translateY(-3px) scale(1.05);
+    transform: translateY(-4px) scale(1.07);
     box-shadow:
-        0 12px 30px rgba(59, 130, 246, 0.5),
-        0 0 0 2px rgba(255,255,255,0.3) inset;
+        0 16px 35px rgba(59, 130, 246, 0.6),
+        0 0 0 2px rgba(255,255,255,0.4) inset;
     color: #fff;
+    animation: gzc-grad 3.5s ease infinite; /* stop attention shake on hover */
 }
 
-/* Icon spin on hover */
+/* Company icon - building style */
 .btn-gzc-nav i {
-    font-size: 0.8rem;
+    font-size: 1rem;
     transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    filter: drop-shadow(0 0 4px rgba(255,255,255,0.6));
+    z-index: 2;
+    position: relative;
 }
 .btn-gzc-nav:hover i {
-    transform: rotate(45deg) scale(1.2);
+    transform: scale(1.25) rotate(-5deg);
+}
+
+/* "Visit" badge — small live dot to say it's active */
+.gzc-badge {
+    background: rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 20px;
+    padding: 2px 9px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #fff;
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+/* Live green dot inside badge */
+.gzc-badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: #4ade80;
+    border-radius: 50%;
+    display: inline-block;
+    animation: gzc-live 1.5s ease-in-out infinite;
+    box-shadow: 0 0 6px #4ade80;
+}
+@keyframes gzc-live {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.7); }
 }
