@@ -348,12 +348,20 @@ document.addEventListener('DOMContentLoaded', () => {
             rocket.classList.add('launch');
         };
 
-        const triggerButtons = document.querySelectorAll('.contact-float-btn');
+        const triggerButtons = document.querySelectorAll('.contact-float-btn, .contact-form button');
         
         triggerButtons.forEach(btn => {
             btn.addEventListener('click', (e) => {
+                const isFormBtn = btn.closest('.contact-form');
                 const href = btn.getAttribute('href');
-                if (href && href !== '#' && !btn.hasAttribute('target')) {
+
+                if (isFormBtn) {
+                    // It's the "Send Message" button
+                    e.preventDefault(); // For demo/launch effect
+                    launchRocket();
+                    // Optional: Submit form after delay
+                    // setTimeout(() => btn.closest('form').submit(), 2000);
+                } else if (href && href !== '#' && !btn.hasAttribute('target')) {
                     e.preventDefault();
                     launchRocket();
                     
