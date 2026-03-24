@@ -277,4 +277,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ── 12. NEW YEAR EFFECT (Erabadu Blossoms) ───────────
+    const createNewYearEffect = () => {
+        const blossomContainer = document.createElement('div');
+        blossomContainer.classList.add('blossom-container');
+        document.body.appendChild(blossomContainer);
+
+        const badge = document.createElement('div');
+        badge.classList.add('new-year-badge');
+        badge.innerHTML = `<span>🌸 Happy Sinhala & Tamil New Year!</span>`;
+        document.body.appendChild(badge);
+
+        const createPetal = () => {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            
+            const size = Math.random() * 15 + 10 + 'px';
+            petal.style.width = size;
+            petal.style.height = size;
+            
+            petal.style.left = Math.random() * 100 + 'vw';
+            
+            const duration = Math.random() * 5 + 5 + 's';
+            const delay = Math.random() * 5 + 's';
+            petal.style.animation = `fall ${duration} linear forwards, sway ${Math.random() * 2 + 2}s ease-in-out infinite`;
+            petal.style.animationDelay = `0s, ${delay}`;
+            
+            blossomContainer.appendChild(petal);
+            
+            // Clean up
+            setTimeout(() => {
+                petal.remove();
+            }, 10000);
+        };
+
+        // Create initial petals
+        for(let i=0; i<15; i++) {
+            setTimeout(createPetal, Math.random() * 3000);
+        }
+
+        // Keep creating
+        setInterval(createPetal, 600);
+    };
+
+    // Run if in New Year month (April) - or just run it now for the user
+    createNewYearEffect();
+
 });
