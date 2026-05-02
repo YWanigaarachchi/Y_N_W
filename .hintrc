@@ -24,7 +24,8 @@
       "default",
       {
         "ignore": [
-          "min-height: auto"
+          "min-height: auto",
+          "d"
         ]
       }
     ]
