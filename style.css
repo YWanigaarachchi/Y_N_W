@@ -1077,8 +1077,8 @@ body.dark-mode .monitor-top-bar {
 }
 
 #rocket-overlay.active {
-    backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
     background: rgba(0, 0, 0, 0.6);
     visibility: visible;
     pointer-events: auto;
