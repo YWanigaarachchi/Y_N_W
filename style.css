@@ -516,7 +516,7 @@ body.dark-mode .nav-links a.active {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    background: #25D366;
+    background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
     color: white;
     width: 60px;
     height: 60px;
@@ -529,12 +529,18 @@ body.dark-mode .nav-links a.active {
     z-index: 1000;
     text-decoration: none;
     transition: var(--transition);
-    border: 2px solid white;
+    border: 2px solid rgba(255, 255, 255, 0.8);
     animation: wa-bounce 3s ease-in-out infinite;
 }
 @keyframes wa-bounce {
-    0%, 100% { box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.5); }
-    50% { box-shadow: 0 15px 35px -5px rgba(37, 211, 102, 0.7); transform: translateY(-4px); }
+    0%, 100% { 
+        box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.5), 0 0 0 0 rgba(37, 211, 102, 0.4); 
+        transform: translateY(0);
+    }
+    50% { 
+        box-shadow: 0 15px 35px -5px rgba(37, 211, 102, 0.7), 0 0 0 15px rgba(37, 211, 102, 0); 
+        transform: translateY(-6px);
+    }
 }
 .whatsapp-chat:hover {
     transform: translateY(-6px) scale(1.1) !important;
