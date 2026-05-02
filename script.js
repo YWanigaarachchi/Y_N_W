@@ -1,5 +1,5 @@
 /**
- * Yasas Nirmitha Portfolio — Smart Features Script
+ * YNW Software Solutions — Smart Features Script
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
         logoHtml = `<span style="font-size: 1.8rem; font-weight: 800; color: var(--accent-blue); letter-spacing: -1px;">YNW</span>`;
     }
 
-    const loaderLabel = isGithubPage ? 'Initializing' : (isContactPage ? 'Connecting' : 'Loading');
+    const loaderLabel = isGithubPage ? 'Initializing' : (isContactPage ? 'Connecting' : 'Optimizing');
 
     preloader.innerHTML = `
         <div class="loader-content">
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${logoHtml}
                 </div>
             </div>
-            <div class="loader-text">${loaderLabel} Portfolio</div>
+            <div class="loader-text">${loaderLabel} Solutions</div>
         </div>
     `;
 
@@ -171,10 +171,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const heroTitle = document.querySelector('h1');
     if (heroTitle) {
         const roles = [
-            'Full-Stack Developer',
-            'Microservices Engineer',
-            'AWS Cloud Architect',
-            'Open Source Contributor',
+            'Enterprise Software Solutions',
+            'Scalable Microservices',
+            'AWS Cloud Infrastructure',
+            'Open Source Innovation',
         ];
         // Find or create the typed span
         let typedSpan = heroTitle.querySelector('.typed-role');
@@ -506,11 +506,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const v = input.value.trim(); if (!v) return;
             add(v, 'user'); input.value = '';
             setTimeout(() => {
-                let r = "I'm the YNW Assistant! How can I help? Ask about 'projects' or 'contact'!";
+                let r = "I'm the YNW Solutions Assistant! How can I help? Ask about our 'services' or 'partnerships'!";
                 const t = v.toLowerCase();
-                if (t.includes('hi') || t.includes('hello')) r = "Hi there! I'm Yasas's personal AI! ✨";
-                else if (t.includes('project')) r = "Check out the Projects page for some amazing work! 🚀";
-                else if (t.includes('contact')) r = "Contact Yasas via the Contact page or WhatsApp button! 📩";
+                if (t.includes('hi') || t.includes('hello')) r = "Hi there! I'm the YNW corporate assistant! ✨";
+                else if (t.includes('service') || t.includes('project') || t.includes('solution')) r = "Check out our Solutions page to see our enterprise-grade work! 🚀";
+                else if (t.includes('contact') || t.includes('hire')) r = "You can reach our team via the Contact page or the WhatsApp button! 📩";
+                else if (t.includes('partner')) r = "We are proud partners with GZC. Ask us about our collaborative tech ventures!";
                 add(r, 'bot');
             }, 600);
         };
