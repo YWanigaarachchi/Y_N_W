@@ -233,8 +233,8 @@ nav {
     position: sticky;
     top: 25px;
     z-index: 2000;
-    backdrop-filter: blur(25px) saturate(180%);
     -webkit-backdrop-filter: blur(25px) saturate(180%);
+    backdrop-filter: blur(25px) saturate(180%);
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -386,8 +386,8 @@ body.dark-mode .nav-links a.active {
 /* ========== GLASS CARDS — Blue Outline ========== */
 .glass {
     background: var(--glass-bg);
-    backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
     border: 1px solid var(--glass-border); /* Thinner subtle outline */
     border-radius: 32px;
     padding: 40px;
