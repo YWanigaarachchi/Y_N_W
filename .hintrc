@@ -19,6 +19,14 @@
           "iframe[referrerpolicy=no-referrer-when-downgrade]"
         ]
       }
+    ],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "min-height: auto"
+        ]
+      }
     ]
   }
 }
