@@ -1472,3 +1472,248 @@ body.dark-mode #bird-container {
         right: 20px;
     }
 }
+
+/* ========== PACKAGES PAGE — Premium Cards ========== */
+.pkg-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 0 0 40px;
+}
+
+.pkg-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 45px 35px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Shimmer sweep on hover */
+.pkg-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.15) 50%,
+        transparent 100%
+    );
+    transform: skewX(-20deg);
+    transition: left 0.7s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+.pkg-card:hover::before {
+    left: 150%;
+}
+
+/* Popular card — special border glow */
+.pkg-card-popular {
+    border: 2px solid var(--accent-blue) !important;
+    box-shadow: 
+        0 20px 60px -15px rgba(59, 130, 246, 0.25),
+        inset 0 1px 8px rgba(255, 255, 255, 0.9);
+}
+body.dark-mode .pkg-card-popular {
+    box-shadow: 
+        0 20px 60px -15px rgba(59, 130, 246, 0.3),
+        inset 0 1px 4px rgba(255, 255, 255, 0.05);
+}
+.pkg-card-popular:hover {
+    box-shadow: 
+        0 30px 70px -15px rgba(59, 130, 246, 0.35),
+        0 0 0 1px rgba(59, 130, 246, 0.3);
+    border-color: var(--accent-purple) !important;
+}
+
+/* Popular Badge */
+.pkg-popular-badge {
+    position: absolute;
+    top: 20px;
+    right: -35px;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    color: #fff;
+    padding: 6px 50px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transform: rotate(45deg);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    animation: pkg-badge-pulse 3s ease-in-out infinite;
+}
+.pkg-popular-badge i {
+    font-size: 0.7rem;
+    filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.8));
+    color: #fbbf24;
+}
+@keyframes pkg-badge-pulse {
+    0%, 100% { box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); }
+    50% { box-shadow: 0 8px 25px rgba(139, 92, 246, 0.6); }
+}
+
+/* Package Icon */
+.pkg-icon-wrap {
+    width: 80px;
+    height: 80px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    z-index: 2;
+}
+.pkg-card:hover .pkg-icon-wrap {
+    transform: scale(1.15) rotate(-5deg);
+    box-shadow: 0 10px 25px rgba(59, 130, 246, 0.2);
+}
+
+/* Package Title */
+.pkg-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Package Description */
+.pkg-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 25px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Package Price */
+.pkg-price {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    margin-bottom: 30px;
+    position: relative;
+    z-index: 2;
+}
+.pkg-currency {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.pkg-amount {
+    font-size: 3.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
+    line-height: 1;
+}
+.pkg-period {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-left: 4px;
+}
+
+/* Feature List */
+.pkg-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px;
+    width: 100%;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+}
+.pkg-features li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(59, 130, 246, 0.08);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s ease;
+}
+.pkg-features li:last-child {
+    border-bottom: none;
+}
+.pkg-features li i {
+    color: var(--accent-blue);
+    font-size: 0.8rem;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.pkg-card:hover .pkg-features li {
+    color: var(--text-primary);
+}
+body.dark-mode .pkg-features li {
+    border-bottom-color: rgba(96, 165, 250, 0.08);
+}
+
+/* Package Button */
+.pkg-btn {
+    width: 100%;
+    text-align: center;
+    margin-top: auto;
+    position: relative;
+    z-index: 2;
+    padding: 14px 28px !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .pkg-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    .pkg-card {
+        padding: 35px 25px 30px;
+    }
+    .pkg-amount {
+        font-size: 2.8rem;
+    }
+    .pkg-popular-badge {
+        top: 15px;
+        right: -38px;
+        font-size: 0.7rem;
+    }
+}
+@media (min-width: 769px) and (max-width: 1100px) {
+    .pkg-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (min-width: 1101px) {
+    .pkg-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
