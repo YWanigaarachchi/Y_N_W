@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     preloader.id = 'preloader';
     const isGithubPage = window.location.pathname.includes('github.html');
     const isContactPage = window.location.pathname.includes('contact.html');
+    const isPackagesPage = window.location.pathname.includes('packages.html');
     
     // Choose logo content
     let logoHtml = '';
@@ -20,11 +21,13 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
     } else if (isContactPage) {
         logoHtml = `<i class="fa-solid fa-paper-plane" style="font-size: 1.8rem; color: var(--accent-blue);"></i>`;
+    } else if (isPackagesPage) {
+        logoHtml = `<i class="fa-solid fa-box-open" style="font-size: 1.8rem; color: var(--accent-blue);"></i>`;
     } else {
         logoHtml = `<span style="font-size: 1.8rem; font-weight: 800; color: var(--accent-blue); letter-spacing: -1px;">YNW</span>`;
     }
 
-    const loaderLabel = isGithubPage ? 'Initializing' : (isContactPage ? 'Connecting' : 'Optimizing');
+    const loaderLabel = isGithubPage ? 'Initializing' : (isContactPage ? 'Connecting' : (isPackagesPage ? 'Loading Packages' : 'Optimizing'));
 
     preloader.innerHTML = `
         <div class="loader-content">
@@ -519,5 +522,38 @@ document.addEventListener('DOMContentLoaded', () => {
         input.onkeypress = (e) => (e.key === 'Enter') && handle();
     };
     createChatbot();
+
+    // ── 19. PACKAGES: ANIMATED PRICE COUNTER ─────────────
+    const animateCounters = () => {
+        const amounts = document.querySelectorAll('.pkg-amount');
+        if (amounts.length === 0) return;
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const target = parseInt(el.getAttribute('data-target'));
+                    if (isNaN(target) || el.dataset.counted) return;
+                    el.dataset.counted = 'true';
+                    
+                    let current = 0;
+                    const increment = Math.ceil(target / 40);
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            current = target;
+                            clearInterval(timer);
+                        }
+                        el.textContent = current;
+                    }, 30);
+
+                    counterObserver.unobserve(el);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        amounts.forEach(el => counterObserver.observe(el));
+    };
+    animateCounters();
 
 });
