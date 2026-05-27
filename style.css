@@ -221,58 +221,85 @@ section { padding: 120px 0 80px; min-height: 70vh; display: flex; flex-direction
 /* ========== NAVBAR — Premium Floating Island ========== */
 nav {
     margin: 30px auto;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.7);
     border-radius: 100px;
-    max-width: 900px;
+    max-width: 950px;
     box-shadow: 
-        0 4px 6px -1px rgba(0, 0, 0, 0.05),
-        0 20px 40px -10px rgba(59, 130, 246, 0.15),
-        inset 0 0 20px rgba(255, 255, 255, 0.5);
+        0 15px 35px -10px rgba(59, 130, 246, 0.15),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.6),
+        inset 0 20px 30px rgba(255, 255, 255, 0.5);
     position: sticky;
     top: 25px;
     z-index: 2000;
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
-    backdrop-filter: blur(25px) saturate(180%);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    -webkit-backdrop-filter: blur(35px) saturate(200%);
+    backdrop-filter: blur(35px) saturate(200%);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+nav.nav-scrolled {
+    margin: 15px auto;
+    padding: 8px 20px;
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 
+        0 15px 40px -5px rgba(59, 130, 246, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+    max-width: 900px;
 }
 
 body.dark-mode nav {
-    background: rgba(15, 23, 42, 0.7);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px solid rgba(96, 165, 250, 0.2);
     box-shadow: 
-        0 25px 50px -12px rgba(0, 0, 0, 0.5),
-        inset 0 0 15px rgba(255, 255, 255, 0.05);
+        0 20px 40px -10px rgba(0, 0, 0, 0.7),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 10px 20px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode nav.nav-scrolled {
+    background: rgba(15, 23, 42, 0.85);
+    border-color: rgba(96, 165, 250, 0.3);
+    box-shadow: 
+        0 20px 50px -5px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(59, 130, 246, 0.2);
 }
 
 nav:hover {
-    max-width: 920px;
+    max-width: 980px;
     background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 30px 60px -15px rgba(59, 130, 246, 0.25);
+    box-shadow: 0 25px 50px -12px rgba(59, 130, 246, 0.35);
+    transform: translateY(-2px);
+}
+nav.nav-scrolled:hover {
+    max-width: 920px;
+    transform: translateY(0);
 }
 
 body.dark-mode nav:hover {
-    background: rgba(15, 23, 42, 0.8);
+    background: rgba(15, 23, 42, 0.75);
+    border-color: rgba(96, 165, 250, 0.4);
+    box-shadow: 0 30px 60px -10px rgba(59, 130, 246, 0.3);
 }
 
 .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
 
 /* Logo */
 .logo {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     font-weight: 900;
     text-decoration: none;
     color: var(--text-primary);
-    letter-spacing: -1.5px;
+    letter-spacing: -1px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 8px 16px;
-    transition: all 0.4s ease;
+    gap: 8px;
+    padding: 5px 10px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .logo:hover {
-    letter-spacing: -0.5px;
+    letter-spacing: 0px;
+    transform: scale(1.05);
 }
 .logo span {
     background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
@@ -280,65 +307,96 @@ body.dark-mode nav:hover {
     background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 800;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 .logo::after {
     content: '';
-    width: 7px;
-    height: 7px;
+    width: 8px;
+    height: 8px;
     background: var(--accent-cyan);
     border-radius: 50%;
     display: block;
     margin-top: 4px;
-    box-shadow: 0 0 10px rgba(14, 165, 233, 0.7);
+    box-shadow: 0 0 15px rgba(14, 165, 233, 0.9);
     animation: pulse-dot 2s infinite;
 }
 @keyframes pulse-dot {
-    0%, 100% { transform: scale(1); opacity: 1; }
-    50% { transform: scale(1.5); opacity: 0.7; }
+    0%, 100% { transform: scale(1); opacity: 1; box-shadow: 0 0 10px rgba(14,165,233,0.6); }
+    50% { transform: scale(1.6); opacity: 0.8; box-shadow: 0 0 20px rgba(14,165,233,1); }
 }
 
 /* Nav Links */
 .nav-links { 
     display: flex; 
-    gap: 5px; 
+    gap: 8px; 
     align-items: center; 
-    background: rgba(255, 255, 255, 0.3);
-    padding: 5px;
+    background: rgba(255, 255, 255, 0.4);
+    padding: 6px;
     border-radius: 100px;
-    border: 1px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 body.dark-mode .nav-links {
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
     border-color: rgba(255,255,255,0.05);
+    box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
 }
+
 .nav-links a {
     color: var(--text-secondary);
     text-decoration: none;
-    font-weight: 600;
-    font-size: 0.9rem;
-    padding: 8px 20px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 10px 22px;
     border-radius: 100px;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+    border-radius: 100px;
+    opacity: 0;
+    z-index: -1;
+    transform: scale(0.5);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav-links a:hover::before {
+    opacity: 1;
+    transform: scale(1);
 }
 .nav-links a:hover {
-    color: var(--text-primary);
-    background: rgba(255, 255, 255, 0.5);
+    color: var(--accent-blue);
+    text-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
+body.dark-mode .nav-links a::before {
+    background: linear-gradient(135deg, rgba(96, 165, 250, 0.15), rgba(167, 139, 250, 0.15));
 }
 body.dark-mode .nav-links a:hover {
-    background: rgba(255, 255, 255, 0.1);
+    color: var(--accent-cyan);
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
 }
+
 .nav-links a.active {
-    background: var(--text-primary);
-    color: var(--bg-light) !important;
-    box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    color: #fff !important;
+    box-shadow: 0 8px 20px -5px rgba(139, 92, 246, 0.4);
+    text-shadow: none;
+}
+.nav-links a.active::before {
+    display: none;
 }
 body.dark-mode .nav-links a.active {
-    background: #fff;
-    color: #000 !important;
+    background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+    color: #fff !important;
+    box-shadow: 0 8px 20px -5px rgba(56, 189, 248, 0.4);
 }
 
 /* ========== GZC COMPANY NAV BUTTON ========== */
