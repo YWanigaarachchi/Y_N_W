@@ -399,6 +399,73 @@ body.dark-mode .nav-links a.active {
     box-shadow: 0 8px 20px -5px rgba(56, 189, 248, 0.4);
 }
 
+/* Dropdown */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--glass-bg);
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+    border: 1px solid var(--glass-border);
+    min-width: 220px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 10px;
+    margin-top: 15px;
+}
+.dropdown-content::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 12px;
+    height: 12px;
+    background: var(--glass-bg);
+    border-left: 1px solid var(--glass-border);
+    border-top: 1px solid var(--glass-border);
+}
+.dropdown:hover .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+.dropdown-content a {
+    color: var(--text-secondary);
+    padding: 12px 20px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    border-radius: 10px;
+    margin-bottom: 4px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+.dropdown-content a:last-child {
+    margin-bottom: 0;
+}
+.dropdown-content a:hover {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--accent-blue);
+    transform: translateX(5px);
+}
+body.dark-mode .dropdown-content {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
 /* ========== GZC COMPANY NAV BUTTON ========== */
 .btn-gzc-nav {
     display: inline-flex;
