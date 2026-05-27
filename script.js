@@ -523,9 +523,11 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     createChatbot();
 
-    // ── 19. PACKAGES: ANIMATED PRICE COUNTER ─────────────
-    const animateCounters = () => {
-        const amounts = document.querySelectorAll('.pkg-amount');
+    // ── 19. PACKAGES: TAB SWITCHER + ANIMATED PRICE COUNTER ─────────────
+    const formatNumber = (num) => num.toLocaleString('en-LK');
+
+    const animateCounters = (container) => {
+        const amounts = (container || document).querySelectorAll('.pkg-amount');
         if (amounts.length === 0) return;
 
         const counterObserver = new IntersectionObserver((entries) => {
@@ -533,7 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (entry.isIntersecting) {
                     const el = entry.target;
                     const target = parseInt(el.getAttribute('data-target'));
-                    if (isNaN(target) || el.dataset.counted) return;
+                    if (isNaN(target)) return;
                     el.dataset.counted = 'true';
                     
                     let current = 0;
@@ -544,7 +546,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             current = target;
                             clearInterval(timer);
                         }
-                        el.textContent = current;
+                        el.textContent = formatNumber(current);
                     }, 30);
 
                     counterObserver.unobserve(el);
@@ -554,6 +556,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
         amounts.forEach(el => counterObserver.observe(el));
     };
+
+    // Tab switching logic
+    const pkgTabs = document.querySelectorAll('.pkg-tab');
+    const pkgContents = document.querySelectorAll('.pkg-tab-content');
+
+    if (pkgTabs.length > 0) {
+        pkgTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.getAttribute('data-tab');
+
+                // Switch active tab
+                pkgTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                // Switch content
+                pkgContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === 'tab-' + target) {
+                        content.classList.add('active');
+                        // Re-trigger counters for new panel
+                        const amounts = content.querySelectorAll('.pkg-amount');
+                        amounts.forEach(el => {
+                            if (!el.dataset.counted) {
+                                animateCounters(content);
+                            }
+                        });
+                        // Scroll to content smoothly
+                        content.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        });
+    }
+
+    // Initial counters for active tab
     animateCounters();
 
 });
