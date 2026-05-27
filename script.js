@@ -140,15 +140,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ── 4. SMART NAV: Compact on scroll + Blue glow ───────
     const nav = document.querySelector('nav');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 60) {
-            nav.style.padding = '8px 20px';
-            nav.style.boxShadow = '0 8px 30px rgba(59,130,246,0.25)';
-        } else {
-            nav.style.padding = '12px 24px';
-            nav.style.boxShadow = '0 15px 35px -10px rgba(59,130,246,0.2)';
-        }
-    });
+    if (nav) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 60) {
+                nav.classList.add('nav-scrolled');
+            } else {
+                nav.classList.remove('nav-scrolled');
+            }
+        });
+    }
 
 
     // ── 5. ACTIVE LINK HIGHLIGHTER ────────────────────────
