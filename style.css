@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
 
 :root {
     --bg-light: #f0f7ff;
@@ -218,7 +218,7 @@ p {
 .container { max-width: 1150px; margin: 0 auto; padding: 0 24px; position: relative; }
 section { padding: 120px 0 80px; min-height: 70vh; display: flex; flex-direction: column; justify-content: center; }
 
-/* ========== NAVBAR — Premium Floating Island ========== */
+/* ========== NAVBAR â€” Premium Floating Island ========== */
 nav {
     margin: 30px auto;
     padding: 12px 24px;
@@ -508,7 +508,7 @@ body.dark-mode .dropdown-content {
 }
 .btn-gzc-nav span, .btn-gzc-nav { position: relative; }
 
-/* ========== GLASS CARDS — Blue Outline ========== */
+/* ========== GLASS CARDS â€” Blue Outline ========== */
 .glass {
     background: var(--glass-bg);
     -webkit-backdrop-filter: blur(30px);
@@ -836,7 +836,7 @@ body.dark-mode .dropdown-content {
     display: none !important;
 }
 
-/* ========== GZC COMPANY NAVBAR BUTTON — Customer Attention ========== */
+/* ========== GZC COMPANY NAVBAR BUTTON â€” Customer Attention ========== */
 .btn-gzc-nav {
     display: inline-flex;
     align-items: center;
@@ -880,7 +880,7 @@ body.dark-mode .dropdown-content {
     98%           { transform: translateY(0) scale(1); }
 }
 
-/* Outer pulsing glow ring — draws customer eyes */
+/* Outer pulsing glow ring â€” draws customer eyes */
 .btn-gzc-nav::after {
     content: '';
     position: absolute;
@@ -942,7 +942,7 @@ body.dark-mode .dropdown-content {
     transform: scale(1.25) rotate(-5deg);
 }
 
-/* "Visit" badge — small live dot to say it's active */
+/* "Visit" badge â€” small live dot to say it's active */
 .gzc-badge {
     background: rgba(255,255,255,0.25);
     border: 1px solid rgba(255,255,255,0.4);
@@ -1598,7 +1598,7 @@ body.dark-mode #bird-container {
     }
 }
 
-/* ========== PACKAGES PAGE — Premium Cards ========== */
+/* ========== PACKAGES PAGE â€” Premium Cards ========== */
 .pkg-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1640,7 +1640,7 @@ body.dark-mode #bird-container {
     left: 150%;
 }
 
-/* Popular card — special border glow */
+/* Popular card â€” special border glow */
 .pkg-card-popular {
     border: 2px solid var(--accent-blue) !important;
     box-shadow: 
@@ -1790,7 +1790,7 @@ body.dark-mode .pkg-features li {
     padding: 14px 28px !important;
 }
 
-/* ── Category Tab Navigation ── */
+/* â”€â”€ Category Tab Navigation â”€â”€ */
 .pkg-tabs {
     display: flex;
     gap: 8px;
@@ -1854,7 +1854,7 @@ body.dark-mode .pkg-tab.active {
     box-shadow: 0 8px 20px -5px rgba(56, 189, 248, 0.4);
 }
 
-/* ── Tab Content Panels ── */
+/* â”€â”€ Tab Content Panels â”€â”€ */
 .pkg-tab-content {
     display: none;
     animation: pkgTabFadeIn 0.5s ease-out;
@@ -1867,7 +1867,7 @@ body.dark-mode .pkg-tab.active {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Tab Section Header ── */
+/* â”€â”€ Tab Section Header â”€â”€ */
 .pkg-tab-header {
     display: flex;
     align-items: center;
@@ -1881,7 +1881,7 @@ body.dark-mode .pkg-tab.active {
     border-radius: 24px;
 }
 
-/* ── Rs Currency — smaller amount for large numbers ── */
+/* â”€â”€ Rs Currency â€” smaller amount for large numbers â”€â”€ */
 .pkg-currency {
     font-size: 1.2rem;
     font-weight: 700;
@@ -1902,7 +1902,7 @@ body.dark-mode .pkg-tab.active {
     line-height: 1;
 }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 768px) {
     .pkg-grid {
         grid-template-columns: 1fr;
@@ -1947,125 +1947,3 @@ body.dark-mode .pkg-tab.active {
     }
 }
 
-/* ========== THEME TOGGLE BUTTON ========== */
-.theme-float-btn {
-    position: fixed;
-    bottom: 100px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    color: var(--text-primary);
-    cursor: pointer;
-    box-shadow: var(--glass-shadow);
-    transition: var(--transition);
-    z-index: 1000;
-}
-.theme-float-btn:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--glass-shadow-hover);
-    color: var(--accent-blue);
-    border-color: var(--accent-blue);
-}
-.theme-float-tooltip {
-    position: absolute;
-    right: 75px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    color: var(--text-primary);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.88rem;
-    font-weight: 700;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
-    white-space: nowrap;
-}
-.theme-float-btn:hover .theme-float-tooltip {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-5px);
-}
-body.dark-mode .theme-float-tooltip::after,
-.theme-float-tooltip::after {
-    content: '';
-    position: absolute;
-    right: -6px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-width: 6px 0 6px 6px;
-    border-style: solid;
-    border-color: transparent transparent transparent var(--glass-border);
-}
-
-/* ========== FLOATING CONTACT BUTTON ========== */
-.contact-float-btn {
-    position: fixed;
-    bottom: 170px;
-    right: 30px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.5rem;
-    cursor: pointer;
-    text-decoration: none;
-    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
-    transition: var(--transition);
-    z-index: 1000;
-}
-.contact-float-btn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 35px -5px rgba(139, 92, 246, 0.5);
-    color: #fff;
-}
-.contact-float-tooltip {
-    position: absolute;
-    right: 75px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid var(--glass-border);
-    color: var(--text-primary);
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.88rem;
-    font-weight: 700;
-    opacity: 0;
-    visibility: hidden;
-    transition: var(--transition);
-    white-space: nowrap;
-}
-.contact-float-btn:hover .contact-float-tooltip {
-    opacity: 1;
-    visibility: visible;
-    transform: translateX(-5px);
-}
-.contact-float-tooltip::after {
-    content: '';
-    position: absolute;
-    right: -6px;
-    top: 50%;
-    transform: translateY(-50%);
-    border-width: 6px 0 6px 6px;
-    border-style: solid;
-    border-color: transparent transparent transparent var(--glass-border);
-}
-.contact-float-hidden {
-    display: none !important;
-}
