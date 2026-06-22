@@ -1946,3 +1946,126 @@ body.dark-mode .pkg-tab.active {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+/* ========== THEME TOGGLE BUTTON ========== */
+.theme-float-btn {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    cursor: pointer;
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition);
+    z-index: 1000;
+}
+.theme-float-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--glass-shadow-hover);
+    color: var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+.theme-float-tooltip {
+    position: absolute;
+    right: 75px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+.theme-float-btn:hover .theme-float-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-5px);
+}
+body.dark-mode .theme-float-tooltip::after,
+.theme-float-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--glass-border);
+}
+
+/* ========== FLOATING CONTACT BUTTON ========== */
+.contact-float-btn {
+    position: fixed;
+    bottom: 170px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+    transition: var(--transition);
+    z-index: 1000;
+}
+.contact-float-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 35px -5px rgba(139, 92, 246, 0.5);
+    color: #fff;
+}
+.contact-float-tooltip {
+    position: absolute;
+    right: 75px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+.contact-float-btn:hover .contact-float-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-5px);
+}
+.contact-float-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--glass-border);
+}
+.contact-float-hidden {
+    display: none !important;
+}
