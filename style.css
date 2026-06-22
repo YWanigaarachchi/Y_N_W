@@ -1947,3 +1947,28 @@ body.dark-mode .pkg-tab.active {
     }
 }
 
+
+/* ========== NAV CONTACT BUTTON ========== */
+.btn-nav-contact {
+    padding: 10px 24px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    color: #fff;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+    white-space: nowrap;
+}
+.btn-nav-contact:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+    color: #fff;
+}
+
+@media (max-width: 900px) {
+    .btn-nav-contact {
+        display: none !important;
+    }
+}
