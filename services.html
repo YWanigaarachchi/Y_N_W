@@ -1,184 +1,190 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YNW Software Solutions - Our Services. Web Development, Mobile Apps, UI/UX Design, Cloud & DevOps, AI & ML Solutions in Sri Lanka.">
+    <meta name="description" content="YNW Software Solutions Services - Web Development, Cloud Architecture, Microservices, Mobile Apps, UI/UX Design and Tech Consulting.">
     <title>Services | YNW Software Solutions</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <nav>
-        <div class="container nav-container">
-            <a href="index.html" class="logo">YNW <span>Software</span></a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="tech.html">Stack</a>
-                <a href="project.html">Solutions</a>
-                <div class="dropdown">
-                    <a href="services.html" class="active dropdown-toggle">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="services.html" class="active">All Services</a>
-                        <a href="packages.html">Pricing Packages</a>
-                    </div>
+
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<nav>
+    <div class="container nav-inner">
+        <a href="index.html" class="logo">YNW<span>.</span></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a><a href="about.html">About</a><a href="tech.html">Tech Stack</a>
+            <div class="dropdown">
+                <a href="services.html" class="active">Services <i class="fa-solid fa-chevron-down" style="font-size:0.7em;margin-left:4px;"></i></a>
+                <div class="dropdown-content">
+                    <a href="services.html">All Services</a><a href="packages.html">Pricing Packages</a>
                 </div>
-                <a href="github.html">Open Source</a>
             </div>
-            <a href="https://ywanigaarachchi.github.io/Y_Wanigaarachchi/" target="_blank" class="btn-gzc-nav"><i class="fa-solid fa-building-columns"></i> GZC <span class="gzc-badge">Partner</span></a>
-            <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+            <a href="project.html">Portfolio</a><a href="github.html">Open Source</a>
         </div>
-    </nav>
-
-    <!-- Hero Header -->
-    <section class="container reveal" style="padding-bottom: 20px;">
-        <div style="text-align: center; margin-bottom: 60px;">
-            <p style="color: var(--accent-cyan); font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px;">What We Do</p>
-            <h1 style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 15px;">Our <span style="background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Services</span></h1>
-            <p style="font-size: 1.15rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;">
-                We deliver end-to-end software solutions designed to transform your business. Explore our core services below.
-            </p>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section class="container" style="padding-bottom: 80px;">
-        <div class="grid-2" style="gap: 40px; margin-bottom: 40px;">
-            <!-- Service 1 -->
-            <div class="glass reveal" style="padding: 40px;">
-                <div class="pkg-icon-wrap" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(14, 165, 233, 0.15)); width: 70px; height: 70px; margin-bottom: 20px;">
-                    <i class="fa-solid fa-laptop-code" style="color: var(--accent-blue);"></i>
-                </div>
-                <h2 style="font-size: 2rem; margin-bottom: 15px;">Web Development</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 20px; line-height: 1.7;">
-                    We build highly scalable, fast, and secure web applications. From corporate websites to complex enterprise SaaS platforms, our web solutions are tailored to meet your unique business objectives using the latest technologies like React, Next.js, and Node.js.
-                </p>
-                <a href="packages.html" class="btn btn-outline">View Packages</a>
-            </div>
-            <!-- Service 2 -->
-            <div class="glass reveal" style="padding: 40px; transition-delay: 0.1s;">
-                <div class="pkg-icon-wrap" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(168, 85, 247, 0.15)); width: 70px; height: 70px; margin-bottom: 20px;">
-                    <i class="fa-solid fa-mobile-screen-button" style="color: var(--accent-purple);"></i>
-                </div>
-                <h2 style="font-size: 2rem; margin-bottom: 15px;">Mobile App Development</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 20px; line-height: 1.7;">
-                    Engage your users on the go with stunning mobile applications for iOS and Android. We utilize cross-platform frameworks like React Native and Flutter to deliver smooth, native-like experiences with offline support and real-time syncing.
-                </p>
-                <a href="packages.html" class="btn btn-outline">View Packages</a>
-            </div>
-        </div>
-
-        <div class="grid-3" style="gap: 40px;">
-            <!-- Service 3 -->
-            <div class="glass reveal" style="padding: 40px; transition-delay: 0.2s;">
-                <div class="pkg-icon-wrap" style="background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(6, 182, 212, 0.15)); width: 70px; height: 70px; margin-bottom: 20px;">
-                    <i class="fa-solid fa-pen-nib" style="color: var(--accent-cyan);"></i>
-                </div>
-                <h2 style="font-size: 1.8rem; margin-bottom: 15px;">UI/UX Design</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 20px; line-height: 1.7;">
-                    User experience is at the heart of our development process. We design pixel-perfect interfaces, conduct user research, and build prototypes that captivate your audience and drive business conversions.
-                </p>
-                <a href="packages.html" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">View Packages</a>
-            </div>
-            <!-- Service 4 -->
-            <div class="glass reveal" style="padding: 40px; transition-delay: 0.3s;">
-                <div class="pkg-icon-wrap" style="background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15)); width: 70px; height: 70px; margin-bottom: 20px;">
-                    <i class="fa-solid fa-cloud" style="color: var(--accent-blue);"></i>
-                </div>
-                <h2 style="font-size: 1.8rem; margin-bottom: 15px;">Cloud & DevOps</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 20px; line-height: 1.7;">
-                    Modernize your infrastructure with our Cloud & DevOps services. We handle AWS/GCP cloud migrations, Kubernetes orchestrations, automated CI/CD pipelines, and 24/7 monitoring to ensure high availability.
-                </p>
-                <a href="packages.html" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">View Packages</a>
-            </div>
-            <!-- Service 5 -->
-            <div class="glass reveal" style="padding: 40px; transition-delay: 0.4s;">
-                <div class="pkg-icon-wrap" style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(14, 165, 233, 0.15)); width: 70px; height: 70px; margin-bottom: 20px;">
-                    <i class="fa-solid fa-brain" style="color: var(--accent-purple);"></i>
-                </div>
-                <h2 style="font-size: 1.8rem; margin-bottom: 15px;">AI & ML Solutions</h2>
-                <p style="color: var(--text-secondary); margin-bottom: 20px; line-height: 1.7;">
-                    Empower your software with intelligence. We integrate LLMs, computer vision, predictive analytics, and custom machine learning models to automate processes and generate actionable insights from your data.
-                </p>
-                <a href="packages.html" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">View Packages</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Custom Package CTA -->
-    <section class="container" style="padding: 40px 24px 80px; text-align: center;">
-        <div class="glass reveal" style="padding: 60px 40px; background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(139, 92, 246, 0.05)); border: 1px solid var(--accent-blue);">
-            <div style="font-size: 3rem; color: var(--accent-purple); margin-bottom: 15px;"><i class="fa-solid fa-rocket"></i></div>
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Ready to start your project?</h2>
-            <p style="max-width: 600px; margin: 0 auto 30px; color: var(--text-secondary); font-size: 1.1rem;">Check out our pricing packages or contact us for a custom solution tailored to your needs.</p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
-                <a href="packages.html" class="btn btn-primary" style="display: inline-flex; align-items: center; gap: 10px;">View Pricing Packages</a>
-                <a href="contact.html" class="btn btn-outline" style="display: inline-flex; align-items: center; gap: 10px;">Contact Our Team</a>
-            </div>
-        </div>
-    </section>
-
-    <footer style="margin-top: 100px; padding: 60px 0 20px; border-top: 1px solid var(--glass-border); background: linear-gradient(to top, rgba(250, 251, 255, 0.9), transparent); position: relative; overflow: hidden;">
-        <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 2px; background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent); opacity: 0.5;"></div>
-        <div class="container">
-            <div class="grid-3" style="gap: 40px; margin-bottom: 50px;">
-                <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                    <a href="index.html" class="logo" style="font-size: 2rem; margin-bottom: 15px;">YNW <span style="font-size: 0.8rem; color: var(--accent-purple);">Software</span></a>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">Building the future of software with robust microservices and beautiful user experiences. Let's build something extraordinary.</p>
-                    <div style="display: flex; gap: 15px; font-size: 1.2rem;">
-                        <a href="https://github.com/YWanigaarachchi" target="_blank" style="color: var(--text-secondary); transition: var(--transition);" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fa-brands fa-github"></i></a>
-                        <a href="#" style="color: var(--text-secondary); transition: var(--transition);" onmouseover="this.style.color='var(--accent-purple)'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="#" style="color: var(--text-secondary); transition: var(--transition);" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fa-brands fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                    <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: var(--text-primary);">Quick Links</h4>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <a href="index.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">Home</a>
-                        <a href="about.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">About Us</a>
-                        <a href="tech.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">Tech Stack</a>
-                        <a href="services.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">Services</a>
-                    </div>
-                </div>
-                <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                    <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: var(--text-primary);">Resources</h4>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <a href="project.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-purple)'" onmouseout="this.style.color='var(--text-secondary)'">Solutions</a>
-                        <a href="packages.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-purple)'" onmouseout="this.style.color='var(--text-secondary)'">Packages</a>
-                        <a href="github.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-purple)'" onmouseout="this.style.color='var(--text-secondary)'">Open Source</a>
-                        <a href="contact.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-purple)'" onmouseout="this.style.color='var(--text-secondary)'">Contact Us</a>
-                    </div>
-                </div>
-            </div>
-            <div style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(0,0,0,0.05);">
-                <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 YNW Software Solutions. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-    <script src="script.js"></script>
-
-    <!-- Smart WhatsApp Chat Box -->
-    <a href="https://wa.me/94765855570?text=Hello%20YNW%20Software%20Solutions!%20%F0%9F%91%8B%0AI'm%20interested%20in%20your%20software%20development%20services.%20Could%20we%20schedule%20a%20consultation%3F%20%F0%9F%9A%80" target="_blank" class="whatsapp-chat">
-        <i class="fa-brands fa-whatsapp"></i>
-        <span class="whatsapp-tooltip">Chat with us!</span>
-    </a>
-
-    <!-- Smart Theme Toggle Box -->
-    <div class="theme-float-btn" id="theme-btn">
-        <i class="fa-solid fa-moon"></i>
-        <span class="theme-float-tooltip">Dark Mode</span>
+        <a href="contact.html" class="nav-cta">Get in Touch</a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
     </div>
+</nav>
+<div class="mobile-menu">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="tech.html">Tech Stack</a>
+    <a href="services.html">Services</a><a href="packages.html">Pricing</a>
+    <a href="project.html">Portfolio</a><a href="github.html">Open Source</a><a href="contact.html">Contact</a>
+</div>
 
-    <!-- Floating Contact Button -->
-    <a href="contact.html" class="contact-float-btn" id="contact-float-btn">
-        <i class="fa-solid fa-paper-plane"></i>
-        <span class="contact-float-tooltip">Contact Us</span>
-    </a>
+<!-- Page Hero -->
+<div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Services</span></div>
+        <div class="label">What We Offer</div>
+        <h1>Full-Spectrum <span class="text-gradient">Digital Services</span></h1>
+        <p>End-to-end software solutions crafted to scale your business and deliver exceptional digital experiences.</p>
+    </div>
+</div>
 
-    <div class="custom-cursor"></div><div class="custom-cursor-outline"></div>
+<!-- Services Detail -->
+<section class="section">
+    <div class="container">
+
+        <!-- Service 1 -->
+        <div class="grid-2" style="margin-bottom:100px;gap:80px;">
+            <div class="reveal-left">
+                <div class="icon-box icon-box-orange" style="width:80px;height:80px;font-size:2rem;border-radius:20px;margin-bottom:28px;"><i class="fa-solid fa-laptop-code"></i></div>
+                <div class="label">Service 01</div>
+                <h2 style="margin-bottom:20px;">Web <span class="text-gradient">Development</span></h2>
+                <p style="line-height:1.9;margin-bottom:20px;">We build responsive, high-performance web applications that look stunning and convert visitors. From simple websites to complex enterprise platforms, our solutions are built to scale.</p>
+                <ul style="display:flex;flex-direction:column;gap:14px;margin:28px 0;">
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> Custom web application development</li>
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> E-commerce platforms & portals</li>
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> CMS & headless architecture</li>
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> SEO-optimised & performant</li>
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> Progressive Web Apps (PWA)</li>
+                </ul>
+                <a href="contact.html" class="btn btn-primary">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="reveal-right">
+                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&q=80&w=800" alt="Web Development" style="border-radius:var(--radius-xl);width:100%;">
+            </div>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="grid-2" style="margin-bottom:100px;gap:80px;">
+            <div class="reveal-left" style="order:2;">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800" alt="Microservices" style="border-radius:var(--radius-xl);width:100%;">
+            </div>
+            <div class="reveal-right" style="order:1;">
+                <div class="icon-box icon-box-purple" style="width:80px;height:80px;font-size:2rem;border-radius:20px;margin-bottom:28px;"><i class="fa-solid fa-server"></i></div>
+                <div class="label">Service 02</div>
+                <h2 style="margin-bottom:20px;">Microservices <span class="text-gradient">&amp; APIs</span></h2>
+                <p style="line-height:1.9;margin-bottom:20px;">We architect modular, scalable backend systems that grow with your business. Our microservices approach enables independent deployment, scaling, and resilience.</p>
+                <ul style="display:flex;flex-direction:column;gap:14px;margin:28px 0;">
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-purple);"></i> RESTful & GraphQL API design</li>
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-purple);"></i> Event-driven architecture</li>
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-purple);"></i> Service mesh & API gateway</li>
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-purple);"></i> Message queues (Kafka, RabbitMQ)</li>
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-purple);"></i> Distributed tracing & monitoring</li>
+                </ul>
+                <a href="contact.html" class="btn btn-primary">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="grid-2" style="margin-bottom:100px;gap:80px;">
+            <div class="reveal-left">
+                <div class="icon-box icon-box-cyan" style="width:80px;height:80px;font-size:2rem;border-radius:20px;margin-bottom:28px;"><i class="fa-brands fa-aws"></i></div>
+                <div class="label">Service 03</div>
+                <h2 style="margin-bottom:20px;">Cloud <span class="text-gradient">Solutions</span></h2>
+                <p style="line-height:1.9;margin-bottom:20px;">We design and implement resilient AWS cloud architectures that scale on demand. From serverless to containerised workloads, we ensure your infrastructure is always ready.</p>
+                <ul style="display:flex;flex-direction:column;gap:14px;margin:28px 0;">
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-cyan);"></i> AWS architecture & migration</li>
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-cyan);"></i> Serverless & Lambda functions</li>
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-cyan);"></i> Container orchestration (EKS)</li>
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-cyan);"></i> CI/CD pipelines & DevOps</li>
+                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-cyan);"></i> Cloud cost optimisation</li>
+                </ul>
+                <a href="contact.html" class="btn btn-primary">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="reveal-right">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="Cloud Solutions" style="border-radius:var(--radius-xl);width:100%;">
+            </div>
+        </div>
+
+        <!-- Services Grid - remaining -->
+        <div class="section-header reveal" style="margin-top:60px;">
+            <div class="label">More Services</div>
+            <h2>Additional <span class="text-gradient">Capabilities</span></h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card reveal">
+                <div class="service-num">04</div>
+                <div class="icon-box icon-box-pink"><i class="fa-solid fa-mobile-screen"></i></div>
+                <h3>Mobile Development</h3>
+                <p style="margin-top:12px;font-size:0.9rem;">Cross-platform iOS & Android apps with React Native or Flutter — native performance, single codebase.</p>
+                <a href="contact.html" class="service-arrow"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal delay-1">
+                <div class="service-num">05</div>
+                <div class="icon-box icon-box-amber"><i class="fa-solid fa-pen-nib"></i></div>
+                <h3>UI/UX Design</h3>
+                <p style="margin-top:12px;font-size:0.9rem;">User research, wireframing, prototyping, and polished design systems that users love and convert.</p>
+                <a href="contact.html" class="service-arrow"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+            <div class="service-card reveal delay-2">
+                <div class="service-num">06</div>
+                <div class="icon-box icon-box-green"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Tech Consulting</h3>
+                <p style="margin-top:12px;font-size:0.9rem;">Architecture reviews, technology selection, digital transformation strategy, and technical due diligence.</p>
+                <a href="contact.html" class="service-arrow"><i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background: var(--bg-secondary);">
+    <div class="container" style="text-align:center;">
+        <div class="reveal">
+            <div class="label">Get Started</div>
+            <h2>Ready to <span class="text-gradient">Build Something Great?</span></h2>
+            <p style="max-width:500px;margin:20px auto 40px;">Tell us about your project and let's find the perfect solution together.</p>
+            <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
+                <a href="contact.html" class="btn btn-primary">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="packages.html" class="btn btn-outline">View Pricing</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">YNW<span>.</span></a>
+                <p>Building the future of software with robust microservices, beautiful interfaces, and resilient cloud architectures.</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/YWanigaarachchi" target="_blank" class="social-link"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col"><h5>Company</h5><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About Us</a><a href="project.html">Portfolio</a></div></div>
+            <div class="footer-col"><h5>Services</h5><div class="footer-links"><a href="services.html">Web Development</a><a href="services.html">Cloud Solutions</a><a href="packages.html">Pricing</a></div></div>
+            <div class="footer-col"><h5>Contact</h5><div class="footer-links"><a href="mailto:ynw@software.com">ynw@software.com</a><a href="contact.html">Send a Message</a></div></div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 YNW Software Solutions. All Rights Reserved.</p>
+            <p>Made with <span style="color:var(--accent-orange);">♥</span> in Sri Lanka</p>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/94765855570" target="_blank" class="whatsapp-chat"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat with us!</span></a>
+<button class="back-top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="script.js"></script>
 </body>
 </html>
-
-
-
