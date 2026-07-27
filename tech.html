@@ -1,142 +1,188 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Explore the advanced tech stack used by YNW Software Solutions - From React and Node.js to AWS and Microservices.">
-    <title>Our Tech Stack | YNW Software Solutions</title>
+    <meta name="description" content="YNW Software Solutions Tech Stack - The technologies and tools we use to build exceptional software products.">
+    <title>Tech Stack | YNW Software Solutions</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .tech-category-title {
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--accent-orange);
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+
+        .tech-item-lg {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 28px 20px;
+            text-align: center;
+            transition: var(--transition);
+            cursor: none;
+        }
+
+        .tech-item-lg:hover {
+            border-color: rgba(255, 107, 53, 0.3);
+            background: var(--bg-card-hover);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-card);
+        }
+
+        .tech-item-lg i { font-size: 2.8rem; margin-bottom: 14px; display: block; }
+        .tech-item-lg h4 { font-size: 0.95rem; margin-bottom: 6px; }
+        .tech-item-lg p { font-size: 0.78rem; color: var(--text-muted); }
+
+        .tech-section { margin-bottom: 80px; }
+    </style>
 </head>
 <body>
-    <nav>
-        <div class="container nav-container">
-            <a href="index.html" class="logo">YNW <span>Software</span></a>
-            <div class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="tech.html" class="active">Stack</a>
-                <a href="project.html">Solutions</a>
-                <div class="dropdown">
-                    <a href="services.html" class="dropdown-toggle">Services <i class="fa-solid fa-chevron-down" style="font-size: 0.8em; margin-left: 5px;"></i></a>
-                    <div class="dropdown-content">
-                        <a href="services.html">All Services</a>
-                        <a href="packages.html">Pricing Packages</a>
-                    </div>
-                </div>
-                <a href="github.html">Open Source</a>
+
+<div class="cursor"></div>
+<div class="cursor-follower"></div>
+
+<nav>
+    <div class="container nav-inner">
+        <a href="index.html" class="logo">YNW<span>.</span></a>
+        <div class="nav-links">
+            <a href="index.html">Home</a><a href="about.html">About</a>
+            <a href="tech.html" class="active">Tech Stack</a>
+            <div class="dropdown">
+                <a href="services.html">Services <i class="fa-solid fa-chevron-down" style="font-size:0.7em;margin-left:4px;"></i></a>
+                <div class="dropdown-content"><a href="services.html">All Services</a><a href="packages.html">Pricing Packages</a></div>
             </div>
-            <a href="https://ywanigaarachchi.github.io/Y_Wanigaarachchi/" target="_blank" class="btn-gzc-nav"><i class="fa-solid fa-building-columns"></i> GZC <span class="gzc-badge">Partner</span></a>
-            
-            <div class="hamburger"><i class="fa-solid fa-bars"></i></div>
+            <a href="project.html">Portfolio</a><a href="github.html">Open Source</a>
         </div>
-    </nav>
-    <section class="container reveal">
-        <div style="text-align: center; margin-bottom: 60px;">
-            <h2 style="font-size: 3.5rem; line-height: 1.2; margin-bottom: 10px;">Our <span style="background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Arsenal</span></h2>
-            <p style="font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">The powerful tools and technologies we leverage to build highly scalable, resilient, and modern software architectures.</p>
-        </div>
-        
-        <div class="grid-3" style="margin-bottom: 50px;">
-            <div class="glass" style="text-align: center; padding: 40px 20px;">
-                <h3 style="margin-bottom: 15px; font-size: 1.5rem;"><i class="fa-solid fa-code" style="color: var(--accent-cyan);"></i> Frontend</h3>
-                <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 30px;">Crafting immersive, interactive, and highly responsive user interfaces.</p>
-                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                    <img src="https://skillicons.dev/icons?i=react,nextjs,html,css,js,tailwind&perline=3" alt="Frontend Frameworks" style="filter: drop-shadow(0 10px 15px rgba(0, 108, 230, 0.2));" />
-                </div>
-            </div>
-
-            <div class="glass" style="text-align: center; padding: 40px 20px; border-color: rgba(122, 28, 163, 0.4); box-shadow: 0 8px 32px 0 rgba(122, 28, 163, 0.1);">
-                <h3 style="margin-bottom: 15px; font-size: 1.5rem;"><i class="fa-solid fa-server" style="color: var(--accent-purple);"></i> Backend & DB</h3>
-                <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 30px;">Designing robust microservices, APIs, and scalable data solutions.</p>
-                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                    <img src="https://skillicons.dev/icons?i=python,java,php,nodejs,mysql,mongodb&perline=3" alt="Backend Technologies" style="filter: drop-shadow(0 10px 15px rgba(122, 28, 163, 0.2));" />
-                </div>
-            </div>
-
-            <div class="glass" style="text-align: center; padding: 40px 20px;">
-                <h3 style="margin-bottom: 15px; font-size: 1.5rem;"><i class="fa-solid fa-cloud" style="color: var(--accent-cyan);"></i> Cloud & Tools</h3>
-                <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 30px;">Orchestrating deployments, containerization, and cloud infrastructure.</p>
-                <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                    <img src="https://skillicons.dev/icons?i=aws,docker,linux,git,github,postman&perline=3" alt="Cloud & Tools" style="filter: drop-shadow(0 10px 15px rgba(0, 108, 230, 0.2));" />
-                </div>
-            </div>
-        </div>
-
-        <div class="glass" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 30px; padding: 40px;">
-            <div style="flex: 1; min-width: 300px;">
-                <h3 style="font-size: 1.8rem; margin-bottom: 15px;">Always Innovating</h3>
-                <p style="color: var(--text-secondary); line-height: 1.8;">The tech landscape evolves rapidly, and we are committed to continuously expanding our expertise. Our team is currently exploring <b style="color: var(--accent-cyan);">Kubernetes</b> and <b style="color: var(--accent-purple);">AI-driven development</b>.</p>
-            </div>
-            <div style="font-size: 5rem; color: rgba(0,0,0,0.05);">
-                <i class="fa-solid fa-rocket"></i>
-            </div>
-        </div>
-    </section>
-
-    <footer style="margin-top: 100px; padding: 60px 0 20px; border-top: 1px solid var(--glass-border); background: linear-gradient(to top, rgba(250, 251, 255, 0.9), transparent); position: relative; overflow: hidden;">
-        <div style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 2px; background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent); opacity: 0.5;"></div>
-        
-        <div class="container">
-            <div class="grid-3" style="gap: 40px; margin-bottom: 50px;">
-                <div style="display: flex; flex-direction: column; align-items: flex-start; ">
-                    <a href="index.html" class="logo" style="font-size: 2rem; margin-bottom: 15px;">YNW <span style="font-size: 0.8rem; color: var(--accent-purple);">Software</span></a>
-                    <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px;">Building the future of software with robust microservices and beautiful user experiences. Let's build something extraordinary.</p>
-                    <div style="display: flex; gap: 15px; font-size: 1.2rem;">
-                        <a href="https://github.com/YWanigaarachchi" target="_blank" style="color: var(--text-secondary); transition: var(--transition);" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fa-brands fa-github"></i></a>
-                        <a href="#" style="color: var(--text-secondary); transition: var(--transition);" onmouseover="this.style.color='var(--accent-purple)'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fa-brands fa-linkedin"></i></a>
-                        <a href="#" style="color: var(--text-secondary); transition: var(--transition);" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'"><i class="fa-brands fa-twitter"></i></a>
-                    </div>
-                </div>
-                
-                <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                    <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: var(--text-primary);">Quick Links</h4>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <a href="index.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">Home</a>
-                        <a href="about.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">About Us</a>
-                        <a href="tech.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">Tech Stack</a>
-                        <a href="packages.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-cyan)'" onmouseout="this.style.color='var(--text-secondary)'">Packages</a>
-                    </div>
-                </div>
-
-                <div style="display: flex; flex-direction: column; align-items: flex-start;">
-                    <h4 style="font-size: 1.2rem; margin-bottom: 20px; color: var(--text-primary);">Resources</h4>
-                    <div style="display: flex; flex-direction: column; gap: 12px;">
-                        <a href="project.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-purple)'" onmouseout="this.style.color='var(--text-secondary)'">Solutions</a>
-                        <a href="github.html" style="color: var(--text-secondary); text-decoration: none; transition: var(--transition); font-weight: 500;" onmouseover="this.style.color='var(--accent-purple)'" onmouseout="this.style.color='var(--text-secondary)'">Open Source</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div style="text-align: center; padding-top: 30px; border-top: 1px solid rgba(0,0,0,0.05);">
-                <p style="color: var(--text-secondary); font-size: 0.9rem;">&copy; 2026 YNW Software Solutions. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
-    <script src="script.js"></script>
-
-    <!-- Smart WhatsApp Chat Box -->
-    <a href="https://wa.me/94765855570?text=Hello%20YNW%20Software%20Solutions!%20%F0%9F%91%8B%0AI'm%20interested%20in%20your%20software%20development%20services.%20Could%20we%20schedule%20a%20consultation%3F%20%F0%9F%9A%80" target="_blank" class="whatsapp-chat">
-        <i class="fa-brands fa-whatsapp"></i>
-        <span class="whatsapp-tooltip">Chat with us!</span>
-    </a>
-
-
-    <!-- Smart Theme Toggle Box -->
-    <div class="theme-float-btn" id="theme-btn">
-        <i class="fa-solid fa-moon"></i>
-        <span class="theme-float-tooltip">Dark Mode</span>
+        <a href="contact.html" class="nav-cta">Get in Touch</a>
+        <div class="hamburger"><span></span><span></span><span></span></div>
     </div>
+</nav>
+<div class="mobile-menu">
+    <a href="index.html">Home</a><a href="about.html">About</a><a href="tech.html">Tech Stack</a>
+    <a href="services.html">Services</a><a href="packages.html">Pricing</a>
+    <a href="project.html">Portfolio</a><a href="github.html">Open Source</a><a href="contact.html">Contact</a>
+</div>
 
-    <!-- Floating Contact Button -->
-    <a href="contact.html" class="contact-float-btn" id="contact-float-btn">
-        <i class="fa-solid fa-paper-plane"></i>
-        <span class="contact-float-tooltip">Contact Us</span>
-    </a>
+<!-- Page Hero -->
+<div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Tech Stack</span></div>
+        <div class="label">Our Toolbox</div>
+        <h1>Built With <span class="text-gradient">World-Class Tech</span></h1>
+        <p>We leverage the most powerful, battle-tested technologies to deliver scalable, maintainable, and performant software.</p>
+    </div>
+</div>
 
-    
-    <div class="custom-cursor"></div><div class="custom-cursor-outline"></div>
+<section class="section">
+    <div class="container">
+
+        <!-- Frontend -->
+        <div class="tech-section">
+            <div class="tech-category-title reveal">🖥️ Frontend Development</div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;" class="responsive-tech-grid">
+                <div class="tech-item-lg reveal"><i class="fa-brands fa-react" style="color:#61DAFB;"></i><h4>React</h4><p>UI components</p></div>
+                <div class="tech-item-lg reveal delay-1"><i class="fa-brands fa-js" style="color:#F7DF1E;"></i><h4>Next.js</h4><p>SSR & SSG</p></div>
+                <div class="tech-item-lg reveal delay-2"><i class="fa-brands fa-html5" style="color:#E34F26;"></i><h4>HTML5</h4><p>Semantic markup</p></div>
+                <div class="tech-item-lg reveal delay-3"><i class="fa-brands fa-css3-alt" style="color:#1572B6;"></i><h4>CSS3</h4><p>Styling & animations</p></div>
+                <div class="tech-item-lg reveal delay-4"><i class="fa-brands fa-js-square" style="color:#3178C6;"></i><h4>TypeScript</h4><p>Type-safe JS</p></div>
+            </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="tech-section">
+            <div class="tech-category-title reveal">⚙️ Backend Development</div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;">
+                <div class="tech-item-lg reveal"><i class="fa-brands fa-java" style="color:#ED8B00;"></i><h4>Java</h4><p>Enterprise apps</p></div>
+                <div class="tech-item-lg reveal delay-1"><i class="fa-solid fa-leaf" style="color:#6DB33F;"></i><h4>Spring Boot</h4><p>Microservices</p></div>
+                <div class="tech-item-lg reveal delay-2"><i class="fa-brands fa-node-js" style="color:#339933;"></i><h4>Node.js</h4><p>Backend JS</p></div>
+                <div class="tech-item-lg reveal delay-3"><i class="fa-brands fa-python" style="color:#3776AB;"></i><h4>Python</h4><p>APIs & scripting</p></div>
+                <div class="tech-item-lg reveal delay-4"><i class="fa-solid fa-database" style="color:#CC2927;"></i><h4>GraphQL</h4><p>Flexible queries</p></div>
+            </div>
+        </div>
+
+        <!-- Cloud & DevOps -->
+        <div class="tech-section">
+            <div class="tech-category-title reveal">☁️ Cloud & DevOps</div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;">
+                <div class="tech-item-lg reveal"><i class="fa-brands fa-aws" style="color:#FF9900;"></i><h4>AWS</h4><p>Cloud platform</p></div>
+                <div class="tech-item-lg reveal delay-1"><i class="fa-brands fa-docker" style="color:#2496ED;"></i><h4>Docker</h4><p>Containerisation</p></div>
+                <div class="tech-item-lg reveal delay-2"><i class="fa-solid fa-dharmachakra" style="color:#326CE5;"></i><h4>Kubernetes</h4><p>Orchestration</p></div>
+                <div class="tech-item-lg reveal delay-3"><i class="fa-brands fa-github" style="color:var(--text-secondary);"></i><h4>GitHub Actions</h4><p>CI/CD pipelines</p></div>
+                <div class="tech-item-lg reveal delay-4"><i class="fa-solid fa-infinity" style="color:var(--accent-cyan);"></i><h4>Terraform</h4><p>Infrastructure as code</p></div>
+            </div>
+        </div>
+
+        <!-- Databases -->
+        <div class="tech-section">
+            <div class="tech-category-title reveal">🗄️ Databases & Storage</div>
+            <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;">
+                <div class="tech-item-lg reveal"><i class="fa-solid fa-database" style="color:#336791;"></i><h4>PostgreSQL</h4><p>Relational DB</p></div>
+                <div class="tech-item-lg reveal delay-1"><i class="fa-solid fa-database" style="color:#00684A;"></i><h4>MongoDB</h4><p>NoSQL documents</p></div>
+                <div class="tech-item-lg reveal delay-2"><i class="fa-solid fa-memory" style="color:#DC382D;"></i><h4>Redis</h4><p>Caching & queues</p></div>
+                <div class="tech-item-lg reveal delay-3"><i class="fa-brands fa-aws" style="color:#FF9900;"></i><h4>DynamoDB</h4><p>Serverless NoSQL</p></div>
+                <div class="tech-item-lg reveal delay-4"><i class="fa-solid fa-box" style="color:#FF9900;"></i><h4>S3 / Storage</h4><p>File storage</p></div>
+            </div>
+        </div>
+
+        <!-- Mobile -->
+        <div class="tech-section">
+            <div class="tech-category-title reveal">📱 Mobile Development</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px;">
+                <div class="tech-item-lg reveal"><i class="fa-brands fa-react" style="color:#61DAFB;"></i><h4>React Native</h4><p>Cross-platform</p></div>
+                <div class="tech-item-lg reveal delay-1"><i class="fa-solid fa-mobile-screen" style="color:#54C5F8;"></i><h4>Flutter</h4><p>Native-like UX</p></div>
+                <div class="tech-item-lg reveal delay-2"><i class="fa-brands fa-apple" style="color:var(--text-secondary);"></i><h4>iOS (Swift)</h4><p>Native iOS</p></div>
+                <div class="tech-item-lg reveal delay-3"><i class="fa-brands fa-android" style="color:#3DDC84;"></i><h4>Android (Kotlin)</h4><p>Native Android</p></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background: var(--bg-secondary);text-align:center;">
+    <div class="container">
+        <div class="reveal">
+            <div class="label">Ready to Start?</div>
+            <h2>Let's Build With <span class="text-gradient">The Right Stack</span></h2>
+            <p style="max-width:500px;margin:20px auto 40px;">We'll recommend the ideal technology stack for your project based on your requirements, scale, and budget.</p>
+            <a href="contact.html" class="btn btn-primary">Discuss Your Project <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">YNW<span>.</span></a>
+                <p>Building the future of software with robust microservices, beautiful interfaces, and resilient cloud architectures.</p>
+                <div class="footer-socials">
+                    <a href="https://github.com/YWanigaarachchi" target="_blank" class="social-link"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-col"><h5>Company</h5><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About Us</a><a href="project.html">Portfolio</a></div></div>
+            <div class="footer-col"><h5>Services</h5><div class="footer-links"><a href="services.html">Web Development</a><a href="services.html">Cloud Solutions</a><a href="packages.html">Pricing</a></div></div>
+            <div class="footer-col"><h5>Contact</h5><div class="footer-links"><a href="mailto:ynwsoftware@gmail.com">ynwsoftware@gmail.com</a><a href="contact.html">Send a Message</a></div></div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 YNW Software Solutions. All Rights Reserved.</p>
+            <p>Made with <span style="color:var(--accent-orange);">♥</span> in Sri Lanka</p>
+        </div>
+    </div>
+</footer>
+
+<a href="https://wa.me/94765855570" target="_blank" class="whatsapp-chat"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat with us!</span></a>
+<button class="back-top"><i class="fa-solid fa-arrow-up"></i></button>
+<script src="script.js"></script>
 </body>
 </html>
-
-
