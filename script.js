@@ -211,26 +211,82 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* =====================================================
-     FORM SUBMISSION (contact)
+     FORM SUBMISSION → WhatsApp
      ===================================================== */
   const contactForm = document.querySelector('#contact-form');
   contactForm?.addEventListener('submit', (e) => {
     e.preventDefault();
+
     const btn = contactForm.querySelector('button[type="submit"]');
-    const originalText = btn.innerHTML;
-    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-    btn.disabled = true;
+    const originalHTML = btn.innerHTML;
+
+    // Collect field values
+    const name    = (document.getElementById('contact-name')?.value    || '').trim();
+    const email   = (document.getElementById('contact-email')?.value   || '').trim();
+    const phone   = (document.getElementById('contact-phone')?.value   || '').trim();
+    const budget  = (document.getElementById('contact-budget')?.value  || '').trim();
+    const service = (document.getElementById('contact-service')?.value || '').trim();
+    const message = (document.getElementById('contact-message')?.value || '').trim();
+
+    // Basic required-field guard
+    if (!name || !email || !service || !message) {
+      // Shake the button to signal validation failure
+      btn.style.animation = 'shake 0.4s ease';
+      setTimeout(() => btn.style.animation = '', 500);
+      return;
+    }
+
+    // Pretty labels for select values
+    const serviceLabels = {
+      web:          'Web Development',
+      microservices:'Microservices & APIs',
+      cloud:        'Cloud Solutions (AWS)',
+      mobile:       'Mobile Development',
+      uiux:         'UI/UX Design',
+      consulting:   'Tech Consulting',
+      other:        'Other / Multiple',
+    };
+    const budgetLabels = {
+      'under-500':  'Under $500',
+      '500-2000':   '$500 – $2,000',
+      '2000-5000':  '$2,000 – $5,000',
+      '5000-plus':  '$5,000+',
+      custom:       'Let\'s discuss',
+    };
+
+    // Build structured WhatsApp message
+    const lines = [
+      '👋 *New Enquiry via YNW Website*',
+      '',
+      `👤 *Name:* ${name}`,
+      `📧 *Email:* ${email}`,
+      phone   ? `📞 *Phone:* ${phone}`                                      : null,
+      budget  ? `💰 *Budget:* ${budgetLabels[budget] || budget}`             : null,
+      `🛠️ *Service:* ${serviceLabels[service] || service}`,
+      '',
+      `📝 *Message:*\n${message}`,
+    ].filter(l => l !== null).join('\n');
+
+    const waNumber = '94765855570';
+    const waURL    = `https://wa.me/${waNumber}?text=${encodeURIComponent(lines)}`;
+
+    // Animate button → open WhatsApp
+    btn.innerHTML  = '<i class="fa-solid fa-spinner fa-spin"></i> Opening WhatsApp…';
+    btn.disabled   = true;
 
     setTimeout(() => {
-      btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
-      btn.style.background = 'linear-gradient(135deg, #2ed573, #00d4ff)';
+      window.open(waURL, '_blank');
+
+      btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Sent via WhatsApp!';
+      btn.style.background = 'linear-gradient(135deg, #25D366, #128C7E)';
+
       setTimeout(() => {
-        btn.innerHTML = originalText;
+        btn.innerHTML = originalHTML;
         btn.style.background = '';
         btn.disabled = false;
         contactForm.reset();
-      }, 3000);
-    }, 1800);
+      }, 3500);
+    }, 800);
   });
 
   /* =====================================================
