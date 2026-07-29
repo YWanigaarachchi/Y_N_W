@@ -268,6 +268,229 @@ document.addEventListener('DOMContentLoaded', () => {
   /* =====================================================
      PAGE LOADER
      ===================================================== */
+  /* =====================================================
+     YNW AI 3D EFFECT (THREE.JS)
+     ===================================================== */
+  const canvas = document.getElementById('ynw-ai-3d-canvas');
+  if (canvas && typeof THREE !== 'undefined') {
+    let width = canvas.parentElement.clientWidth;
+    let height = canvas.parentElement.clientHeight;
+
+    // Scene
+    const scene = new THREE.Scene();
+
+    // Camera
+    const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
+    camera.position.z = 15;
+
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      antialias: true
+    });
+    renderer.setSize(width, height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Groups
+    const mainGroup = new THREE.Group();
+    scene.add(mainGroup);
+
+    // AI Core (Glowing Inner Sphere)
+    const coreGeo = new THREE.SphereGeometry(1.2, 32, 32);
+    const coreMat = new THREE.MeshBasicMaterial({
+      color: 0x00E5FF,
+      transparent: true,
+      opacity: 0.15,
+      wireframe: true
+    });
+    const core = new THREE.Mesh(coreGeo, coreMat);
+    mainGroup.add(core);
+
+    // Solid inner core
+    const innerCoreGeo = new THREE.SphereGeometry(0.6, 16, 16);
+    const innerCoreMat = new THREE.MeshBasicMaterial({
+      color: 0x7C3AED,
+      transparent: true,
+      opacity: 0.8
+    });
+    const innerCore = new THREE.Mesh(innerCoreGeo, innerCoreMat);
+    mainGroup.add(innerCore);
+
+    // Outer Node Network
+    const nodeCount = 50;
+    const nodeGeometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(nodeCount * 3);
+    const initialPositions = [];
+
+    for (let i = 0; i < nodeCount; i++) {
+      const u = Math.random();
+      const v = Math.random();
+      const theta = u * 2.0 * Math.PI;
+      const phi = Math.acos(2.0 * v - 1.0);
+      const r = 3.2 + Math.random() * 0.4;
+
+      const x = r * Math.sin(phi) * Math.cos(theta);
+      const y = r * Math.sin(phi) * Math.sin(theta);
+      const z = r * Math.cos(phi);
+
+      positions[i * 3] = x;
+      positions[i * 3 + 1] = y;
+      positions[i * 3 + 2] = z;
+
+      initialPositions.push({ x, y, z, speed: 0.5 + Math.random(), offset: Math.random() * 100 });
+    }
+
+    nodeGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    // Canvas-generated glow texture for nodes
+    const pCanvas = document.createElement('canvas');
+    pCanvas.width = 16;
+    pCanvas.height = 16;
+    const pCtx = pCanvas.getContext('2d');
+    const grad = pCtx.createRadialGradient(8, 8, 0, 8, 8, 8);
+    grad.addColorStop(0, 'rgba(0, 229, 255, 1)');
+    grad.addColorStop(0.3, 'rgba(0, 229, 255, 0.8)');
+    grad.addColorStop(1, 'rgba(0, 229, 255, 0)');
+    pCtx.fillStyle = grad;
+    pCtx.fillRect(0, 0, 16, 16);
+    
+    const pTexture = new THREE.CanvasTexture(pCanvas);
+
+    const nodeMaterial = new THREE.PointsMaterial({
+      color: 0x00E5FF,
+      size: 0.4,
+      transparent: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      map: pTexture
+    });
+
+    const pointCloud = new THREE.Points(nodeGeometry, nodeMaterial);
+    mainGroup.add(pointCloud);
+
+    // Connections (Lines)
+    const lineMat = new THREE.LineBasicMaterial({
+      color: 0x7C3AED,
+      transparent: true,
+      opacity: 0.25,
+      blending: THREE.AdditiveBlending
+    });
+    
+    const lineGeo = new THREE.BufferGeometry();
+    const lineIndices = [];
+
+    for (let i = 0; i < nodeCount; i++) {
+      for (let j = i + 1; j < nodeCount; j++) {
+        const dx = positions[i * 3] - positions[j * 3];
+        const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
+        const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+        const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+
+        if (dist < 2.5) {
+          lineIndices.push(i, j);
+        }
+      }
+    }
+
+    lineGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    lineGeo.setIndex(lineIndices);
+    const lines = new THREE.LineSegments(lineGeo, lineMat);
+    mainGroup.add(lines);
+
+    // Drifting dust particles
+    const particleCount = 60;
+    const partGeo = new THREE.BufferGeometry();
+    const partPositions = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount; i++) {
+      partPositions[i * 3] = (Math.random() - 0.5) * 12;
+      partPositions[i * 3 + 1] = (Math.random() - 0.5) * 12;
+      partPositions[i * 3 + 2] = (Math.random() - 0.5) * 12;
+    }
+
+    partGeo.setAttribute('position', new THREE.BufferAttribute(partPositions, 3));
+    const partMaterial = new THREE.PointsMaterial({
+      color: 0xE040FB,
+      size: 0.08,
+      transparent: true,
+      opacity: 0.5
+    });
+    const backgroundParticles = new THREE.Points(partGeo, partMaterial);
+    scene.add(backgroundParticles);
+
+    // Interactive mouse rotation tracking
+    let targetX = 0;
+    let targetY = 0;
+    let mouse = { x: 0, y: 0 };
+    
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+      
+      targetX = mouse.x * 0.4;
+      targetY = mouse.y * 0.4;
+    });
+
+    let clock = new THREE.Clock();
+    
+    function animate() {
+      requestAnimationFrame(animate);
+
+      const time = clock.getElapsedTime();
+
+      // Rotation speeds
+      mainGroup.rotation.y = time * 0.15;
+      mainGroup.rotation.x = time * 0.08;
+
+      // Pulse glows
+      const pulse = 1 + Math.sin(time * 3) * 0.08;
+      innerCore.scale.set(pulse, pulse, pulse);
+      core.scale.set(1 + Math.cos(time * 2) * 0.05, 1 + Math.cos(time * 2) * 0.05, 1 + Math.cos(time * 2) * 0.05);
+
+      // Node movements
+      const posArr = nodeGeometry.attributes.position.array;
+      for (let i = 0; i < nodeCount; i++) {
+        const init = initialPositions[i];
+        const wave = Math.sin(time * init.speed + init.offset) * 0.15;
+        
+        const len = Math.sqrt(init.x*init.x + init.y*init.y + init.z*init.z);
+        const nx = init.x / len;
+        const ny = init.y / len;
+        const nz = init.z / len;
+
+        posArr[i * 3] = init.x + nx * wave;
+        posArr[i * 3 + 1] = init.y + ny * wave;
+        posArr[i * 3 + 2] = init.z + nz * wave;
+      }
+      nodeGeometry.attributes.position.needsUpdate = true;
+      lineGeo.attributes.position.needsUpdate = true;
+
+      // Drift bg
+      backgroundParticles.rotation.y = -time * 0.03;
+
+      // Follow mouse smoothly
+      mainGroup.rotation.y += (targetX - mainGroup.rotation.y) * 0.05;
+      mainGroup.rotation.x += (-targetY - mainGroup.rotation.x) * 0.05;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Resize Handler
+    window.addEventListener('resize', () => {
+      width = canvas.parentElement.clientWidth;
+      height = canvas.parentElement.clientHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    });
+  }
+
+  /* =====================================================
+     PAGE LOADER
+     ===================================================== */
   const loader = document.querySelector('.page-loader');
   if (loader) {
     window.addEventListener('load', () => {
