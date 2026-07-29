@@ -14,6 +14,8 @@
     <title>YNW Software Solutions | Creative Digital Studio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Three.js for Premium 3D AI Effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
@@ -69,37 +71,49 @@
         <div class="hero-orb hero-orb-3"></div>
     </div>
     <div class="container">
-        <div class="hero-content">
-            <div class="hero-badge">
-                <span class="hero-badge-dot"></span>
-                Available for New Projects
+        <div class="hero-wrapper">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="hero-badge-dot"></span>
+                    Available for New Projects
+                </div>
+                <h1>
+                    We Build
+                    <em class="text-gradient">Digital Products</em>
+                    That <span style="color:var(--text-secondary);">Scale</span>
+                </h1>
+                <p>YNW Software Solutions crafts exceptional software experiences — from microservices and full-stack apps to resilient AWS cloud architectures that power modern businesses.</p>
+                <div class="hero-btns">
+                    <a href="project.html" class="btn btn-primary">View Our Work <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="contact.html" class="btn btn-outline">Start a Project</a>
+                </div>
+                <div class="hero-stats">
+                    <div>
+                        <div class="hero-stat-num"><span class="counter" data-count="50" data-suffix="+">0+</span></div>
+                        <div class="hero-stat-label">Projects Delivered</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-num"><span class="counter" data-count="30" data-suffix="+">0+</span></div>
+                        <div class="hero-stat-label">Happy Clients</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-num"><span class="counter" data-count="3" data-suffix="+">0+</span></div>
+                        <div class="hero-stat-label">Years Experience</div>
+                    </div>
+                    <div>
+                        <div class="hero-stat-num"><span class="counter" data-count="99" data-suffix="%">0%</span></div>
+                        <div class="hero-stat-label">Client Satisfaction</div>
+                    </div>
+                </div>
             </div>
-            <h1>
-                We Build
-                <em class="text-gradient">Digital Products</em>
-                That <span style="color:var(--text-secondary);">Scale</span>
-            </h1>
-            <p>YNW Software Solutions crafts exceptional software experiences — from microservices and full-stack apps to resilient AWS cloud architectures that power modern businesses.</p>
-            <div class="hero-btns">
-                <a href="project.html" class="btn btn-primary">View Our Work <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="contact.html" class="btn btn-outline">Start a Project</a>
-            </div>
-            <div class="hero-stats">
-                <div>
-                    <div class="hero-stat-num"><span class="counter" data-count="50" data-suffix="+">0+</span></div>
-                    <div class="hero-stat-label">Projects Delivered</div>
+            
+            <div class="hero-3d-container">
+                <div class="ai-3d-canvas-wrap">
+                    <canvas id="ynw-ai-3d-canvas"></canvas>
                 </div>
-                <div>
-                    <div class="hero-stat-num"><span class="counter" data-count="30" data-suffix="+">0+</span></div>
-                    <div class="hero-stat-label">Happy Clients</div>
-                </div>
-                <div>
-                    <div class="hero-stat-num"><span class="counter" data-count="3" data-suffix="+">0+</span></div>
-                    <div class="hero-stat-label">Years Experience</div>
-                </div>
-                <div>
-                    <div class="hero-stat-num"><span class="counter" data-count="99" data-suffix="%">0%</span></div>
-                    <div class="hero-stat-label">Client Satisfaction</div>
+                <div class="ai-badge-overlay">
+                    <span class="pulse"></span>
+                    <span>YNW AI ACTIVE</span>
                 </div>
             </div>
         </div>
