@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Camera
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
-    camera.position.z = 15;
+    camera.position.z = 12; // slightly closer for detail
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({
@@ -296,70 +296,134 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainGroup = new THREE.Group();
     scene.add(mainGroup);
 
-    // AI Core (Glowing Inner Sphere)
-    const coreGeo = new THREE.SphereGeometry(1.2, 32, 32);
+    // Deep Inner Brain Glow Core
+    const coreGeo = new THREE.SphereGeometry(0.8, 16, 16);
     const coreMat = new THREE.MeshBasicMaterial({
-      color: 0x00E5FF,
+      color: 0xE040FB,
       transparent: true,
-      opacity: 0.15,
+      opacity: 0.35,
       wireframe: true
     });
     const core = new THREE.Mesh(coreGeo, coreMat);
+    core.position.y = 0.4;
     mainGroup.add(core);
 
-    // Solid inner core
-    const innerCoreGeo = new THREE.SphereGeometry(0.6, 16, 16);
+    const innerCoreGeo = new THREE.SphereGeometry(0.4, 8, 8);
     const innerCoreMat = new THREE.MeshBasicMaterial({
-      color: 0x7C3AED,
+      color: 0x00E5FF,
       transparent: true,
-      opacity: 0.8
+      opacity: 0.7
     });
     const innerCore = new THREE.Mesh(innerCoreGeo, innerCoreMat);
+    innerCore.position.y = 0.4;
     mainGroup.add(innerCore);
 
-    // Outer Node Network
-    const nodeCount = 50;
-    const nodeGeometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(nodeCount * 3);
+    // Procedurally Generate Glowing 3D Human Brain Network
+    const positions = [];
     const initialPositions = [];
 
-    for (let i = 0; i < nodeCount; i++) {
-      const u = Math.random();
-      const v = Math.random();
-      const theta = u * 2.0 * Math.PI;
-      const phi = Math.acos(2.0 * v - 1.0);
-      const r = 3.2 + Math.random() * 0.4;
+    // 1. Cerebrum (Main hemispheres)
+    const cerebrumPoints = 220;
+    for (let i = 0; i < cerebrumPoints; i++) {
+      const hemisphere = Math.random() > 0.5 ? 1 : -1;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.random() * Math.PI;
 
-      const x = r * Math.sin(phi) * Math.cos(theta);
-      const y = r * Math.sin(phi) * Math.sin(theta);
-      const z = r * Math.cos(phi);
+      // Brain dimensions: wider than tall, longer front-to-back
+      const rx = 1.9;
+      const ry = 1.6;
+      const rz = 2.4;
 
-      positions[i * 3] = x;
-      positions[i * 3 + 1] = y;
-      positions[i * 3 + 2] = z;
+      let x = rx * Math.sin(phi) * Math.cos(theta);
+      let y = ry * Math.sin(phi) * Math.sin(theta);
+      let z = rz * Math.cos(phi);
 
-      initialPositions.push({ x, y, z, speed: 0.5 + Math.random(), offset: Math.random() * 100 });
+      // Hemisphere gap & structural separation
+      x = x + hemisphere * 0.25;
+      if (Math.abs(x) < 0.12) {
+        x += Math.sign(x) * 0.12;
+      }
+
+      // Brain surface folds (gyri/sulci) using trig frequencies
+      const foldFreq = 5.0;
+      const foldAmp = 0.25;
+      const fold = Math.sin(x * foldFreq) * Math.cos(y * foldFreq) * Math.sin(z * foldFreq) * foldAmp;
+
+      const len = Math.sqrt(x*x + y*y + z*z);
+      x += (x / len) * fold;
+      y += (y / len) * fold;
+      z += (z / len) * fold;
+
+      // Offset cerebrum upwards
+      y += 0.5;
+
+      positions.push(x, y, z);
+      initialPositions.push({ x, y, z, speed: 0.6 + Math.random() * 0.8, offset: Math.random() * 50, type: 'cerebrum', hemisphere });
     }
 
-    nodeGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    // 2. Cerebellum (Lower back portion)
+    const cerebellumPoints = 70;
+    for (let i = 0; i < cerebellumPoints; i++) {
+      const hemisphere = Math.random() > 0.5 ? 1 : -1;
+      const theta = Math.random() * Math.PI * 2;
+      const phi = Math.random() * Math.PI;
 
-    // Canvas-generated glow texture for nodes
+      const rx = 1.1;
+      const ry = 0.7;
+      const rz = 1.0;
+
+      let x = rx * Math.sin(phi) * Math.cos(theta) + hemisphere * 0.18;
+      let y = ry * Math.sin(phi) * Math.sin(theta) - 0.9;
+      let z = rz * Math.cos(phi) - 1.0; // position at back-bottom
+
+      // Fine cerebellum ripples
+      const fold = Math.sin(x * 10) * Math.cos(y * 10) * 0.06;
+      const len = Math.sqrt(x*x + y*y + z*z);
+      x += (x / len) * fold;
+      y += (y / len) * fold;
+      z += (z / len) * fold;
+
+      positions.push(x, y, z);
+      initialPositions.push({ x, y, z, speed: 1.0 + Math.random(), offset: Math.random() * 50, type: 'cerebellum', hemisphere });
+    }
+
+    // 3. Brain Stem (Bottom center spinal connector)
+    const stemPoints = 30;
+    for (let i = 0; i < stemPoints; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const radius = 0.28 + Math.random() * 0.12;
+      const height = -0.9 - (Math.random() * 1.0);
+
+      const x = Math.cos(angle) * radius;
+      const y = height;
+      const z = Math.sin(angle) * radius - 0.25;
+
+      positions.push(x, y, z);
+      initialPositions.push({ x, y, z, speed: 0.4 + Math.random() * 0.4, offset: Math.random() * 50, type: 'stem', hemisphere: 0 });
+    }
+
+    const totalPoints = positions.length / 3;
+    const nodeGeometry = new THREE.BufferGeometry();
+    const posArray = new Float32Array(positions);
+    nodeGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+    // Custom Canvas Texture for glowing circular points
     const pCanvas = document.createElement('canvas');
     pCanvas.width = 16;
     pCanvas.height = 16;
     const pCtx = pCanvas.getContext('2d');
     const grad = pCtx.createRadialGradient(8, 8, 0, 8, 8, 8);
-    grad.addColorStop(0, 'rgba(0, 229, 255, 1)');
-    grad.addColorStop(0.3, 'rgba(0, 229, 255, 0.8)');
-    grad.addColorStop(1, 'rgba(0, 229, 255, 0)');
+    grad.addColorStop(0, 'rgba(0, 225, 255, 1)');
+    grad.addColorStop(0.3, 'rgba(0, 225, 255, 0.8)');
+    grad.addColorStop(1, 'rgba(0, 225, 255, 0)');
     pCtx.fillStyle = grad;
     pCtx.fillRect(0, 0, 16, 16);
-    
     const pTexture = new THREE.CanvasTexture(pCanvas);
 
+    // Glowing Cyan point material
     const nodeMaterial = new THREE.PointsMaterial({
       color: 0x00E5FF,
-      size: 0.4,
+      size: 0.26,
       transparent: true,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
@@ -369,44 +433,69 @@ document.addEventListener('DOMContentLoaded', () => {
     const pointCloud = new THREE.Points(nodeGeometry, nodeMaterial);
     mainGroup.add(pointCloud);
 
-    // Connections (Lines)
+    // Network connection lines (Vivid Violet)
     const lineMat = new THREE.LineBasicMaterial({
       color: 0x7C3AED,
       transparent: true,
-      opacity: 0.25,
+      opacity: 0.22,
       blending: THREE.AdditiveBlending
     });
-    
+
     const lineGeo = new THREE.BufferGeometry();
     const lineIndices = [];
 
-    for (let i = 0; i < nodeCount; i++) {
-      for (let j = i + 1; j < nodeCount; j++) {
-        const dx = positions[i * 3] - positions[j * 3];
-        const dy = positions[i * 3 + 1] - positions[j * 3 + 1];
-        const dz = positions[i * 3 + 2] - positions[j * 3 + 2];
+    // Calculate neural connection lines dynamically
+    for (let i = 0; i < totalPoints; i++) {
+      const nodeI = initialPositions[i];
+      const ix = posArray[i * 3];
+      const iy = posArray[i * 3 + 1];
+      const iz = posArray[i * 3 + 2];
+
+      for (let j = i + 1; j < totalPoints; j++) {
+        const nodeJ = initialPositions[j];
+        
+        // Prevent lines crossing the central hemisphere fissure to preserve brain shape
+        if (nodeI.hemisphere !== 0 && nodeJ.hemisphere !== 0 && nodeI.hemisphere !== nodeJ.hemisphere) {
+          continue;
+        }
+
+        const jx = posArray[j * 3];
+        const jy = posArray[j * 3 + 1];
+        const jz = posArray[j * 3 + 2];
+
+        const dx = ix - jx;
+        const dy = iy - jy;
+        const dz = iz - jz;
         const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
 
-        if (dist < 2.5) {
+        // Distance thresholds depending on brain section
+        let maxDist = 0.65;
+        if (nodeI.type === 'stem' && nodeJ.type === 'stem') {
+          maxDist = 0.45;
+        } else if (nodeI.type === 'cerebellum' && nodeJ.type === 'cerebellum') {
+          maxDist = 0.55;
+        }
+
+        if (dist < maxDist) {
           lineIndices.push(i, j);
         }
       }
     }
 
-    lineGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    lineGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     lineGeo.setIndex(lineIndices);
     const lines = new THREE.LineSegments(lineGeo, lineMat);
     mainGroup.add(lines);
 
-    // Drifting dust particles
-    const particleCount = 60;
+    // Ambient floating backdrop code dust (Magenta)
+    const particleCount = 40;
     const partGeo = new THREE.BufferGeometry();
     const partPositions = new Float32Array(particleCount * 3);
 
     for (let i = 0; i < particleCount; i++) {
-      partPositions[i * 3] = (Math.random() - 0.5) * 12;
-      partPositions[i * 3 + 1] = (Math.random() - 0.5) * 12;
-      partPositions[i * 3 + 2] = (Math.random() - 0.5) * 12;
+      partPositions[i * 3] = (Math.random() - 0.5) * 10;
+      partPositions[i * 3 + 1] = (Math.random() - 0.5) * 10;
+      partPositions[i * 3 + 2] = (Math.random() - 0.5) * 10;
     }
 
     partGeo.setAttribute('position', new THREE.BufferAttribute(partPositions, 3));
@@ -414,62 +503,62 @@ document.addEventListener('DOMContentLoaded', () => {
       color: 0xE040FB,
       size: 0.08,
       transparent: true,
-      opacity: 0.5
+      opacity: 0.4
     });
     const backgroundParticles = new THREE.Points(partGeo, partMaterial);
     scene.add(backgroundParticles);
 
-    // Interactive mouse rotation tracking
+    // Mouse tilt & rotation offsets
     let targetX = 0;
     let targetY = 0;
     let mouse = { x: 0, y: 0 };
-    
+
     window.addEventListener('mousemove', (e) => {
       mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
       mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
-      
-      targetX = mouse.x * 0.4;
+
+      targetX = mouse.x * 0.5;
       targetY = mouse.y * 0.4;
     });
 
     let clock = new THREE.Clock();
-    
+
     function animate() {
       requestAnimationFrame(animate);
 
       const time = clock.getElapsedTime();
 
-      // Rotation speeds
+      // Brain automatic slow rotate
       mainGroup.rotation.y = time * 0.15;
-      mainGroup.rotation.x = time * 0.08;
+      
+      // Core glow pulsation
+      const pulseVal = 1.0 + Math.sin(time * 2.5) * 0.1;
+      innerCore.scale.set(pulseVal, pulseVal, pulseVal);
+      core.scale.set(1.0 + Math.cos(time * 1.5) * 0.06, 1.0 + Math.cos(time * 1.5) * 0.06, 1.0 + Math.cos(time * 1.5) * 0.06);
 
-      // Pulse glows
-      const pulse = 1 + Math.sin(time * 3) * 0.08;
-      innerCore.scale.set(pulse, pulse, pulse);
-      core.scale.set(1 + Math.cos(time * 2) * 0.05, 1 + Math.cos(time * 2) * 0.05, 1 + Math.cos(time * 2) * 0.05);
-
-      // Node movements
-      const posArr = nodeGeometry.attributes.position.array;
-      for (let i = 0; i < nodeCount; i++) {
+      // Organic dynamic brain pulsation (nodes vibrate/pulse)
+      const currentPos = nodeGeometry.attributes.position.array;
+      for (let i = 0; i < totalPoints; i++) {
         const init = initialPositions[i];
-        const wave = Math.sin(time * init.speed + init.offset) * 0.15;
-        
+        const wave = Math.sin(time * init.speed + init.offset) * 0.06;
+
+        // Vibrate outwards along normal
         const len = Math.sqrt(init.x*init.x + init.y*init.y + init.z*init.z);
         const nx = init.x / len;
         const ny = init.y / len;
         const nz = init.z / len;
 
-        posArr[i * 3] = init.x + nx * wave;
-        posArr[i * 3 + 1] = init.y + ny * wave;
-        posArr[i * 3 + 2] = init.z + nz * wave;
+        currentPos[i * 3] = init.x + nx * wave;
+        currentPos[i * 3 + 1] = init.y + ny * wave;
+        currentPos[i * 3 + 2] = init.z + nz * wave;
       }
       nodeGeometry.attributes.position.needsUpdate = true;
       lineGeo.attributes.position.needsUpdate = true;
 
-      // Drift bg
-      backgroundParticles.rotation.y = -time * 0.03;
+      // Slow drift particles
+      backgroundParticles.rotation.y = -time * 0.02;
 
-      // Follow mouse smoothly
+      // Smooth lag target rotation towards mouse position
       mainGroup.rotation.y += (targetX - mainGroup.rotation.y) * 0.05;
       mainGroup.rotation.x += (-targetY - mainGroup.rotation.x) * 0.05;
 
