@@ -575,24 +575,15 @@ function initBackgroundMusic() {
   document.body.insertAdjacentHTML('beforeend', audioHtml);
 
   const toggleButtonHtml = `
-  <button id="music-toggle-btn" class="music-toggle-btn navbar-music-btn" title="Toggle Futuristic Ambient Music">
-      <i class="fa-solid fa-music"></i>
-      <span class="sound-wave">
-          <span></span><span></span><span></span><span></span>
-      </span>
-  </button>`;
-
-  const navInner = document.querySelector('nav .nav-inner');
-  if (navInner) {
-    const navCta = navInner.querySelector('.nav-cta') || navInner.querySelector('.hamburger');
-    if (navCta) {
-      navCta.insertAdjacentHTML('beforebegin', toggleButtonHtml);
-    } else {
-      navInner.insertAdjacentHTML('beforeend', toggleButtonHtml);
-    }
-  } else {
-    document.body.insertAdjacentHTML('beforeend', `<div class="music-player-widget">${toggleButtonHtml}</div>`);
-  }
+  <div class="top-right-music-widget">
+      <button id="music-toggle-btn" class="music-toggle-btn" title="Toggle Futuristic Ambient Music">
+          <i class="fa-solid fa-music"></i>
+          <span class="sound-wave">
+              <span></span><span></span><span></span><span></span>
+          </span>
+      </button>
+  </div>`;
+  document.body.insertAdjacentHTML('beforeend', toggleButtonHtml);
 
   const audio = document.getElementById('bg-audio-player');
   const toggleBtn = document.getElementById('music-toggle-btn');
