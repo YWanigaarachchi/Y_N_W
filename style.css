@@ -674,6 +674,52 @@ nav.scrolled {
   text-shadow: 0 0 15px var(--neon-cyan);
 }
 
+/* Futuristic Pop-out Contact Us Button on Navbar */
+.nav-contact-popout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #FFFFFF;
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.18), rgba(124, 58, 237, 0.28));
+  border: 1px solid rgba(0, 229, 255, 0.6);
+  border-radius: var(--radius-full);
+  box-shadow: 0 0 18px rgba(0, 229, 255, 0.3);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.35 cubic-bezier(0.16, 1, 0.3, 1);
+  text-decoration: none;
+  white-space: nowrap;
+  position: absolute;
+  right: 18px;
+  z-index: 5;
+  animation: navPopoutGlow 3s infinite ease-in-out alternate;
+}
+
+.nav-contact-popout-btn:hover {
+  transform: translateY(-2px) scale(1.06);
+  background: var(--grad-cyan-indigo);
+  color: #050A19;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 28px var(--neon-cyan), 0 0 45px rgba(0, 229, 255, 0.6);
+}
+
+.nav-contact-popout-btn.active {
+  background: var(--grad-cyan-indigo);
+  color: #050A19;
+  box-shadow: 0 0 22px var(--neon-cyan);
+  border-color: var(--neon-cyan);
+}
+
+@keyframes navPopoutGlow {
+  0% { box-shadow: 0 0 12px rgba(0, 229, 255, 0.25); }
+  100% { box-shadow: 0 0 24px rgba(0, 229, 255, 0.65), 0 0 35px rgba(124, 58, 237, 0.4); }
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -1595,8 +1641,16 @@ footer {
 @media (max-width: 768px) {
   nav {
     width: calc(100% - 24px);
-    padding: 10px 16px;
+    padding: 8px 14px;
     top: 12px;
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
   }
 
   .nav-center-cluster a:not(.logo) {
@@ -1607,8 +1661,21 @@ footer {
     margin: 0;
   }
 
+  .nav-contact-popout-btn {
+    position: static;
+    transform: none !important;
+    padding: 6px 14px;
+    font-size: 0.78rem;
+    gap: 6px;
+    margin-left: auto;
+    margin-right: 10px;
+    box-shadow: 0 0 14px rgba(0, 229, 255, 0.4);
+  }
+
   .hamburger {
     display: flex;
+    position: static;
+    transform: none;
   }
 
   .mobile-menu {
