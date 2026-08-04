@@ -79,6 +79,14 @@ html {
   font-size: 16px;
   background-color: var(--bg-space);
   color: var(--text-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.glass-card, .pricing-card-5, .portfolio-card-work, .btn, .hero-tag-pill, #ynw-preloader, #ai-core-canvas, #preloader-3d-canvas, .cursor-follower {
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 
 body {
