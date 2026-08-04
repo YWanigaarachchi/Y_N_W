@@ -719,6 +719,29 @@ nav.scrolled {
   transform: scale(1) translateY(0);
 }
 
+/* Enable native cursor inside pop-out modal window and inputs for clean typing */
+.order-modal-pane,
+.order-modal-pane *,
+.glass-form-pane,
+.glass-form-pane *,
+.form-input,
+input,
+select,
+textarea {
+  cursor: auto !important;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+  cursor: text !important;
+}
+
+button, select, a, .modal-close-btn, .btn {
+  cursor: pointer !important;
+}
+
 .order-summary-box {
   background: rgba(37, 211, 102, 0.1);
   border: 1px solid var(--whatsapp-green);
