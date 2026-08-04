@@ -668,7 +668,7 @@ function initBackgroundMusic() {
     toggleMusic();
   });
 
-  const interactionEvents = ['click', 'scroll', 'mousemove', 'keydown', 'touchstart'];
+  const interactionEvents = ['click', 'keydown', 'touchstart'];
 
   const startAudioOnInteraction = () => {
     if (isPlaying) return;
@@ -679,9 +679,11 @@ function initBackgroundMusic() {
     }).catch(err => {
       // Fallback to ambient Web Audio API synthesizer if audio file blocked/fails
       createAmbientSynth();
-      toggleBtn.classList.add('playing');
-      isPlaying = true;
-      cleanUpListeners();
+      if (synthAudioCtx && synthAudioCtx.state !== 'suspended') {
+        toggleBtn.classList.add('playing');
+        isPlaying = true;
+        cleanUpListeners();
+      }
     });
   };
 
