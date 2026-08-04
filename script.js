@@ -709,6 +709,22 @@ function initBackgroundMusic() {
     document.addEventListener(event, startAudioOnInteraction, { once: true, passive: true });
   });
 
+  // Auto-play / unmute when preloader loading effect finishes
+  window.addEventListener('ynwPreloaderFinished', () => {
+    audio.muted = false;
+    audio.play().then(() => {
+      toggleBtn.classList.add('playing');
+      isPlaying = true;
+      cleanUpListeners();
+    }).catch(err => {
+      createAmbientSynth();
+      if (synthAudioCtx && synthAudioCtx.state !== 'suspended') {
+        toggleBtn.classList.add('playing');
+        isPlaying = true;
+      }
+    });
+  });
+
   // Attempt autoplay immediately on load (try unmuted first, then muted fallback)
   audio.play().then(() => {
     toggleBtn.classList.add('playing');
@@ -909,6 +925,7 @@ function initPreloader() {
 
     if (currentProgress >= 100) {
       clearInterval(progressInterval);
+      window.dispatchEvent(new CustomEvent('ynwPreloaderFinished'));
       setTimeout(() => {
         if (preloaderEl) {
           preloaderEl.classList.add('preloader-hidden');
@@ -920,6 +937,13 @@ function initPreloader() {
       }, 300);
     }
   }, 40);
+
+  // Allow clicking anywhere on the preloader to accelerate to 100% and start music immediately
+  if (preloaderEl) {
+    preloaderEl.addEventListener('click', () => {
+      currentProgress = 100;
+    });
+  }
 
   window.addEventListener('load', () => {
     pageLoaded = true;
