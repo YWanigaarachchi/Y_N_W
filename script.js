@@ -272,9 +272,13 @@ function initServiceCategoryTabs() {
 /* =====================================================
    6. PACKAGE ORDER POP-OUT MODAL & DYNAMIC WHATSAPP LINK
    ===================================================== */
-let currentSelectedPackage = { name: 'Custom Package', price: 'Contact Us' };
+let currentSelectedPackage = { name: 'Custom Package Inquiry', price: 'Contact Us' };
+let currentTargetWhatsAppLine = '94765855570';
 
 function initPackageOrderModal() {
+  // Ensure modal HTML structure exists on all pages
+  ensureModalExists();
+
   const modalOverlay = document.getElementById('package-order-modal');
   if (!modalOverlay) return;
 
@@ -290,14 +294,24 @@ function initPackageOrderModal() {
       const packagePrice = btn.getAttribute('data-package-price') || 'Contact Us';
 
       currentSelectedPackage = { name: packageName, price: packagePrice };
+      currentTargetWhatsAppLine = '94765855570';
 
-      const nameEl = document.getElementById('modal-package-title');
-      const priceEl = document.getElementById('modal-package-price');
-      if (nameEl) nameEl.innerText = packageName;
-      if (priceEl) priceEl.innerText = packagePrice;
+      openModal(packageName, packagePrice);
+    });
+  });
 
-      modalOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
+  // Trigger links on footer WhatsApp phone numbers
+  const footerModalLinks = document.querySelectorAll('.trigger-footer-modal');
+  footerModalLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetLine = link.getAttribute('data-whatsapp-line') || '94765855570';
+      const lineLabel = link.getAttribute('data-line-label') || 'Direct Line Inquiry';
+
+      currentSelectedPackage = { name: `Direct Inquiry (${lineLabel})`, price: 'Free Consultation' };
+      currentTargetWhatsAppLine = targetLine;
+
+      openModal(currentSelectedPackage.name, currentSelectedPackage.price);
     });
   });
 
@@ -309,6 +323,16 @@ function initPackageOrderModal() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeModal();
   });
+
+  function openModal(title, price) {
+    const nameEl = document.getElementById('modal-package-title');
+    const priceEl = document.getElementById('modal-package-price');
+    if (nameEl) nameEl.innerText = title;
+    if (priceEl) priceEl.innerText = price;
+
+    modalOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 
   function closeModal() {
     modalOverlay.classList.remove('active');
@@ -325,12 +349,78 @@ function initPackageOrderModal() {
     const cityLocation = document.getElementById('order-city-location')?.value || 'Not provided';
     const contactNumber = document.getElementById('order-contact-number')?.value || 'Not provided';
 
-    const text = `Hi YNW Software Solutions!%0A%0A*New Package Order %26 Inquiry*%0A------------------------------%0A*Package:* ${encodeURIComponent(currentSelectedPackage.name)} (${encodeURIComponent(currentSelectedPackage.price)})%0A*Full Name:* ${encodeURIComponent(name)}%0A*Email Address:* ${encodeURIComponent(email)}%0A*Business Type:* ${encodeURIComponent(businessType)}%0A*Company Name:* ${encodeURIComponent(companyName)}%0A*City Location:* ${encodeURIComponent(cityLocation)}%0A*Contact Number:* ${encodeURIComponent(contactNumber)}%0A------------------------------%0APlease get in touch with me to proceed.`;
+    const text = `Hi YNW Software Solutions!%0A%0A*Package Inquiry %26 Order*%0A------------------------------%0A*Target / Package:* ${encodeURIComponent(currentSelectedPackage.name)} (${encodeURIComponent(currentSelectedPackage.price)})%0A*Your Full Name:* ${encodeURIComponent(name)}%0A*Your Email Address:* ${encodeURIComponent(email)}%0A*Company / Business Type:* ${encodeURIComponent(businessType)}%0A*Company Name:* ${encodeURIComponent(companyName)}%0A*City Location:* ${encodeURIComponent(cityLocation)}%0A*Contact Number:* ${encodeURIComponent(contactNumber)}%0A------------------------------%0APlease get in touch with me to proceed.`;
 
-    const whatsappUrl = `https://wa.me/94765855570?text=${text}`;
+    const whatsappUrl = `https://wa.me/${currentTargetWhatsAppLine}?text=${text}`;
     window.open(whatsappUrl, '_blank');
     closeModal();
   });
+}
+
+function ensureModalExists() {
+  if (document.getElementById('package-order-modal')) return;
+
+  const modalHtml = `
+  <div class="modal-overlay" id="package-order-modal">
+      <div class="order-modal-pane">
+          <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+          <div class="badge-glow" style="margin-bottom:16px;">
+              <span class="badge-glow-dot"></span> Welcome to YNW Software Solutions
+          </div>
+          <h2 style="font-size:1.8rem; margin-bottom:16px;">Package <span class="text-gradient">Inquiry & Order</span></h2>
+          
+          <div class="order-summary-box">
+              <div>
+                  <p style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Selected Package / Line</p>
+                  <h4 id="modal-package-title">Direct Line Inquiry</h4>
+              </div>
+              <span id="modal-package-price">Free Consultation</span>
+          </div>
+
+          <form id="package-order-form">
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+                  <div class="form-group">
+                      <label for="order-name">Your Full Name</label>
+                      <input type="text" id="order-name" class="form-input" placeholder="e.g. John Doe" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="order-email">Your Email Address</label>
+                      <input type="email" id="order-email" class="form-input" placeholder="john@example.com" required>
+                  </div>
+              </div>
+
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+                  <div class="form-group">
+                      <label for="order-business-type">Company / Business Type</label>
+                      <select id="order-business-type" class="form-input" required style="background:#0A1128;">
+                          <option value="Startup Business">Startup Business</option>
+                          <option value="Small / Medium Business">Small / Medium Business</option>
+                          <option value="Enterprise Brand">Enterprise Brand</option>
+                          <option value="Individual / Personal">Individual / Personal</option>
+                      </select>
+                  </div>
+                  <div class="form-group">
+                      <label for="order-company-name">Company Name</label>
+                      <input type="text" id="order-company-name" class="form-input" placeholder="e.g. YNW Solutions" required>
+                  </div>
+              </div>
+
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+                  <div class="form-group">
+                      <label for="order-city-location">City Location</label>
+                      <input type="text" id="order-city-location" class="form-input" placeholder="e.g. Colombo, Sri Lanka" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="order-contact-number">Contact Number</label>
+                      <input type="tel" id="order-contact-number" class="form-input" placeholder="e.g. +94 76 585 5570" required>
+                  </div>
+              </div>
+              <button type="submit" class="btn btn-whatsapp" style="width:100%; margin-top:12px; font-size:1.05rem;"><i class="fa-brands fa-whatsapp"></i> Transmit Order via WhatsApp</button>
+          </form>
+      </div>
+  </div>`;
+
+  document.body.insertAdjacentHTML('beforeend', modalHtml);
 }
 
 /* =====================================================
