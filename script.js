@@ -52,6 +52,19 @@ function initCustomCursor() {
       cursorFollower.classList.remove('active');
     });
   });
+
+  // Hide custom cursor dot inside pop-out modal windows and form input fields
+  const hideCursorInputs = document.querySelectorAll('.order-modal-pane, .glass-form-pane, input, select, textarea');
+  hideCursorInputs.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.opacity = '0';
+      cursorFollower.style.opacity = '0';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.opacity = '1';
+      cursorFollower.style.opacity = '1';
+    });
+  });
 }
 
 /* =====================================================
