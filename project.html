@@ -3,10 +3,528 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YNW Software Solutions Portfolio - Our featured projects including web apps, cloud architectures, and mobile applications.">
+    <meta name="description" content="YNW Software Solutions Portfolio - Our 6 featured projects including web apps, cloud architectures, mobile applications, and API solutions.">
     <title>Portfolio | YNW Software Solutions</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* =====================================================
+           PROJECT PAGE — ENHANCED STYLES
+           ===================================================== */
+
+        /* --- Stats Bar --- */
+        .proj-stats-bar {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            margin-top: 48px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .proj-stat { text-align: center; }
+        .proj-stat-num {
+            font-size: 2.2rem;
+            font-weight: 900;
+            background: var(--grad-orange);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+        .proj-stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* --- Filter Tabs --- */
+        .portfolio-filter {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 56px;
+            justify-content: center;
+        }
+
+        /* --- Project Cards Grid --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: none;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            border-color: rgba(0, 229, 255, 0.30);
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(0, 229, 255, 0.08);
+        }
+
+        /* Top accent line */
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: var(--grad-orange);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+            z-index: 2;
+        }
+        .project-card:hover::before { transform: scaleX(1); }
+
+        /* Image wrapper */
+        .proj-img-wrap {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+
+        .proj-img-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .project-card:hover .proj-img-wrap img { transform: scale(1.06); }
+
+        .proj-category-badge {
+            position: absolute;
+            top: 16px; left: 16px;
+            background: rgba(8, 11, 26, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 229, 255, 0.25);
+            color: var(--accent-cyan);
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            z-index: 1;
+        }
+
+        .proj-status-dot {
+            position: absolute;
+            top: 16px; right: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(8, 11, 26, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-full);
+            padding: 6px 12px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            z-index: 1;
+        }
+
+        .proj-status-dot.live { color: #00E676; }
+        .proj-status-dot.live::before {
+            content: '';
+            width: 7px; height: 7px;
+            background: #00E676;
+            border-radius: 50%;
+            animation: pulse-green 2s infinite;
+            flex-shrink: 0;
+        }
+        .proj-status-dot.completed { color: var(--accent-cyan); }
+        .proj-status-dot.completed::before {
+            content: '✓';
+            font-size: 0.6rem;
+        }
+
+        @keyframes pulse-green {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(0,230,118,0.5); }
+            50% { box-shadow: 0 0 0 5px rgba(0,230,118,0); }
+        }
+
+        /* Card body */
+        .proj-body {
+            padding: 28px 28px 0;
+            flex: 1;
+        }
+
+        .proj-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .proj-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        /* Tech stack pills */
+        .proj-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .tech-pill {
+            padding: 4px 12px;
+            background: rgba(0, 229, 255, 0.06);
+            border: 1px solid rgba(0, 229, 255, 0.15);
+            border-radius: var(--radius-full);
+            font-size: 0.72rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            letter-spacing: 0.04em;
+        }
+
+        /* Card footer */
+        .proj-footer {
+            padding: 20px 28px 28px;
+            border-top: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: auto;
+        }
+
+        .proj-links {
+            display: flex;
+            gap: 10px;
+        }
+
+        .proj-link {
+            width: 36px; height: 36px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-subtle);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .proj-link:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+            background: rgba(0, 229, 255, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .proj-view-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            letter-spacing: 0.04em;
+            transition: var(--transition);
+            padding: 8px 18px;
+            border: 1.5px solid rgba(0, 229, 255, 0.30);
+            border-radius: var(--radius-full);
+            background: rgba(0, 229, 255, 0.04);
+        }
+
+        .proj-view-btn:hover {
+            background: rgba(0, 229, 255, 0.12);
+            border-color: var(--accent-cyan);
+            gap: 12px;
+        }
+
+        .proj-view-btn i { font-size: 0.7rem; transition: transform 0.3s ease; }
+        .proj-view-btn:hover i { transform: translateX(4px); }
+
+        /* =====================================================
+           PROJECT MODAL
+           ===================================================== */
+        .proj-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(4, 5, 15, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 9000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+
+        .proj-modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .proj-modal {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 229, 255, 0.20);
+            border-radius: var(--radius-xl);
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(40px) scale(0.96);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            scrollbar-width: thin;
+        }
+
+        .proj-modal-overlay.open .proj-modal {
+            transform: translateY(0) scale(1);
+        }
+
+        /* Scrollbar inside modal */
+        .proj-modal::-webkit-scrollbar { width: 3px; }
+        .proj-modal::-webkit-scrollbar-track { background: transparent; }
+        .proj-modal::-webkit-scrollbar-thumb { background: var(--accent-cyan); border-radius: 2px; }
+
+        .proj-modal-close {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 24px 0;
+            background: var(--bg-card);
+            z-index: 10;
+        }
+
+        .modal-close-btn {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border-subtle);
+            background: var(--bg-secondary);
+            color: var(--text-muted);
+            font-size: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            transition: var(--transition);
+            cursor: none;
+        }
+
+        .modal-close-btn:hover {
+            border-color: rgba(224, 64, 251, 0.5);
+            color: var(--accent-magenta);
+            background: rgba(224, 64, 251, 0.08);
+        }
+
+        /* Modal hero image */
+        .modal-hero-img {
+            width: 100%;
+            aspect-ratio: 16/7;
+            object-fit: cover;
+            margin-bottom: 0;
+            display: block;
+        }
+
+        /* Modal content */
+        .modal-content-wrap {
+            padding: 40px 48px 48px;
+        }
+
+        .modal-top-row {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 28px;
+        }
+
+        .modal-title-block { flex: 1; }
+
+        .modal-category-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .modal-title {
+            font-size: 1.9rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        .modal-links-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .modal-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: var(--radius-full);
+            font-size: 0.82rem;
+            font-weight: 700;
+            transition: var(--transition);
+            letter-spacing: 0.04em;
+        }
+
+        .modal-btn-primary {
+            background: var(--grad-orange);
+            color: #04050f;
+        }
+        .modal-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 229, 255, 0.35);
+        }
+
+        .modal-btn-outline {
+            border: 1.5px solid var(--border-subtle);
+            color: var(--text-secondary);
+            background: transparent;
+        }
+        .modal-btn-outline:hover {
+            border-color: rgba(0, 229, 255, 0.40);
+            color: var(--accent-cyan);
+            background: rgba(0, 229, 255, 0.06);
+        }
+
+        /* Modal body sections */
+        .modal-divider {
+            height: 1px;
+            background: var(--border-subtle);
+            margin: 32px 0;
+        }
+
+        .modal-section-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .modal-desc {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+
+        .modal-tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 4px;
+        }
+
+        .modal-tech-pill {
+            padding: 8px 18px;
+            background: rgba(0, 229, 255, 0.06);
+            border: 1px solid rgba(0, 229, 255, 0.18);
+            border-radius: var(--radius-full);
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+        }
+
+        /* Key metrics */
+        .modal-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .metric-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 20px 16px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--grad-orange);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .metric-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Feature list */
+        .modal-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .modal-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        .modal-feature-item::before {
+            content: '';
+            width: 6px; height: 6px;
+            background: var(--accent-cyan);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* =====================================================
+           HIDDEN CARD (filter animation)
+           ===================================================== */
+        .project-card.hidden {
+            display: none;
+        }
+
+        /* =====================================================
+           RESPONSIVE
+           ===================================================== */
+        @media (max-width: 900px) {
+            .projects-grid { grid-template-columns: repeat(2, 1fr); }
+            .modal-metrics { grid-template-columns: repeat(2, 1fr); }
+            .modal-features { grid-template-columns: 1fr; }
+            .modal-content-wrap { padding: 28px 28px 36px; }
+        }
+
+        @media (max-width: 600px) {
+            .projects-grid { grid-template-columns: 1fr; }
+            .modal-title { font-size: 1.5rem; }
+            .proj-stats-bar { gap: 32px; }
+            .modal-metrics { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
 </head>
 <body>
 
@@ -41,112 +559,211 @@
         <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Portfolio</span></div>
         <div class="label">Our Work</div>
         <h1>Projects That <span class="text-gradient">Drive Results</span></h1>
-        <p>A curated selection of our finest work — from enterprise platforms to innovative startups.</p>
+        <p>A curated showcase of our finest work — from enterprise platforms to innovative startups. Click any project to explore the full story.</p>
+
+        <!-- Stats bar -->
+        <div class="proj-stats-bar">
+            <div class="proj-stat">
+                <div class="proj-stat-num">6</div>
+                <div class="proj-stat-label">Featured Projects</div>
+            </div>
+            <div class="proj-stat">
+                <div class="proj-stat-num">4</div>
+                <div class="proj-stat-label">Industries</div>
+            </div>
+            <div class="proj-stat">
+                <div class="proj-stat-num">50K+</div>
+                <div class="proj-stat-label">End Users</div>
+            </div>
+            <div class="proj-stat">
+                <div class="proj-stat-num">99%</div>
+                <div class="proj-stat-label">Client Satisfaction</div>
+            </div>
+        </div>
     </div>
 </div>
 
-<!-- Portfolio -->
+<!-- =====================================================
+     PORTFOLIO SECTION
+     ===================================================== -->
 <section class="section">
     <div class="container">
+
+        <!-- Filter buttons -->
         <div class="portfolio-filter reveal">
             <button class="filter-btn active" data-filter="all">All Projects</button>
             <button class="filter-btn" data-filter="web">Web Apps</button>
-            <button class="filter-btn" data-filter="cloud">Cloud</button>
+            <button class="filter-btn" data-filter="cloud">Cloud & DevOps</button>
             <button class="filter-btn" data-filter="mobile">Mobile</button>
-            <button class="filter-btn" data-filter="api">APIs</button>
+            <button class="filter-btn" data-filter="api">APIs & Backend</button>
         </div>
 
-        <div class="portfolio-grid">
-            <div class="portfolio-item reveal" data-category="web">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Analytics Dashboard">
-                <div class="portfolio-overlay">
-                    <div>
-                        <div class="portfolio-tag">Web Application</div>
-                        <div class="portfolio-title">Analytics Dashboard</div>
+        <!-- 6 Project Cards -->
+        <div class="projects-grid">
+
+            <!-- 01. Analytics Dashboard -->
+            <div class="project-card reveal" data-category="web" data-project="0">
+                <div class="proj-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=900" alt="Analytics Dashboard">
+                    <span class="proj-category-badge">Web Application</span>
+                    <span class="proj-status-dot live">Live</span>
+                </div>
+                <div class="proj-body">
+                    <div class="proj-title">Analytics Dashboard Pro</div>
+                    <div class="proj-desc">Real-time analytics platform processing 10M+ events/day with beautiful data visualisations, custom reporting, and AI-powered insights for enterprise teams.</div>
+                    <div class="proj-tech">
+                        <span class="tech-pill">React</span>
+                        <span class="tech-pill">Node.js</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                        <span class="tech-pill">D3.js</span>
+                        <span class="tech-pill">AWS</span>
                     </div>
+                </div>
+                <div class="proj-footer">
+                    <div class="proj-links">
+                        <a href="#" class="proj-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="proj-link" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                    <span class="proj-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </div>
 
-            <div class="portfolio-item reveal delay-1" data-category="cloud">
-                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=800" alt="Cloud Infrastructure">
-                <div class="portfolio-overlay">
-                    <div>
-                        <div class="portfolio-tag">Cloud Architecture</div>
-                        <div class="portfolio-title">AWS Enterprise Setup</div>
+            <!-- 02. AWS Enterprise -->
+            <div class="project-card reveal delay-1" data-category="cloud" data-project="1">
+                <div class="proj-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=900" alt="AWS Enterprise Setup">
+                    <span class="proj-category-badge">Cloud Architecture</span>
+                    <span class="proj-status-dot completed">Completed</span>
+                </div>
+                <div class="proj-body">
+                    <div class="proj-title">AWS Enterprise Cloud Migration</div>
+                    <div class="proj-desc">Full-scale cloud migration of a legacy monolith to a distributed microservices architecture on AWS — zero downtime, 40% cost reduction, 99.99% uptime SLA.</div>
+                    <div class="proj-tech">
+                        <span class="tech-pill">AWS ECS</span>
+                        <span class="tech-pill">Terraform</span>
+                        <span class="tech-pill">Docker</span>
+                        <span class="tech-pill">RDS</span>
+                        <span class="tech-pill">CloudFront</span>
                     </div>
+                </div>
+                <div class="proj-footer">
+                    <div class="proj-links">
+                        <a href="#" class="proj-link" title="Case Study"><i class="fa-solid fa-file-lines"></i></a>
+                        <a href="#" class="proj-link" title="Architecture Diagram"><i class="fa-solid fa-diagram-project"></i></a>
+                    </div>
+                    <span class="proj-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </div>
 
-            <div class="portfolio-item reveal delay-2" data-category="mobile">
-                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800" alt="Mobile App">
-                <div class="portfolio-overlay">
-                    <div>
-                        <div class="portfolio-tag">Mobile App</div>
-                        <div class="portfolio-title">E-Commerce Platform</div>
+            <!-- 03. E-Commerce Platform -->
+            <div class="project-card reveal delay-2" data-category="mobile" data-project="2">
+                <div class="proj-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=900" alt="E-Commerce Mobile Platform">
+                    <span class="proj-category-badge">Mobile App</span>
+                    <span class="proj-status-dot live">Live</span>
+                </div>
+                <div class="proj-body">
+                    <div class="proj-title">ShopCeylon — E-Commerce App</div>
+                    <div class="proj-desc">Cross-platform mobile e-commerce app built for Sri Lanka's largest retail chain — 20,000+ products, real-time inventory, one-tap checkout, and loyalty rewards.</div>
+                    <div class="proj-tech">
+                        <span class="tech-pill">React Native</span>
+                        <span class="tech-pill">Expo</span>
+                        <span class="tech-pill">Firebase</span>
+                        <span class="tech-pill">Stripe</span>
+                        <span class="tech-pill">Redis</span>
                     </div>
+                </div>
+                <div class="proj-footer">
+                    <div class="proj-links">
+                        <a href="#" class="proj-link" title="App Store"><i class="fa-brands fa-apple"></i></a>
+                        <a href="#" class="proj-link" title="Play Store"><i class="fa-brands fa-google-play"></i></a>
+                    </div>
+                    <span class="proj-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </div>
 
-            <div class="portfolio-item reveal" data-category="api">
-                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=800" alt="API Development">
-                <div class="portfolio-overlay">
-                    <div>
-                        <div class="portfolio-tag">Microservices</div>
-                        <div class="portfolio-title">Payment Gateway API</div>
+            <!-- 04. Payment Gateway API -->
+            <div class="project-card reveal" data-category="api" data-project="3">
+                <div class="proj-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=900" alt="Payment Gateway API">
+                    <span class="proj-category-badge">FinTech · API</span>
+                    <span class="proj-status-dot live">Live</span>
+                </div>
+                <div class="proj-body">
+                    <div class="proj-title">PayFast — Payment Gateway API</div>
+                    <div class="proj-desc">High-throughput RESTful payment gateway processing $2M+ monthly transactions. PCI-DSS compliant, multi-currency support, webhooks, and a developer-first SDK ecosystem.</div>
+                    <div class="proj-tech">
+                        <span class="tech-pill">NestJS</span>
+                        <span class="tech-pill">GraphQL</span>
+                        <span class="tech-pill">MongoDB</span>
+                        <span class="tech-pill">RabbitMQ</span>
+                        <span class="tech-pill">Kubernetes</span>
                     </div>
+                </div>
+                <div class="proj-footer">
+                    <div class="proj-links">
+                        <a href="#" class="proj-link" title="API Docs"><i class="fa-solid fa-book"></i></a>
+                        <a href="#" class="proj-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <span class="proj-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </div>
 
-            <div class="portfolio-item reveal delay-1" data-category="web">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="SaaS Platform">
-                <div class="portfolio-overlay">
-                    <div>
-                        <div class="portfolio-tag">SaaS Platform</div>
-                        <div class="portfolio-title">HR Management System</div>
+            <!-- 05. HR Management SaaS -->
+            <div class="project-card reveal delay-1" data-category="web" data-project="4">
+                <div class="proj-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=900" alt="HR Management SaaS">
+                    <span class="proj-category-badge">SaaS Platform</span>
+                    <span class="proj-status-dot live">Live</span>
+                </div>
+                <div class="proj-body">
+                    <div class="proj-title">HRFlow — HR Management SaaS</div>
+                    <div class="proj-desc">End-to-end HR management platform serving 500+ companies — recruitment pipelines, payroll automation, leave management, and performance reviews with AI analytics.</div>
+                    <div class="proj-tech">
+                        <span class="tech-pill">Next.js</span>
+                        <span class="tech-pill">TypeScript</span>
+                        <span class="tech-pill">Prisma</span>
+                        <span class="tech-pill">PostgreSQL</span>
+                        <span class="tech-pill">Vercel</span>
                     </div>
+                </div>
+                <div class="proj-footer">
+                    <div class="proj-links">
+                        <a href="#" class="proj-link" title="Live Demo"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="#" class="proj-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    </div>
+                    <span class="proj-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </div>
 
-            <div class="portfolio-item reveal delay-2" data-category="cloud">
-                <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&q=80&w=800" alt="DevOps Pipeline">
-                <div class="portfolio-overlay">
-                    <div>
-                        <div class="portfolio-tag">DevOps</div>
-                        <div class="portfolio-title">CI/CD Pipeline Setup</div>
+            <!-- 06. Smart Home IoT Platform -->
+            <div class="project-card reveal delay-2" data-category="api" data-project="5">
+                <div class="proj-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=900" alt="Smart Home IoT Platform">
+                    <span class="proj-category-badge">IoT · Backend</span>
+                    <span class="proj-status-dot completed">Completed</span>
+                </div>
+                <div class="proj-body">
+                    <div class="proj-title">NexaHome — Smart Home Platform</div>
+                    <div class="proj-desc">Scalable IoT backend connecting 50,000+ smart home devices — real-time WebSocket control, MQTT broker integration, automated rules engine, and energy usage analytics.</div>
+                    <div class="proj-tech">
+                        <span class="tech-pill">Go</span>
+                        <span class="tech-pill">MQTT</span>
+                        <span class="tech-pill">WebSockets</span>
+                        <span class="tech-pill">InfluxDB</span>
+                        <span class="tech-pill">AWS IoT Core</span>
                     </div>
+                </div>
+                <div class="proj-footer">
+                    <div class="proj-links">
+                        <a href="#" class="proj-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="proj-link" title="Case Study"><i class="fa-solid fa-file-lines"></i></a>
+                    </div>
+                    <span class="proj-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></span>
                 </div>
             </div>
 
-            <div class="portfolio-item reveal" data-category="web">
-                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=800" alt="Banking Portal">
-                <div class="portfolio-overlay">
-                    <div>
-                        <div class="portfolio-tag">FinTech</div>
-                        <div class="portfolio-title">Digital Banking Portal</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="portfolio-item reveal delay-1" data-category="mobile">
-                <img src="https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&q=80&w=800" alt="Health App">
-                <div class="portfolio-overlay">
-                    <div>
-                        <div class="portfolio-tag">Healthcare App</div>
-                        <div class="portfolio-title">Patient Monitoring App</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="portfolio-item reveal delay-2" data-category="api">
-                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" alt="IoT Backend">
-                <div class="portfolio-overlay">
-                    <div>
-                        <div class="portfolio-tag">IoT Backend</div>
-                        <div class="portfolio-title">Smart Home Platform</div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div><!-- /.projects-grid -->
     </div>
 </section>
 
@@ -187,6 +804,500 @@
 
 <a href="https://wa.me/94765855570" target="_blank" class="whatsapp-chat"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat with us!</span></a>
 <button class="back-top"><i class="fa-solid fa-arrow-up"></i></button>
+
+<!-- =====================================================
+     6 PROJECT MODALS
+     ===================================================== -->
+
+<!-- Modal 0: Analytics Dashboard -->
+<div class="proj-modal-overlay" id="modal-0" role="dialog" aria-modal="true" aria-label="Analytics Dashboard Pro">
+    <div class="proj-modal">
+        <div class="proj-modal-close">
+            <button class="modal-close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <img class="modal-hero-img" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" alt="Analytics Dashboard Pro">
+        <div class="modal-content-wrap">
+            <div class="modal-top-row">
+                <div class="modal-title-block">
+                    <span class="modal-category-label">Web Application</span>
+                    <div class="modal-title">Analytics Dashboard Pro</div>
+                </div>
+                <div class="modal-links-row">
+                    <a href="#" class="modal-btn modal-btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+                    <a href="#" class="modal-btn modal-btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </div>
+
+            <p class="modal-desc">A enterprise-grade, real-time analytics dashboard built for data-driven teams. The platform ingests over 10 million events per day, processes them through a streaming pipeline, and renders beautiful, interactive visualisations for stakeholders at every level of the organisation.</p>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Key Metrics</div>
+            <div class="modal-metrics">
+                <div class="metric-card">
+                    <div class="metric-value">10M+</div>
+                    <div class="metric-label">Events / Day</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">99.9%</div>
+                    <div class="metric-label">Uptime SLA</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">&lt;50ms</div>
+                    <div class="metric-label">Query Response</div>
+                </div>
+            </div>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Core Features</div>
+            <div class="modal-features">
+                <div class="modal-feature-item">Real-time event streaming pipeline</div>
+                <div class="modal-feature-item">Custom drag-and-drop dashboard builder</div>
+                <div class="modal-feature-item">AI-powered anomaly detection alerts</div>
+                <div class="modal-feature-item">Multi-tenant role-based access control</div>
+                <div class="modal-feature-item">Scheduled PDF & CSV report exports</div>
+                <div class="modal-feature-item">Embeddable chart widgets via iframe API</div>
+            </div>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Tech Stack</div>
+            <div class="modal-tech-grid">
+                <span class="modal-tech-pill">React 18</span>
+                <span class="modal-tech-pill">Node.js</span>
+                <span class="modal-tech-pill">PostgreSQL</span>
+                <span class="modal-tech-pill">Apache Kafka</span>
+                <span class="modal-tech-pill">D3.js</span>
+                <span class="modal-tech-pill">Redis</span>
+                <span class="modal-tech-pill">AWS EC2</span>
+                <span class="modal-tech-pill">AWS S3</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 1: AWS Enterprise -->
+<div class="proj-modal-overlay" id="modal-1" role="dialog" aria-modal="true" aria-label="AWS Enterprise Cloud Migration">
+    <div class="proj-modal">
+        <div class="proj-modal-close">
+            <button class="modal-close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <img class="modal-hero-img" src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=1200" alt="AWS Enterprise Setup">
+        <div class="modal-content-wrap">
+            <div class="modal-top-row">
+                <div class="modal-title-block">
+                    <span class="modal-category-label">Cloud Architecture</span>
+                    <div class="modal-title">AWS Enterprise Cloud Migration</div>
+                </div>
+                <div class="modal-links-row">
+                    <a href="#" class="modal-btn modal-btn-primary"><i class="fa-solid fa-file-lines"></i> Case Study</a>
+                    <a href="#" class="modal-btn modal-btn-outline"><i class="fa-solid fa-diagram-project"></i> Architecture</a>
+                </div>
+            </div>
+
+            <p class="modal-desc">A complete cloud migration project for a mid-sized fintech company — moving from a single on-premise server running a PHP monolith to a fully containerised microservices architecture on AWS. Delivered in 14 weeks with zero production downtime, resulting in a 40% reduction in infrastructure costs and a significant improvement in developer velocity.</p>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Key Metrics</div>
+            <div class="modal-metrics">
+                <div class="metric-card">
+                    <div class="metric-value">40%</div>
+                    <div class="metric-label">Cost Reduction</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">99.99%</div>
+                    <div class="metric-label">Uptime Achieved</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">0</div>
+                    <div class="metric-label">Downtime Minutes</div>
+                </div>
+            </div>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Core Deliverables</div>
+            <div class="modal-features">
+                <div class="modal-feature-item">Monolith decomposition into 12 microservices</div>
+                <div class="modal-feature-item">Full Terraform IaC for all infrastructure</div>
+                <div class="modal-feature-item">Blue-green deployment with zero downtime</div>
+                <div class="modal-feature-item">AWS WAF and Shield advanced security</div>
+                <div class="modal-feature-item">Auto-scaling policies for peak traffic</div>
+                <div class="modal-feature-item">CloudWatch observability and alerting</div>
+            </div>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Tech Stack</div>
+            <div class="modal-tech-grid">
+                <span class="modal-tech-pill">AWS ECS Fargate</span>
+                <span class="modal-tech-pill">Terraform</span>
+                <span class="modal-tech-pill">Docker</span>
+                <span class="modal-tech-pill">RDS Aurora</span>
+                <span class="modal-tech-pill">CloudFront</span>
+                <span class="modal-tech-pill">Route 53</span>
+                <span class="modal-tech-pill">GitHub Actions</span>
+                <span class="modal-tech-pill">CloudWatch</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2: E-Commerce Mobile App -->
+<div class="proj-modal-overlay" id="modal-2" role="dialog" aria-modal="true" aria-label="ShopCeylon E-Commerce App">
+    <div class="proj-modal">
+        <div class="proj-modal-close">
+            <button class="modal-close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <img class="modal-hero-img" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=1200" alt="ShopCeylon Mobile App">
+        <div class="modal-content-wrap">
+            <div class="modal-top-row">
+                <div class="modal-title-block">
+                    <span class="modal-category-label">Mobile Application</span>
+                    <div class="modal-title">ShopCeylon — E-Commerce App</div>
+                </div>
+                <div class="modal-links-row">
+                    <a href="#" class="modal-btn modal-btn-primary"><i class="fa-brands fa-apple"></i> App Store</a>
+                    <a href="#" class="modal-btn modal-btn-outline"><i class="fa-brands fa-google-play"></i> Play Store</a>
+                </div>
+            </div>
+
+            <p class="modal-desc">ShopCeylon is a full-featured cross-platform mobile e-commerce application built for Sri Lanka's leading retail chain. The app handles 20,000+ product listings, real-time inventory sync, personalised recommendation feeds powered by machine learning, and integrates seamlessly with the merchant's existing ERP system.</p>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Key Metrics</div>
+            <div class="modal-metrics">
+                <div class="metric-card">
+                    <div class="metric-value">20K+</div>
+                    <div class="metric-label">Products Listed</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">4.8★</div>
+                    <div class="metric-label">App Store Rating</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">15K+</div>
+                    <div class="metric-label">Daily Active Users</div>
+                </div>
+            </div>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Core Features</div>
+            <div class="modal-features">
+                <div class="modal-feature-item">Real-time inventory and stock updates</div>
+                <div class="modal-feature-item">One-tap checkout with saved cards</div>
+                <div class="modal-feature-item">AI-powered product recommendations</div>
+                <div class="modal-feature-item">Push notifications for deals & orders</div>
+                <div class="modal-feature-item">Loyalty points and reward redemption</div>
+                <div class="modal-feature-item">In-app order tracking with live map</div>
+            </div>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Tech Stack</div>
+            <div class="modal-tech-grid">
+                <span class="modal-tech-pill">React Native</span>
+                <span class="modal-tech-pill">Expo</span>
+                <span class="modal-tech-pill">Firebase</span>
+                <span class="modal-tech-pill">Stripe SDK</span>
+                <span class="modal-tech-pill">Redis</span>
+                <span class="modal-tech-pill">Node.js API</span>
+                <span class="modal-tech-pill">TensorFlow Lite</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 3: Payment Gateway API -->
+<div class="proj-modal-overlay" id="modal-3" role="dialog" aria-modal="true" aria-label="PayFast Payment Gateway API">
+    <div class="proj-modal">
+        <div class="proj-modal-close">
+            <button class="modal-close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <img class="modal-hero-img" src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1200" alt="PayFast Payment API">
+        <div class="modal-content-wrap">
+            <div class="modal-top-row">
+                <div class="modal-title-block">
+                    <span class="modal-category-label">FinTech · API Platform</span>
+                    <div class="modal-title">PayFast — Payment Gateway API</div>
+                </div>
+                <div class="modal-links-row">
+                    <a href="#" class="modal-btn modal-btn-primary"><i class="fa-solid fa-book"></i> API Docs</a>
+                    <a href="#" class="modal-btn modal-btn-outline"><i class="fa-brands fa-github"></i> SDK</a>
+                </div>
+            </div>
+
+            <p class="modal-desc">PayFast is a high-throughput, PCI-DSS Level 1 compliant payment gateway designed for businesses of all sizes. The API handles $2M+ in monthly transaction volume across 15 currencies, with sub-100ms response times, comprehensive webhook support, and SDKs available for JavaScript, Python, PHP, and Go.</p>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Key Metrics</div>
+            <div class="modal-metrics">
+                <div class="metric-card">
+                    <div class="metric-value">$2M+</div>
+                    <div class="metric-label">Monthly Volume</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">&lt;100ms</div>
+                    <div class="metric-label">API Response</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">15</div>
+                    <div class="metric-label">Currencies Supported</div>
+                </div>
+            </div>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Core Features</div>
+            <div class="modal-features">
+                <div class="modal-feature-item">PCI-DSS Level 1 certified infrastructure</div>
+                <div class="modal-feature-item">Idempotent REST and GraphQL API</div>
+                <div class="modal-feature-item">Real-time webhook event system</div>
+                <div class="modal-feature-item">Fraud detection with ML scoring</div>
+                <div class="modal-feature-item">Subscription and recurring billing</div>
+                <div class="modal-feature-item">Comprehensive developer sandbox</div>
+            </div>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Tech Stack</div>
+            <div class="modal-tech-grid">
+                <span class="modal-tech-pill">NestJS</span>
+                <span class="modal-tech-pill">GraphQL</span>
+                <span class="modal-tech-pill">MongoDB</span>
+                <span class="modal-tech-pill">RabbitMQ</span>
+                <span class="modal-tech-pill">Kubernetes</span>
+                <span class="modal-tech-pill">Vault (HashiCorp)</span>
+                <span class="modal-tech-pill">Prometheus</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 4: HR SaaS -->
+<div class="proj-modal-overlay" id="modal-4" role="dialog" aria-modal="true" aria-label="HRFlow HR Management SaaS">
+    <div class="proj-modal">
+        <div class="proj-modal-close">
+            <button class="modal-close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <img class="modal-hero-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200" alt="HRFlow SaaS">
+        <div class="modal-content-wrap">
+            <div class="modal-top-row">
+                <div class="modal-title-block">
+                    <span class="modal-category-label">SaaS Platform</span>
+                    <div class="modal-title">HRFlow — HR Management SaaS</div>
+                </div>
+                <div class="modal-links-row">
+                    <a href="#" class="modal-btn modal-btn-primary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo</a>
+                    <a href="#" class="modal-btn modal-btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </div>
+
+            <p class="modal-desc">HRFlow is a comprehensive HR management SaaS platform that replaces spreadsheets and disconnected tools for growing companies. Serving 500+ organisations across South Asia, it covers the entire employee lifecycle — from recruitment and onboarding to performance reviews and offboarding — with intelligent automation throughout.</p>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Key Metrics</div>
+            <div class="modal-metrics">
+                <div class="metric-card">
+                    <div class="metric-value">500+</div>
+                    <div class="metric-label">Companies</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">25K+</div>
+                    <div class="metric-label">Employees Managed</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">60%</div>
+                    <div class="metric-label">HR Admin Time Saved</div>
+                </div>
+            </div>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Core Features</div>
+            <div class="modal-features">
+                <div class="modal-feature-item">Applicant tracking and recruitment pipeline</div>
+                <div class="modal-feature-item">Automated payroll with tax calculations</div>
+                <div class="modal-feature-item">Leave and attendance management</div>
+                <div class="modal-feature-item">360° performance review system</div>
+                <div class="modal-feature-item">AI-powered hiring recommendations</div>
+                <div class="modal-feature-item">Custom reporting and HR analytics</div>
+            </div>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Tech Stack</div>
+            <div class="modal-tech-grid">
+                <span class="modal-tech-pill">Next.js 14</span>
+                <span class="modal-tech-pill">TypeScript</span>
+                <span class="modal-tech-pill">Prisma ORM</span>
+                <span class="modal-tech-pill">PostgreSQL</span>
+                <span class="modal-tech-pill">Vercel</span>
+                <span class="modal-tech-pill">Resend</span>
+                <span class="modal-tech-pill">Stripe Billing</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 5: Smart Home IoT -->
+<div class="proj-modal-overlay" id="modal-5" role="dialog" aria-modal="true" aria-label="NexaHome Smart Home Platform">
+    <div class="proj-modal">
+        <div class="proj-modal-close">
+            <button class="modal-close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <img class="modal-hero-img" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200" alt="NexaHome Smart Home">
+        <div class="modal-content-wrap">
+            <div class="modal-top-row">
+                <div class="modal-title-block">
+                    <span class="modal-category-label">IoT Backend Platform</span>
+                    <div class="modal-title">NexaHome — Smart Home Platform</div>
+                </div>
+                <div class="modal-links-row">
+                    <a href="#" class="modal-btn modal-btn-primary"><i class="fa-solid fa-file-lines"></i> Case Study</a>
+                    <a href="#" class="modal-btn modal-btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
+                </div>
+            </div>
+
+            <p class="modal-desc">NexaHome is a production-grade IoT backend that connects and manages 50,000+ smart home devices across Sri Lanka and the Maldives. The platform provides sub-second real-time device control via WebSockets, an MQTT-based telemetry pipeline for sensor data, a visual automation rules engine, and detailed energy consumption analytics.</p>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Key Metrics</div>
+            <div class="modal-metrics">
+                <div class="metric-card">
+                    <div class="metric-value">50K+</div>
+                    <div class="metric-label">Connected Devices</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">&lt;200ms</div>
+                    <div class="metric-label">Device Response</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">5TB+</div>
+                    <div class="metric-label">Telemetry Data / Month</div>
+                </div>
+            </div>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Core Features</div>
+            <div class="modal-features">
+                <div class="modal-feature-item">Real-time WebSocket device control</div>
+                <div class="modal-feature-item">MQTT broker for sensor telemetry</div>
+                <div class="modal-feature-item">Visual drag-and-drop automation builder</div>
+                <div class="modal-feature-item">Time-series energy analytics dashboard</div>
+                <div class="modal-feature-item">OTA firmware update distribution</div>
+                <div class="modal-feature-item">Multi-home and user permission management</div>
+            </div>
+
+            <div class="modal-divider"></div>
+
+            <div class="modal-section-title">Tech Stack</div>
+            <div class="modal-tech-grid">
+                <span class="modal-tech-pill">Go (Golang)</span>
+                <span class="modal-tech-pill">MQTT (Mosquitto)</span>
+                <span class="modal-tech-pill">WebSockets</span>
+                <span class="modal-tech-pill">InfluxDB</span>
+                <span class="modal-tech-pill">AWS IoT Core</span>
+                <span class="modal-tech-pill">TimescaleDB</span>
+                <span class="modal-tech-pill">Grafana</span>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="script.js"></script>
+<script>
+    /* =====================================================
+       PROJECT PAGE — FILTER & MODAL LOGIC
+       ===================================================== */
+    (() => {
+        // --- Filter ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.dataset.filter;
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.classList.remove('hidden');
+                        card.style.animation = 'none';
+                        requestAnimationFrame(() => {
+                            card.style.animation = '';
+                        });
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // --- Modal open ---
+        projectCards.forEach(card => {
+            // Click anywhere on card, except the external links
+            card.addEventListener('click', (e) => {
+                // Don't trigger modal if clicking a real link (github/live)
+                if (e.target.closest('.proj-link')) return;
+
+                const projIndex = card.dataset.project;
+                openModal(projIndex);
+            });
+        });
+
+        // "View Details" button
+        document.querySelectorAll('.proj-view-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const card = btn.closest('.project-card');
+                openModal(card.dataset.project);
+            });
+        });
+
+        function openModal(index) {
+            const overlay = document.getElementById(`modal-${index}`);
+            if (!overlay) return;
+            overlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(overlay) {
+            overlay.classList.remove('open');
+            document.body.style.overflow = '';
+        }
+
+        // Close buttons
+        document.querySelectorAll('.modal-close-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const overlay = btn.closest('.proj-modal-overlay');
+                closeModal(overlay);
+            });
+        });
+
+        // Click backdrop to close
+        document.querySelectorAll('.proj-modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeModal(overlay);
+            });
+        });
+
+        // ESC key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.proj-modal-overlay.open').forEach(o => closeModal(o));
+            }
+        });
+    })();
+</script>
 </body>
 </html>
