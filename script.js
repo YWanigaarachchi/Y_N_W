@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   init3DTiltEffect();
   initNavbarScroll();
   initMobileMenu();
+  initAutoScrollBtn();
   initSmoothScroll();
 });
 
@@ -38,7 +39,7 @@ function initCustomCursor() {
   }
   animateFollower();
 
-  const hoverTargets = document.querySelectorAll('a, button, .btn, .glass-card, .pricing-card-5, .portfolio-card-work, .whatsapp-card-item');
+  const hoverTargets = document.querySelectorAll('a, button, .btn, .glass-card, .pricing-card-5, .portfolio-card-work, .whatsapp-float-btn');
   hoverTargets.forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursor.classList.add('active');
@@ -132,7 +133,7 @@ function initThreeJsAiCore() {
   const coreGroup = new THREE.Group();
   scene.add(coreGroup);
 
-  // Outer Wireframe Sphere (Icosahedron)
+  // Outer Wireframe Sphere
   const outerGeo = new THREE.IcosahedronGeometry(2, 2);
   const outerMat = new THREE.MeshBasicMaterial({
     color: 0x00E5FF,
@@ -196,7 +197,6 @@ function initThreeJsAiCore() {
     requestAnimationFrame(animate);
     const elapsedTime = clock.getElapsedTime();
 
-    // Constant Rotation
     outerSphere.rotation.x = elapsedTime * 0.2;
     outerSphere.rotation.y = elapsedTime * 0.3;
     innerSphere.rotation.x = -elapsedTime * 0.4;
@@ -206,7 +206,6 @@ function initThreeJsAiCore() {
     // Bobbing Up and Down (Zero-G simulation)
     coreGroup.position.y = Math.sin(elapsedTime * 1.8) * 0.25;
 
-    // Smooth Mouse Tracking
     coreGroup.rotation.y += (targetX - coreGroup.rotation.y) * 0.05;
     coreGroup.rotation.x += (targetY - coreGroup.rotation.x) * 0.05;
 
@@ -219,7 +218,7 @@ function initThreeJsAiCore() {
    4. 3D MOUSE TILT EFFECT ON CARDS
    ===================================================== */
 function init3DTiltEffect() {
-  const tiltCards = document.querySelectorAll('.tilt-card, .pricing-card-5, .glass-card, .portfolio-card-work');
+  const tiltCards = document.querySelectorAll('.tilt-card, .pricing-card-5, .glass-card, .portfolio-card-work, .milestone-card');
 
   tiltCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
@@ -276,7 +275,31 @@ function initMobileMenu() {
 }
 
 /* =====================================================
-   7. SMOOTH SCROLLING
+   7. AUTO-SCROLL BUTTON
+   ===================================================== */
+function initAutoScrollBtn() {
+  const scrollBtn = document.querySelector('.auto-scroll-btn');
+  if (!scrollBtn) return;
+
+  scrollBtn.addEventListener('click', () => {
+    if (window.scrollY > 300) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+    }
+  });
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      scrollBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+    } else {
+      scrollBtn.innerHTML = '<i class="fa-solid fa-arrow-down"></i>';
+    }
+  });
+}
+
+/* =====================================================
+   8. SMOOTH SCROLLING
    ===================================================== */
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
