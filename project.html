@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Anti-Gravity Work Showcase - 6 Floating Project Cards with GitHub View Code & WhatsApp Inquiries.">
-    <title>Projects Showcase | YNW Anti-Gravity Studio</title>
+    <meta name="description" content="Work Showcase - 6 Floating Project Cards with GitHub View Code & WhatsApp Inquiries | YNW Software Solutions.">
+    <title>Projects Showcase | YNW Software Solutions</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -16,7 +16,22 @@
 <div class="cursor-follower"></div>
 <canvas id="particles-canvas"></canvas>
 
-<!-- Sticky Frosted Glass Navigation Bar -->
+<!-- Global Right-Side Floating WhatsApp Button with Pop-Out Bubble -->
+<div class="whatsapp-float-container">
+    <div class="whatsapp-popout-bubble">
+        <span><i class="fa-brands fa-whatsapp"></i></span> Chat on WhatsApp!
+    </div>
+    <a href="https://wa.me/94765855570" target="_blank" class="whatsapp-float-btn" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+</div>
+
+<!-- Global Left-Side Auto-Scroll Button -->
+<div class="auto-scroll-btn" title="Scroll Top / Bottom">
+    <i class="fa-solid fa-arrow-down"></i>
+</div>
+
+<!-- Navigation Bar -->
 <nav>
     <div class="nav-inner">
         <a href="index.html" class="logo">YNW<span>.</span></a>
@@ -89,8 +104,8 @@
                             <span class="skill-tag">Express</span>
                             <span class="skill-tag">WebGL</span>
                         </div>
-                        <h3>Smart Card & NFC Business Solution</h3>
-                        <p style="font-size:0.92rem; margin-top:8px;">Digital business card platform integrating instant NFC tap connectivity, live user profile analytics, and vCard sharing.</p>
+                        <h3>Smart Card & NFC Solution</h3>
+                        <p style="font-size:0.92rem; margin-top:8px;">Digital business card platform integrating instant NFC tap connectivity, live profile analytics, and vCard sharing.</p>
                     </div>
                     <div class="portfolio-action-btns">
                         <a href="https://github.com" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> View Code</a>
@@ -194,11 +209,39 @@
     </div>
 </section>
 
+<!-- Footer with Full Navigation -->
 <footer>
     <div class="container">
-        <div class="footer-content">
-            <a href="index.html" class="logo">YNW<span>.</span> Studio</a>
-            <p style="font-size:0.95rem; color:var(--text-muted);">&copy; 2026 YNW Anti-Gravity Studio. All rights reserved.</p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo" style="margin-bottom:16px;">YNW<span>.</span> Software Solutions</a>
+                <p style="font-size:0.95rem; color:var(--text-muted); max-width:320px;">YNW Software Solutions crafts exceptional software experiences — from scalable web applications to high-performance mobile apps powering modern businesses.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <div class="footer-links-list">
+                    <a href="index.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Home</a>
+                    <a href="about.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> About Architect</a>
+                    <a href="services.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Services & Pricing</a>
+                    <a href="project.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Portfolio Gallery</a>
+                    <a href="process.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Process Workflow</a>
+                    <a href="contact.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Contact Terminal</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Direct WhatsApp Lines</h4>
+                <div class="footer-links-list">
+                    <a href="https://wa.me/94765855570" target="_blank" style="color:var(--whatsapp-green); font-weight:600;"><i class="fa-brands fa-whatsapp"></i> +94 76 585 5570 (Line 1)</a>
+                    <a href="https://wa.me/94710855570" target="_blank" style="color:var(--whatsapp-green); font-weight:600;"><i class="fa-brands fa-whatsapp"></i> +94 71 085 5570 (Line 2)</a>
+                    <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i> Official GitHub Code Repos</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 YNW Software Solutions. All rights reserved.</p>
         </div>
     </div>
 </footer>
