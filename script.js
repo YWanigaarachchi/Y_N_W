@@ -3,6 +3,7 @@
    ===================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initPreloader();
   initCustomCursor();
   initBackgroundParticles();
   initThreeJsAiCore();
@@ -723,4 +724,209 @@ function initBackgroundMusic() {
       // Blocked even if muted (extreme custom browser settings)
     });
   });
+}
+
+/* =====================================================
+   12. FUTURISTIC 3D YNW LOGO PRELOADER ENGINE
+   ===================================================== */
+function initPreloader() {
+  if (document.getElementById('ynw-preloader')) return;
+
+  const preloaderHtml = `
+  <div id="ynw-preloader">
+    <div class="preloader-glow-bg"></div>
+    <div class="preloader-3d-wrapper">
+      <div id="preloader-3d-canvas"></div>
+      <div class="preloader-branding">
+        <h2 class="preloader-logo-title">YNW<span>.</span></h2>
+      </div>
+    </div>
+    <div class="preloader-status-container">
+      <div class="preloader-bar-outer">
+        <div class="preloader-bar-fill" id="preloader-bar-fill"></div>
+      </div>
+      <div class="preloader-info-row">
+        <span class="preloader-status-text" id="preloader-status-text">INITIALIZING YNW SYSTEM...</span>
+        <span class="preloader-percent-counter" id="preloader-percent-counter">0%</span>
+      </div>
+    </div>
+  </div>`;
+  document.body.insertAdjacentHTML('afterbegin', preloaderHtml);
+
+  const preloaderEl = document.getElementById('ynw-preloader');
+  const barFill = document.getElementById('preloader-bar-fill');
+  const statusText = document.getElementById('preloader-status-text');
+  const percentText = document.getElementById('preloader-percent-counter');
+  const container = document.getElementById('preloader-3d-canvas');
+
+  let animFrameId = null;
+
+  // Initialize Three.js 3D YNW Logo Scene
+  if (container && typeof THREE !== 'undefined') {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.z = 7;
+
+    const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    const pointLight1 = new THREE.PointLight(0x00E5FF, 3, 20);
+    pointLight1.position.set(3, 3, 4);
+    const pointLight2 = new THREE.PointLight(0x7C3AED, 2, 20);
+    pointLight2.position.set(-3, -2, 3);
+    scene.add(ambientLight, pointLight1, pointLight2);
+
+    const mainGroup = new THREE.Group();
+    scene.add(mainGroup);
+
+    // Material for 3D letters
+    const letterMat = new THREE.MeshStandardMaterial({
+      color: 0x00E5FF,
+      metalness: 0.8,
+      roughness: 0.2
+    });
+
+    // 3D Monogram - Letter Y
+    const groupY = new THREE.Group();
+    const stemY = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.8, 12), letterMat);
+    stemY.position.set(0, -0.4, 0);
+    const leftArmY = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.8, 12), letterMat);
+    leftArmY.position.set(-0.28, 0.28, 0);
+    leftArmY.rotation.z = Math.PI / 4;
+    const rightArmY = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.8, 12), letterMat);
+    rightArmY.position.set(0.28, 0.28, 0);
+    rightArmY.rotation.z = -Math.PI / 4;
+    groupY.add(stemY, leftArmY, rightArmY);
+    groupY.position.x = -1.2;
+
+    // 3D Monogram - Letter N
+    const groupN = new THREE.Group();
+    const leftStemN = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 1.3, 12), letterMat);
+    leftStemN.position.set(-0.32, 0, 0);
+    const rightStemN = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 1.3, 12), letterMat);
+    rightStemN.position.set(0.32, 0, 0);
+    const diagN = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 1.42, 12), letterMat);
+    diagN.position.set(0, 0, 0);
+    diagN.rotation.z = -Math.PI / 6.2;
+    groupN.add(leftStemN, rightStemN, diagN);
+    groupN.position.x = 0;
+
+    // 3D Monogram - Letter W
+    const groupW = new THREE.Group();
+    const s1W = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.25, 12), letterMat);
+    s1W.position.set(-0.48, 0.05, 0);
+    s1W.rotation.z = -Math.PI / 14;
+    const s2W = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.1, 12), letterMat);
+    s2W.position.set(-0.16, -0.05, 0);
+    s2W.rotation.z = Math.PI / 10;
+    const s3W = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.1, 12), letterMat);
+    s3W.position.set(0.16, -0.05, 0);
+    s3W.rotation.z = -Math.PI / 10;
+    const s4W = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.25, 12), letterMat);
+    s4W.position.set(0.48, 0.05, 0);
+    s4W.rotation.z = Math.PI / 14;
+    groupW.add(s1W, s2W, s3W, s4W);
+    groupW.position.x = 1.2;
+
+    const logoLetters = new THREE.Group();
+    logoLetters.add(groupY, groupN, groupW);
+    mainGroup.add(logoLetters);
+
+    // Orbital Rings
+    const ring1Geo = new THREE.TorusGeometry(2.2, 0.03, 16, 100);
+    const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x00E5FF, wireframe: true, transparent: true, opacity: 0.6 });
+    const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
+    mainGroup.add(ring1);
+
+    const ring2Geo = new THREE.TorusGeometry(2.5, 0.02, 16, 100);
+    const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x5C67DE, wireframe: true, transparent: true, opacity: 0.5 });
+    const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+    ring2.rotation.x = Math.PI / 3;
+    mainGroup.add(ring2);
+
+    // Drifting Particles
+    const pCount = 120;
+    const pPositions = new Float32Array(pCount * 3);
+    for (let i = 0; i < pCount * 3; i += 3) {
+      const angle = Math.random() * Math.PI * 2;
+      const rad = 2.0 + Math.random() * 1.5;
+      pPositions[i] = Math.cos(angle) * rad;
+      pPositions[i + 1] = (Math.random() - 0.5) * 2;
+      pPositions[i + 2] = Math.sin(angle) * rad;
+    }
+    const pGeo = new THREE.BufferGeometry();
+    pGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
+    const pMat = new THREE.PointsMaterial({ size: 0.04, color: 0x00E5FF, transparent: true, opacity: 0.8 });
+    const particles = new THREE.Points(pGeo, pMat);
+    mainGroup.add(particles);
+
+    const clock = new THREE.Clock();
+    const animatePreloader3D = () => {
+      animFrameId = requestAnimationFrame(animatePreloader3D);
+      const elapsedTime = clock.getElapsedTime();
+
+      logoLetters.rotation.y = Math.sin(elapsedTime * 1.2) * 0.35;
+      logoLetters.position.y = Math.sin(elapsedTime * 2.0) * 0.12;
+
+      ring1.rotation.z = elapsedTime * 0.5;
+      ring2.rotation.y = elapsedTime * 0.4;
+      particles.rotation.y = elapsedTime * 0.2;
+
+      renderer.render(scene, camera);
+    };
+    animatePreloader3D();
+  }
+
+  // Progress Bar & Counter logic
+  let currentProgress = 0;
+  let pageLoaded = false;
+
+  const updateStatusText = (progress) => {
+    if (progress < 25) {
+      statusText.textContent = "INITIALIZING YNW SYSTEM...";
+    } else if (progress < 55) {
+      statusText.textContent = "LOADING 3D WEBGL CORE...";
+    } else if (progress < 85) {
+      statusText.textContent = "STABILIZING ZERO-G ENVIRONMENT...";
+    } else if (progress < 99) {
+      statusText.textContent = "FINALIZING PROTOCOLS...";
+    } else {
+      statusText.textContent = "SYSTEM READY";
+    }
+  };
+
+  const progressInterval = setInterval(() => {
+    let increment = pageLoaded ? 8 : (currentProgress < 75 ? Math.random() * 4 + 2 : 0.5);
+    currentProgress = Math.min(100, currentProgress + increment);
+
+    if (barFill) barFill.style.width = `${currentProgress}%`;
+    if (percentText) percentText.textContent = `${Math.floor(currentProgress)}%`;
+    if (statusText) updateStatusText(currentProgress);
+
+    if (currentProgress >= 100) {
+      clearInterval(progressInterval);
+      setTimeout(() => {
+        if (preloaderEl) {
+          preloaderEl.classList.add('preloader-hidden');
+          setTimeout(() => {
+            if (animFrameId) cancelAnimationFrame(animFrameId);
+            preloaderEl.style.display = 'none';
+          }, 800);
+        }
+      }, 300);
+    }
+  }, 40);
+
+  window.addEventListener('load', () => {
+    pageLoaded = true;
+  });
+
+  // Backup fallback in case window load fired already
+  if (document.readyState === 'complete') {
+    pageLoaded = true;
+  }
 }
