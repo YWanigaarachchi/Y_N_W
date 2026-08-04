@@ -567,7 +567,7 @@ function initBackgroundMusic() {
   if (document.getElementById('music-toggle-btn')) return;
 
   const audioHtml = `
-  <audio id="bg-audio-player" loop preload="auto" muted>
+  <audio id="bg-audio-player" loop preload="auto">
       <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=ambient-space-112185.mp3" type="audio/mpeg">
   </audio>`;
   document.body.insertAdjacentHTML('beforeend', audioHtml);
@@ -648,6 +648,7 @@ function initBackgroundMusic() {
     if (isPlaying) {
       if (audio.muted) {
         audio.muted = false;
+        audio.play().catch(() => {});
       } else {
         audio.pause();
         stopAmbientSynth();
@@ -682,19 +683,18 @@ function initBackgroundMusic() {
     }
 
     audio.muted = false;
-    if (!isPlaying) {
-      audio.play().then(() => {
+    audio.play().then(() => {
+      toggleBtn.classList.add('playing');
+      isPlaying = true;
+      cleanUpListeners();
+    }).catch(err => {
+      createAmbientSynth();
+      if (synthAudioCtx && synthAudioCtx.state !== 'suspended') {
         toggleBtn.classList.add('playing');
         isPlaying = true;
-      }).catch(err => {
-        createAmbientSynth();
-        if (synthAudioCtx && synthAudioCtx.state !== 'suspended') {
-          toggleBtn.classList.add('playing');
-          isPlaying = true;
-        }
-      });
-    }
-    cleanUpListeners();
+        cleanUpListeners();
+      }
+    });
   };
 
   const cleanUpListeners = () => {
@@ -708,11 +708,19 @@ function initBackgroundMusic() {
     document.addEventListener(event, startAudioOnInteraction, { once: true, passive: true });
   });
 
-  // Attempt autoplay immediately on load (muted is allowed by modern browsers)
+  // Attempt autoplay immediately on load (try unmuted first, then muted fallback)
   audio.play().then(() => {
     toggleBtn.classList.add('playing');
     isPlaying = true;
+    cleanUpListeners();
   }).catch(() => {
-    // Blocked even if muted (extreme custom browser settings)
+    // Unmuted autoplay blocked, try muted autoplay
+    audio.muted = true;
+    audio.play().then(() => {
+      toggleBtn.classList.add('playing');
+      isPlaying = true;
+    }).catch(() => {
+      // Blocked even if muted (extreme custom browser settings)
+    });
   });
 }
