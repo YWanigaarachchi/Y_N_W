@@ -569,9 +569,8 @@ function initBackgroundMusic() {
 
   const audioHtml = `
   <audio id="bg-audio-player" loop preload="auto">
-      <source src="https://actions.google.com/sounds/v1/ambiences/deep_space.ogg" type="audio/ogg">
       <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-      <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=ambient-space-112185.mp3" type="audio/mpeg">
+      <source src="https://actions.google.com/sounds/v1/ambiences/deep_space.ogg" type="audio/ogg">
   </audio>`;
   document.body.insertAdjacentHTML('beforeend', audioHtml);
 
@@ -601,51 +600,6 @@ function initBackgroundMusic() {
 
   audio.volume = 0.35;
   let isPlaying = false;
-  let synthAudioCtx = null;
-  let synthOsc1 = null;
-  let synthOsc2 = null;
-  let synthGain = null;
-
-  function createAmbientSynth() {
-    try {
-      const AudioCtx = window.AudioContext || window.webkitAudioContext;
-      if (!AudioCtx) return;
-      synthAudioCtx = new AudioCtx();
-
-      synthGain = synthAudioCtx.createGain();
-      synthGain.gain.setValueAtTime(0.08, synthAudioCtx.currentTime);
-
-      // Low frequency drone
-      synthOsc1 = synthAudioCtx.createOscillator();
-      synthOsc1.type = 'sine';
-      synthOsc1.frequency.setValueAtTime(110, synthAudioCtx.currentTime); // A2
-
-      // Harmony ambient wave
-      synthOsc2 = synthAudioCtx.createOscillator();
-      synthOsc2.type = 'triangle';
-      synthOsc2.frequency.setValueAtTime(164.81, synthAudioCtx.currentTime); // E3
-
-      synthOsc1.connect(synthGain);
-      synthOsc2.connect(synthGain);
-      synthGain.connect(synthAudioCtx.destination);
-
-      synthOsc1.start();
-      synthOsc2.start();
-    } catch (e) {
-      console.log('Web Audio Synth fallback active');
-    }
-  }
-
-  function stopAmbientSynth() {
-    if (synthAudioCtx) {
-      try {
-        synthOsc1?.stop();
-        synthOsc2?.stop();
-        synthAudioCtx.close();
-      } catch (e) {}
-      synthAudioCtx = null;
-    }
-  }
 
   const playBackgroundMusic = () => {
     audio.muted = false;
@@ -657,15 +611,7 @@ function initBackgroundMusic() {
         isPlaying = true;
         cleanUpListeners();
       }).catch(err => {
-        createAmbientSynth();
-        if (synthAudioCtx) {
-          if (synthAudioCtx.state === 'suspended') {
-            synthAudioCtx.resume();
-          }
-          toggleBtn.classList.add('playing');
-          isPlaying = true;
-        }
-        cleanUpListeners();
+        // Keep interaction listeners ready to play unmuted on next click/touch
       });
     }
   };
@@ -676,7 +622,6 @@ function initBackgroundMusic() {
         playBackgroundMusic();
       } else {
         audio.pause();
-        stopAmbientSynth();
         toggleBtn.classList.remove('playing');
         isPlaying = false;
       }
@@ -715,7 +660,7 @@ function initBackgroundMusic() {
     playBackgroundMusic();
   });
 
-  // Attempt autoplay immediately on load (try unmuted first, then muted fallback)
+  // Attempt autoplay immediately on load
   playBackgroundMusic();
 }
 
