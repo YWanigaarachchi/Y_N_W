@@ -3,18 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YNW Software Solutions - Sri Lanka's premier software development studio. We craft scalable web applications and native mobile apps that drive business growth.">
-    <meta name="keywords" content="Software Development, Web Development, Mobile Apps, Sri Lanka, YNW Software">
-    <meta name="author" content="YNW Software Solutions">
-    <meta property="og:title" content="YNW Software Solutions | Creative Digital Studio">
-    <meta property="og:description" content="Crafting exceptional digital experiences with scalable web applications and cross-platform mobile apps.">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200">
-    <meta property="og:url" content="https://ynw-software.com">
-    <meta name="twitter:card" content="summary_large_image">
-    <title>YNW Software Solutions | Creative Digital Studio</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Anti-Gravity & Zero-G Portfolio & Agency - Designing the Future of the Web with futuristic UI/UX & WebGL experiences.">
+    <title>YNW | Anti-Gravity UI/UX & Web Development Studio</title>
+    
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Three.js for Premium 3D AI Effect -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Three.js for 3D AI Core Sphere -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
@@ -23,23 +19,20 @@
 <div class="cursor"></div>
 <div class="cursor-follower"></div>
 
-<!-- Navigation -->
+<!-- Drifting Particle Starfield Canvas -->
+<canvas id="particles-canvas"></canvas>
+
+<!-- Sticky Frosted Glass Navigation Bar -->
 <nav>
-    <div class="container nav-inner">
+    <div class="nav-inner">
         <a href="index.html" class="logo">YNW<span>.</span></a>
         <div class="nav-links">
             <a href="index.html" class="active">Home</a>
             <a href="about.html">About</a>
-            <a href="tech.html">Tech Stack</a>
-            <div class="dropdown">
-                <a href="services.html">Services <i class="fa-solid fa-chevron-down" style="font-size:0.7em;margin-left:4px;"></i></a>
-                <div class="dropdown-content">
-                    <a href="services.html">All Services</a>
-                    <a href="packages.html">Pricing Packages</a>
-                </div>
-            </div>
-            <a href="project.html">Portfolio</a>
-            <a href="github.html">Open Source</a>
+            <a href="services.html">Services</a>
+            <a href="project.html">Projects</a>
+            <a href="process.html">Process</a>
+            <a href="contact.html">Contact</a>
         </div>
         <a href="contact.html" class="nav-cta">Get in Touch</a>
         <div class="hamburger">
@@ -48,373 +41,357 @@
     </div>
 </nav>
 
-<!-- Mobile Menu -->
+<!-- Mobile Navigation Menu -->
 <div class="mobile-menu">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="tech.html">Tech Stack</a>
     <a href="services.html">Services</a>
-    <a href="packages.html">Pricing</a>
-    <a href="project.html">Portfolio</a>
-    <a href="github.html">Open Source</a>
+    <a href="project.html">Projects</a>
+    <a href="process.html">Process</a>
     <a href="contact.html">Contact</a>
 </div>
 
-<!-- ===================================================
-     HERO SECTION
-     =================================================== -->
-<section class="hero">
-    <div class="hero-bg">
-        <div class="hero-grid"></div>
-        <div class="hero-orb hero-orb-1"></div>
-        <div class="hero-orb hero-orb-2"></div>
-        <div class="hero-orb hero-orb-3"></div>
-    </div>
+<!-- =====================================================
+     1. HOME PAGE: HERO SECTION WITH 3D AI CORE
+     ===================================================== -->
+<section class="hero" id="home">
     <div class="container">
-        <div class="hero-wrapper">
+        <div class="hero-grid-layout">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <span class="hero-badge-dot"></span>
+                <div class="badge-glow">
+                    <span class="badge-glow-dot"></span>
                     Available for New Projects
                 </div>
-                <h1>
-                    We Build
-                    <em class="text-gradient">Digital Products</em>
-                    That <span style="color:var(--text-secondary);">Scale</span>
-                </h1>
-                <p>YNW Software Solutions crafts exceptional software experiences — from scalable web applications to high-performance mobile apps that power modern businesses.</p>
+                <h1>Designing the <span class="text-gradient">Future</span> of the Web.</h1>
+                <p>Elevating Web Experiences — Crafting high-performance, intelligent websites with futuristic UI/UX, 3D WebGL visuals, and zero-gravity weightless design aesthetics.</p>
                 <div class="hero-btns">
-                    <a href="project.html" class="btn btn-primary">View Our Work <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="#projects" class="btn btn-cyan">View My Work <i class="fa-solid fa-arrow-right"></i></a>
                     <a href="contact.html" class="btn btn-outline">Start a Project</a>
                 </div>
-                <div class="hero-stats">
-                    <div>
-                        <div class="hero-stat-num"><span class="counter" data-count="50" data-suffix="+">0+</span></div>
-                        <div class="hero-stat-label">Projects Delivered</div>
-                    </div>
-                    <div>
-                        <div class="hero-stat-num"><span class="counter" data-count="30" data-suffix="+">0+</span></div>
-                        <div class="hero-stat-label">Happy Clients</div>
-                    </div>
-                    <div>
-                        <div class="hero-stat-num"><span class="counter" data-count="3" data-suffix="+">0+</span></div>
-                        <div class="hero-stat-label">Years Experience</div>
-                    </div>
-                    <div>
-                        <div class="hero-stat-num"><span class="counter" data-count="99" data-suffix="%">0%</span></div>
-                        <div class="hero-stat-label">Client Satisfaction</div>
-                    </div>
-                </div>
             </div>
-            
-            <div class="hero-3d-container">
-                <div class="ai-3d-canvas-wrap">
-                    <canvas id="ynw-ai-3d-canvas"></canvas>
+
+            <!-- Floating 3D AI Animated Core Canvas -->
+            <div class="hero-canvas-wrapper">
+                <div class="hero-canvas-glow"></div>
+                <div id="ai-core-canvas"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     2. ABOUT PAGE: GLASSMORPHIC 3D TILT PROFILE CARD
+     ===================================================== -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="section-header">
+            <div class="badge-glow">Craftsmanship & Expertise</div>
+            <h2 class="section-title">About the <span class="text-gradient">Architect</span></h2>
+            <p class="section-subtitle">Pioneering zero-G UI/UX systems and ultra-modern frontend architectures.</p>
+        </div>
+
+        <div class="profile-card-wrapper">
+            <div class="glass-card tilt-card profile-card-content">
+                <div class="profile-avatar-box">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" alt="UI/UX Designer Profile">
                 </div>
-                <div class="ai-badge-overlay">
-                    <span class="pulse"></span>
-                    <span>YNW AI ACTIVE</span>
+                <div class="profile-info">
+                    <h3>YNW Studio</h3>
+                    <div class="profile-role">Lead UI/UX Designer & Senior Frontend Developer</div>
+                    <p class="profile-bio">Specializing in high-performance web applications, interactive 3D WebGL interfaces, and glassmorphic micro-animations. I bridge the gap between creative visual art and complex software engineering.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">React / Next.js</span>
+                        <span class="skill-tag">Three.js / WebGL</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Figma Systems</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="scroll-indicator">
-        <div class="scroll-line"></div>
-        <span>Scroll</span>
-    </div>
 </section>
 
-<!-- ===================================================
-     MARQUEE / TICKER
-     =================================================== -->
-<div class="marquee-section">
-    <div class="marquee-track">
-        <div class="marquee-item"><i class="fa-solid fa-star"></i> Web Development</div>
-        <div class="marquee-item"><i class="fa-solid fa-star"></i> Mobile Apps</div>
-        <div class="marquee-item"><i class="fa-solid fa-star"></i> Web Development</div>
-        <div class="marquee-item"><i class="fa-solid fa-star"></i> Mobile Apps</div>
-        <div class="marquee-item"><i class="fa-solid fa-star"></i> Web Development</div>
-        <div class="marquee-item"><i class="fa-solid fa-star"></i> Mobile Apps</div>
-        <!-- Duplicate for seamless loop -->
-        <div class="marquee-item"><i class="fa-solid fa-star"></i> Web Development</div>
-        <div class="marquee-item"><i class="fa-solid fa-star"></i> Mobile Apps</div>
-        <div class="marquee-item"><i class="fa-solid fa-star"></i> Web Development</div>
-        <div class="marquee-item"><i class="fa-solid fa-star"></i> Mobile Apps</div>
-        <div class="marquee-item"><i class="fa-solid fa-star"></i> Web Development</div>
-        <div class="marquee-item"><i class="fa-solid fa-star"></i> Mobile Apps</div>
-    </div>
-</div>
-
-<!-- ===================================================
-     SERVICES SECTION
-     =================================================== -->
+<!-- =====================================================
+     3. SERVICES PAGE: ANTI-GRAVITY PRICING CARDS
+     ===================================================== -->
 <section class="section" id="services">
     <div class="container">
-        <div class="section-header reveal">
-            <div class="label">What We Do</div>
-            <h2>Our Core <span class="text-gradient">Services</span></h2>
-            <p>From concept to deployment, we deliver end-to-end digital solutions that elevate your business to the next level.</p>
+        <div class="section-header">
+            <div class="badge-glow">Pricing Packages</div>
+            <h2 class="section-title">Anti-Gravity <span class="text-gradient">Services</span></h2>
+            <p class="section-subtitle">Transparent investments engineered for scalable growth and futuristic brand presence.</p>
         </div>
 
-        <div class="services-grid">
-            <div class="service-card reveal">
-                <div class="service-num">01</div>
-                <div class="icon-box icon-box-orange">
-                    <i class="fa-solid fa-laptop-code"></i>
+        <div class="pricing-grid">
+            <!-- Pricing Card 1: Starter -->
+            <div class="pricing-card">
+                <div>
+                    <div class="pricing-icon">🚀</div>
+                    <h3 class="pricing-title">Starter Package</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">Basic Landing Page</p>
+                    <div class="pricing-price">35,000 LKR</div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> 5-Page Responsive Website</li>
+                        <li><i class="fa-solid fa-check"></i> UI/UX Design Included</li>
+                        <li><i class="fa-solid fa-check"></i> Basic SEO Setup</li>
+                        <li><i class="fa-solid fa-check"></i> Fast Load Speed Optimization</li>
+                        <li><i class="fa-solid fa-check"></i> Mobile & Tablet Ready</li>
+                    </ul>
                 </div>
-                <h3>Web Development</h3>
-                <p style="margin-top:12px;font-size:0.9rem;">Responsive, high-performance web applications built with modern frameworks and best practices for maximum scalability.</p>
-                <a href="services.html" class="service-arrow"><i class="fa-solid fa-arrow-right"></i></a>
+                <a href="contact.html?package=starter" class="btn btn-outline" style="width:100%;">Start Project</a>
             </div>
 
-            <div class="service-card reveal delay-1">
-                <div class="service-num">02</div>
-                <div class="icon-box icon-box-pink">
-                    <i class="fa-solid fa-mobile-screen"></i>
+            <!-- Pricing Card 2: E-Commerce (Featured) -->
+            <div class="pricing-card">
+                <span class="pricing-badge">Popular Choice</span>
+                <div>
+                    <div class="pricing-icon">🛒</div>
+                    <h3 class="pricing-title">E-Commerce Package</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">E-commerce Website</p>
+                    <div class="pricing-price">85,000 LKR</div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> Full E-Commerce Setup</li>
+                        <li><i class="fa-solid fa-check"></i> Payment Gateway Integration</li>
+                        <li><i class="fa-solid fa-check"></i> Advanced SEO & Security</li>
+                        <li><i class="fa-solid fa-check"></i> Inventory Management</li>
+                        <li><i class="fa-solid fa-check"></i> 30 Days Post-Launch Support</li>
+                    </ul>
                 </div>
-                <h3>Mobile Development</h3>
-                <p style="margin-top:12px;font-size:0.9rem;">Cross-platform mobile applications with native performance, delivering seamless experiences on iOS and Android.</p>
-                <a href="services.html" class="service-arrow"><i class="fa-solid fa-arrow-right"></i></a>
+                <a href="contact.html?package=ecommerce" class="btn btn-cyan" style="width:100%;">Start Project</a>
+            </div>
+
+            <!-- Pricing Card 3: Custom Web App -->
+            <div class="pricing-card">
+                <div>
+                    <div class="pricing-icon">💎</div>
+                    <h3 class="pricing-title">Custom Web App</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">Custom Web Application</p>
+                    <div class="pricing-price">150,000 LKR</div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> Custom Frontend & Backend</li>
+                        <li><i class="fa-solid fa-check"></i> Advanced AI Integrations</li>
+                        <li><i class="fa-solid fa-check"></i> Premium Maintenance</li>
+                        <li><i class="fa-solid fa-check"></i> Real-time Analytics & DB</li>
+                        <li><i class="fa-solid fa-check"></i> Dedicated SLA Support</li>
+                    </ul>
+                </div>
+                <a href="contact.html?package=custom" class="btn btn-outline" style="width:100%;">Start Project</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===================================================
-     STATS SECTION
-     =================================================== -->
-<div class="stats-section">
+<!-- =====================================================
+     4. PROJECTS PAGE: FLOATING GALLERY & LIGHTBOX MODAL
+     ===================================================== -->
+<section class="section" id="projects">
     <div class="container">
-        <div class="stats-grid">
-            <div class="stat-item reveal">
-                <div class="stat-number"><span class="counter" data-count="50" data-suffix="+">0+</span></div>
-                <div class="stat-label">Projects Completed</div>
-            </div>
-            <div class="stat-item reveal delay-1">
-                <div class="stat-number"><span class="counter" data-count="30" data-suffix="+">0+</span></div>
-                <div class="stat-label">Happy Clients</div>
-            </div>
-            <div class="stat-item reveal delay-2">
-                <div class="stat-number"><span class="counter" data-count="15" data-suffix="+">0+</span></div>
-                <div class="stat-label">Technologies Mastered</div>
-            </div>
-            <div class="stat-item reveal delay-3">
-                <div class="stat-number"><span class="counter" data-count="99" data-suffix="%">0%</span></div>
-                <div class="stat-label">Satisfaction Rate</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ===================================================
-     HOW WE WORK
-     =================================================== -->
-<section class="section" style="background: var(--bg-secondary);">
-    <div class="container">
-        <div class="section-header reveal">
-            <div class="label">Our Process</div>
-            <h2>How We <span class="text-gradient">Work</span></h2>
-            <p>A proven process that turns your ideas into exceptional digital products, on time and on budget.</p>
-        </div>
-
-        <div class="process-grid">
-            <div class="process-card reveal">
-                <div class="process-num">01</div>
-                <h3 style="margin-bottom:12px;">Discovery</h3>
-                <p style="font-size:0.9rem;">We deep-dive into your business goals, user needs, and technical requirements to craft a solid foundation.</p>
-            </div>
-            <div class="process-card reveal delay-1">
-                <div class="process-num">02</div>
-                <h3 style="margin-bottom:12px;">Design</h3>
-                <p style="font-size:0.9rem;">Our designers create stunning wireframes and prototypes that align with your brand identity and user expectations.</p>
-            </div>
-            <div class="process-card reveal delay-2">
-                <div class="process-num">03</div>
-                <h3 style="margin-bottom:12px;">Development</h3>
-                <p style="font-size:0.9rem;">Clean, tested, and scalable code delivered in agile sprints with continuous feedback and transparent communication.</p>
-            </div>
-            <div class="process-card reveal delay-3">
-                <div class="process-num">04</div>
-                <h3 style="margin-bottom:12px;">Launch & Support</h3>
-                <p style="font-size:0.9rem;">Smooth deployment with continuous monitoring, performance optimisation, and dedicated ongoing support.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===================================================
-     FEATURED WORK / PORTFOLIO
-     =================================================== -->
-<section class="section" id="portfolio">
-    <div class="container">
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;flex-wrap:wrap;gap:20px;" class="reveal">
-            <div>
-                <div class="label">Featured Work</div>
-                <h2>Our Latest <span class="text-gradient">Projects</span></h2>
-            </div>
-            <a href="project.html" class="btn btn-outline" style="white-space:nowrap;">View All Work <i class="fa-solid fa-arrow-right"></i></a>
+        <div class="section-header">
+            <div class="badge-glow">Curated Portfolio</div>
+            <h2 class="section-title">The Floating <span class="text-gradient">Gallery</span></h2>
+            <p class="section-subtitle">Projects suspended across virtual zero-gravity elevations. Click any card to expand.</p>
         </div>
 
         <div class="portfolio-grid">
-            <div class="portfolio-item reveal" data-category="web">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Analytics Dashboard Project">
-                <div class="portfolio-overlay">
-                    <div>
-                        <div class="portfolio-tag">Web Application</div>
-                        <div class="portfolio-title">Analytics Dashboard</div>
+            <!-- Project Item 1 -->
+            <div class="portfolio-item elevation-1" data-title="Smart Card Solutions" data-desc="Futuristic smart ID card system with RFID NFC integration and real-time user management dashboard." data-tech="React • Tailwind • Node.js">
+                <div class="portfolio-img-box">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Smart Card Solutions">
+                </div>
+                <div class="portfolio-info-overlay">
+                    <div class="portfolio-tech-list">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Tailwind</span>
+                        <span class="tech-badge">Node.js</span>
                     </div>
+                    <h3>Smart Card Solutions</h3>
                 </div>
             </div>
-            <div class="portfolio-item reveal delay-1" data-category="cloud">
-                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=800" alt="Cloud Infrastructure Project">
-                <div class="portfolio-overlay">
-                    <div>
-                        <div class="portfolio-tag">Cloud Architecture</div>
-                        <div class="portfolio-title">AWS Enterprise Setup</div>
+
+            <!-- Project Item 2 -->
+            <div class="portfolio-item elevation-2" data-title="Nexus AI Analytics Dashboard" data-desc="High-speed data analytics platform with 3D interactive data visualizer and live threat monitoring." data-tech="Three.js • WebGL • TypeScript">
+                <div class="portfolio-img-box">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Nexus AI Analytics Dashboard">
+                </div>
+                <div class="portfolio-info-overlay">
+                    <div class="portfolio-tech-list">
+                        <span class="tech-badge">Three.js</span>
+                        <span class="tech-badge">WebGL</span>
+                        <span class="tech-badge">Figma</span>
                     </div>
+                    <h3>Nexus AI Analytics Dashboard</h3>
                 </div>
             </div>
-            <div class="portfolio-item reveal delay-2" data-category="mobile">
-                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800" alt="Mobile App Project">
-                <div class="portfolio-overlay">
-                    <div>
-                        <div class="portfolio-tag">Mobile App</div>
-                        <div class="portfolio-title">E-Commerce Platform</div>
+
+            <!-- Project Item 3 -->
+            <div class="portfolio-item elevation-3" data-title="Zero-G Mobile Banking App" data-desc="Next-generation glassmorphic mobile application for seamless international crypto & fiat transactions." data-tech="React Native • Glassmorphism • Figma">
+                <div class="portfolio-img-box">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" alt="Zero-G Mobile Banking App">
+                </div>
+                <div class="portfolio-info-overlay">
+                    <div class="portfolio-tech-list">
+                        <span class="tech-badge">React Native</span>
+                        <span class="tech-badge">Figma</span>
+                        <span class="tech-badge">UI/UX</span>
                     </div>
+                    <h3>Zero-G Mobile Banking App</h3>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===================================================
-     TESTIMONIALS
-     =================================================== -->
-<section class="section" style="background: var(--bg-secondary);">
+<!-- Portfolio Floating Translucent Modal -->
+<div class="modal-overlay" id="project-modal">
+    <div class="modal-content-pane">
+        <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+        <div style="margin-bottom:24px;">
+            <span class="tech-badge modal-project-tech" style="font-size:0.9rem;">React • Three.js • Figma</span>
+        </div>
+        <h2 class="modal-project-title" style="margin-bottom:16px;">Project Title</h2>
+        <div style="width:100%; height:320px; border-radius:16px; overflow:hidden; margin-bottom:24px; border:1px solid var(--glass-border);">
+            <img class="modal-project-img" src="" alt="Project Preview" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <p class="modal-project-desc" style="line-height:1.8; font-size:1.1rem;">Project description text...</p>
+        <div style="margin-top:32px; display:flex; gap:16px;">
+            <a href="#" class="btn btn-cyan" target="_blank">Live Launch <i class="fa-solid fa-external-link"></i></a>
+            <a href="#" class="btn btn-outline" target="_blank">View Specs</a>
+        </div>
+    </div>
+</div>
+
+<!-- =====================================================
+     5. PROCESS / WORKFLOW: VERTICAL TIMELINE WITH LASER BEAM
+     ===================================================== -->
+<section class="section" id="process">
     <div class="container">
-        <div class="section-header reveal">
-            <div class="label">Client Love</div>
-            <h2>What They <span class="text-gradient">Say</span></h2>
-            <p>Don't just take our word for it — here's what our clients say about working with us.</p>
+        <div class="section-header">
+            <div class="badge-glow">Execution Blueprint</div>
+            <h2 class="section-title">Process & <span class="text-gradient">Workflow</span></h2>
+            <p class="section-subtitle">A laser-guided pathway from initial discovery to zero-gravity deployment.</p>
         </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card reveal">
-                <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"YNW completely transformed our web platform. Their scalable architecture reduced our server costs by 40% while doubling our throughput. Exceptional team!"</p>
-                <div class="testimonial-author">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&q=80" alt="Rahul Perera" class="author-avatar">
-                    <div>
-                        <div class="author-name">Rahul Perera</div>
-                        <div class="author-role">CTO, TechFlow Sri Lanka</div>
-                    </div>
+
+        <div class="workflow-container">
+            <!-- Glowing Laser Line Connection -->
+            <div class="laser-beam-line">
+                <div class="laser-beam-pulse"></div>
+            </div>
+
+            <!-- Step 1: Research -->
+            <div class="workflow-step">
+                <div class="workflow-orb-wrapper">01</div>
+                <div class="glass-card workflow-card">
+                    <h3>1. Research & Strategy</h3>
+                    <p>Deep-dive discovery phase mapping user personas, competitive landscapes, and core functional architecture to lay a solid foundation.</p>
                 </div>
             </div>
-            <div class="testimonial-card reveal delay-1">
-                <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"Delivered our entire e-commerce platform in 6 weeks — ahead of schedule! The code quality and documentation were outstanding. We're thrilled with the results."</p>
-                <div class="testimonial-author">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&q=80" alt="Amara Fernando" class="author-avatar">
-                    <div>
-                        <div class="author-name">Amara Fernando</div>
-                        <div class="author-role">Founder, ShopCeylon</div>
-                    </div>
+
+            <!-- Step 2: Design -->
+            <div class="workflow-step">
+                <div class="workflow-orb-wrapper">02</div>
+                <div class="glass-card workflow-card">
+                    <h3>2. UI/UX Design & Prototyping</h3>
+                    <p>Crafting interactive wireframes, glassmorphic design systems, high-fidelity responsive mockups, and micro-interactions in Figma.</p>
                 </div>
             </div>
-            <div class="testimonial-card reveal delay-2">
-                <div class="stars">★★★★★</div>
-                <p class="testimonial-text">"The mobile app development process was seamless. From UX design to app store launch, YNW's expertise and professionalism were top-notch. Highly recommend!"</p>
-                <div class="testimonial-author">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&q=80" alt="Nimal Jayasinghe" class="author-avatar">
-                    <div>
-                        <div class="author-name">Nimal Jayasinghe</div>
-                        <div class="author-role">Director, Zenith Corp</div>
-                    </div>
+
+            <!-- Step 3: Develop -->
+            <div class="workflow-step">
+                <div class="workflow-orb-wrapper">03</div>
+                <div class="glass-card workflow-card">
+                    <h3>3. Frontend & 3D Development</h3>
+                    <p>Engineering clean, modular code with HTML5, CSS3, JavaScript, React, and Three.js 3D canvas shaders for fluid performance.</p>
+                </div>
+            </div>
+
+            <!-- Step 4: Deploy -->
+            <div class="workflow-step">
+                <div class="workflow-orb-wrapper">04</div>
+                <div class="glass-card workflow-card">
+                    <h3>4. Testing & Zero-G Deploy</h3>
+                    <p>Comprehensive security audits, SEO optimization, speed indexing, and seamless deployment onto high-performance cloud networks.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===================================================
-     CTA SECTION
-     =================================================== -->
-<section class="section">
+<!-- =====================================================
+     6. CONTACT PAGE: THE GLASS TERMINAL & BOUNCING SOCIALS
+     ===================================================== -->
+<section class="section" id="contact">
     <div class="container">
-        <div class="cta-section" style="background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-xl); padding: 100px 60px; position: relative; overflow: hidden;">
-            <div class="cta-glow"></div>
-            <div style="position:relative; z-index:1;" class="reveal">
-                <div class="label">Ready to Build?</div>
-                <h2>Let's Create Something <span class="text-gradient">Extraordinary</span></h2>
-                <p>Have a project in mind? Let's turn your vision into reality. We're ready to start building your next great product.</p>
-                <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-top:44px;">
-                    <a href="contact.html" class="btn btn-primary">Start Your Project <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="packages.html" class="btn btn-outline">View Pricing</a>
-                </div>
+        <div class="section-header">
+            <div class="badge-glow">Initiate Transmission</div>
+            <h2 class="section-title">The Glass <span class="text-gradient">Terminal</span></h2>
+            <p class="section-subtitle">Reach out to discuss your next project or launch an intelligent digital platform.</p>
+        </div>
+
+        <div class="glass-terminal-wrapper">
+            <!-- Form Pane -->
+            <div class="glass-panel glass-form-pane">
+                <h3 style="margin-bottom:24px;">Send a Message</h3>
+                <form id="contact-form" onsubmit="event.preventDefault(); alert('Message transmitted successfully in Zero-G!');">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" class="form-input" placeholder="e.g. John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Project Details</label>
+                        <textarea id="message" class="form-input" placeholder="Tell us about your requirements..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-cyan" style="width:100%;">Transmit Signal <i class="fa-solid fa-paper-plane"></i></button>
+                </form>
+            </div>
+
+            <!-- Bouncing 3D Social Media Floating Cards -->
+            <div class="social-floating-container">
+                <a href="https://linkedin.com" target="_blank" class="social-orb-card">
+                    <div class="social-icon-orb"><i class="fa-brands fa-linkedin-in"></i></div>
+                    <div>
+                        <h4 style="color:var(--text-white);">LinkedIn</h4>
+                        <p style="font-size:0.88rem; color:var(--text-muted);">Connect professionally</p>
+                    </div>
+                </a>
+
+                <a href="https://github.com" target="_blank" class="social-orb-card">
+                    <div class="social-icon-orb"><i class="fa-brands fa-github"></i></div>
+                    <div>
+                        <h4 style="color:var(--text-white);">GitHub</h4>
+                        <p style="font-size:0.88rem; color:var(--text-muted);">Explore open source code</p>
+                    </div>
+                </a>
+
+                <a href="mailto:contact@ynw.com" class="social-orb-card">
+                    <div class="social-icon-orb"><i class="fa-solid fa-envelope"></i></div>
+                    <div>
+                        <h4 style="color:var(--text-white);">Direct Email</h4>
+                        <p style="font-size:0.88rem; color:var(--text-muted);">contact@ynw.com</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===================================================
-     FOOTER
-     =================================================== -->
+<!-- Footer -->
 <footer>
     <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">YNW<span>.</span></a>
-                <p>Building the future of software with scalable web applications and seamless cross-platform mobile experiences.</p>
-                <div class="footer-socials">
-                    <a href="https://github.com/YWanigaarachchi" target="_blank" class="social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h5>Company</h5>
-                <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About Us</a>
-                    <a href="project.html">Portfolio</a>
-                    <a href="github.html">Open Source</a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h5>Services</h5>
-                <div class="footer-links">
-                    <a href="services.html">Web Development</a>
-                    <a href="services.html">Mobile Apps</a>
-                    <a href="packages.html">Pricing</a>
-                </div>
-            </div>
-
-            <div class="footer-col">
-                <h5>Stay Updated</h5>
-                <p style="font-size:0.85rem;margin-bottom:0;">Get the latest insights on software and tech delivered to your inbox.</p>
-                <div class="footer-newsletter-form">
-                    <input type="email" placeholder="your@email.com" aria-label="Email for newsletter">
-                    <button type="submit" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
-                </div>
-            </div>
+        <div class="footer-content">
+            <a href="index.html" class="logo">YNW<span>.</span> Studio</a>
+            <p style="font-size:0.95rem; color:var(--text-muted);">Crafting weightless zero-gravity digital products.</p>
         </div>
-
         <div class="footer-bottom">
-            <p>&copy; 2026 YNW Software Solutions. All Rights Reserved.</p>
-            <p>Made with <span style="color:var(--accent-orange);">♥</span> in Sri Lanka</p>
+            <p>&copy; 2026 YNW Anti-Gravity Studio. All rights reserved.</p>
         </div>
     </div>
 </footer>
-
-<!-- Floating Buttons -->
-<a href="https://wa.me/94765855570?text=Hello%20YNW%20Software%20Solutions!%20%F0%9F%91%8B%0AI'm%20interested%20in%20your%20services." target="_blank" class="whatsapp-chat" aria-label="Chat on WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-    <span class="whatsapp-tooltip">Chat with us!</span>
-</a>
-
-<button class="back-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 
 <script src="script.js"></script>
 </body>
