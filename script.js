@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initAutoScrollBtn();
   initSmoothScroll();
+  initServiceCategoryTabs();
+  initPackageOrderModal();
 });
 
 /* =====================================================
@@ -39,7 +41,7 @@ function initCustomCursor() {
   }
   animateFollower();
 
-  const hoverTargets = document.querySelectorAll('a, button, .btn, .glass-card, .pricing-card-5, .portfolio-card-work, .whatsapp-float-btn');
+  const hoverTargets = document.querySelectorAll('a, button, .btn, .glass-card, .pricing-card-5, .portfolio-card-work, .whatsapp-float-btn, .tab-btn');
   hoverTargets.forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursor.classList.add('active');
@@ -129,33 +131,19 @@ function initThreeJsAiCore() {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   container.appendChild(renderer.domElement);
 
-  // Core Group
   const coreGroup = new THREE.Group();
   scene.add(coreGroup);
 
-  // Outer Wireframe Sphere
   const outerGeo = new THREE.IcosahedronGeometry(2, 2);
-  const outerMat = new THREE.MeshBasicMaterial({
-    color: 0x00E5FF,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.55
-  });
+  const outerMat = new THREE.MeshBasicMaterial({ color: 0x00E5FF, wireframe: true, transparent: true, opacity: 0.55 });
   const outerSphere = new THREE.Mesh(outerGeo, outerMat);
   coreGroup.add(outerSphere);
 
-  // Inner Glowing Sphere Core
   const innerGeo = new THREE.OctahedronGeometry(1.2, 3);
-  const innerMat = new THREE.MeshBasicMaterial({
-    color: 0x5C67DE,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.75
-  });
+  const innerMat = new THREE.MeshBasicMaterial({ color: 0x5C67DE, wireframe: true, transparent: true, opacity: 0.75 });
   const innerSphere = new THREE.Mesh(innerGeo, innerMat);
   coreGroup.add(innerSphere);
 
-  // Orbiting Particle Ring
   const particlesCount = 300;
   const posArray = new Float32Array(particlesCount * 3);
   for (let i = 0; i < particlesCount * 3; i += 3) {
@@ -167,23 +155,16 @@ function initThreeJsAiCore() {
   }
   const particleGeo = new THREE.BufferGeometry();
   particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-  const particleMat = new THREE.PointsMaterial({
-    size: 0.05,
-    color: 0x00E5FF,
-    transparent: true,
-    opacity: 0.8
-  });
+  const particleMat = new THREE.PointsMaterial({ size: 0.05, color: 0x00E5FF, transparent: true, opacity: 0.8 });
   const particleRing = new THREE.Points(particleGeo, particleMat);
   coreGroup.add(particleRing);
 
-  // Mouse Parallax Effect
   let targetX = 0, targetY = 0;
   window.addEventListener('mousemove', (e) => {
     targetX = (e.clientX / window.innerWidth - 0.5) * 1.5;
     targetY = (e.clientY / window.innerHeight - 0.5) * 1.5;
   });
 
-  // Resize Handler
   window.addEventListener('resize', () => {
     if (!container) return;
     camera.aspect = container.clientWidth / container.clientHeight;
@@ -191,7 +172,6 @@ function initThreeJsAiCore() {
     renderer.setSize(container.clientWidth, container.clientHeight);
   });
 
-  // Animation Loop
   let clock = new THREE.Clock();
   function animate() {
     requestAnimationFrame(animate);
@@ -202,8 +182,6 @@ function initThreeJsAiCore() {
     innerSphere.rotation.x = -elapsedTime * 0.4;
     innerSphere.rotation.y = -elapsedTime * 0.25;
     particleRing.rotation.y = elapsedTime * 0.15;
-
-    // Bobbing Up and Down (Zero-G simulation)
     coreGroup.position.y = Math.sin(elapsedTime * 1.8) * 0.25;
 
     coreGroup.rotation.y += (targetX - coreGroup.rotation.y) * 0.05;
@@ -241,7 +219,97 @@ function init3DTiltEffect() {
 }
 
 /* =====================================================
-   5. NAVBAR SCROLL & STICKY GLASS
+   5. SERVICE CATEGORY TABS FILTERING
+   ===================================================== */
+function initServiceCategoryTabs() {
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const cards = document.querySelectorAll('.pricing-card-5');
+
+  if (!tabBtns.length || !cards.length) return;
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const category = btn.getAttribute('data-category');
+
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all' || cardCat === category) {
+          card.classList.remove('hidden-category');
+        } else {
+          card.classList.add('hidden-category');
+        }
+      });
+    });
+  });
+}
+
+/* =====================================================
+   6. PACKAGE ORDER POP-OUT MODAL & DYNAMIC WHATSAPP LINK
+   ===================================================== */
+let currentSelectedPackage = { name: 'Custom Package', price: 'Contact Us' };
+
+function initPackageOrderModal() {
+  const modalOverlay = document.getElementById('package-order-modal');
+  if (!modalOverlay) return;
+
+  const closeBtn = modalOverlay.querySelector('.modal-close-btn');
+  const orderForm = document.getElementById('package-order-form');
+
+  // Trigger buttons on pricing cards
+  const orderBtns = document.querySelectorAll('.trigger-order-modal');
+  orderBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const packageName = btn.getAttribute('data-package-name') || 'Custom Package';
+      const packagePrice = btn.getAttribute('data-package-price') || 'Contact Us';
+
+      currentSelectedPackage = { name: packageName, price: packagePrice };
+
+      const nameEl = document.getElementById('modal-package-title');
+      const priceEl = document.getElementById('modal-package-price');
+      if (nameEl) nameEl.innerText = packageName;
+      if (priceEl) priceEl.innerText = packagePrice;
+
+      modalOverlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+  modalOverlay.addEventListener('click', (e) => {
+    if (e.target === modalOverlay) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  function closeModal() {
+    modalOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Handle Order Form Submit -> Build Encoded WhatsApp URL
+  orderForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('order-name')?.value || 'Client';
+    const email = document.getElementById('order-email')?.value || 'Not provided';
+    const company = document.getElementById('order-company')?.value || 'Individual';
+    const location = document.getElementById('order-location')?.value || 'Not provided';
+
+    const text = `Hi YNW Software Solutions!%0A%0A*New Package Inquiry*%0A------------------------------%0A*Package:* ${encodeURIComponent(currentSelectedPackage.name)} (${encodeURIComponent(currentSelectedPackage.price)})%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Company / Type:* ${encodeURIComponent(company)}%0A*Location:* ${encodeURIComponent(location)}%0A------------------------------%0APlease get in touch to discuss details.`;
+
+    const whatsappUrl = `https://wa.me/94765855570?text=${text}`;
+    window.open(whatsappUrl, '_blank');
+    closeModal();
+  });
+}
+
+/* =====================================================
+   7. NAVBAR SCROLL & STICKY GLASS
    ===================================================== */
 function initNavbarScroll() {
   const nav = document.querySelector('nav');
@@ -255,7 +323,7 @@ function initNavbarScroll() {
 }
 
 /* =====================================================
-   6. MOBILE NAVIGATION MENU
+   8. MOBILE NAVIGATION MENU
    ===================================================== */
 function initMobileMenu() {
   const hamburger = document.querySelector('.hamburger');
@@ -275,7 +343,7 @@ function initMobileMenu() {
 }
 
 /* =====================================================
-   7. AUTO-SCROLL BUTTON
+   9. RIGHT-SIDE AUTO-SCROLL BUTTON
    ===================================================== */
 function initAutoScrollBtn() {
   const scrollBtn = document.querySelector('.auto-scroll-btn');
@@ -299,7 +367,7 @@ function initAutoScrollBtn() {
 }
 
 /* =====================================================
-   8. SMOOTH SCROLLING
+   10. SMOOTH SCROLLING
    ===================================================== */
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
