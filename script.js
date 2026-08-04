@@ -458,7 +458,7 @@ function initMobileMenu() {
 }
 
 /* =====================================================
-   9. RIGHT-SIDE AUTO-SCROLL BUTTON (SCROLLS UP ONLY)
+   9. RIGHT-SIDE AUTO-SCROLL BUTTON (ULTRA-SMOOTH SCROLL UP)
    ===================================================== */
 function initAutoScrollBtn() {
   const scrollBtn = document.querySelector('.auto-scroll-btn');
@@ -474,9 +474,33 @@ function initAutoScrollBtn() {
     }
   });
 
-  scrollBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  scrollBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    smoothScrollToTop(900);
   });
+}
+
+function smoothScrollToTop(duration = 900) {
+  const startPosition = window.scrollY || window.pageYOffset;
+  const startTime = performance.now();
+
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function step(currentTime) {
+    const timeElapsed = currentTime - startTime;
+    const progress = Math.min(timeElapsed / duration, 1);
+    const easeProgress = easeInOutCubic(progress);
+
+    window.scrollTo(0, startPosition * (1 - easeProgress));
+
+    if (progress < 1) {
+      requestAnimationFrame(step);
+    }
+  }
+
+  requestAnimationFrame(step);
 }
 
 /* =====================================================
