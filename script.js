@@ -633,21 +633,6 @@ function initBackgroundMusic() {
     }
   }
 
-  function startPlay() {
-    if (isPlaying) return;
-    audio.play().then(() => {
-      toggleBtn.classList.add('playing');
-      isPlaying = true;
-      removeAutoPlayListeners();
-    }).catch(err => {
-      // Fallback to ambient Web Audio API synthesizer if audio file load fails or blocked
-      createAmbientSynth();
-      toggleBtn.classList.add('playing');
-      isPlaying = true;
-      removeAutoPlayListeners();
-    });
-  }
-
   function toggleMusic() {
     if (isPlaying) {
       audio.pause();
@@ -655,7 +640,15 @@ function initBackgroundMusic() {
       toggleBtn.classList.remove('playing');
       isPlaying = false;
     } else {
-      startPlay();
+      audio.play().then(() => {
+        toggleBtn.classList.add('playing');
+        isPlaying = true;
+      }).catch(err => {
+        // Fallback to ambient Web Audio API synthesizer
+        createAmbientSynth();
+        toggleBtn.classList.add('playing');
+        isPlaying = true;
+      });
     }
   }
 
@@ -664,24 +657,32 @@ function initBackgroundMusic() {
     toggleMusic();
   });
 
-  // Attempt instant autoplay immediately on page load
-  startPlay();
+  // Attempt autoplay immediately on load, fallback to first user interaction if blocked by browser policy
+  audio.play().then(() => {
+    toggleBtn.classList.add('playing');
+    isPlaying = true;
+  }).catch(() => {
+    const startAudioOnInteraction = () => {
+      if (!isPlaying) {
+        audio.play().then(() => {
+          toggleBtn.classList.add('playing');
+          isPlaying = true;
+        }).catch(err => {
+          // Fallback to ambient Web Audio API synthesizer
+          createAmbientSynth();
+          toggleBtn.classList.add('playing');
+          isPlaying = true;
+        });
+      }
+      // Clean up all interaction listeners
+      interactionEvents.forEach(event => {
+        document.removeEventListener(event, startAudioOnInteraction);
+      });
+    };
 
-  // Eager fallback: Browser Autoplay Policy requires user interaction if direct autoplay is blocked
-  const autoPlayEvents = ['click', 'touchstart', 'mousemove', 'scroll', 'keydown'];
-  function onFirstUserGesture() {
-    if (!isPlaying) {
-      startPlay();
-    }
-  }
-
-  autoPlayEvents.forEach(evt => {
-    window.addEventListener(evt, onFirstUserGesture, { passive: true });
-  });
-
-  function removeAutoPlayListeners() {
-    autoPlayEvents.forEach(evt => {
-      window.removeEventListener(evt, onFirstUserGesture);
+    const interactionEvents = ['click', 'scroll', 'mousemove', 'keydown', 'touchstart'];
+    interactionEvents.forEach(event => {
+      document.addEventListener(event, startAudioOnInteraction, { once: true, passive: true });
     });
-  }
+  });
 }
