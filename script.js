@@ -3,6 +3,7 @@
    ===================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initPreloader();
   initCustomCursor();
   initBackgroundParticles();
   initThreeJsAiCore();
