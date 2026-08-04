@@ -1211,16 +1211,25 @@ footer {
 
 .preloader-logo-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 800;
-  letter-spacing: 4px;
+  letter-spacing: 6px;
   color: #FFFFFF;
   text-transform: uppercase;
-  text-shadow: 0 0 20px var(--cyan-glow);
+  text-shadow: 0 0 25px var(--cyan-glow), 0 0 45px rgba(0, 229, 255, 0.4);
+  position: relative;
+  display: inline-block;
+  animation: preloaderLogoGlow 2.5s infinite ease-in-out alternate;
 }
 
 .preloader-logo-title span {
   color: var(--neon-cyan);
+  text-shadow: 0 0 35px var(--neon-cyan);
+}
+
+@keyframes preloaderLogoGlow {
+  0% { text-shadow: 0 0 20px var(--cyan-glow), 0 0 35px rgba(0, 229, 255, 0.3); }
+  100% { text-shadow: 0 0 35px var(--neon-cyan), 0 0 60px rgba(0, 229, 255, 0.7); }
 }
 
 .preloader-status-container {
