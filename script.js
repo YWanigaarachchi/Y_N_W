@@ -417,7 +417,7 @@ function ensureModalExists() {
           </div>
 
           <form id="package-order-form">
-              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+              <div class="form-row-2col">
                   <div class="form-group">
                       <label for="order-name">Your Full Name</label>
                       <input type="text" id="order-name" class="form-input" placeholder="e.g. John Doe" required>
@@ -428,7 +428,7 @@ function ensureModalExists() {
                   </div>
               </div>
 
-              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+              <div class="form-row-2col">
                   <div class="form-group">
                       <label for="order-business-type">Company / Business Type</label>
                       <select id="order-business-type" class="form-input" required style="background:#0A1128;">
@@ -444,7 +444,7 @@ function ensureModalExists() {
                   </div>
               </div>
 
-              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+              <div class="form-row-2col">
                   <div class="form-group">
                       <label for="order-city-location">City Location</label>
                       <input type="text" id="order-city-location" class="form-input" placeholder="e.g. Colombo, Sri Lanka" required>
