@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initServiceCategoryTabs();
   initProjectCategoryTabs();
   initPackageOrderModal();
+  initBackgroundMusic();
 });
 
 /* =====================================================
@@ -557,4 +558,114 @@ function initSmoothScroll() {
       }
     });
   });
+}
+
+/* =====================================================
+   11. FUTURISTIC AMBIENT BACKGROUND MUSIC PLAYER
+   ===================================================== */
+function initBackgroundMusic() {
+  if (document.getElementById('music-toggle-btn')) return;
+
+  const musicHtml = `
+  <div class="music-player-widget">
+      <button id="music-toggle-btn" class="music-toggle-btn" title="Toggle Futuristic Ambient Music">
+          <i class="fa-solid fa-music"></i>
+          <span class="sound-wave">
+              <span></span><span></span><span></span><span></span>
+          </span>
+      </button>
+  </div>
+  <audio id="bg-audio-player" loop preload="auto">
+      <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=ambient-space-112185.mp3" type="audio/mpeg">
+  </audio>`;
+
+  document.body.insertAdjacentHTML('beforeend', musicHtml);
+
+  const audio = document.getElementById('bg-audio-player');
+  const toggleBtn = document.getElementById('music-toggle-btn');
+  if (!audio || !toggleBtn) return;
+
+  audio.volume = 0.35;
+  let isPlaying = false;
+  let synthAudioCtx = null;
+  let synthOsc1 = null;
+  let synthOsc2 = null;
+  let synthGain = null;
+
+  function createAmbientSynth() {
+    try {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtx) return;
+      synthAudioCtx = new AudioCtx();
+
+      synthGain = synthAudioCtx.createGain();
+      synthGain.gain.setValueAtTime(0.08, synthAudioCtx.currentTime);
+
+      // Low frequency drone
+      synthOsc1 = synthAudioCtx.createOscillator();
+      synthOsc1.type = 'sine';
+      synthOsc1.frequency.setValueAtTime(110, synthAudioCtx.currentTime); // A2
+
+      // Harmony ambient wave
+      synthOsc2 = synthAudioCtx.createOscillator();
+      synthOsc2.type = 'triangle';
+      synthOsc2.frequency.setValueAtTime(164.81, synthAudioCtx.currentTime); // E3
+
+      synthOsc1.connect(synthGain);
+      synthOsc2.connect(synthGain);
+      synthGain.connect(synthAudioCtx.destination);
+
+      synthOsc1.start();
+      synthOsc2.start();
+    } catch (e) {
+      console.log('Web Audio Synth fallback active');
+    }
+  }
+
+  function stopAmbientSynth() {
+    if (synthAudioCtx) {
+      try {
+        synthOsc1?.stop();
+        synthOsc2?.stop();
+        synthAudioCtx.close();
+      } catch (e) {}
+      synthAudioCtx = null;
+    }
+  }
+
+  function toggleMusic() {
+    if (isPlaying) {
+      audio.pause();
+      stopAmbientSynth();
+      toggleBtn.classList.remove('playing');
+      isPlaying = false;
+    } else {
+      audio.play().then(() => {
+        toggleBtn.classList.add('playing');
+        isPlaying = true;
+      }).catch(err => {
+        // Fallback to ambient Web Audio API synthesizer
+        createAmbientSynth();
+        toggleBtn.classList.add('playing');
+        isPlaying = true;
+      });
+    }
+  }
+
+  toggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMusic();
+  });
+
+  // Attempt auto-play on first user interaction if blocked by browser policy
+  const handleFirstInteraction = () => {
+    if (!isPlaying) {
+      audio.play().then(() => {
+        toggleBtn.classList.add('playing');
+        isPlaying = true;
+      }).catch(() => {});
+    }
+    document.removeEventListener('click', handleFirstInteraction);
+  };
+  document.addEventListener('click', handleFirstInteraction, { once: true });
 }
