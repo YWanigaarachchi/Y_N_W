@@ -307,10 +307,12 @@ function initPackageOrderModal() {
     e.preventDefault();
     const name = document.getElementById('order-name')?.value || 'Client';
     const email = document.getElementById('order-email')?.value || 'Not provided';
-    const company = document.getElementById('order-company')?.value || 'Individual';
-    const location = document.getElementById('order-location')?.value || 'Not provided';
+    const businessType = document.getElementById('order-business-type')?.value || 'Startup';
+    const companyName = document.getElementById('order-company-name')?.value || 'Not provided';
+    const cityLocation = document.getElementById('order-city-location')?.value || 'Not provided';
+    const contactNumber = document.getElementById('order-contact-number')?.value || 'Not provided';
 
-    const text = `Hi YNW Software Solutions!%0A%0A*New Package Inquiry*%0A------------------------------%0A*Package:* ${encodeURIComponent(currentSelectedPackage.name)} (${encodeURIComponent(currentSelectedPackage.price)})%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Company / Type:* ${encodeURIComponent(company)}%0A*Location:* ${encodeURIComponent(location)}%0A------------------------------%0APlease get in touch to discuss details.`;
+    const text = `Hi YNW Software Solutions!%0A%0A*New Package Order %26 Inquiry*%0A------------------------------%0A*Package:* ${encodeURIComponent(currentSelectedPackage.name)} (${encodeURIComponent(currentSelectedPackage.price)})%0A*Full Name:* ${encodeURIComponent(name)}%0A*Email Address:* ${encodeURIComponent(email)}%0A*Business Type:* ${encodeURIComponent(businessType)}%0A*Company Name:* ${encodeURIComponent(companyName)}%0A*City Location:* ${encodeURIComponent(cityLocation)}%0A*Contact Number:* ${encodeURIComponent(contactNumber)}%0A------------------------------%0APlease get in touch with me to proceed.`;
 
     const whatsappUrl = `https://wa.me/94765855570?text=${text}`;
     window.open(whatsappUrl, '_blank');
@@ -353,26 +355,24 @@ function initMobileMenu() {
 }
 
 /* =====================================================
-   9. RIGHT-SIDE AUTO-SCROLL BUTTON
+   9. RIGHT-SIDE AUTO-SCROLL BUTTON (SCROLLS UP ONLY)
    ===================================================== */
 function initAutoScrollBtn() {
   const scrollBtn = document.querySelector('.auto-scroll-btn');
   if (!scrollBtn) return;
 
-  scrollBtn.addEventListener('click', () => {
-    if (window.scrollY > 300) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-    }
-  });
+  scrollBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
-      scrollBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+      scrollBtn.classList.add('visible');
     } else {
-      scrollBtn.innerHTML = '<i class="fa-solid fa-arrow-down"></i>';
+      scrollBtn.classList.remove('visible');
     }
+  });
+
+  scrollBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 }
 
