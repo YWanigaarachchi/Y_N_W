@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAutoScrollBtn();
   initSmoothScroll();
   initServiceCategoryTabs();
+  initProjectCategoryTabs();
   initPackageOrderModal();
 });
 
@@ -232,7 +233,7 @@ function init3DTiltEffect() {
 }
 
 /* =====================================================
-   5. SERVICE CATEGORY TABS FILTERING
+   5. SERVICE & PROJECT CATEGORY TABS FILTERING
    ===================================================== */
 function initServiceCategoryTabs() {
   const tabBtns = document.querySelectorAll('.tab-btn');
@@ -265,6 +266,34 @@ function initServiceCategoryTabs() {
 
       const category = btn.getAttribute('data-category');
       filterCategory(category);
+    });
+  });
+
+  // Project Category Filtering on project.html
+  initProjectCategoryTabs();
+}
+
+function initProjectCategoryTabs() {
+  const projectBtns = document.querySelectorAll('.project-tab-btn');
+  const projectCards = document.querySelectorAll('.portfolio-card-work');
+
+  if (!projectBtns.length || !projectCards.length) return;
+
+  projectBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      projectBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const cat = btn.getAttribute('data-project-category');
+
+      projectCards.forEach(card => {
+        const cardCat = card.getAttribute('data-project-category');
+        if (cat === 'all' || cardCat === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
     });
   });
 }
