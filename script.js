@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   init3DTiltEffect();
   initNavbarScroll();
   initMobileMenu();
-  initPortfolioModal();
   initSmoothScroll();
 });
 
@@ -39,7 +38,7 @@ function initCustomCursor() {
   }
   animateFollower();
 
-  const hoverTargets = document.querySelectorAll('a, button, .btn, .glass-card, .pricing-card, .portfolio-item, .social-orb-card');
+  const hoverTargets = document.querySelectorAll('a, button, .btn, .glass-card, .pricing-card-5, .portfolio-card-work, .whatsapp-card-item');
   hoverTargets.forEach(el => {
     el.addEventListener('mouseenter', () => {
       cursor.classList.add('active');
@@ -220,7 +219,7 @@ function initThreeJsAiCore() {
    4. 3D MOUSE TILT EFFECT ON CARDS
    ===================================================== */
 function init3DTiltEffect() {
-  const tiltCards = document.querySelectorAll('.tilt-card, .pricing-card, .glass-card, .portfolio-item');
+  const tiltCards = document.querySelectorAll('.tilt-card, .pricing-card-5, .glass-card, .portfolio-card-work');
 
   tiltCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
@@ -230,8 +229,8 @@ function init3DTiltEffect() {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
 
-      const rotateX = ((y - centerY) / centerY) * -10;
-      const rotateY = ((x - centerX) / centerX) * 10;
+      const rotateX = ((y - centerY) / centerY) * -8;
+      const rotateY = ((x - centerX) / centerX) * 8;
 
       card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
     });
@@ -277,54 +276,7 @@ function initMobileMenu() {
 }
 
 /* =====================================================
-   7. PORTFOLIO FLOATING MODAL WINDOW
-   ===================================================== */
-function initPortfolioModal() {
-  const portfolioItems = document.querySelectorAll('.portfolio-item');
-  const modalOverlay = document.getElementById('project-modal');
-
-  if (!modalOverlay) return;
-
-  const modalTitle = modalOverlay.querySelector('.modal-project-title');
-  const modalDesc = modalOverlay.querySelector('.modal-project-desc');
-  const modalTech = modalOverlay.querySelector('.modal-project-tech');
-  const modalImg = modalOverlay.querySelector('.modal-project-img');
-  const closeBtn = modalOverlay.querySelector('.modal-close-btn');
-
-  portfolioItems.forEach(item => {
-    item.addEventListener('click', () => {
-      const title = item.getAttribute('data-title') || item.querySelector('h3')?.innerText;
-      const desc = item.getAttribute('data-desc') || 'A futuristic high-performance digital experience featuring custom zero-G animations and responsive UI/UX design.';
-      const tech = item.getAttribute('data-tech') || 'React • Three.js • Tailwind';
-      const imgSrc = item.querySelector('img')?.src;
-
-      if (modalTitle) modalTitle.innerText = title;
-      if (modalDesc) modalDesc.innerText = desc;
-      if (modalTech) modalTech.innerText = tech;
-      if (modalImg && imgSrc) modalImg.src = imgSrc;
-
-      modalOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  closeBtn?.addEventListener('click', closeModal);
-  modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) closeModal();
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeModal();
-  });
-
-  function closeModal() {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-}
-
-/* =====================================================
-   8. SMOOTH SCROLLING
+   7. SMOOTH SCROLLING
    ===================================================== */
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
