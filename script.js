@@ -239,18 +239,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Pretty labels for select values
     const serviceLabels = {
       web:          'Web Development',
-      microservices:'Microservices & APIs',
-      cloud:        'Cloud Solutions (AWS)',
       mobile:       'Mobile Development',
-      uiux:         'UI/UX Design',
-      consulting:   'Tech Consulting',
-      other:        'Other / Multiple',
+      other:        'Other',
     };
     const budgetLabels = {
-      'under-500':  'Under $500',
-      '500-2000':   '$500 – $2,000',
-      '2000-5000':  '$2,000 – $5,000',
-      '5000-plus':  '$5,000+',
+      'under-150k': 'Under Rs. 150,000',
+      '150k-500k':  'Rs. 150,000 – Rs. 500,000',
+      '500k-1500k': 'Rs. 500,000 – Rs. 1,500,000',
+      '1500k-plus': 'Rs. 1,500,000+',
       custom:       'Let\'s discuss',
     };
 
