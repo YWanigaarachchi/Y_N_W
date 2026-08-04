@@ -3,233 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="About YNW Software Solutions - A passionate team of engineers and designers building exceptional digital products in Sri Lanka.">
-    <title>About Us | YNW Software Solutions</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="About YNW Anti-Gravity Studio - Lead UI/UX Designer & Senior Frontend Developer crafting futuristic web experiences.">
+    <title>About | YNW Anti-Gravity Studio</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
 <div class="cursor"></div>
 <div class="cursor-follower"></div>
+<canvas id="particles-canvas"></canvas>
 
 <nav>
-    <div class="container nav-inner">
+    <div class="nav-inner">
         <a href="index.html" class="logo">YNW<span>.</span></a>
         <div class="nav-links">
             <a href="index.html">Home</a>
             <a href="about.html" class="active">About</a>
-            <a href="tech.html">Tech Stack</a>
-            <div class="dropdown">
-                <a href="services.html">Services <i class="fa-solid fa-chevron-down" style="font-size:0.7em;margin-left:4px;"></i></a>
-                <div class="dropdown-content">
-                    <a href="services.html">All Services</a>
-                    <a href="packages.html">Pricing Packages</a>
-                </div>
-            </div>
-            <a href="project.html">Portfolio</a>
-            <a href="github.html">Open Source</a>
+            <a href="services.html">Services</a>
+            <a href="project.html">Projects</a>
+            <a href="process.html">Process</a>
+            <a href="contact.html">Contact</a>
         </div>
         <a href="contact.html" class="nav-cta">Get in Touch</a>
-        <div class="hamburger"><span></span><span></span><span></span></div>
+        <div class="hamburger">
+            <span></span><span></span><span></span>
+        </div>
     </div>
 </nav>
+
 <div class="mobile-menu">
-    <a href="index.html">Home</a><a href="about.html">About</a><a href="tech.html">Tech Stack</a>
-    <a href="services.html">Services</a><a href="packages.html">Pricing</a>
-    <a href="project.html">Portfolio</a><a href="github.html">Open Source</a><a href="contact.html">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="project.html">Projects</a>
+    <a href="process.html">Process</a>
+    <a href="contact.html">Contact</a>
 </div>
 
-<!-- Page Hero -->
-<div class="page-hero">
-    <div class="page-hero-bg"></div>
+<section class="section" style="padding-top:160px;">
     <div class="container">
-        <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>About</span></div>
-        <div class="label">Our Story</div>
-        <h1>Passionate <span class="text-gradient">Builders</span></h1>
-        <p>We're a team of engineers, designers, and strategists united by a love for crafting exceptional digital experiences.</p>
-    </div>
-</div>
+        <div class="section-header">
+            <div class="badge-glow">Architectural Philosophy</div>
+            <h2 class="section-title">About the <span class="text-gradient">Architect</span></h2>
+            <p class="section-subtitle">Bridging zero-gravity visual arts with high-performance WebGL & modern frontend technology.</p>
+        </div>
 
-<!-- Story Section -->
-<section class="section">
-    <div class="container">
-        <div class="grid-2">
-            <div class="reveal-left">
-                <div class="label">Who We Are</div>
-                <h2>Building Tomorrow's <span class="text-gradient">Digital World</span></h2>
-                <p style="margin-top:20px;line-height:1.9;">YNW Software Solutions was founded with a singular vision: to help businesses harness the power of modern software to scale, innovate, and compete in the digital age.</p>
-                <p style="margin-top:16px;line-height:1.9;">From our base in Sri Lanka, we serve clients across the globe — delivering enterprise-grade software solutions with the agility and care of a dedicated team.</p>
-                <div style="display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;">
-                    <a href="contact.html" class="btn btn-primary">Work With Us <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="project.html" class="btn btn-outline">See Our Work</a>
+        <div class="profile-card-wrapper" style="margin-bottom:80px;">
+            <div class="glass-card tilt-card profile-card-content">
+                <div class="profile-avatar-box">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" alt="UI/UX Designer Profile">
                 </div>
-            </div>
-            <div class="reveal-right">
-                <div style="position:relative;">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="YNW Team working" style="border-radius: var(--radius-xl); width:100%;">
-                    <div style="position:absolute;bottom:-24px;right:-24px;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:24px 32px;">
-                        <div style="font-size:2.5rem;font-weight:900;background:var(--grad-orange);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">3+</div>
-                        <div style="font-size:0.85rem;color:var(--text-muted);margin-top:4px;font-weight:500;">Years Building<br>Great Products</div>
+                <div class="profile-info">
+                    <h3>YNW Creative Studio</h3>
+                    <div class="profile-role">Lead UI/UX Designer & Frontend Developer</div>
+                    <p class="profile-bio">Passionate about designing weightless, futuristic web applications that deliver seamless user interactions. Over 6+ years of expertise in building glassmorphic design systems, Three.js 3D graphics, and responsive web platforms.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">UI/UX Systems</span>
+                        <span class="skill-tag">React / Next.js</span>
+                        <span class="skill-tag">Three.js / WebGL</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Figma Systems</span>
+                        <span class="skill-tag">Node.js API</span>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- Values -->
-<section class="section" style="background: var(--bg-secondary);">
-    <div class="container">
-        <div class="section-header reveal">
-            <div class="label">What Drives Us</div>
-            <h2>Our Core <span class="text-gradient">Values</span></h2>
-        </div>
-        <div class="values-grid">
-            <div class="value-card reveal">
-                <div class="icon-box icon-box-orange" style="flex-shrink:0;"><i class="fa-solid fa-bullseye"></i></div>
-                <div>
-                    <h4 style="margin-bottom:8px;">Quality First</h4>
-                    <p style="font-size:0.9rem;">We never cut corners. Every line of code is written with pride, reviewed meticulously, and tested thoroughly.</p>
-                </div>
+        <div class="pricing-grid" style="grid-template-columns: repeat(3, 1fr); margin-top:60px;">
+            <div class="glass-card">
+                <div style="font-size:2.5rem; color:var(--neon-cyan); margin-bottom:16px;"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                <h3>Futuristic Aesthetics</h3>
+                <p>Curated color palettes, sleek frosted glass effects, glowing neon accents, and smooth micro-animations.</p>
             </div>
-            <div class="value-card reveal delay-1">
-                <div class="icon-box icon-box-purple" style="flex-shrink:0;"><i class="fa-solid fa-handshake"></i></div>
-                <div>
-                    <h4 style="margin-bottom:8px;">Transparent Partnership</h4>
-                    <p style="font-size:0.9rem;">We treat every client as a partner. Open communication and honest timelines are non-negotiable.</p>
-                </div>
+            <div class="glass-card">
+                <div style="font-size:2.5rem; color:var(--soft-indigo); margin-bottom:16px;"><i class="fa-solid fa-cubes"></i></div>
+                <h3>Interactive 3D WebGL</h3>
+                <p>Embedding custom Three.js particles and rotating 3D models directly into the web DOM.</p>
             </div>
-            <div class="value-card reveal delay-2">
-                <div class="icon-box icon-box-cyan" style="flex-shrink:0;"><i class="fa-solid fa-lightbulb"></i></div>
-                <div>
-                    <h4 style="margin-bottom:8px;">Innovation Mindset</h4>
-                    <p style="font-size:0.9rem;">We constantly learn and embrace new technologies to deliver the most modern and efficient solutions.</p>
-                </div>
+            <div class="glass-card">
+                <div style="font-size:2.5rem; color:var(--neon-cyan); margin-bottom:16px;"><i class="fa-solid fa-gauge-high"></i></div>
+                <h3>High Speed & SEO</h3>
+                <p>Clean, semantically structured HTML5 with lightning-fast load times and top search ranking performance.</p>
             </div>
-            <div class="value-card reveal delay-3">
-                <div class="icon-box icon-box-pink" style="flex-shrink:0;"><i class="fa-solid fa-rocket"></i></div>
-                <div>
-                    <h4 style="margin-bottom:8px;">Results Driven</h4>
-                    <p style="font-size:0.9rem;">We measure our success by your success. Your business growth is the ultimate metric we optimise for.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Skills / Expertise -->
-<section class="section skill-section">
-    <div class="container">
-        <div class="grid-2" style="gap:80px;align-items:start;">
-            <div class="reveal-left">
-                <div class="label">Expertise</div>
-                <h2>Technical <span class="text-gradient">Mastery</span></h2>
-                <p style="margin-top:20px;margin-bottom:48px;">Our team brings deep expertise across the full software development stack — from responsive web interfaces to high-performance mobile applications.</p>
-
-                <div class="skill-bar-wrap">
-                    <div class="skill-bar-label"><span>Full Stack Development</span><span>95%</span></div>
-                    <div class="skill-bar"><div class="skill-bar-fill" data-width="95%"></div></div>
-                </div>
-
-                <div class="skill-bar-wrap">
-                    <div class="skill-bar-label"><span>Mobile Development</span><span>85%</span></div>
-                    <div class="skill-bar"><div class="skill-bar-fill" data-width="85%"></div></div>
-                </div>
-                <div class="skill-bar-wrap">
-                    <div class="skill-bar-label"><span>UI/UX Design</span><span>88%</span></div>
-                    <div class="skill-bar"><div class="skill-bar-fill" data-width="88%"></div></div>
-                </div>
-            </div>
-
-            <div class="reveal-right">
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
-                    <div class="card" style="padding:28px;text-align:center;">
-                        <i class="fa-brands fa-java" style="font-size:2.5rem;color:var(--accent-orange);margin-bottom:16px;display:block;"></i>
-                        <h4>Java & Spring</h4>
-                        <p style="font-size:0.8rem;margin-top:8px;">Enterprise backend systems</p>
-                    </div>
-                    <div class="card" style="padding:28px;text-align:center;">
-                        <i class="fa-brands fa-react" style="font-size:2.5rem;color:var(--accent-cyan);margin-bottom:16px;display:block;"></i>
-                        <h4>React & Next.js</h4>
-                        <p style="font-size:0.8rem;margin-top:8px;">Modern frontend apps</p>
-                    </div>
-                    <div class="card" style="padding:28px;text-align:center;">
-                        <i class="fa-brands fa-node-js" style="font-size:2.5rem;color:var(--accent-amber);margin-bottom:16px;display:block;"></i>
-                        <h4>Node.js</h4>
-                        <p style="font-size:0.8rem;margin-top:8px;">Backend APIs</p>
-                    </div>
-                    <div class="card" style="padding:28px;text-align:center;">
-                        <i class="fa-solid fa-mobile-screen" style="font-size:2.5rem;color:var(--accent-purple);margin-bottom:16px;display:block;"></i>
-                        <h4>Mobile Apps</h4>
-                        <p style="font-size:0.8rem;margin-top:8px;">Cross-platform mobile</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="section" style="text-align:center;">
-    <div class="container">
-        <div class="reveal">
-            <div class="label">Let's Connect</div>
-            <h2>Ready to Work <span class="text-gradient">Together?</span></h2>
-            <p style="max-width:500px;margin:20px auto 40px;">We'd love to hear about your project. Get in touch and let's build something great together.</p>
-            <a href="contact.html" class="btn btn-primary">Get in Touch <i class="fa-solid fa-arrow-right"></i></a>
         </div>
     </div>
 </section>
 
 <footer>
     <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">YNW<span>.</span></a>
-                <p>Building the future of software with scalable web applications and seamless cross-platform mobile experiences.</p>
-                <div class="footer-socials">
-                    <a href="https://github.com/YWanigaarachchi" target="_blank" class="social-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="social-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#" class="social-link" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h5>Company</h5>
-                <div class="footer-links">
-                    <a href="index.html">Home</a><a href="about.html">About Us</a>
-                    <a href="project.html">Portfolio</a><a href="github.html">Open Source</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h5>Services</h5>
-                <div class="footer-links">
-                    <a href="services.html">Web Development</a>
-                    <a href="services.html">Mobile Apps</a><a href="packages.html">Pricing</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h5>Contact</h5>
-                <div class="footer-links">
-                    <a href="mailto:ynw@software.com">ynw@software.com</a>
-                    <a href="tel:+94765855570">+94 76 585 5570</a>
-                    <a href="contact.html">Send a Message</a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 YNW Software Solutions. All Rights Reserved.</p>
-            <p>Made with <span style="color:var(--accent-orange);">♥</span> in Sri Lanka</p>
+        <div class="footer-content">
+            <a href="index.html" class="logo">YNW<span>.</span> Studio</a>
+            <p style="font-size:0.95rem; color:var(--text-muted);">&copy; 2026 YNW Anti-Gravity Studio. All rights reserved.</p>
         </div>
     </div>
 </footer>
 
-<a href="https://wa.me/94765855570" target="_blank" class="whatsapp-chat" aria-label="WhatsApp">
-    <i class="fa-brands fa-whatsapp"></i>
-    <span class="whatsapp-tooltip">Chat with us!</span>
-</a>
-<button class="back-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 <script src="script.js"></script>
 </body>
 </html>
