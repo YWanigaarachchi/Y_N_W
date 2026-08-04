@@ -134,8 +134,11 @@ function initBackgroundParticles() {
 /* =====================================================
    3. THREE.JS 3D AI CORE HERO CANVAS
    ===================================================== */
+/* =====================================================
+   3. THREE.JS 3D AI CORE HERO CANVAS
+   ===================================================== */
 function initThreeJsAiCore() {
-  const container = document.getElementById('hero-3d-canvas');
+  const container = document.getElementById('ai-core-canvas') || document.getElementById('hero-3d-canvas');
   if (!container || typeof THREE === 'undefined') return;
 
   const scene = new THREE.Scene();
@@ -150,35 +153,89 @@ function initThreeJsAiCore() {
   const coreGroup = new THREE.Group();
   scene.add(coreGroup);
 
-  const outerGeo = new THREE.IcosahedronGeometry(2, 2);
-  const outerMat = new THREE.MeshBasicMaterial({ color: 0x00E5FF, wireframe: true, transparent: true, opacity: 0.55 });
+  // Outer Icosahedron Wireframe Sphere (Cyan Glow)
+  const outerGeo = new THREE.IcosahedronGeometry(2.1, 2);
+  const outerMat = new THREE.MeshBasicMaterial({ color: 0x00E5FF, wireframe: true, transparent: true, opacity: 0.5 });
   const outerSphere = new THREE.Mesh(outerGeo, outerMat);
   coreGroup.add(outerSphere);
 
-  const innerGeo = new THREE.OctahedronGeometry(1.2, 3);
-  const innerMat = new THREE.MeshBasicMaterial({ color: 0x5C67DE, wireframe: true, transparent: true, opacity: 0.75 });
+  // Inner Octahedron Wireframe Sphere (Purple / Indigo Glow)
+  const innerGeo = new THREE.OctahedronGeometry(1.35, 3);
+  const innerMat = new THREE.MeshBasicMaterial({ color: 0x7C3AED, wireframe: true, transparent: true, opacity: 0.7 });
   const innerSphere = new THREE.Mesh(innerGeo, innerMat);
   coreGroup.add(innerSphere);
 
-  const particlesCount = 300;
+  // Central Glowing Quantum Nucleus Orb
+  const nucleusGeo = new THREE.SphereGeometry(0.65, 32, 32);
+  const nucleusMat = new THREE.MeshStandardMaterial({
+    color: 0x00E5FF,
+    emissive: 0x00E5FF,
+    emissiveIntensity: 0.9,
+    roughness: 0.1,
+    metalness: 0.8
+  });
+  const nucleusOrb = new THREE.Mesh(nucleusGeo, nucleusMat);
+  coreGroup.add(nucleusOrb);
+
+  // Ambient & Point Lighting for Metallic Reflections
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+  const pointLight1 = new THREE.PointLight(0x00E5FF, 3.5, 15);
+  pointLight1.position.set(4, 4, 5);
+  const pointLight2 = new THREE.PointLight(0x7C3AED, 2.5, 15);
+  pointLight2.position.set(-4, -4, 3);
+  scene.add(ambientLight, pointLight1, pointLight2);
+
+  // 3 Counter-Rotating Cyber Telemetry Rings
+  const ring1Geo = new THREE.TorusGeometry(2.5, 0.02, 16, 100);
+  const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x00E5FF, wireframe: true, transparent: true, opacity: 0.75 });
+  const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
+  coreGroup.add(ring1);
+
+  const ring2Geo = new THREE.TorusGeometry(2.85, 0.015, 16, 100);
+  const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x5C67DE, wireframe: true, transparent: true, opacity: 0.6 });
+  const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
+  ring2.rotation.x = Math.PI / 3;
+  coreGroup.add(ring2);
+
+  const ring3Geo = new THREE.TorusGeometry(3.2, 0.012, 16, 100);
+  const ring3Mat = new THREE.MeshBasicMaterial({ color: 0x25D366, wireframe: true, transparent: true, opacity: 0.5 });
+  const ring3 = new THREE.Mesh(ring3Geo, ring3Mat);
+  ring3.rotation.y = Math.PI / 4;
+  coreGroup.add(ring3);
+
+  // 4 Orbiting Quantum Data Nodes (Small glowing spheres)
+  const nodesGroup = new THREE.Group();
+  const nodeGeo = new THREE.SphereGeometry(0.09, 16, 16);
+  const nodeMat = new THREE.MeshStandardMaterial({ color: 0x00E5FF, emissive: 0x00E5FF, emissiveIntensity: 1.2 });
+  const nodeMeshes = [];
+  for (let i = 0; i < 4; i++) {
+    const node = new THREE.Mesh(nodeGeo, nodeMat);
+    nodesGroup.add(node);
+    nodeMeshes.push(node);
+  }
+  coreGroup.add(nodesGroup);
+
+  // Swarming Quantum Starfield Particle Ring
+  const particlesCount = 400;
   const posArray = new Float32Array(particlesCount * 3);
   for (let i = 0; i < particlesCount * 3; i += 3) {
     const angle = Math.random() * Math.PI * 2;
-    const radius = 2.8 + Math.random() * 0.8;
+    const radius = 2.4 + Math.random() * 1.4;
     posArray[i] = Math.cos(angle) * radius;
-    posArray[i + 1] = (Math.random() - 0.5) * 0.6;
+    posArray[i + 1] = (Math.random() - 0.5) * 1.8;
     posArray[i + 2] = Math.sin(angle) * radius;
   }
   const particleGeo = new THREE.BufferGeometry();
   particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-  const particleMat = new THREE.PointsMaterial({ size: 0.05, color: 0x00E5FF, transparent: true, opacity: 0.8 });
+  const particleMat = new THREE.PointsMaterial({ size: 0.045, color: 0x00E5FF, transparent: true, opacity: 0.8 });
   const particleRing = new THREE.Points(particleGeo, particleMat);
   coreGroup.add(particleRing);
 
+  // Interactive Mouse Parallax Lerp
   let targetX = 0, targetY = 0;
   window.addEventListener('mousemove', (e) => {
-    targetX = (e.clientX / window.innerWidth - 0.5) * 1.5;
-    targetY = (e.clientY / window.innerHeight - 0.5) * 1.5;
+    targetX = (e.clientX / window.innerWidth - 0.5) * 1.2;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 1.2;
   });
 
   window.addEventListener('resize', () => {
@@ -193,15 +250,38 @@ function initThreeJsAiCore() {
     requestAnimationFrame(animate);
     const elapsedTime = clock.getElapsedTime();
 
-    outerSphere.rotation.x = elapsedTime * 0.2;
-    outerSphere.rotation.y = elapsedTime * 0.3;
-    innerSphere.rotation.x = -elapsedTime * 0.4;
-    innerSphere.rotation.y = -elapsedTime * 0.25;
-    particleRing.rotation.y = elapsedTime * 0.15;
-    coreGroup.position.y = Math.sin(elapsedTime * 1.8) * 0.25;
+    // Rotations
+    outerSphere.rotation.x = elapsedTime * 0.25;
+    outerSphere.rotation.y = elapsedTime * 0.35;
+    innerSphere.rotation.x = -elapsedTime * 0.45;
+    innerSphere.rotation.y = -elapsedTime * 0.3;
+    
+    ring1.rotation.z = elapsedTime * 0.5;
+    ring2.rotation.y = elapsedTime * 0.4;
+    ring3.rotation.x = elapsedTime * 0.3;
 
-    coreGroup.rotation.y += (targetX - coreGroup.rotation.y) * 0.05;
-    coreGroup.rotation.x += (targetY - coreGroup.rotation.x) * 0.05;
+    particleRing.rotation.y = elapsedTime * 0.2;
+
+    // Floating Zero-G Sine Wave Position
+    coreGroup.position.y = Math.sin(elapsedTime * 1.8) * 0.22;
+
+    // Pulsating Nucleus Energy
+    nucleusOrb.scale.setScalar(1.0 + Math.sin(elapsedTime * 2.8) * 0.08);
+    nucleusMat.emissiveIntensity = 0.8 + Math.sin(elapsedTime * 2.5) * 0.4;
+
+    // Orbiting Data Nodes Motion
+    nodeMeshes.forEach((node, idx) => {
+      const offset = (idx * Math.PI) / 2;
+      const speed = elapsedTime * 1.5 + offset;
+      const radius = 2.6;
+      node.position.x = Math.cos(speed) * radius;
+      node.position.z = Math.sin(speed) * radius;
+      node.position.y = Math.sin(speed * 2) * 0.5;
+    });
+
+    // Smooth lerp mouse tracking
+    coreGroup.rotation.y += (targetX - coreGroup.rotation.y) * 0.06;
+    coreGroup.rotation.x += (targetY - coreGroup.rotation.x) * 0.06;
 
     renderer.render(scene, camera);
   }
