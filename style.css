@@ -399,8 +399,17 @@ p { color: var(--text-secondary); font-size: 1.05rem; }
   justify-content: center;
   font-size: 1.2rem;
   box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
-  transition: var(--transition);
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
   cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(15px);
+}
+
+.auto-scroll-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .auto-scroll-btn:hover {
