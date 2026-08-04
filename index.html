@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Anti-Gravity & Zero-G Portfolio - Futuristic UI/UX & Web Development Studio with Direct WhatsApp Integration.">
-    <title>YNW | Anti-Gravity UI/UX & Web Development Studio</title>
+    <meta name="description" content="YNW Software Solutions - Futuristic UI/UX & Web Development Studio with Direct WhatsApp Integration.">
+    <title>YNW Software Solutions | Creative Digital Studio</title>
     
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -21,6 +21,21 @@
 
 <!-- Drifting Particle Starfield Canvas -->
 <canvas id="particles-canvas"></canvas>
+
+<!-- Global Right-Side Floating WhatsApp Button with Pop-Out Bubble -->
+<div class="whatsapp-float-container">
+    <div class="whatsapp-popout-bubble">
+        <span><i class="fa-brands fa-whatsapp"></i></span> Chat on WhatsApp!
+    </div>
+    <a href="https://wa.me/94765855570" target="_blank" class="whatsapp-float-btn" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+</div>
+
+<!-- Global Left-Side Auto-Scroll Button -->
+<div class="auto-scroll-btn" title="Scroll Top / Bottom">
+    <i class="fa-solid fa-arrow-down"></i>
+</div>
 
 <!-- Sticky Frosted Glass Navigation Bar -->
 <nav>
@@ -51,9 +66,7 @@
     <a href="contact.html">Contact</a>
 </div>
 
-<!-- =====================================================
-     1. HERO SECTION WITH THREE.JS 3D AI CORE
-     ===================================================== -->
+<!-- HERO SECTION WITH THREE.JS 3D AI CORE -->
 <section class="hero" id="home">
     <div class="container">
         <div class="hero-grid-layout">
@@ -65,8 +78,8 @@
                 <h1>Designing the <span class="text-gradient">Future</span> of the Web.</h1>
                 <p>Elevating Web Experiences — Crafting high-performance, intelligent websites with futuristic UI/UX, 3D WebGL visuals, and zero-gravity weightless design aesthetics.</p>
                 <div class="hero-btns">
-                    <a href="project.html" class="btn btn-cyan">View My Work <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="https://wa.me/94765855570" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Direct WhatsApp</a>
+                    <a href="project.html" class="btn btn-cyan">View Portfolio <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="https://wa.me/94765855570" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Chat WhatsApp</a>
                 </div>
             </div>
 
@@ -79,204 +92,94 @@
     </div>
 </section>
 
-<!-- =====================================================
-     2. ABOUT SPOTLIGHT (PREVIEW)
-     ===================================================== -->
+<!-- CORE AGENCY PILLARS SECTION (EXCLUSIVE TO HOME PAGE) -->
 <section class="section">
     <div class="container">
         <div class="section-header">
-            <div class="badge-glow">Craftsmanship & Expertise</div>
-            <h2 class="section-title">About the <span class="text-gradient">Architect</span></h2>
-            <p class="section-subtitle">Pioneering zero-G UI/UX systems and ultra-modern frontend architectures.</p>
+            <div class="badge-glow">Engineering Excellence</div>
+            <h2 class="section-title">Next-Gen <span class="text-gradient">Digital Agency</span></h2>
+            <p class="section-subtitle">Pioneering zero-gravity visual art, high-speed architectures, and interactive 3D WebGL systems.</p>
         </div>
 
-        <div class="profile-card-wrapper">
-            <div class="glass-card tilt-card profile-card-content">
-                <div class="profile-avatar-box">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" alt="UI/UX Designer Profile">
-                </div>
-                <div class="profile-info">
-                    <h3>YNW Creative Studio</h3>
-                    <div class="profile-role">Lead UI/UX Designer & Senior Frontend Developer</div>
-                    <p class="profile-bio">Specializing in high-performance web applications, interactive 3D WebGL interfaces, and glassmorphic micro-animations across UI/UX Design, React, Tailwind CSS, Figma, and scalable web engineering.</p>
-                    <div class="skills-tags">
-                        <span class="skill-tag">UI/UX Systems</span>
-                        <span class="skill-tag">React / Next.js</span>
-                        <span class="skill-tag">Three.js / WebGL</span>
-                        <span class="skill-tag">Tailwind CSS</span>
-                        <span class="skill-tag">TypeScript</span>
-                    </div>
-                    <div style="margin-top:24px;">
-                        <a href="about.html" class="btn btn-outline">Read Full Biography <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
+        <div class="pricing-grid-5" style="grid-template-columns: repeat(2, 1fr); gap:30px;">
+            <!-- Pillar 1 -->
+            <div class="glass-card">
+                <div style="font-size:2.5rem; color:var(--neon-cyan); margin-bottom:16px;"><i class="fa-solid fa-cubes"></i></div>
+                <h3 style="margin-bottom:12px;">Futuristic UI/UX Systems</h3>
+                <p style="color:var(--text-secondary); line-height:1.7;">Immersive glassmorphism, fluid micro-animations, and visual elegance designed to captivate users at first glance.</p>
+            </div>
+
+            <!-- Pillar 2 -->
+            <div class="glass-card">
+                <div style="font-size:2.5rem; color:var(--soft-indigo); margin-bottom:16px;"><i class="fa-solid fa-atom"></i></div>
+                <h3 style="margin-bottom:12px;">3D WebGL & Canvas Shaders</h3>
+                <p style="color:var(--text-secondary); line-height:1.7;">Cutting-edge Three.js interactive graphics, glowing particle cores, and 3D camera controls embedded directly into the browser DOM.</p>
+            </div>
+
+            <!-- Pillar 3 -->
+            <div class="glass-card">
+                <div style="font-size:2.5rem; color:var(--neon-cyan); margin-bottom:16px;"><i class="fa-solid fa-gauge-high"></i></div>
+                <h3 style="margin-bottom:12px;">High-Performance Architecture</h3>
+                <p style="color:var(--text-secondary); line-height:1.7;">Lightning-fast page load times, semantic HTML5 structure, and search engine optimization engineered for maximum growth.</p>
+            </div>
+
+            <!-- Pillar 4 -->
+            <div class="glass-card">
+                <div style="font-size:2.5rem; color:var(--whatsapp-green); margin-bottom:16px;"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3 style="margin-bottom:12px;">Enterprise Scalability & Support</h3>
+                <p style="color:var(--text-secondary); line-height:1.7;">Secure API integrations, real-time analytics, robust backend systems, and direct WhatsApp project communication.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- =====================================================
-     3. SERVICES SPOTLIGHT (PREVIEW)
-     ===================================================== -->
-<section class="section">
-    <div class="container">
-        <div class="section-header">
-            <div class="badge-glow">Pricing Packages</div>
-            <h2 class="section-title">Services & <span class="text-gradient">Packages</span></h2>
-            <p class="section-subtitle">Transparent investments engineered for scalable growth and futuristic brand presence.</p>
-        </div>
-
-        <div class="pricing-grid-5" style="grid-template-columns: repeat(3, 1fr);">
-            <div class="pricing-card-5">
-                <span class="pricing-badge-tier">Starter</span>
-                <div>
-                    <div class="pricing-icon-5">🚀</div>
-                    <h3 class="pricing-title-5">Single Landing Page</h3>
-                    <div class="pricing-price-5">25,000 LKR</div>
-                    <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:20px;">High-converting single page web experience with responsive design and WhatsApp integration.</p>
-                </div>
-                <a href="https://wa.me/94765855570?text=Hi!%20I'm%20interested%20in%20the%20Single%20Landing%20Page%20package." target="_blank" class="btn btn-whatsapp" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
-            </div>
-
-            <div class="pricing-card-5" style="border-color:var(--neon-cyan); background:rgba(15,25,60,0.9);">
-                <span class="pricing-badge-tier" style="background:var(--grad-whatsapp); color:#fff;">Most Popular</span>
-                <div>
-                    <div class="pricing-icon-5">🛒</div>
-                    <h3 class="pricing-title-5">E-Commerce Web Store</h3>
-                    <div class="pricing-price-5">85,000 LKR</div>
-                    <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:20px;">Full online storefront with payment gateway, order management system, and advanced SSL security.</p>
-                </div>
-                <a href="https://wa.me/94765855570?text=Hi!%20I'm%20interested%20in%20the%20E-Commerce%20package." target="_blank" class="btn btn-whatsapp" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
-            </div>
-
-            <div class="pricing-card-5">
-                <span class="pricing-badge-tier">Pro</span>
-                <div>
-                    <div class="pricing-icon-5">💎</div>
-                    <h3 class="pricing-title-5">Custom Web Application</h3>
-                    <div class="pricing-price-5">150,000 LKR</div>
-                    <p style="font-size:0.9rem; color:var(--text-secondary); margin-bottom:20px;">Custom frontend & backend web app featuring AI integrations, real-time analytics, and database auth.</p>
-                </div>
-                <a href="https://wa.me/94765855570?text=Hi!%20I'm%20interested%20in%20the%20Custom%20Web%20App%20package." target="_blank" class="btn btn-whatsapp" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
-            </div>
-        </div>
-
-        <div style="text-align:center; margin-top:40px;">
-            <a href="services.html" class="btn btn-cyan">View All 5 Pricing Packages <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-    </div>
-</section>
-
-<!-- =====================================================
-     4. FEATURED PROJECTS PREVIEW
-     ===================================================== -->
-<section class="section">
-    <div class="container">
-        <div class="section-header">
-            <div class="badge-glow">Featured Work</div>
-            <h2 class="section-title">The Floating <span class="text-gradient">Gallery</span></h2>
-            <p class="section-subtitle">Selected project showcases suspended in zero-gravity space.</p>
-        </div>
-
-        <div class="portfolio-grid-6">
-            <!-- Project 1 -->
-            <div class="portfolio-card-work elevation-1">
-                <div class="portfolio-work-img">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=800" alt="Matrimonial Web Platform">
-                </div>
-                <div class="portfolio-work-body">
-                    <div>
-                        <div class="skills-tags" style="margin-top:0; margin-bottom:12px;">
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">Tailwind</span>
-                            <span class="skill-tag">Node.js</span>
-                        </div>
-                        <h3>Matrimonial Web Platform</h3>
-                        <p style="font-size:0.92rem; margin-top:8px;">High-security matchmaking application featuring real-time verification and private messaging.</p>
-                    </div>
-                    <div class="portfolio-action-btns">
-                        <a href="https://github.com" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> View Code</a>
-                        <a href="https://wa.me/94765855570?text=Hi!%20I%20would%20like%20to%20discuss%20the%20Matrimonial%20Web%20Platform%20project." target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="portfolio-card-work elevation-2">
-                <div class="portfolio-work-img">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Smart Card & NFC Business Solution">
-                </div>
-                <div class="portfolio-work-body">
-                    <div>
-                        <div class="skills-tags" style="margin-top:0; margin-bottom:12px;">
-                            <span class="skill-tag">React</span>
-                            <span class="skill-tag">NFC / RFID</span>
-                            <span class="skill-tag">WebGL</span>
-                        </div>
-                        <h3>Smart Card & NFC Solution</h3>
-                        <p style="font-size:0.92rem; margin-top:8px;">Digital business card platform integrating instant NFC tap connectivity and live profile analytics.</p>
-                    </div>
-                    <div class="portfolio-action-btns">
-                        <a href="https://github.com" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> View Code</a>
-                        <a href="https://wa.me/94765855570?text=Hi!%20I%20would%20like%20to%20discuss%20the%20Smart%20Card%20%26%20NFC%20Business%20Solution%20project." target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 3 -->
-            <div class="portfolio-card-work elevation-3">
-                <div class="portfolio-work-img">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="SaaS AI Analytics Dashboard">
-                </div>
-                <div class="portfolio-work-body">
-                    <div>
-                        <div class="skills-tags" style="margin-top:0; margin-bottom:12px;">
-                            <span class="skill-tag">Three.js</span>
-                            <span class="skill-tag">WebGL</span>
-                            <span class="skill-tag">TypeScript</span>
-                        </div>
-                        <h3>SaaS AI Analytics Dashboard</h3>
-                        <p style="font-size:0.92rem; margin-top:8px;">3D WebGL data visualization platform rendering live AI machine learning analytics and metrics.</p>
-                    </div>
-                    <div class="portfolio-action-btns">
-                        <a href="https://github.com" target="_blank" class="btn btn-outline"><i class="fa-brands fa-github"></i> View Code</a>
-                        <a href="https://wa.me/94765855570?text=Hi!%20I%20would%20like%20to%20discuss%20the%20SaaS%20AI%20Analytics%20Dashboard%20project." target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Inquire</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div style="text-align:center; margin-top:40px;">
-            <a href="project.html" class="btn btn-cyan">Explore All 6 Projects <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-    </div>
-</section>
-
-<!-- =====================================================
-     5. CONTACT CALLOUT BANNER
-     ===================================================== -->
+<!-- CALL TO ACTION BANNER -->
 <section class="section" style="padding-bottom:120px;">
     <div class="container">
         <div class="glass-panel" style="padding:60px 40px; text-align:center; border-color:var(--neon-cyan);">
             <h2 style="font-size:2.5rem; margin-bottom:16px;">Ready to Build Something <span class="text-gradient">Extraordinary</span>?</h2>
-            <p style="max-width:600px; margin:0 auto 32px auto;">Connect directly via WhatsApp or launch a message transmission through our Glass Terminal.</p>
+            <p style="max-width:600px; margin:0 auto 32px auto;">Explore our dedicated services, portfolio projects, or connect directly on WhatsApp to launch your next website.</p>
             <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
-                <a href="https://wa.me/94765855570" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> WhatsApp Line 1 (+94 76 585 5570)</a>
-                <a href="contact.html" class="btn btn-outline">Open Glass Terminal <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="services.html" class="btn btn-cyan">View Services & Pricing <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="https://wa.me/94765855570" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Chat WhatsApp (+94 76 585 5570)</a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Footer -->
+<!-- Footer with Full Navigation -->
 <footer>
     <div class="container">
-        <div class="footer-content">
-            <a href="index.html" class="logo">YNW<span>.</span> Studio</a>
-            <p style="font-size:0.95rem; color:var(--text-muted);">Crafting weightless zero-gravity digital products.</p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="index.html" class="logo" style="margin-bottom:16px;">YNW<span>.</span> Software Solutions</a>
+                <p style="font-size:0.95rem; color:var(--text-muted); max-width:320px;">YNW Software Solutions crafts exceptional software experiences — from scalable web applications to high-performance mobile apps powering modern businesses.</p>
+            </div>
+
+            <div class="footer-col">
+                <h4>Navigation</h4>
+                <div class="footer-links-list">
+                    <a href="index.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Home</a>
+                    <a href="about.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> About Architect</a>
+                    <a href="services.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Services & Pricing</a>
+                    <a href="project.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Portfolio Gallery</a>
+                    <a href="process.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Process Workflow</a>
+                    <a href="contact.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Contact Terminal</a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Direct WhatsApp Lines</h4>
+                <div class="footer-links-list">
+                    <a href="https://wa.me/94765855570" target="_blank" style="color:var(--whatsapp-green); font-weight:600;"><i class="fa-brands fa-whatsapp"></i> +94 76 585 5570 (Line 1)</a>
+                    <a href="https://wa.me/94710855570" target="_blank" style="color:var(--whatsapp-green); font-weight:600;"><i class="fa-brands fa-whatsapp"></i> +94 71 085 5570 (Line 2)</a>
+                    <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i> Official GitHub Code Repos</a>
+                </div>
+            </div>
         </div>
+
         <div class="footer-bottom">
-            <p>&copy; 2026 YNW Anti-Gravity Studio. All rights reserved.</p>
+            <p>&copy; 2026 YNW Software Solutions. All rights reserved.</p>
         </div>
     </div>
 </footer>
