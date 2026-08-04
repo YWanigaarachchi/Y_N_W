@@ -227,21 +227,31 @@ function initServiceCategoryTabs() {
 
   if (!tabBtns.length || !cards.length) return;
 
+  function filterCategory(category) {
+    cards.forEach(card => {
+      const cardCat = card.getAttribute('data-category');
+      if (category === 'all' || cardCat === category) {
+        card.classList.remove('hidden-category');
+      } else {
+        card.classList.add('hidden-category');
+      }
+    });
+  }
+
+  // Filter based on initial active tab on page load
+  const initialActiveBtn = document.querySelector('.tab-btn.active');
+  if (initialActiveBtn) {
+    const initCat = initialActiveBtn.getAttribute('data-category');
+    filterCategory(initCat);
+  }
+
   tabBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       tabBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       const category = btn.getAttribute('data-category');
-
-      cards.forEach(card => {
-        const cardCat = card.getAttribute('data-category');
-        if (category === 'all' || cardCat === category) {
-          card.classList.remove('hidden-category');
-        } else {
-          card.classList.add('hidden-category');
-        }
-      });
+      filterCategory(category);
     });
   });
 }
