@@ -1274,3 +1274,29 @@ footer {
   letter-spacing: 1px;
   text-shadow: 0 0 10px var(--cyan-glow);
 }
+
+.preloader-enter-btn {
+  margin-top: 15px;
+  padding: 12px 28px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #050A19;
+  background: var(--grad-cyan-indigo);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 0 25px var(--cyan-glow);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+  text-transform: uppercase;
+}
+
+.preloader-enter-btn:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 0 35px var(--neon-cyan);
+}
