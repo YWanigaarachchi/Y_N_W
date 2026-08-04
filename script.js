@@ -567,7 +567,7 @@ function initBackgroundMusic() {
   if (document.getElementById('music-toggle-btn')) return;
 
   const audioHtml = `
-  <audio id="bg-audio-player" loop preload="auto">
+  <audio id="bg-audio-player" loop preload="auto" muted>
       <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=ambient-space-112185.mp3" type="audio/mpeg">
   </audio>`;
   document.body.insertAdjacentHTML('beforeend', audioHtml);
@@ -646,11 +646,16 @@ function initBackgroundMusic() {
 
   function toggleMusic() {
     if (isPlaying) {
-      audio.pause();
-      stopAmbientSynth();
-      toggleBtn.classList.remove('playing');
-      isPlaying = false;
+      if (audio.muted) {
+        audio.muted = false;
+      } else {
+        audio.pause();
+        stopAmbientSynth();
+        toggleBtn.classList.remove('playing');
+        isPlaying = false;
+      }
     } else {
+      audio.muted = false;
       audio.play().then(() => {
         toggleBtn.classList.add('playing');
         isPlaying = true;
@@ -670,21 +675,26 @@ function initBackgroundMusic() {
 
   const interactionEvents = ['click', 'keydown', 'touchstart'];
 
-  const startAudioOnInteraction = () => {
-    if (isPlaying) return;
-    audio.play().then(() => {
-      toggleBtn.classList.add('playing');
-      isPlaying = true;
-      cleanUpListeners();
-    }).catch(err => {
-      // Fallback to ambient Web Audio API synthesizer if audio file blocked/fails
-      createAmbientSynth();
-      if (synthAudioCtx && synthAudioCtx.state !== 'suspended') {
+  const startAudioOnInteraction = (e) => {
+    // If the click/touch was directly on the toggle button, let toggleMusic handle it
+    if (e && e.target && (toggleBtn === e.target || toggleBtn.contains(e.target))) {
+      return;
+    }
+
+    audio.muted = false;
+    if (!isPlaying) {
+      audio.play().then(() => {
         toggleBtn.classList.add('playing');
         isPlaying = true;
-        cleanUpListeners();
-      }
-    });
+      }).catch(err => {
+        createAmbientSynth();
+        if (synthAudioCtx && synthAudioCtx.state !== 'suspended') {
+          toggleBtn.classList.add('playing');
+          isPlaying = true;
+        }
+      });
+    }
+    cleanUpListeners();
   };
 
   const cleanUpListeners = () => {
@@ -698,12 +708,11 @@ function initBackgroundMusic() {
     document.addEventListener(event, startAudioOnInteraction, { once: true, passive: true });
   });
 
-  // Also attempt immediate autoplay on load
+  // Attempt autoplay immediately on load (muted is allowed by modern browsers)
   audio.play().then(() => {
     toggleBtn.classList.add('playing');
     isPlaying = true;
-    cleanUpListeners();
   }).catch(() => {
-    // Autoplay blocked by browser policy, fallback interaction listeners are active
+    // Blocked even if muted (extreme custom browser settings)
   });
 }
