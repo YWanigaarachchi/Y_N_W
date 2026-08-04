@@ -3,108 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YNW Software Solutions Services - Web Development and Mobile App Development.">
-    <title>Services | YNW Software Solutions</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Anti-Gravity Services & Pricing Packages - 35,000 LKR Starter, 85,000 LKR E-Commerce, 150,000 LKR Custom Web Application.">
+    <title>Services & Pricing | YNW Anti-Gravity Studio</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
 <div class="cursor"></div>
 <div class="cursor-follower"></div>
+<canvas id="particles-canvas"></canvas>
 
 <nav>
-    <div class="container nav-inner">
+    <div class="nav-inner">
         <a href="index.html" class="logo">YNW<span>.</span></a>
         <div class="nav-links">
-            <a href="index.html">Home</a><a href="about.html">About</a><a href="tech.html">Tech Stack</a>
-            <div class="dropdown">
-                <a href="services.html" class="active">Services <i class="fa-solid fa-chevron-down" style="font-size:0.7em;margin-left:4px;"></i></a>
-                <div class="dropdown-content">
-                    <a href="services.html">All Services</a><a href="packages.html">Pricing Packages</a>
-                </div>
-            </div>
-            <a href="project.html">Portfolio</a><a href="github.html">Open Source</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html" class="active">Services</a>
+            <a href="project.html">Projects</a>
+            <a href="process.html">Process</a>
+            <a href="contact.html">Contact</a>
         </div>
         <a href="contact.html" class="nav-cta">Get in Touch</a>
-        <div class="hamburger"><span></span><span></span><span></span></div>
+        <div class="hamburger">
+            <span></span><span></span><span></span>
+        </div>
     </div>
 </nav>
+
 <div class="mobile-menu">
-    <a href="index.html">Home</a><a href="about.html">About</a><a href="tech.html">Tech Stack</a>
-    <a href="services.html">Services</a><a href="packages.html">Pricing</a>
-    <a href="project.html">Portfolio</a><a href="github.html">Open Source</a><a href="contact.html">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="project.html">Projects</a>
+    <a href="process.html">Process</a>
+    <a href="contact.html">Contact</a>
 </div>
 
-<!-- Page Hero -->
-<div class="page-hero">
-    <div class="page-hero-bg"></div>
+<section class="section" style="padding-top:160px;">
     <div class="container">
-        <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Services</span></div>
-        <div class="label">What We Offer</div>
-        <h1>Full-Spectrum <span class="text-gradient">Digital Services</span></h1>
-        <p>End-to-end software solutions crafted to scale your business and deliver exceptional digital experiences.</p>
-    </div>
-</div>
-
-<!-- Services Detail -->
-<section class="section">
-    <div class="container">
-
-        <!-- Service 1 -->
-        <div class="grid-2" style="margin-bottom:100px;gap:80px;">
-            <div class="reveal-left">
-                <div class="icon-box icon-box-orange" style="width:80px;height:80px;font-size:2rem;border-radius:20px;margin-bottom:28px;"><i class="fa-solid fa-laptop-code"></i></div>
-                <div class="label">Service 01</div>
-                <h2 style="margin-bottom:20px;">Web <span class="text-gradient">Development</span></h2>
-                <p style="line-height:1.9;margin-bottom:20px;">We build responsive, high-performance web applications that look stunning and convert visitors. From simple websites to complex enterprise platforms, our solutions are built to scale.</p>
-                <ul style="display:flex;flex-direction:column;gap:14px;margin:28px 0;">
-                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> Custom web application development</li>
-                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> E-commerce platforms & portals</li>
-                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> CMS & headless architecture</li>
-                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> SEO-optimised & performant</li>
-                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> Progressive Web Apps (PWA)</li>
-                </ul>
-                <a href="contact.html" class="btn btn-primary">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-            <div class="reveal-right">
-                <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&q=80&w=800" alt="Web Development" style="border-radius:var(--radius-xl);width:100%;">
-            </div>
+        <div class="section-header">
+            <div class="badge-glow">Pricing Packages</div>
+            <h2 class="section-title">Anti-Gravity <span class="text-gradient">Pricing Cards</span></h2>
+            <p class="section-subtitle">Floating packages suspended in 3D space with interactive cursor tilt effects.</p>
         </div>
 
-        <!-- Service 2 -->
-        <div class="grid-2" style="margin-bottom:100px;gap:80px;">
-            <div class="reveal-left" style="order:2;">
-                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800" alt="Mobile Development" style="border-radius:var(--radius-xl);width:100%;">
+        <div class="pricing-grid">
+            <!-- Pricing Card 1: Starter -->
+            <div class="pricing-card">
+                <div>
+                    <div class="pricing-icon">🚀</div>
+                    <h3 class="pricing-title">Starter Package</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">Basic Landing Page</p>
+                    <div class="pricing-price">35,000 LKR</div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> 5-Page Responsive Website</li>
+                        <li><i class="fa-solid fa-check"></i> UI/UX Design Included</li>
+                        <li><i class="fa-solid fa-check"></i> Basic SEO Setup</li>
+                        <li><i class="fa-solid fa-check"></i> Mobile & Desktop Optimized</li>
+                        <li><i class="fa-solid fa-check"></i> Contact Form Integration</li>
+                    </ul>
+                </div>
+                <a href="contact.html?package=starter" class="btn btn-outline" style="width:100%;">Start Project</a>
             </div>
-            <div class="reveal-right" style="order:1;">
-                <div class="icon-box icon-box-pink" style="width:80px;height:80px;font-size:2rem;border-radius:20px;margin-bottom:28px;"><i class="fa-solid fa-mobile-screen"></i></div>
-                <div class="label">Service 02</div>
-                <h2 style="margin-bottom:20px;">Mobile <span class="text-gradient">Development</span></h2>
-                <p style="line-height:1.9;margin-bottom:20px;">We build cross-platform mobile applications with native performance, delivering seamless experiences on iOS and Android. Our apps are built for speed, usability, and scale.</p>
-                <ul style="display:flex;flex-direction:column;gap:14px;margin:28px 0;">
-                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> iOS & Android App Development</li>
-                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> React Native & Flutter</li>
-                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> Custom Mobile UI/UX Design</li>
-                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> App Store Deployment</li>
-                    <li style="display:flex;align-items:center;gap:12px;font-size:0.9rem;color:var(--text-secondary);"><i class="fa-solid fa-circle-check" style="color:var(--accent-orange);"></i> API Integrations & Backend sync</li>
-                </ul>
-                <a href="contact.html" class="btn btn-primary">Get a Quote <i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- CTA -->
-<section class="section" style="background: var(--bg-secondary);">
-    <div class="container" style="text-align:center;">
-        <div class="reveal">
-            <div class="label">Get Started</div>
-            <h2>Ready to <span class="text-gradient">Build Something Great?</span></h2>
-            <p style="max-width:500px;margin:20px auto 40px;">Tell us about your project and let's find the perfect solution together.</p>
-            <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;">
-                <a href="contact.html" class="btn btn-primary">Contact Us <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="packages.html" class="btn btn-outline">View Pricing</a>
+            <!-- Pricing Card 2: E-Commerce (Featured) -->
+            <div class="pricing-card">
+                <span class="pricing-badge">Most Popular</span>
+                <div>
+                    <div class="pricing-icon">🛒</div>
+                    <h3 class="pricing-title">E-Commerce Package</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">E-commerce Website</p>
+                    <div class="pricing-price">85,000 LKR</div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> Full E-Commerce Setup</li>
+                        <li><i class="fa-solid fa-check"></i> Payment Gateway Integration</li>
+                        <li><i class="fa-solid fa-check"></i> Advanced SEO & Security</li>
+                        <li><i class="fa-solid fa-check"></i> Product Catalog & Inventory</li>
+                        <li><i class="fa-solid fa-check"></i> 30 Days Maintenance Included</li>
+                    </ul>
+                </div>
+                <a href="contact.html?package=ecommerce" class="btn btn-cyan" style="width:100%;">Start Project</a>
+            </div>
+
+            <!-- Pricing Card 3: Custom Web App -->
+            <div class="pricing-card">
+                <div>
+                    <div class="pricing-icon">💎</div>
+                    <h3 class="pricing-title">Custom Web App</h3>
+                    <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:16px;">Custom Web Application</p>
+                    <div class="pricing-price">150,000 LKR</div>
+                    <ul class="pricing-features">
+                        <li><i class="fa-solid fa-check"></i> Custom Frontend & Backend</li>
+                        <li><i class="fa-solid fa-check"></i> Advanced AI Integrations</li>
+                        <li><i class="fa-solid fa-check"></i> Premium Maintenance</li>
+                        <li><i class="fa-solid fa-check"></i> High-Speed DB Architecture</li>
+                        <li><i class="fa-solid fa-check"></i> Priority SLA Support</li>
+                    </ul>
+                </div>
+                <a href="contact.html?package=custom" class="btn btn-outline" style="width:100%;">Start Project</a>
             </div>
         </div>
     </div>
@@ -112,29 +112,13 @@
 
 <footer>
     <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">YNW<span>.</span></a>
-                <p>Building the future of software with scalable web applications and seamless cross-platform mobile experiences.</p>
-                <div class="footer-socials">
-                    <a href="https://github.com/YWanigaarachchi" target="_blank" class="social-link"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
-                </div>
-            </div>
-            <div class="footer-col"><h5>Company</h5><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About Us</a><a href="project.html">Portfolio</a></div></div>
-            <div class="footer-col"><h5>Services</h5><div class="footer-links"><a href="services.html">Web Development</a><a href="services.html">Mobile Apps</a><a href="packages.html">Pricing</a></div></div>
-            <div class="footer-col"><h5>Contact</h5><div class="footer-links"><a href="mailto:ynw@software.com">ynw@software.com</a><a href="contact.html">Send a Message</a></div></div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 YNW Software Solutions. All Rights Reserved.</p>
-            <p>Made with <span style="color:var(--accent-orange);">♥</span> in Sri Lanka</p>
+        <div class="footer-content">
+            <a href="index.html" class="logo">YNW<span>.</span> Studio</a>
+            <p style="font-size:0.95rem; color:var(--text-muted);">&copy; 2026 YNW Anti-Gravity Studio. All rights reserved.</p>
         </div>
     </div>
 </footer>
 
-<a href="https://wa.me/94765855570" target="_blank" class="whatsapp-chat"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat with us!</span></a>
-<button class="back-top"><i class="fa-solid fa-arrow-up"></i></button>
 <script src="script.js"></script>
 </body>
 </html>
