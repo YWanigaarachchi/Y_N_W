@@ -714,102 +714,160 @@ function initPreloader() {
     const mainGroup = new THREE.Group();
     scene.add(mainGroup);
 
+    // Interactive Mouse Tracking Parallax
+    let targetRotX = 0;
+    let targetRotY = 0;
+    const onMouseMovePreloader = (e) => {
+      const rect = container.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      targetRotY = x * 0.8;
+      targetRotX = -y * 0.5;
+    };
+    window.addEventListener('mousemove', onMouseMovePreloader, { passive: true });
+
     // Material for 3D letters - High Gloss Metallic Cyan Glow
     const letterMat = new THREE.MeshStandardMaterial({
       color: 0x00E5FF,
-      emissive: 0x00E5FF,
-      emissiveIntensity: 0.4,
-      metalness: 0.9,
-      roughness: 0.15
+      emissive: 0x00B0FF,
+      emissiveIntensity: 0.55,
+      metalness: 0.95,
+      roughness: 0.1,
+      wireframe: false
     });
 
+    const letterWireMat = new THREE.MeshBasicMaterial({
+      color: 0x00E5FF,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.35
+    });
+
+    // Helper to create Extruded 3D Shapes
+    const extrudeSettings = {
+      depth: 0.28,
+      bevelEnabled: true,
+      bevelSegments: 4,
+      steps: 1,
+      bevelSize: 0.04,
+      bevelThickness: 0.04
+    };
+
     // 3D Monogram - Letter Y
+    const shapeY = new THREE.Shape();
+    shapeY.moveTo(-0.08, -0.6);
+    shapeY.lineTo(0.08, -0.6);
+    shapeY.lineTo(0.08, -0.05);
+    shapeY.lineTo(0.4, 0.55);
+    shapeY.lineTo(0.2, 0.55);
+    shapeY.lineTo(0.0, 0.15);
+    shapeY.lineTo(-0.2, 0.55);
+    shapeY.lineTo(-0.4, 0.55);
+    shapeY.lineTo(-0.08, -0.05);
+    shapeY.closePath();
+
+    const geoY = new THREE.ExtrudeGeometry(shapeY, extrudeSettings);
+    geoY.center();
+    const meshY = new THREE.Mesh(geoY, letterMat);
+    const wireY = new THREE.Mesh(geoY, letterWireMat);
     const groupY = new THREE.Group();
-    const stemY = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.8, 12), letterMat);
-    stemY.position.set(0, -0.4, 0);
-    const leftArmY = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.8, 12), letterMat);
-    leftArmY.position.set(-0.28, 0.28, 0);
-    leftArmY.rotation.z = Math.PI / 4;
-    const rightArmY = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.8, 12), letterMat);
-    rightArmY.position.set(0.28, 0.28, 0);
-    rightArmY.rotation.z = -Math.PI / 4;
-    groupY.add(stemY, leftArmY, rightArmY);
-    groupY.position.x = -1.2;
+    groupY.add(meshY, wireY);
+    groupY.position.x = -1.25;
 
     // 3D Monogram - Letter N
+    const shapeN = new THREE.Shape();
+    shapeN.moveTo(-0.4, -0.6);
+    shapeN.lineTo(-0.22, -0.6);
+    shapeN.lineTo(0.18, 0.3);
+    shapeN.lineTo(0.18, -0.6);
+    shapeN.lineTo(0.38, -0.6);
+    shapeN.lineTo(0.38, 0.55);
+    shapeN.lineTo(0.2, 0.55);
+    shapeN.lineTo(-0.2, -0.35);
+    shapeN.lineTo(-0.2, 0.55);
+    shapeN.lineTo(-0.4, 0.55);
+    shapeN.closePath();
+
+    const geoN = new THREE.ExtrudeGeometry(shapeN, extrudeSettings);
+    geoN.center();
+    const meshN = new THREE.Mesh(geoN, letterMat);
+    const wireN = new THREE.Mesh(geoN, letterWireMat);
     const groupN = new THREE.Group();
-    const leftStemN = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 1.3, 12), letterMat);
-    leftStemN.position.set(-0.32, 0, 0);
-    const rightStemN = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 1.3, 12), letterMat);
-    rightStemN.position.set(0.32, 0, 0);
-    const diagN = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 1.42, 12), letterMat);
-    diagN.position.set(0, 0, 0);
-    diagN.rotation.z = -Math.PI / 6.2;
-    groupN.add(leftStemN, rightStemN, diagN);
+    groupN.add(meshN, wireN);
     groupN.position.x = 0;
 
-    // 3D Monogram - Letter W (Sharp 3D W Monogram)
+    // 3D Monogram - Letter W
+    const shapeW = new THREE.Shape();
+    shapeW.moveTo(-0.55, 0.55);
+    shapeW.lineTo(-0.38, 0.55);
+    shapeW.lineTo(-0.2, -0.3);
+    shapeW.lineTo(-0.02, 0.25);
+    shapeW.lineTo(0.16, 0.25);
+    shapeW.lineTo(0.34, -0.3);
+    shapeW.lineTo(0.52, 0.55);
+    shapeW.lineTo(0.68, 0.55);
+    shapeW.lineTo(0.42, -0.6);
+    shapeW.lineTo(0.25, -0.6);
+    shapeW.lineTo(0.07, 0.05);
+    shapeW.lineTo(-0.11, -0.6);
+    shapeW.lineTo(-0.28, -0.6);
+    shapeW.closePath();
+
+    const geoW = new THREE.ExtrudeGeometry(shapeW, extrudeSettings);
+    geoW.center();
+    const meshW = new THREE.Mesh(geoW, letterMat);
+    const wireW = new THREE.Mesh(geoW, letterWireMat);
     const groupW = new THREE.Group();
-    const wRadius = 0.075;
-    const s1W = new THREE.Mesh(new THREE.CylinderGeometry(wRadius, wRadius, 1.05, 12), letterMat);
-    s1W.position.set(-0.36, 0.0, 0);
-    s1W.rotation.z = -0.38;
-
-    const s2W = new THREE.Mesh(new THREE.CylinderGeometry(wRadius, wRadius, 0.95, 12), letterMat);
-    s2W.position.set(-0.12, -0.20, 0);
-    s2W.rotation.z = 0.45;
-
-    const s3W = new THREE.Mesh(new THREE.CylinderGeometry(wRadius, wRadius, 0.95, 12), letterMat);
-    s3W.position.set(0.12, -0.20, 0);
-    s3W.rotation.z = -0.45;
-
-    const s4W = new THREE.Mesh(new THREE.CylinderGeometry(wRadius, wRadius, 1.05, 12), letterMat);
-    s4W.position.set(0.36, 0.0, 0);
-    s4W.rotation.z = 0.38;
-
-    groupW.add(s1W, s2W, s3W, s4W);
-    groupW.position.x = 1.25;
+    groupW.add(meshW, wireW);
+    groupW.position.x = 1.35;
 
     // Glowing Dot for YNW. Monogram
     const dotMat = new THREE.MeshStandardMaterial({
       color: 0x00E5FF,
       emissive: 0x00E5FF,
-      emissiveIntensity: 0.9,
+      emissiveIntensity: 1.2,
       roughness: 0.1
     });
-    const dotDot = new THREE.Mesh(new THREE.SphereGeometry(0.14, 16, 16), dotMat);
-    dotDot.position.set(1.95, -0.4, 0);
+    const dotDot = new THREE.Mesh(new THREE.SphereGeometry(0.15, 24, 24), dotMat);
+    dotDot.position.set(2.15, -0.42, 0);
 
     const logoLetters = new THREE.Group();
     logoLetters.add(groupY, groupN, groupW, dotDot);
     mainGroup.add(logoLetters);
 
+    // Glowing Central Energy Orb Core
+    const coreGeo = new THREE.SphereGeometry(0.7, 32, 32);
+    const coreMat = new THREE.MeshBasicMaterial({ color: 0x00E5FF, transparent: true, opacity: 0.25, wireframe: true });
+    const coreOrb = new THREE.Mesh(coreGeo, coreMat);
+    coreOrb.position.set(0, 0, -0.5);
+    mainGroup.add(coreOrb);
+
     // 3 Cyber Orbital Telemetry Rings
-    const ring1Geo = new THREE.TorusGeometry(2.2, 0.03, 16, 100);
-    const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x00E5FF, wireframe: true, transparent: true, opacity: 0.65 });
+    const ring1Geo = new THREE.TorusGeometry(2.3, 0.025, 16, 100);
+    const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x00E5FF, wireframe: true, transparent: true, opacity: 0.7 });
     const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
     mainGroup.add(ring1);
 
-    const ring2Geo = new THREE.TorusGeometry(2.5, 0.02, 16, 100);
-    const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x5C67DE, wireframe: true, transparent: true, opacity: 0.5 });
+    const ring2Geo = new THREE.TorusGeometry(2.6, 0.02, 16, 100);
+    const ring2Mat = new THREE.MeshBasicMaterial({ color: 0x5C67DE, wireframe: true, transparent: true, opacity: 0.55 });
     const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
     ring2.rotation.x = Math.PI / 3;
     mainGroup.add(ring2);
 
-    const ring3Geo = new THREE.TorusGeometry(2.8, 0.015, 16, 100);
-    const ring3Mat = new THREE.MeshBasicMaterial({ color: 0x7C3AED, wireframe: true, transparent: true, opacity: 0.4 });
+    const ring3Geo = new THREE.TorusGeometry(2.9, 0.015, 16, 100);
+    const ring3Mat = new THREE.MeshBasicMaterial({ color: 0x7C3AED, wireframe: true, transparent: true, opacity: 0.45 });
     const ring3 = new THREE.Mesh(ring3Geo, ring3Mat);
     ring3.rotation.y = Math.PI / 4;
     mainGroup.add(ring3);
 
     // Drifting Particles Field
-    const pCount = 150;
+    const pCount = 200;
     const pPositions = new Float32Array(pCount * 3);
     for (let i = 0; i < pCount * 3; i += 3) {
       const angle = Math.random() * Math.PI * 2;
-      const rad = 2.0 + Math.random() * 1.8;
+      const rad = 1.8 + Math.random() * 2.2;
       pPositions[i] = Math.cos(angle) * rad;
-      pPositions[i + 1] = (Math.random() - 0.5) * 2.5;
+      pPositions[i + 1] = (Math.random() - 0.5) * 3.0;
       pPositions[i + 2] = Math.sin(angle) * rad;
     }
     const pGeo = new THREE.BufferGeometry();
@@ -823,14 +881,24 @@ function initPreloader() {
       animFrameId = requestAnimationFrame(animatePreloader3D);
       const elapsedTime = clock.getElapsedTime();
 
-      logoLetters.rotation.y = Math.sin(elapsedTime * 1.5) * 0.45;
-      logoLetters.rotation.x = Math.cos(elapsedTime * 1.2) * 0.12;
-      logoLetters.position.y = Math.sin(elapsedTime * 2.2) * 0.15;
+      // Smooth interactive mouse parallax lerp
+      mainGroup.rotation.y += (targetRotY - mainGroup.rotation.y) * 0.05;
+      mainGroup.rotation.x += (targetRotX - mainGroup.rotation.x) * 0.05;
+
+      logoLetters.rotation.y = Math.sin(elapsedTime * 1.5) * 0.35;
+      logoLetters.rotation.x = Math.cos(elapsedTime * 1.2) * 0.10;
+      logoLetters.position.y = Math.sin(elapsedTime * 2.0) * 0.15;
+
+      coreOrb.rotation.y = -elapsedTime * 0.8;
+      coreOrb.scale.setScalar(1.0 + Math.sin(elapsedTime * 3.0) * 0.12);
 
       ring1.rotation.z = elapsedTime * 0.6;
       ring2.rotation.y = elapsedTime * 0.45;
       ring3.rotation.x = elapsedTime * 0.3;
       particles.rotation.y = elapsedTime * 0.25;
+
+      // Pulsating emissive intensity
+      letterMat.emissiveIntensity = 0.5 + Math.sin(elapsedTime * 2.5) * 0.25;
 
       renderer.render(scene, camera);
     };
