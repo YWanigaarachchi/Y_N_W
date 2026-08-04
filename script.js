@@ -192,22 +192,27 @@ function initThreeJsAiCore() {
   groupN.add(leftStemN, rightStemN, diagN);
   groupN.position.x = 0;
 
-  // 3D Monogram - Letter W
+  // 3D Monogram - Letter W (Sharp 3D W Monogram)
   const groupW = new THREE.Group();
-  const s1W = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.25, 12), letterMat);
-  s1W.position.set(-0.48, 0.05, 0);
-  s1W.rotation.z = -Math.PI / 14;
-  const s2W = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.1, 12), letterMat);
-  s2W.position.set(-0.16, -0.05, 0);
-  s2W.rotation.z = Math.PI / 10;
-  const s3W = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.1, 12), letterMat);
-  s3W.position.set(0.16, -0.05, 0);
-  s3W.rotation.z = -Math.PI / 10;
-  const s4W = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.25, 12), letterMat);
-  s4W.position.set(0.48, 0.05, 0);
-  s4W.rotation.z = Math.PI / 14;
+  const wRadius = 0.075;
+  const s1W = new THREE.Mesh(new THREE.CylinderGeometry(wRadius, wRadius, 1.05, 12), letterMat);
+  s1W.position.set(-0.36, 0.0, 0);
+  s1W.rotation.z = -0.38;
+
+  const s2W = new THREE.Mesh(new THREE.CylinderGeometry(wRadius, wRadius, 0.95, 12), letterMat);
+  s2W.position.set(-0.12, -0.20, 0);
+  s2W.rotation.z = 0.45;
+
+  const s3W = new THREE.Mesh(new THREE.CylinderGeometry(wRadius, wRadius, 0.95, 12), letterMat);
+  s3W.position.set(0.12, -0.20, 0);
+  s3W.rotation.z = -0.45;
+
+  const s4W = new THREE.Mesh(new THREE.CylinderGeometry(wRadius, wRadius, 1.05, 12), letterMat);
+  s4W.position.set(0.36, 0.0, 0);
+  s4W.rotation.z = 0.38;
+
   groupW.add(s1W, s2W, s3W, s4W);
-  groupW.position.x = 1.2;
+  groupW.position.x = 1.25;
 
   // Glowing Dot Sphere for YNW. Monogram
   const dotMat = new THREE.MeshStandardMaterial({
@@ -834,22 +839,27 @@ function initPreloader() {
     groupN.add(leftStemN, rightStemN, diagN);
     groupN.position.x = 0;
 
-    // 3D Monogram - Letter W
+    // 3D Monogram - Letter W (Sharp 3D W Monogram)
     const groupW = new THREE.Group();
-    const s1W = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.25, 12), letterMat);
-    s1W.position.set(-0.48, 0.05, 0);
-    s1W.rotation.z = -Math.PI / 14;
-    const s2W = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.1, 12), letterMat);
-    s2W.position.set(-0.16, -0.05, 0);
-    s2W.rotation.z = Math.PI / 10;
-    const s3W = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.1, 12), letterMat);
-    s3W.position.set(0.16, -0.05, 0);
-    s3W.rotation.z = -Math.PI / 10;
-    const s4W = new THREE.Mesh(new THREE.CylinderGeometry(0.07, 0.07, 1.25, 12), letterMat);
-    s4W.position.set(0.48, 0.05, 0);
-    s4W.rotation.z = Math.PI / 14;
+    const wRadius = 0.075;
+    const s1W = new THREE.Mesh(new THREE.CylinderGeometry(wRadius, wRadius, 1.05, 12), letterMat);
+    s1W.position.set(-0.36, 0.0, 0);
+    s1W.rotation.z = -0.38;
+
+    const s2W = new THREE.Mesh(new THREE.CylinderGeometry(wRadius, wRadius, 0.95, 12), letterMat);
+    s2W.position.set(-0.12, -0.20, 0);
+    s2W.rotation.z = 0.45;
+
+    const s3W = new THREE.Mesh(new THREE.CylinderGeometry(wRadius, wRadius, 0.95, 12), letterMat);
+    s3W.position.set(0.12, -0.20, 0);
+    s3W.rotation.z = -0.45;
+
+    const s4W = new THREE.Mesh(new THREE.CylinderGeometry(wRadius, wRadius, 1.05, 12), letterMat);
+    s4W.position.set(0.36, 0.0, 0);
+    s4W.rotation.z = 0.38;
+
     groupW.add(s1W, s2W, s3W, s4W);
-    groupW.position.x = 1.2;
+    groupW.position.x = 1.25;
 
     // Glowing Dot for YNW. Monogram
     const dotMat = new THREE.MeshStandardMaterial({
