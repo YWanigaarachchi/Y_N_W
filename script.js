@@ -279,21 +279,31 @@ function initProjectCategoryTabs() {
 
   if (!projectBtns.length || !projectCards.length) return;
 
+  function filterProjectCategory(cat) {
+    projectCards.forEach(card => {
+      const cardCat = card.getAttribute('data-project-category');
+      if (cat === 'all' || cardCat === cat) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // Initial filtering based on active tab on page load
+  const activeBtn = document.querySelector('.project-tab-btn.active');
+  if (activeBtn) {
+    const initCat = activeBtn.getAttribute('data-project-category');
+    filterProjectCategory(initCat);
+  }
+
   projectBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       projectBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       const cat = btn.getAttribute('data-project-category');
-
-      projectCards.forEach(card => {
-        const cardCat = card.getAttribute('data-project-category');
-        if (cat === 'all' || cardCat === cat) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
+      filterProjectCategory(cat);
     });
   });
 }
