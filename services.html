@@ -200,26 +200,42 @@
         </div>
 
         <form id="package-order-form">
-            <div class="form-group">
-                <label for="order-name">Your Full Name</label>
-                <input type="text" id="order-name" class="form-input" placeholder="e.g. John Doe" required>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+                <div class="form-group">
+                    <label for="order-name">Your Full Name</label>
+                    <input type="text" id="order-name" class="form-input" placeholder="e.g. John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="order-email">Your Email Address</label>
+                    <input type="email" id="order-email" class="form-input" placeholder="john@example.com" required>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="order-email">Your Email Address</label>
-                <input type="email" id="order-email" class="form-input" placeholder="john@example.com" required>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+                <div class="form-group">
+                    <label for="order-business-type">Company / Business Type</label>
+                    <select id="order-business-type" class="form-input" required style="background:#0A1128;">
+                        <option value="Startup Business">Startup Business</option>
+                        <option value="Small / Medium Business">Small / Medium Business</option>
+                        <option value="Enterprise Brand">Enterprise Brand</option>
+                        <option value="Individual / Personal">Individual / Personal</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="order-company-name">Company Name</label>
+                    <input type="text" id="order-company-name" class="form-input" placeholder="e.g. YNW Solutions" required>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="order-company">Company / Business Type</label>
-                <select id="order-company" class="form-input" required style="background:#0A1128;">
-                    <option value="Startup Business">Startup Business</option>
-                    <option value="Small / Medium Business">Small / Medium Business</option>
-                    <option value="Enterprise Brand">Enterprise Brand</option>
-                    <option value="Individual / Personal">Individual / Personal Project</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="order-location">Your Location / City</label>
-                <input type="text" id="order-location" class="form-input" placeholder="e.g. Colombo, Sri Lanka" required>
+
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+                <div class="form-group">
+                    <label for="order-city-location">City Location</label>
+                    <input type="text" id="order-city-location" class="form-input" placeholder="e.g. Colombo, Sri Lanka" required>
+                </div>
+                <div class="form-group">
+                    <label for="order-contact-number">Contact Number</label>
+                    <input type="tel" id="order-contact-number" class="form-input" placeholder="e.g. +94 76 585 5570" required>
+                </div>
             </div>
             <button type="submit" class="btn btn-whatsapp" style="width:100%; margin-top:12px; font-size:1.05rem;"><i class="fa-brands fa-whatsapp"></i> Transmit Order via WhatsApp</button>
         </form>
