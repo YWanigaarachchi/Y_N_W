@@ -569,6 +569,8 @@ function initBackgroundMusic() {
 
   const audioHtml = `
   <audio id="bg-audio-player" loop preload="auto">
+      <source src="https://actions.google.com/sounds/v1/ambiences/deep_space.ogg" type="audio/ogg">
+      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
       <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=ambient-space-112185.mp3" type="audio/mpeg">
   </audio>`;
   document.body.insertAdjacentHTML('beforeend', audioHtml);
@@ -645,11 +647,33 @@ function initBackgroundMusic() {
     }
   }
 
+  const playBackgroundMusic = () => {
+    audio.muted = false;
+    audio.volume = 0.35;
+    const playPromise = audio.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        toggleBtn.classList.add('playing');
+        isPlaying = true;
+        cleanUpListeners();
+      }).catch(err => {
+        createAmbientSynth();
+        if (synthAudioCtx) {
+          if (synthAudioCtx.state === 'suspended') {
+            synthAudioCtx.resume();
+          }
+          toggleBtn.classList.add('playing');
+          isPlaying = true;
+        }
+        cleanUpListeners();
+      });
+    }
+  };
+
   function toggleMusic() {
     if (isPlaying) {
       if (audio.muted) {
-        audio.muted = false;
-        audio.play().catch(() => {});
+        playBackgroundMusic();
       } else {
         audio.pause();
         stopAmbientSynth();
@@ -657,16 +681,7 @@ function initBackgroundMusic() {
         isPlaying = false;
       }
     } else {
-      audio.muted = false;
-      audio.play().then(() => {
-        toggleBtn.classList.add('playing');
-        isPlaying = true;
-      }).catch(err => {
-        // Fallback to ambient Web Audio API synthesizer
-        createAmbientSynth();
-        toggleBtn.classList.add('playing');
-        isPlaying = true;
-      });
+      playBackgroundMusic();
     }
   }
 
@@ -678,24 +693,10 @@ function initBackgroundMusic() {
   const interactionEvents = ['click', 'keydown', 'touchstart'];
 
   const startAudioOnInteraction = (e) => {
-    // If the click/touch was directly on the toggle button, let toggleMusic handle it
     if (e && e.target && (toggleBtn === e.target || toggleBtn.contains(e.target))) {
       return;
     }
-
-    audio.muted = false;
-    audio.play().then(() => {
-      toggleBtn.classList.add('playing');
-      isPlaying = true;
-      cleanUpListeners();
-    }).catch(err => {
-      createAmbientSynth();
-      if (synthAudioCtx && synthAudioCtx.state !== 'suspended') {
-        toggleBtn.classList.add('playing');
-        isPlaying = true;
-        cleanUpListeners();
-      }
-    });
+    playBackgroundMusic();
   };
 
   const cleanUpListeners = () => {
@@ -711,35 +712,11 @@ function initBackgroundMusic() {
 
   // Auto-play / unmute when preloader loading effect finishes
   window.addEventListener('ynwPreloaderFinished', () => {
-    audio.muted = false;
-    audio.play().then(() => {
-      toggleBtn.classList.add('playing');
-      isPlaying = true;
-      cleanUpListeners();
-    }).catch(err => {
-      createAmbientSynth();
-      if (synthAudioCtx && synthAudioCtx.state !== 'suspended') {
-        toggleBtn.classList.add('playing');
-        isPlaying = true;
-      }
-    });
+    playBackgroundMusic();
   });
 
   // Attempt autoplay immediately on load (try unmuted first, then muted fallback)
-  audio.play().then(() => {
-    toggleBtn.classList.add('playing');
-    isPlaying = true;
-    cleanUpListeners();
-  }).catch(() => {
-    // Unmuted autoplay blocked, try muted autoplay
-    audio.muted = true;
-    audio.play().then(() => {
-      toggleBtn.classList.add('playing');
-      isPlaying = true;
-    }).catch(() => {
-      // Blocked even if muted (extreme custom browser settings)
-    });
-  });
+  playBackgroundMusic();
 }
 
 /* =====================================================
@@ -765,6 +742,9 @@ function initPreloader() {
         <span class="preloader-status-text" id="preloader-status-text">INITIALIZING YNW SYSTEM...</span>
         <span class="preloader-percent-counter" id="preloader-percent-counter">0%</span>
       </div>
+      <button class="preloader-enter-btn" id="preloader-enter-btn" style="opacity: 0; pointer-events: none;">
+        <i class="fa-solid fa-volume-high"></i> ENTER EXPERIENCE
+      </button>
     </div>
   </div>`;
   document.body.insertAdjacentHTML('afterbegin', preloaderHtml);
@@ -773,6 +753,7 @@ function initPreloader() {
   const barFill = document.getElementById('preloader-bar-fill');
   const statusText = document.getElementById('preloader-status-text');
   const percentText = document.getElementById('preloader-percent-counter');
+  const enterBtn = document.getElementById('preloader-enter-btn');
   const container = document.getElementById('preloader-3d-canvas');
 
   let animFrameId = null;
@@ -900,6 +881,7 @@ function initPreloader() {
   // Progress Bar & Counter logic
   let currentProgress = 0;
   let pageLoaded = false;
+  let hasFinished = false;
 
   const updateStatusText = (progress) => {
     if (progress < 25) {
@@ -915,7 +897,30 @@ function initPreloader() {
     }
   };
 
+  const triggerEnter = (e) => {
+    if (e) e.stopPropagation();
+    if (hasFinished) return;
+    hasFinished = true;
+    currentProgress = 100;
+    if (barFill) barFill.style.width = '100%';
+    if (percentText) percentText.textContent = '100%';
+    if (statusText) statusText.textContent = "SYSTEM READY";
+    window.dispatchEvent(new CustomEvent('ynwPreloaderFinished'));
+
+    if (preloaderEl) {
+      preloaderEl.classList.add('preloader-hidden');
+      setTimeout(() => {
+        if (animFrameId) cancelAnimationFrame(animFrameId);
+        preloaderEl.style.display = 'none';
+      }, 800);
+    }
+  };
+
   const progressInterval = setInterval(() => {
+    if (hasFinished) {
+      clearInterval(progressInterval);
+      return;
+    }
     let increment = pageLoaded ? 8 : (currentProgress < 75 ? Math.random() * 4 + 2 : 0.5);
     currentProgress = Math.min(100, currentProgress + increment);
 
@@ -925,31 +930,28 @@ function initPreloader() {
 
     if (currentProgress >= 100) {
       clearInterval(progressInterval);
+      if (enterBtn) {
+        enterBtn.style.opacity = '1';
+        enterBtn.style.pointerEvents = 'auto';
+      }
       window.dispatchEvent(new CustomEvent('ynwPreloaderFinished'));
       setTimeout(() => {
-        if (preloaderEl) {
-          preloaderEl.classList.add('preloader-hidden');
-          setTimeout(() => {
-            if (animFrameId) cancelAnimationFrame(animFrameId);
-            preloaderEl.style.display = 'none';
-          }, 800);
-        }
-      }, 300);
+        triggerEnter();
+      }, 1000);
     }
   }, 40);
 
-  // Allow clicking anywhere on the preloader to accelerate to 100% and start music immediately
+  if (enterBtn) {
+    enterBtn.addEventListener('click', triggerEnter);
+  }
   if (preloaderEl) {
-    preloaderEl.addEventListener('click', () => {
-      currentProgress = 100;
-    });
+    preloaderEl.addEventListener('click', triggerEnter);
   }
 
   window.addEventListener('load', () => {
     pageLoaded = true;
   });
 
-  // Backup fallback in case window load fired already
   if (document.readyState === 'complete') {
     pageLoaded = true;
   }
