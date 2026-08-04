@@ -668,32 +668,40 @@ function initBackgroundMusic() {
     toggleMusic();
   });
 
-  // Attempt autoplay immediately on load, fallback to first user interaction if blocked by browser policy
+  const interactionEvents = ['click', 'scroll', 'mousemove', 'keydown', 'touchstart'];
+
+  const startAudioOnInteraction = () => {
+    if (isPlaying) return;
+    audio.play().then(() => {
+      toggleBtn.classList.add('playing');
+      isPlaying = true;
+      cleanUpListeners();
+    }).catch(err => {
+      // Fallback to ambient Web Audio API synthesizer if audio file blocked/fails
+      createAmbientSynth();
+      toggleBtn.classList.add('playing');
+      isPlaying = true;
+      cleanUpListeners();
+    });
+  };
+
+  const cleanUpListeners = () => {
+    interactionEvents.forEach(event => {
+      document.removeEventListener(event, startAudioOnInteraction);
+    });
+  };
+
+  // Register listeners immediately
+  interactionEvents.forEach(event => {
+    document.addEventListener(event, startAudioOnInteraction, { once: true, passive: true });
+  });
+
+  // Also attempt immediate autoplay on load
   audio.play().then(() => {
     toggleBtn.classList.add('playing');
     isPlaying = true;
+    cleanUpListeners();
   }).catch(() => {
-    const startAudioOnInteraction = () => {
-      if (!isPlaying) {
-        audio.play().then(() => {
-          toggleBtn.classList.add('playing');
-          isPlaying = true;
-        }).catch(err => {
-          // Fallback to ambient Web Audio API synthesizer
-          createAmbientSynth();
-          toggleBtn.classList.add('playing');
-          isPlaying = true;
-        });
-      }
-      // Clean up all interaction listeners
-      interactionEvents.forEach(event => {
-        document.removeEventListener(event, startAudioOnInteraction);
-      });
-    };
-
-    const interactionEvents = ['click', 'scroll', 'mousemove', 'keydown', 'touchstart'];
-    interactionEvents.forEach(event => {
-      document.addEventListener(event, startAudioOnInteraction, { once: true, passive: true });
-    });
+    // Autoplay blocked by browser policy, fallback interaction listeners are active
   });
 }
