@@ -566,20 +566,31 @@ function initSmoothScroll() {
 function initBackgroundMusic() {
   if (document.getElementById('music-toggle-btn')) return;
 
-  const musicHtml = `
-  <div class="music-player-widget">
-      <button id="music-toggle-btn" class="music-toggle-btn" title="Toggle Futuristic Ambient Music">
-          <i class="fa-solid fa-music"></i>
-          <span class="sound-wave">
-              <span></span><span></span><span></span><span></span>
-          </span>
-      </button>
-  </div>
+  const audioHtml = `
   <audio id="bg-audio-player" loop preload="auto">
       <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=ambient-space-112185.mp3" type="audio/mpeg">
   </audio>`;
+  document.body.insertAdjacentHTML('beforeend', audioHtml);
 
-  document.body.insertAdjacentHTML('beforeend', musicHtml);
+  const toggleButtonHtml = `
+  <button id="music-toggle-btn" class="music-toggle-btn navbar-music-btn" title="Toggle Futuristic Ambient Music">
+      <i class="fa-solid fa-music"></i>
+      <span class="sound-wave">
+          <span></span><span></span><span></span><span></span>
+      </span>
+  </button>`;
+
+  const navInner = document.querySelector('nav .nav-inner');
+  if (navInner) {
+    const navCta = navInner.querySelector('.nav-cta') || navInner.querySelector('.hamburger');
+    if (navCta) {
+      navCta.insertAdjacentHTML('beforebegin', toggleButtonHtml);
+    } else {
+      navInner.insertAdjacentHTML('beforeend', toggleButtonHtml);
+    }
+  } else {
+    document.body.insertAdjacentHTML('beforeend', `<div class="music-player-widget">${toggleButtonHtml}</div>`);
+  }
 
   const audio = document.getElementById('bg-audio-player');
   const toggleBtn = document.getElementById('music-toggle-btn');
