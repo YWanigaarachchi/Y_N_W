@@ -380,6 +380,85 @@ p { color: var(--text-secondary); font-size: 1.05rem; }
 }
 
 /* =====================================================
+   GLOBAL FLOATING BACKGROUND MUSIC PLAYER WIDGET
+   ===================================================== */
+.music-player-widget {
+  position: fixed;
+  bottom: 32px;
+  left: 32px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.music-toggle-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(10, 17, 40, 0.85);
+  border: 1px solid var(--neon-cyan);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: var(--neon-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 1.1rem;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.music-toggle-btn:hover {
+  background: rgba(0, 229, 255, 0.2);
+  transform: scale(1.1);
+  box-shadow: 0 0 35px var(--neon-cyan);
+}
+
+.music-toggle-btn.playing {
+  border-color: var(--whatsapp-green);
+  color: var(--whatsapp-green);
+  box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
+  animation: musicPulse 2s infinite ease-in-out;
+}
+
+.sound-wave {
+  display: none;
+  align-items: flex-end;
+  gap: 2px;
+  height: 14px;
+}
+
+.music-toggle-btn.playing .sound-wave {
+  display: flex;
+}
+
+.sound-wave span {
+  width: 3px;
+  height: 100%;
+  background: var(--whatsapp-green);
+  border-radius: 2px;
+  animation: equalizer 1s ease-in-out infinite alternate;
+}
+
+.sound-wave span:nth-child(1) { animation-delay: 0.1s; }
+.sound-wave span:nth-child(2) { animation-delay: 0.3s; }
+.sound-wave span:nth-child(3) { animation-delay: 0.2s; }
+.sound-wave span:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes equalizer {
+  0% { height: 3px; }
+  100% { height: 14px; }
+}
+
+@keyframes musicPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(37, 211, 102, 0.4); }
+  50% { box-shadow: 0 0 35px rgba(37, 211, 102, 0.8); }
+}
+
+/* =====================================================
    GLOBAL RIGHT-SIDE FLOATING AUTO-SCROLL BUTTON
    ===================================================== */
 .auto-scroll-btn {
@@ -1020,6 +1099,8 @@ footer {
   .whatsapp-float-container { bottom: 18px; right: 18px; }
   .whatsapp-float-btn { width: 52px; height: 52px; font-size: 1.6rem; }
   .auto-scroll-btn { bottom: 82px; right: 24px; width: 42px; height: 42px; font-size: 1rem; }
+  .music-player-widget { bottom: 18px; left: 18px; }
+  .music-toggle-btn { width: 46px; height: 46px; font-size: 0.95rem; }
 }
 
 @media (max-width: 480px) {
