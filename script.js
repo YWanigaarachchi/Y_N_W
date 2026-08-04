@@ -716,11 +716,13 @@ function initPreloader() {
     const mainGroup = new THREE.Group();
     scene.add(mainGroup);
 
-    // Material for 3D letters
+    // Material for 3D letters - High Gloss Metallic Cyan Glow
     const letterMat = new THREE.MeshStandardMaterial({
       color: 0x00E5FF,
-      metalness: 0.8,
-      roughness: 0.2
+      emissive: 0x00E5FF,
+      emissiveIntensity: 0.4,
+      metalness: 0.9,
+      roughness: 0.15
     });
 
     // 3D Monogram - Letter Y
@@ -765,13 +767,23 @@ function initPreloader() {
     groupW.add(s1W, s2W, s3W, s4W);
     groupW.position.x = 1.2;
 
+    // Glowing Dot for YNW. Monogram
+    const dotMat = new THREE.MeshStandardMaterial({
+      color: 0x00E5FF,
+      emissive: 0x00E5FF,
+      emissiveIntensity: 0.9,
+      roughness: 0.1
+    });
+    const dotDot = new THREE.Mesh(new THREE.SphereGeometry(0.14, 16, 16), dotMat);
+    dotDot.position.set(1.95, -0.4, 0);
+
     const logoLetters = new THREE.Group();
-    logoLetters.add(groupY, groupN, groupW);
+    logoLetters.add(groupY, groupN, groupW, dotDot);
     mainGroup.add(logoLetters);
 
-    // Orbital Rings
+    // 3 Cyber Orbital Telemetry Rings
     const ring1Geo = new THREE.TorusGeometry(2.2, 0.03, 16, 100);
-    const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x00E5FF, wireframe: true, transparent: true, opacity: 0.6 });
+    const ring1Mat = new THREE.MeshBasicMaterial({ color: 0x00E5FF, wireframe: true, transparent: true, opacity: 0.65 });
     const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
     mainGroup.add(ring1);
 
@@ -781,19 +793,25 @@ function initPreloader() {
     ring2.rotation.x = Math.PI / 3;
     mainGroup.add(ring2);
 
-    // Drifting Particles
-    const pCount = 120;
+    const ring3Geo = new THREE.TorusGeometry(2.8, 0.015, 16, 100);
+    const ring3Mat = new THREE.MeshBasicMaterial({ color: 0x7C3AED, wireframe: true, transparent: true, opacity: 0.4 });
+    const ring3 = new THREE.Mesh(ring3Geo, ring3Mat);
+    ring3.rotation.y = Math.PI / 4;
+    mainGroup.add(ring3);
+
+    // Drifting Particles Field
+    const pCount = 150;
     const pPositions = new Float32Array(pCount * 3);
     for (let i = 0; i < pCount * 3; i += 3) {
       const angle = Math.random() * Math.PI * 2;
-      const rad = 2.0 + Math.random() * 1.5;
+      const rad = 2.0 + Math.random() * 1.8;
       pPositions[i] = Math.cos(angle) * rad;
-      pPositions[i + 1] = (Math.random() - 0.5) * 2;
+      pPositions[i + 1] = (Math.random() - 0.5) * 2.5;
       pPositions[i + 2] = Math.sin(angle) * rad;
     }
     const pGeo = new THREE.BufferGeometry();
     pGeo.setAttribute('position', new THREE.BufferAttribute(pPositions, 3));
-    const pMat = new THREE.PointsMaterial({ size: 0.04, color: 0x00E5FF, transparent: true, opacity: 0.8 });
+    const pMat = new THREE.PointsMaterial({ size: 0.045, color: 0x00E5FF, transparent: true, opacity: 0.85 });
     const particles = new THREE.Points(pGeo, pMat);
     mainGroup.add(particles);
 
@@ -802,12 +820,14 @@ function initPreloader() {
       animFrameId = requestAnimationFrame(animatePreloader3D);
       const elapsedTime = clock.getElapsedTime();
 
-      logoLetters.rotation.y = Math.sin(elapsedTime * 1.2) * 0.35;
-      logoLetters.position.y = Math.sin(elapsedTime * 2.0) * 0.12;
+      logoLetters.rotation.y = Math.sin(elapsedTime * 1.5) * 0.45;
+      logoLetters.rotation.x = Math.cos(elapsedTime * 1.2) * 0.12;
+      logoLetters.position.y = Math.sin(elapsedTime * 2.2) * 0.15;
 
-      ring1.rotation.z = elapsedTime * 0.5;
-      ring2.rotation.y = elapsedTime * 0.4;
-      particles.rotation.y = elapsedTime * 0.2;
+      ring1.rotation.z = elapsedTime * 0.6;
+      ring2.rotation.y = elapsedTime * 0.45;
+      ring3.rotation.x = elapsedTime * 0.3;
+      particles.rotation.y = elapsedTime * 0.25;
 
       renderer.render(scene, camera);
     };
