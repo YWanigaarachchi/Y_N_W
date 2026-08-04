@@ -3,1093 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YNW Software Solutions Portfolio - Our featured Web and Mobile App projects including Hotel Management Systems and Wellness Center apps.">
-    <title>Portfolio | YNW Software Solutions</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Anti-Gravity Floating Portfolio Gallery - Showcasing smart card solutions, dashboards, and zero-G mobile apps.">
+    <title>Projects Gallery | YNW Anti-Gravity Studio</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* =====================================================
-           PROJECT PAGE — ENHANCED STYLES
-           ===================================================== */
-
-        /* --- Stats Bar --- */
-        .proj-stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-            margin-top: 48px;
-            padding-top: 40px;
-            border-top: 1px solid var(--border-subtle);
-        }
-
-        .proj-stat { text-align: center; }
-        .proj-stat-num {
-            font-size: 2.2rem;
-            font-weight: 900;
-            background: var(--grad-orange);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-        }
-        .proj-stat-label {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 6px;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-
-        /* --- Filter Tabs --- */
-        .portfolio-filter {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-bottom: 56px;
-            justify-content: center;
-        }
-
-        /* --- Project Cards Grid --- */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            transition: var(--transition);
-            cursor: none;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            border-color: rgba(0, 229, 255, 0.30);
-            transform: translateY(-8px);
-            box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 40px rgba(0, 229, 255, 0.08);
-        }
-
-        /* Top accent line */
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: var(--grad-orange);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.4s ease;
-            z-index: 2;
-        }
-        .project-card:hover::before { transform: scaleX(1); }
-
-        /* Image wrapper */
-        .proj-img-wrap {
-            position: relative;
-            aspect-ratio: 16/9;
-            overflow: hidden;
-        }
-
-        .proj-img-wrap img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .project-card:hover .proj-img-wrap img { transform: scale(1.06); }
-
-        .proj-category-badge {
-            position: absolute;
-            top: 16px; left: 16px;
-            background: rgba(8, 11, 26, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 229, 255, 0.25);
-            color: var(--accent-cyan);
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            padding: 6px 14px;
-            border-radius: var(--radius-full);
-            z-index: 1;
-        }
-
-        .proj-status-dot {
-            position: absolute;
-            top: 16px; right: 16px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            background: rgba(8, 11, 26, 0.85);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-full);
-            padding: 6px 12px;
-            font-size: 0.68rem;
-            font-weight: 600;
-            z-index: 1;
-        }
-
-        .proj-status-dot.live { color: #00E676; }
-        .proj-status-dot.live::before {
-            content: '';
-            width: 7px; height: 7px;
-            background: #00E676;
-            border-radius: 50%;
-            animation: pulse-green 2s infinite;
-            flex-shrink: 0;
-        }
-        .proj-status-dot.completed { color: var(--accent-cyan); }
-        .proj-status-dot.completed::before {
-            content: '✓';
-            font-size: 0.6rem;
-        }
-
-        /* Card body */
-        .proj-body {
-            padding: 28px 28px 0;
-            flex: 1;
-        }
-
-        .proj-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: var(--text-primary);
-            line-height: 1.3;
-        }
-
-        .proj-desc {
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        /* Tech stack pills */
-        .proj-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 24px;
-        }
-
-        .tech-pill {
-            padding: 4px 12px;
-            background: rgba(0, 229, 255, 0.06);
-            border: 1px solid rgba(0, 229, 255, 0.15);
-            border-radius: var(--radius-full);
-            font-size: 0.72rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            letter-spacing: 0.04em;
-        }
-
-        /* Card footer */
-        .proj-footer {
-            padding: 20px 28px 28px;
-            border-top: 1px solid var(--border-subtle);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            margin-top: auto;
-        }
-
-        .proj-links {
-            display: flex;
-            gap: 10px;
-        }
-
-        .proj-link {
-            width: 36px; height: 36px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--border-subtle);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.85rem;
-            transition: var(--transition);
-        }
-
-        .proj-link:hover {
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-            background: rgba(0, 229, 255, 0.08);
-            transform: translateY(-2px);
-        }
-
-        .proj-view-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.82rem;
-            font-weight: 700;
-            color: var(--accent-cyan);
-            letter-spacing: 0.04em;
-            transition: var(--transition);
-            padding: 8px 18px;
-            border: 1.5px solid rgba(0, 229, 255, 0.30);
-            border-radius: var(--radius-full);
-            background: rgba(0, 229, 255, 0.04);
-        }
-
-        .proj-view-btn:hover {
-            background: rgba(0, 229, 255, 0.12);
-            border-color: var(--accent-cyan);
-            gap: 12px;
-        }
-
-        .proj-view-btn i { font-size: 0.7rem; transition: transform 0.3s ease; }
-        .proj-view-btn:hover i { transform: translateX(4px); }
-
-        /* =====================================================
-           PROJECT MODAL
-           ===================================================== */
-        .proj-modal-overlay {
-            position: fixed;
-            inset: 0;
-            background: rgba(4, 5, 15, 0.92);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 9000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.4s ease;
-        }
-
-        .proj-modal-overlay.open {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .proj-modal {
-            background: var(--bg-card);
-            border: 1px solid rgba(0, 229, 255, 0.20);
-            border-radius: var(--radius-xl);
-            max-width: 900px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            position: relative;
-            transform: translateY(40px) scale(0.96);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-            scrollbar-width: thin;
-        }
-
-        .proj-modal-overlay.open .proj-modal {
-            transform: translateY(0) scale(1);
-        }
-
-        /* Scrollbar inside modal */
-        .proj-modal::-webkit-scrollbar { width: 3px; }
-        .proj-modal::-webkit-scrollbar-track { background: transparent; }
-        .proj-modal::-webkit-scrollbar-thumb { background: var(--accent-cyan); border-radius: 2px; }
-
-        .proj-modal-close {
-            position: sticky;
-            top: 0;
-            display: flex;
-            justify-content: flex-end;
-            padding: 20px 24px 0;
-            background: var(--bg-card);
-            z-index: 10;
-        }
-
-        .modal-close-btn {
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            border: 1px solid var(--border-subtle);
-            background: var(--bg-secondary);
-            color: var(--text-muted);
-            font-size: 1rem;
-            display: flex; align-items: center; justify-content: center;
-            transition: var(--transition);
-            cursor: none;
-        }
-
-        .modal-close-btn:hover {
-            border-color: rgba(224, 64, 251, 0.5);
-            color: var(--accent-magenta);
-            background: rgba(224, 64, 251, 0.08);
-        }
-
-        /* Modal hero image */
-        .modal-hero-img {
-            width: 100%;
-            aspect-ratio: 16/7;
-            object-fit: cover;
-            margin-bottom: 0;
-            display: block;
-        }
-
-        /* Modal content */
-        .modal-content-wrap {
-            padding: 40px 48px 48px;
-        }
-
-        .modal-top-row {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-bottom: 28px;
-        }
-
-        .modal-title-block { flex: 1; }
-
-        .modal-category-label {
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--accent-cyan);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .modal-title {
-            font-size: 1.9rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 12px;
-        }
-
-        .modal-links-row {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .modal-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 22px;
-            border-radius: var(--radius-full);
-            font-size: 0.82rem;
-            font-weight: 700;
-            transition: var(--transition);
-            letter-spacing: 0.04em;
-        }
-
-        .modal-btn-primary {
-            background: var(--grad-orange);
-            color: #04050f;
-        }
-        .modal-btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 229, 255, 0.35);
-        }
-
-        .modal-btn-outline {
-            border: 1.5px solid var(--border-subtle);
-            color: var(--text-secondary);
-            background: transparent;
-        }
-        .modal-btn-outline:hover {
-            border-color: rgba(0, 229, 255, 0.40);
-            color: var(--accent-cyan);
-            background: rgba(0, 229, 255, 0.06);
-        }
-
-        /* Modal body sections */
-        .modal-divider {
-            height: 1px;
-            background: var(--border-subtle);
-            margin: 32px 0;
-        }
-
-        .modal-section-title {
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 16px;
-        }
-
-        .modal-desc {
-            font-size: 0.95rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-        }
-
-        .modal-tech-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 4px;
-        }
-
-        .modal-tech-pill {
-            padding: 8px 18px;
-            background: rgba(0, 229, 255, 0.06);
-            border: 1px solid rgba(0, 229, 255, 0.18);
-            border-radius: var(--radius-full);
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-        }
-
-        /* Key metrics */
-        .modal-metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .metric-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-subtle);
-            border-radius: var(--radius-md);
-            padding: 20px 16px;
-            text-align: center;
-        }
-
-        .metric-value {
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: var(--grad-orange);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-            margin-bottom: 6px;
-        }
-
-        .metric-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 500;
-        }
-
-        /* Feature list */
-        .modal-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-        }
-
-        .modal-feature-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-        }
-
-        .modal-feature-item::before {
-            content: '';
-            width: 6px; height: 6px;
-            background: var(--accent-cyan);
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        /* =====================================================
-           HIDDEN CARD (filter animation)
-           ===================================================== */
-        .project-card.hidden {
-            display: none;
-        }
-
-        /* =====================================================
-           RESPONSIVE
-           ===================================================== */
-        @media (max-width: 900px) {
-            .projects-grid { grid-template-columns: repeat(2, 1fr); }
-            .modal-metrics { grid-template-columns: repeat(2, 1fr); }
-            .modal-features { grid-template-columns: 1fr; }
-            .modal-content-wrap { padding: 28px 28px 36px; }
-        }
-
-        @media (max-width: 600px) {
-            .projects-grid { grid-template-columns: 1fr; }
-            .modal-title { font-size: 1.5rem; }
-            .proj-stats-bar { gap: 32px; }
-            .modal-metrics { grid-template-columns: 1fr 1fr; }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
 <div class="cursor"></div>
 <div class="cursor-follower"></div>
+<canvas id="particles-canvas"></canvas>
 
 <nav>
-    <div class="container nav-inner">
+    <div class="nav-inner">
         <a href="index.html" class="logo">YNW<span>.</span></a>
         <div class="nav-links">
-            <a href="index.html">Home</a><a href="about.html">About</a><a href="tech.html">Tech Stack</a>
-            <div class="dropdown">
-                <a href="services.html">Services <i class="fa-solid fa-chevron-down" style="font-size:0.7em;margin-left:4px;"></i></a>
-                <div class="dropdown-content"><a href="services.html">All Services</a><a href="packages.html">Pricing Packages</a></div>
-            </div>
-            <a href="project.html" class="active">Portfolio</a><a href="github.html">Open Source</a>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="project.html" class="active">Projects</a>
+            <a href="process.html">Process</a>
+            <a href="contact.html">Contact</a>
         </div>
         <a href="contact.html" class="nav-cta">Get in Touch</a>
-        <div class="hamburger"><span></span><span></span><span></span></div>
+        <div class="hamburger">
+            <span></span><span></span><span></span>
+        </div>
     </div>
 </nav>
+
 <div class="mobile-menu">
-    <a href="index.html">Home</a><a href="about.html">About</a><a href="tech.html">Tech Stack</a>
-    <a href="services.html">Services</a><a href="packages.html">Pricing</a>
-    <a href="project.html">Portfolio</a><a href="github.html">Open Source</a><a href="contact.html">Contact</a>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="project.html">Projects</a>
+    <a href="process.html">Process</a>
+    <a href="contact.html">Contact</a>
 </div>
 
-<!-- Page Hero -->
-<div class="page-hero">
-    <div class="page-hero-bg"></div>
+<section class="section" style="padding-top:160px;">
     <div class="container">
-        <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Portfolio</span></div>
-        <div class="label">Our Work</div>
-        <h1>Projects That <span class="text-gradient">Drive Results</span></h1>
-        <p>A curated showcase of our finest work — from enterprise platforms to innovative startups. Click any project to explore the full story.</p>
-
-        <!-- Stats bar -->
-        <div class="proj-stats-bar">
-            <div class="proj-stat">
-                <div class="proj-stat-num">5</div>
-                <div class="proj-stat-label">Featured Projects</div>
-            </div>
-            <div class="proj-stat">
-                <div class="proj-stat-num">4</div>
-                <div class="proj-stat-label">Industries</div>
-            </div>
-            <div class="proj-stat">
-                <div class="proj-stat-num">50K+</div>
-                <div class="proj-stat-label">End Users</div>
-            </div>
-            <div class="proj-stat">
-                <div class="proj-stat-num">99%</div>
-                <div class="proj-stat-label">Client Satisfaction</div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- =====================================================
-     PORTFOLIO SECTION
-     ===================================================== -->
-<section class="section">
-    <div class="container">
-
-        <!-- Filter buttons -->
-        <div class="portfolio-filter reveal">
-            <button class="filter-btn active" data-filter="all">All Projects</button>
-            <button class="filter-btn" data-filter="web">Web Apps</button>
-            <button class="filter-btn" data-filter="mobile">Mobile Apps</button>
+        <div class="section-header">
+            <div class="badge-glow">Portfolio Grid</div>
+            <h2 class="section-title">The Floating <span class="text-gradient">Gallery</span></h2>
+            <p class="section-subtitle">Thumbnails hovering at virtual 3D elevations. Click any card to trigger translucent glass modal.</p>
         </div>
 
-        <!-- 6 Project Cards -->
-        <div class="projects-grid">
-
-            <!-- 01. GreenLife_Wellness_Center -->
-            <div class="project-card reveal" data-category="web" data-project="0">
-                <div class="proj-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=900" alt="GreenLife Wellness Center">
-                    <span class="proj-category-badge">Web Application</span>
-                    <span class="proj-status-dot completed">Completed</span>
+        <div class="portfolio-grid">
+            <!-- Project 1 -->
+            <div class="portfolio-item elevation-1" data-title="Smart Card Solutions" data-desc="Futuristic smart ID card system with RFID NFC integration and real-time user management dashboard." data-tech="React • Tailwind • Node.js">
+                <div class="portfolio-img-box">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Smart Card Solutions">
                 </div>
-                <div class="proj-body">
-                    <div class="proj-title">GreenLife Wellness Center</div>
-                    <div class="proj-desc">Holistic health services web app offering yoga, therapy, and nutrition advice. Includes client registration, appointment booking, and admin scheduling tools.</div>
-                    <div class="proj-tech">
-                        <span class="tech-pill">PHP</span>
-                        <span class="tech-pill">HTML</span>
-                        <span class="tech-pill">CSS</span>
-                        <span class="tech-pill">JavaScript</span>
-                        <span class="tech-pill">MySQL</span>
+                <div class="portfolio-info-overlay">
+                    <div class="portfolio-tech-list">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Tailwind</span>
+                        <span class="tech-badge">Node.js</span>
                     </div>
-                </div>
-                <div class="proj-footer">
-                    <div class="proj-links">
-                        <a href="https://github.com/YWanigaarachchi/GreenLife_Wellness_Center" target="_blank" class="proj-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                    <span class="proj-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                    <h3>Smart Card Solutions</h3>
                 </div>
             </div>
 
-            <!-- 02. Siyala_HMS1 -->
-            <div class="project-card reveal delay-1" data-category="web" data-project="1">
-                <div class="proj-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=900" alt="Siyala HMS">
-                    <span class="proj-category-badge">Web Application</span>
-                    <span class="proj-status-dot completed">Completed</span>
+            <!-- Project 2 -->
+            <div class="portfolio-item elevation-2" data-title="Nexus AI Analytics Dashboard" data-desc="High-speed data analytics platform with 3D interactive data visualizer and live threat monitoring." data-tech="Three.js • WebGL • TypeScript">
+                <div class="portfolio-img-box">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800" alt="Nexus AI Analytics Dashboard">
                 </div>
-                <div class="proj-body">
-                    <div class="proj-title">Siyala Multi-chain HMS</div>
-                    <div class="proj-desc">A comprehensive, multi-chain Hotel Management System built for Sri Lankan hospitality. Seamlessly manage multi-location hotels from a centralized dashboard.</div>
-                    <div class="proj-tech">
-                        <span class="tech-pill">PHP</span>
-                        <span class="tech-pill">MySQL</span>
-                        <span class="tech-pill">HTML/CSS</span>
-                        <span class="tech-pill">JavaScript</span>
-                        <span class="tech-pill">Bootstrap</span>
+                <div class="portfolio-info-overlay">
+                    <div class="portfolio-tech-list">
+                        <span class="tech-badge">Three.js</span>
+                        <span class="tech-badge">WebGL</span>
+                        <span class="tech-badge">Figma</span>
                     </div>
-                </div>
-                <div class="proj-footer">
-                    <div class="proj-links">
-                        <a href="https://github.com/YWanigaarachchi/Siyala_HMS1" target="_blank" class="proj-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                    <span class="proj-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                    <h3>Nexus AI Analytics Dashboard</h3>
                 </div>
             </div>
 
-            <!-- 03. lankarest-hms -->
-            <div class="project-card reveal delay-2" data-category="web" data-project="2">
-                <div class="proj-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1542314831-c6a4d1421c4b?auto=format&fit=crop&q=80&w=900" alt="LankaRest HMS">
-                    <span class="proj-category-badge">Web Application</span>
-                    <span class="proj-status-dot live">Live</span>
+            <!-- Project 3 -->
+            <div class="portfolio-item elevation-3" data-title="Zero-G Mobile Banking App" data-desc="Next-generation glassmorphic mobile application for seamless international crypto & fiat transactions." data-tech="React Native • Glassmorphism • Figma">
+                <div class="portfolio-img-box">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800" alt="Zero-G Mobile Banking App">
                 </div>
-                <div class="proj-body">
-                    <div class="proj-title">LankaRest Hotel System</div>
-                    <div class="proj-desc">Scalable and modular Hotel Management System built specifically to empower the Sri Lankan tourism sector. Supports multi-tier room management and seasonal pricing.</div>
-                    <div class="proj-tech">
-                        <span class="tech-pill">React</span>
-                        <span class="tech-pill">Node.js</span>
-                        <span class="tech-pill">Express</span>
-                        <span class="tech-pill">MongoDB</span>
-                        <span class="tech-pill">Tailwind</span>
+                <div class="portfolio-info-overlay">
+                    <div class="portfolio-tech-list">
+                        <span class="tech-badge">React Native</span>
+                        <span class="tech-badge">Figma</span>
+                        <span class="tech-badge">UI/UX</span>
                     </div>
-                </div>
-                <div class="proj-footer">
-                    <div class="proj-links">
-                        <a href="https://github.com/YWanigaarachchi/lankarest-hms" target="_blank" class="proj-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                    <span class="proj-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                    <h3>Zero-G Mobile Banking App</h3>
                 </div>
             </div>
 
-            <!-- 04. Resortify-hms -->
-            <div class="project-card reveal" data-category="web" data-project="3">
-                <div class="proj-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=900" alt="Resortify HMS">
-                    <span class="proj-category-badge">Web Application</span>
-                    <span class="proj-status-dot completed">Completed</span>
+            <!-- Project 4 -->
+            <div class="portfolio-item elevation-1" data-title="CyberVerse E-Commerce Platform" data-desc="Futuristic online shop featuring 3D product customization, instant checkout, and encrypted user security." data-tech="Next.js • Stripe API • Tailwind">
+                <div class="portfolio-img-box">
+                    <img src="https://images.unsplash.com/photo-1556742049-0a67daf64f22?auto=format&fit=crop&q=80&w=800" alt="CyberVerse E-Commerce Platform">
                 </div>
-                <div class="proj-body">
-                    <div class="proj-title">Resortify Premium HMS</div>
-                    <div class="proj-desc">A premium, decoupled HMS tailored for beach resorts. Engineered with a Node.js/Express API and a modern React + Tailwind CSS dashboard with dual-currency sync.</div>
-                    <div class="proj-tech">
-                        <span class="tech-pill">Node.js</span>
-                        <span class="tech-pill">React</span>
-                        <span class="tech-pill">Express</span>
-                        <span class="tech-pill">Tailwind CSS</span>
-                        <span class="tech-pill">MongoDB</span>
+                <div class="portfolio-info-overlay">
+                    <div class="portfolio-tech-list">
+                        <span class="tech-badge">Next.js</span>
+                        <span class="tech-badge">Stripe API</span>
+                        <span class="tech-badge">Tailwind</span>
                     </div>
-                </div>
-                <div class="proj-footer">
-                    <div class="proj-links">
-                        <a href="https://github.com/YWanigaarachchi/Resortify-hms" target="_blank" class="proj-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                    <span class="proj-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                    <h3>CyberVerse E-Commerce</h3>
                 </div>
             </div>
 
-            <!-- 05. athithi-hms -->
-            <div class="project-card reveal delay-1" data-category="web" data-project="4">
-                <div class="proj-img-wrap">
-                    <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&q=80&w=900" alt="Athithi HMS">
-                    <span class="proj-category-badge">Web Application</span>
-                    <span class="proj-status-dot live">Live</span>
+            <!-- Project 5 -->
+            <div class="portfolio-item elevation-2" data-title="Aether 3D Creative Studio" data-desc="Interactive WebGL landing page showcasing generative particle canvas effects and smooth parallax transitions." data-tech="Three.js • WebGL • HTML5 Canvas">
+                <div class="portfolio-img-box">
+                    <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=800" alt="Aether 3D Creative Studio">
                 </div>
-                <div class="proj-body">
-                    <div class="proj-title">Athithi Hotel System</div>
-                    <div class="proj-desc">Modern, flexible, and robust HMS tailored for Sri Lankan hospitality — from boutique villas to luxury resorts. Features room booking and inventory tracking.</div>
-                    <div class="proj-tech">
-                        <span class="tech-pill">MERN Stack</span>
-                        <span class="tech-pill">Redux</span>
-                        <span class="tech-pill">Tailwind CSS</span>
-                        <span class="tech-pill">Stripe</span>
-                        <span class="tech-pill">JWT</span>
+                <div class="portfolio-info-overlay">
+                    <div class="portfolio-tech-list">
+                        <span class="tech-badge">Three.js</span>
+                        <span class="tech-badge">WebGL</span>
+                        <span class="tech-badge">Canvas</span>
                     </div>
-                </div>
-                <div class="proj-footer">
-                    <div class="proj-links">
-                        <a href="https://github.com/YWanigaarachchi/athithi-hms" target="_blank" class="proj-link" title="GitHub"><i class="fa-brands fa-github"></i></a>
-                    </div>
-                    <span class="proj-view-btn">View Details <i class="fa-solid fa-arrow-right"></i></span>
+                    <h3>Aether 3D Creative Studio</h3>
                 </div>
             </div>
 
-
-
-        </div><!-- /.projects-grid -->
+            <!-- Project 6 -->
+            <div class="portfolio-item elevation-3" data-title="Quantum AI Chat Interface" data-desc="Conversational AI interface with custom glassmorphic UI elements and real-time response rendering." data-tech="React • OpenAI API • CSS3">
+                <div class="portfolio-img-box">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800" alt="Quantum AI Chat Interface">
+                </div>
+                <div class="portfolio-info-overlay">
+                    <div class="portfolio-tech-list">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">OpenAI API</span>
+                        <span class="tech-badge">UI/UX</span>
+                    </div>
+                    <h3>Quantum AI Chat Interface</h3>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
-<!-- CTA -->
-<section class="section" style="background: var(--bg-secondary);text-align:center;">
-    <div class="container">
-        <div class="reveal">
-            <div class="label">Start Your Project</div>
-            <h2>Let's Add Your Project <span class="text-gradient">to This List</span></h2>
-            <p style="max-width:500px;margin:20px auto 40px;">Ready to build something great? Let's talk about your ideas and make them a reality.</p>
-            <a href="contact.html" class="btn btn-primary">Start a Conversation <i class="fa-solid fa-arrow-right"></i></a>
+<!-- Portfolio Floating Translucent Modal -->
+<div class="modal-overlay" id="project-modal">
+    <div class="modal-content-pane">
+        <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+        <div style="margin-bottom:24px;">
+            <span class="tech-badge modal-project-tech" style="font-size:0.9rem;">React • Three.js • Figma</span>
+        </div>
+        <h2 class="modal-project-title" style="margin-bottom:16px;">Project Title</h2>
+        <div style="width:100%; height:320px; border-radius:16px; overflow:hidden; margin-bottom:24px; border:1px solid var(--glass-border);">
+            <img class="modal-project-img" src="" alt="Project Preview" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <p class="modal-project-desc" style="line-height:1.8; font-size:1.1rem;">Project description text...</p>
+        <div style="margin-top:32px; display:flex; gap:16px;">
+            <a href="#" class="btn btn-cyan" target="_blank">Live Launch <i class="fa-solid fa-external-link"></i></a>
+            <a href="#" class="btn btn-outline" target="_blank">View Specs</a>
         </div>
     </div>
-</section>
+</div>
 
 <footer>
     <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">YNW<span>.</span></a>
-                <p>Building the future of software with scalable web applications and seamless cross-platform mobile experiences.</p>
-                <div class="footer-socials">
-                    <a href="https://github.com/YWanigaarachchi" target="_blank" class="social-link"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#" class="social-link"><i class="fa-brands fa-twitter"></i></a>
-                </div>
-            </div>
-            <div class="footer-col"><h5>Company</h5><div class="footer-links"><a href="index.html">Home</a><a href="about.html">About Us</a><a href="project.html">Portfolio</a></div></div>
-            <div class="footer-col"><h5>Services</h5><div class="footer-links"><a href="services.html">Web Development</a><a href="services.html">Mobile Apps</a><a href="packages.html">Pricing</a></div></div>
-            <div class="footer-col"><h5>Contact</h5><div class="footer-links"><a href="mailto:ynw@software.com">ynw@software.com</a><a href="contact.html">Send a Message</a></div></div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 YNW Software Solutions. All Rights Reserved.</p>
-            <p>Made with <span style="color:var(--accent-orange);">♥</span> in Sri Lanka</p>
+        <div class="footer-content">
+            <a href="index.html" class="logo">YNW<span>.</span> Studio</a>
+            <p style="font-size:0.95rem; color:var(--text-muted);">&copy; 2026 YNW Anti-Gravity Studio. All rights reserved.</p>
         </div>
     </div>
 </footer>
 
-<a href="https://wa.me/94765855570" target="_blank" class="whatsapp-chat"><i class="fa-brands fa-whatsapp"></i><span class="whatsapp-tooltip">Chat with us!</span></a>
-<button class="back-top"><i class="fa-solid fa-arrow-up"></i></button>
-
-<!-- =====================================================
-     6 PROJECT MODALS
-     ===================================================== -->
-
-<!-- Modal 0: GreenLife Wellness Center -->
-<div class="proj-modal-overlay" id="modal-0" role="dialog" aria-modal="true" aria-label="GreenLife Wellness Center">
-    <div class="proj-modal">
-        <div class="proj-modal-close">
-            <button class="modal-close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <img class="modal-hero-img" src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=1200" alt="GreenLife Wellness Center">
-        <div class="modal-content-wrap">
-            <div class="modal-top-row">
-                <div class="modal-title-block">
-                    <span class="modal-category-label">Web Application</span>
-                    <div class="modal-title">GreenLife Wellness Center</div>
-                </div>
-                <div class="modal-links-row">
-                    <a href="https://github.com/YWanigaarachchi/GreenLife_Wellness_Center" target="_blank" class="modal-btn modal-btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
-                </div>
-            </div>
-
-            <p class="modal-desc">GreenLife Wellness Center’s web app offers holistic health services like yoga, therapy, and nutrition advice. Clients can register, book appointments, and submit inquiries. Therapists and admins manage schedules and responses. Built with PHP, HTML, CSS, and JS, the platform ensures secure, user-friendly digital service delivery.</p>
-
-            <div class="modal-divider"></div>
-
-            <div class="modal-section-title">Key Features</div>
-            <div class="modal-features">
-                <div class="modal-feature-item">Client Registration & Authentication</div>
-                <div class="modal-feature-item">Online Appointment Booking</div>
-                <div class="modal-feature-item">Inquiry Submission System</div>
-                <div class="modal-feature-item">Therapist Schedule Management</div>
-                <div class="modal-feature-item">Admin Dashboard</div>
-                <div class="modal-feature-item">Secure Data Handling</div>
-            </div>
-
-            <div class="modal-divider"></div>
-
-            <div class="modal-section-title">Tech Stack</div>
-            <div class="modal-tech-grid">
-                <span class="modal-tech-pill">PHP</span>
-                <span class="modal-tech-pill">MySQL</span>
-                <span class="modal-tech-pill">HTML5</span>
-                <span class="modal-tech-pill">CSS3</span>
-                <span class="modal-tech-pill">JavaScript</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal 1: Siyala HMS -->
-<div class="proj-modal-overlay" id="modal-1" role="dialog" aria-modal="true" aria-label="Siyala HMS">
-    <div class="proj-modal">
-        <div class="proj-modal-close">
-            <button class="modal-close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <img class="modal-hero-img" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=1200" alt="Siyala HMS">
-        <div class="modal-content-wrap">
-            <div class="modal-top-row">
-                <div class="modal-title-block">
-                    <span class="modal-category-label">Web Application</span>
-                    <div class="modal-title">Siyala Multi-chain HMS</div>
-                </div>
-                <div class="modal-links-row">
-                    <a href="https://github.com/YWanigaarachchi/Siyala_HMS1" target="_blank" class="modal-btn modal-btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
-                </div>
-            </div>
-
-            <p class="modal-desc">Siyala is a comprehensive, multi-chain Hotel Management System built for Sri Lankan hospitality. Seamlessly manage multi-location hotels (e.g., Kandy & Hikkaduwa) from a centralized dashboard. Features advanced kitchen inventory with local vendor tracking, dynamic scaling from small Airbnbs to heritage hotels, and multi-tier analytics.</p>
-
-            <div class="modal-divider"></div>
-
-            <div class="modal-section-title">Key Features</div>
-            <div class="modal-features">
-                <div class="modal-feature-item">Multi-Location Management</div>
-                <div class="modal-feature-item">Centralized Dashboard</div>
-                <div class="modal-feature-item">Advanced Kitchen Inventory</div>
-                <div class="modal-feature-item">Local Vendor Tracking</div>
-                <div class="modal-feature-item">Dynamic Scaling</div>
-                <div class="modal-feature-item">Multi-Tier Analytics</div>
-            </div>
-
-            <div class="modal-divider"></div>
-
-            <div class="modal-section-title">Tech Stack</div>
-            <div class="modal-tech-grid">
-                <span class="modal-tech-pill">PHP</span>
-                <span class="modal-tech-pill">MySQL</span>
-                <span class="modal-tech-pill">HTML/CSS</span>
-                <span class="modal-tech-pill">JavaScript</span>
-                <span class="modal-tech-pill">Bootstrap</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal 2: LankaRest HMS -->
-<div class="proj-modal-overlay" id="modal-2" role="dialog" aria-modal="true" aria-label="LankaRest HMS">
-    <div class="proj-modal">
-        <div class="proj-modal-close">
-            <button class="modal-close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <img class="modal-hero-img" src="https://images.unsplash.com/photo-1542314831-c6a4d1421c4b?auto=format&fit=crop&q=80&w=1200" alt="LankaRest HMS">
-        <div class="modal-content-wrap">
-            <div class="modal-top-row">
-                <div class="modal-title-block">
-                    <span class="modal-category-label">Web Application</span>
-                    <div class="modal-title">LankaRest Hotel System</div>
-                </div>
-                <div class="modal-links-row">
-                    <a href="https://github.com/YWanigaarachchi/lankarest-hms" target="_blank" class="modal-btn modal-btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
-                </div>
-            </div>
-
-            <p class="modal-desc">A scalable and modular Hotel Management System built specifically to empower the Sri Lankan tourism and hospitality sector. LankaRest-HMS supports multi-tier room management, local payment gateway readiness, seasonal pricing configurations, and intuitive staff dashboards.</p>
-
-            <div class="modal-divider"></div>
-
-            <div class="modal-section-title">Key Features</div>
-            <div class="modal-features">
-                <div class="modal-feature-item">Multi-Tier Room Management</div>
-                <div class="modal-feature-item">Local Payment Gateway Ready</div>
-                <div class="modal-feature-item">Seasonal Pricing Configurations</div>
-                <div class="modal-feature-item">Intuitive Staff Dashboards</div>
-                <div class="modal-feature-item">Scalable Modular Architecture</div>
-                <div class="modal-feature-item">Sri Lankan Tourism Focused</div>
-            </div>
-
-            <div class="modal-divider"></div>
-
-            <div class="modal-section-title">Tech Stack</div>
-            <div class="modal-tech-grid">
-                <span class="modal-tech-pill">React</span>
-                <span class="modal-tech-pill">Node.js</span>
-                <span class="modal-tech-pill">Express</span>
-                <span class="modal-tech-pill">MongoDB</span>
-                <span class="modal-tech-pill">Tailwind CSS</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal 3: Resortify HMS -->
-<div class="proj-modal-overlay" id="modal-3" role="dialog" aria-modal="true" aria-label="Resortify Premium HMS">
-    <div class="proj-modal">
-        <div class="proj-modal-close">
-            <button class="modal-close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <img class="modal-hero-img" src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=1200" alt="Resortify HMS">
-        <div class="modal-content-wrap">
-            <div class="modal-top-row">
-                <div class="modal-title-block">
-                    <span class="modal-category-label">Web Application</span>
-                    <div class="modal-title">Resortify Premium HMS</div>
-                </div>
-                <div class="modal-links-row">
-                    <a href="https://github.com/YWanigaarachchi/Resortify-hms" target="_blank" class="modal-btn modal-btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
-                </div>
-            </div>
-
-            <p class="modal-desc">A premium, decoupled Hotel Management System tailored for Sri Lankan beach resorts and tourist hotspot hotels. Engineered with a Node.js/Express API and a modern React + Tailwind CSS dashboard featuring dual-currency sync (LKR/USD), real-time KOT tracking with local food modifiers, and local tax compliance (VAT/SSCL).</p>
-
-            <div class="modal-divider"></div>
-
-            <div class="modal-section-title">Key Features</div>
-            <div class="modal-features">
-                <div class="modal-feature-item">Decoupled Architecture</div>
-                <div class="modal-feature-item">Dual-Currency Sync (LKR/USD)</div>
-                <div class="modal-feature-item">Real-Time KOT Tracking</div>
-                <div class="modal-feature-item">Local Food Modifiers</div>
-                <div class="modal-feature-item">Local Tax Compliance (VAT/SSCL)</div>
-                <div class="modal-feature-item">Modern React Dashboard</div>
-            </div>
-
-            <div class="modal-divider"></div>
-
-            <div class="modal-section-title">Tech Stack</div>
-            <div class="modal-tech-grid">
-                <span class="modal-tech-pill">Node.js</span>
-                <span class="modal-tech-pill">React</span>
-                <span class="modal-tech-pill">Express</span>
-                <span class="modal-tech-pill">Tailwind CSS</span>
-                <span class="modal-tech-pill">MongoDB</span>
-                <span class="modal-tech-pill">REST APIs</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal 4: Athithi HMS -->
-<div class="proj-modal-overlay" id="modal-4" role="dialog" aria-modal="true" aria-label="Athithi Hotel System">
-    <div class="proj-modal">
-        <div class="proj-modal-close">
-            <button class="modal-close-btn" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <img class="modal-hero-img" src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&q=80&w=1200" alt="Athithi HMS">
-        <div class="modal-content-wrap">
-            <div class="modal-top-row">
-                <div class="modal-title-block">
-                    <span class="modal-category-label">Web Application</span>
-                    <div class="modal-title">Athithi Hotel System</div>
-                </div>
-                <div class="modal-links-row">
-                    <a href="https://github.com/YWanigaarachchi/athithi-hms" target="_blank" class="modal-btn modal-btn-outline"><i class="fa-brands fa-github"></i> GitHub</a>
-                </div>
-            </div>
-
-            <p class="modal-desc">Athithi is a modern, flexible, and robust Hotel Management System tailored for the Sri Lankan hospitality industry. Built to handle everything from boutique villas in Ella to luxury resorts in Down South. Features include room booking, inventory tracking, local billing/tax compliance, and seamless guest management.</p>
-
-            <div class="modal-divider"></div>
-
-            <div class="modal-section-title">Key Features</div>
-            <div class="modal-features">
-                <div class="modal-feature-item">Room Booking & Management</div>
-                <div class="modal-feature-item">Inventory Tracking</div>
-                <div class="modal-feature-item">Local Billing & Tax Compliance</div>
-                <div class="modal-feature-item">Seamless Guest Management</div>
-                <div class="modal-feature-item">Flexible for Villas to Resorts</div>
-                <div class="modal-feature-item">Robust Secure Architecture</div>
-            </div>
-
-            <div class="modal-divider"></div>
-
-            <div class="modal-section-title">Tech Stack</div>
-            <div class="modal-tech-grid">
-                <span class="modal-tech-pill">MERN Stack</span>
-                <span class="modal-tech-pill">Redux</span>
-                <span class="modal-tech-pill">Tailwind CSS</span>
-                <span class="modal-tech-pill">Stripe Integration</span>
-                <span class="modal-tech-pill">JWT Auth</span>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
 <script src="script.js"></script>
-<script>
-    /* =====================================================
-       PROJECT PAGE — FILTER & MODAL LOGIC
-       ===================================================== */
-    (() => {
-        // --- Filter ---
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                const filter = btn.dataset.filter;
-                projectCards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.classList.remove('hidden');
-                        card.style.animation = 'none';
-                        requestAnimationFrame(() => {
-                            card.style.animation = '';
-                        });
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-            });
-        });
-
-        // --- Modal open ---
-        projectCards.forEach(card => {
-            // Click anywhere on card, except the external links
-            card.addEventListener('click', (e) => {
-                // Don't trigger modal if clicking a real link (github/live)
-                if (e.target.closest('.proj-link')) return;
-
-                const projIndex = card.dataset.project;
-                openModal(projIndex);
-            });
-        });
-
-        // "View Details" button
-        document.querySelectorAll('.proj-view-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const card = btn.closest('.project-card');
-                openModal(card.dataset.project);
-            });
-        });
-
-        function openModal(index) {
-            const overlay = document.getElementById(`modal-${index}`);
-            if (!overlay) return;
-            overlay.classList.add('open');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(overlay) {
-            overlay.classList.remove('open');
-            document.body.style.overflow = '';
-        }
-
-        // Close buttons
-        document.querySelectorAll('.modal-close-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const overlay = btn.closest('.proj-modal-overlay');
-                closeModal(overlay);
-            });
-        });
-
-        // Click backdrop to close
-        document.querySelectorAll('.proj-modal-overlay').forEach(overlay => {
-            overlay.addEventListener('click', (e) => {
-                if (e.target === overlay) closeModal(overlay);
-            });
-        });
-
-        // ESC key to close
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.proj-modal-overlay.open').forEach(o => closeModal(o));
-            }
-        });
-    })();
-</script>
 </body>
 </html>
