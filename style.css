@@ -1554,8 +1554,8 @@ footer {
    ===================================================== */
 .whatsapp-chat {
   position: fixed;
-  bottom: 32px;
-  left: 32px;
+  bottom: 96px;
+  right: 32px;
   width: 56px; height: 56px;
   background: #25D366;
   border-radius: 50%;
@@ -1571,7 +1571,7 @@ footer {
 
 .whatsapp-tooltip {
   position: absolute;
-  left: 68px;
+  right: 68px;
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);
   color: var(--text-primary);
