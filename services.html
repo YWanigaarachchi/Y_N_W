@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Services & Pricing Packages - YNW Software Solutions with WhatsApp Direct Booking (25k, 45k, 85k, 150k, and 250k LKR Tiers).">
+    <meta name="description" content="Services & Pricing Packages - YNW Software Solutions with Interactive Category Filters and WhatsApp Order Modal.">
     <title>Services & Pricing | YNW Software Solutions</title>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -26,7 +26,7 @@
     </a>
 </div>
 
-<!-- Global Left-Side Auto-Scroll Button -->
+<!-- Global Right-Side Auto-Scroll Button -->
 <div class="auto-scroll-btn" title="Scroll Top / Bottom">
     <i class="fa-solid fa-arrow-down"></i>
 </div>
@@ -63,13 +63,39 @@
     <div class="container">
         <div class="section-header">
             <div class="badge-glow">Pricing Packages</div>
-            <h2 class="section-title">Pricing & <span class="text-gradient">Packages</span></h2>
-            <p class="section-subtitle">Floating cards with direct WhatsApp booking options targeting +94 76 585 5570.</p>
+            <h2 class="section-title">Services & <span class="text-gradient">Packages</span></h2>
+            <p class="section-subtitle">Select your service category below and click any package to trigger the WhatsApp Order Modal.</p>
         </div>
 
+        <!-- Service Category Selector Filter Tabs -->
+        <div class="service-category-tabs">
+            <button class="tab-btn active" data-category="all"><i class="fa-solid fa-layer-group"></i> All Services</button>
+            <button class="tab-btn" data-category="nfc"><i class="fa-solid fa-id-card"></i> NFC Smart Cards</button>
+            <button class="tab-btn" data-category="web"><i class="fa-solid fa-code"></i> Web Development</button>
+            <button class="tab-btn" data-category="mobile"><i class="fa-solid fa-mobile-screen-button"></i> Mobile App Development</button>
+        </div>
+
+        <!-- Dynamic Filterable Pricing Cards Grid -->
         <div class="pricing-grid-5">
-            <!-- Tier 1: Single Landing Page -->
-            <div class="pricing-card-5">
+            <!-- NFC Smart Card Package -->
+            <div class="pricing-card-5" data-category="nfc">
+                <span class="pricing-badge-tier">NFC Tech</span>
+                <div>
+                    <div class="pricing-icon-5">🎴</div>
+                    <h3 class="pricing-title-5">NFC Smart Card Package</h3>
+                    <div class="pricing-price-5">35,000 LKR</div>
+                    <ul class="pricing-features-5">
+                        <li><i class="fa-solid fa-check"></i> Custom NFC Digital Card</li>
+                        <li><i class="fa-solid fa-check"></i> Tap-to-Share Contact Details</li>
+                        <li><i class="fa-solid fa-check"></i> Live User Analytics Console</li>
+                        <li><i class="fa-solid fa-check"></i> vCard & Social Profile Links</li>
+                    </ul>
+                </div>
+                <button class="btn btn-whatsapp trigger-order-modal" data-package-name="NFC Smart Card Package" data-package-price="35,000 LKR" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</button>
+            </div>
+
+            <!-- Single Landing Page -->
+            <div class="pricing-card-5" data-category="web">
                 <span class="pricing-badge-tier">Starter</span>
                 <div>
                     <div class="pricing-icon-5">🚀</div>
@@ -80,14 +106,13 @@
                         <li><i class="fa-solid fa-check"></i> UI/UX Design Included</li>
                         <li><i class="fa-solid fa-check"></i> Responsive Mobile Layout</li>
                         <li><i class="fa-solid fa-check"></i> Basic SEO Optimization</li>
-                        <li><i class="fa-solid fa-check"></i> WhatsApp Lead Integration</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/94765855570?text=Hi!%20I'm%20interested%20in%20the%20Single%20Landing%20Page%20package." target="_blank" class="btn btn-whatsapp" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
+                <button class="btn btn-whatsapp trigger-order-modal" data-package-name="Single Landing Page" data-package-price="25,000 LKR" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</button>
             </div>
 
-            <!-- Tier 2: Basic Multi-Page Website -->
-            <div class="pricing-card-5">
+            <!-- Basic Multi-Page -->
+            <div class="pricing-card-5" data-category="web">
                 <span class="pricing-badge-tier">Standard</span>
                 <div>
                     <div class="pricing-icon-5">💻</div>
@@ -97,15 +122,14 @@
                         <li><i class="fa-solid fa-check"></i> Up to 5 Responsive Pages</li>
                         <li><i class="fa-solid fa-check"></i> Custom Graphics & Icons</li>
                         <li><i class="fa-solid fa-check"></i> Speed & SEO Tuning</li>
-                        <li><i class="fa-solid fa-check"></i> Interactive Contact Terminal</li>
-                        <li><i class="fa-solid fa-check"></i> Cross-Browser Tested</li>
+                        <li><i class="fa-solid fa-check"></i> Contact Form Terminal</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/94765855570?text=Hi!%20I'm%20interested%20in%20the%20Basic%20Multi-Page%20package." target="_blank" class="btn btn-whatsapp" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
+                <button class="btn btn-whatsapp trigger-order-modal" data-package-name="Basic Multi-Page Website" data-package-price="45,000 LKR" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</button>
             </div>
 
-            <!-- Tier 3: E-Commerce Web Store (Featured) -->
-            <div class="pricing-card-5">
+            <!-- E-Commerce Web Store -->
+            <div class="pricing-card-5" data-category="web" style="border-color:var(--neon-cyan); background:rgba(15,25,60,0.9);">
                 <span class="pricing-badge-tier" style="background:var(--grad-whatsapp); color:#fff;">Most Popular</span>
                 <div>
                     <div class="pricing-icon-5">🛒</div>
@@ -115,15 +139,31 @@
                         <li><i class="fa-solid fa-check"></i> Full E-Commerce Storefront</li>
                         <li><i class="fa-solid fa-check"></i> Payment Gateway Setup</li>
                         <li><i class="fa-solid fa-check"></i> Product Catalog & Cart</li>
-                        <li><i class="fa-solid fa-check"></i> Order Management System</li>
                         <li><i class="fa-solid fa-check"></i> Advanced Security & SSL</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/94765855570?text=Hi!%20I'm%20interested%20in%20the%20E-Commerce%20package." target="_blank" class="btn btn-whatsapp" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
+                <button class="btn btn-whatsapp trigger-order-modal" data-package-name="E-Commerce Web Store" data-package-price="85,000 LKR" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</button>
             </div>
 
-            <!-- Tier 4: Custom Web Application -->
-            <div class="pricing-card-5">
+            <!-- Mobile App Package -->
+            <div class="pricing-card-5" data-category="mobile">
+                <span class="pricing-badge-tier">Mobile Native</span>
+                <div>
+                    <div class="pricing-icon-5">📱</div>
+                    <h3 class="pricing-title-5">Mobile App Package</h3>
+                    <div class="pricing-price-5">120,000 LKR</div>
+                    <ul class="pricing-features-5">
+                        <li><i class="fa-solid fa-check"></i> React Native iOS & Android</li>
+                        <li><i class="fa-solid fa-check"></i> Custom Mobile UI/UX Design</li>
+                        <li><i class="fa-solid fa-check"></i> Firebase Auth & Push Alerts</li>
+                        <li><i class="fa-solid fa-check"></i> App Store Deployment</li>
+                    </ul>
+                </div>
+                <button class="btn btn-whatsapp trigger-order-modal" data-package-name="Mobile App Package" data-package-price="120,000 LKR" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</button>
+            </div>
+
+            <!-- Custom Web Application -->
+            <div class="pricing-card-5" data-category="web">
                 <span class="pricing-badge-tier">Pro</span>
                 <div>
                     <div class="pricing-icon-5">💎</div>
@@ -133,33 +173,59 @@
                         <li><i class="fa-solid fa-check"></i> Custom Frontend & Backend</li>
                         <li><i class="fa-solid fa-check"></i> Advanced AI Integrations</li>
                         <li><i class="fa-solid fa-check"></i> Real-time Database & Auth</li>
-                        <li><i class="fa-solid fa-check"></i> Interactive Dashboards</li>
                         <li><i class="fa-solid fa-check"></i> Premium SLA Maintenance</li>
                     </ul>
                 </div>
-                <a href="https://wa.me/94765855570?text=Hi!%20I'm%20interested%20in%20the%20Custom%20Web%20App%20package." target="_blank" class="btn btn-whatsapp" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
-            </div>
-
-            <!-- Tier 5: Enterprise Solution -->
-            <div class="pricing-card-5">
-                <span class="pricing-badge-tier">Enterprise</span>
-                <div>
-                    <div class="pricing-icon-5">⚡</div>
-                    <h3 class="pricing-title-5">Enterprise Solution</h3>
-                    <div class="pricing-price-5">250,000 LKR</div>
-                    <ul class="pricing-features-5">
-                        <li><i class="fa-solid fa-check"></i> Full Architecture & Microservices</li>
-                        <li><i class="fa-solid fa-check"></i> High Availability & Scaling</li>
-                        <li><i class="fa-solid fa-check"></i> Dedicated DevOps Pipeline</li>
-                        <li><i class="fa-solid fa-check"></i> Custom API Integrations</li>
-                        <li><i class="fa-solid fa-check"></i> 24/7 Priority Support</li>
-                    </ul>
-                </div>
-                <a href="https://wa.me/94765855570?text=Hi!%20I'm%20interested%20in%20the%20Enterprise%20Solution%20package." target="_blank" class="btn btn-whatsapp" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</a>
+                <button class="btn btn-whatsapp trigger-order-modal" data-package-name="Custom Web Application" data-package-price="150,000 LKR" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Order via WhatsApp</button>
             </div>
         </div>
     </div>
 </section>
+
+<!-- POP-OUT PACKAGE ORDER MODAL WITH WHATSAPP INTEGRATION -->
+<div class="modal-overlay" id="package-order-modal">
+    <div class="order-modal-pane">
+        <button class="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
+        <div class="badge-glow" style="margin-bottom:16px;">
+            <span class="badge-glow-dot"></span> Welcome to YNW Software Solutions
+        </div>
+        <h2 style="font-size:1.8rem; margin-bottom:16px;">Package <span class="text-gradient">Inquiry & Order</span></h2>
+        
+        <!-- Auto-filled selected package summary box -->
+        <div class="order-summary-box">
+            <div>
+                <p style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em;">Selected Package</p>
+                <h4 id="modal-package-title">E-Commerce Web Store</h4>
+            </div>
+            <span id="modal-package-price">85,000 LKR</span>
+        </div>
+
+        <form id="package-order-form">
+            <div class="form-group">
+                <label for="order-name">Your Full Name</label>
+                <input type="text" id="order-name" class="form-input" placeholder="e.g. John Doe" required>
+            </div>
+            <div class="form-group">
+                <label for="order-email">Your Email Address</label>
+                <input type="email" id="order-email" class="form-input" placeholder="john@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="order-company">Company / Business Type</label>
+                <select id="order-company" class="form-input" required style="background:#0A1128;">
+                    <option value="Startup Business">Startup Business</option>
+                    <option value="Small / Medium Business">Small / Medium Business</option>
+                    <option value="Enterprise Brand">Enterprise Brand</option>
+                    <option value="Individual / Personal">Individual / Personal Project</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="order-location">Your Location / City</label>
+                <input type="text" id="order-location" class="form-input" placeholder="e.g. Colombo, Sri Lanka" required>
+            </div>
+            <button type="submit" class="btn btn-whatsapp" style="width:100%; margin-top:12px; font-size:1.05rem;"><i class="fa-brands fa-whatsapp"></i> Transmit Order via WhatsApp</button>
+        </form>
+    </div>
+</div>
 
 <!-- Footer with Full Navigation -->
 <footer>
