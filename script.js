@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initServiceCategoryTabs();
   initProjectCategoryTabs();
   initPackageOrderModal();
+  initMobileBottomNav();
 });
 
 /* =====================================================
@@ -975,4 +976,43 @@ function initPreloader() {
   if (document.readyState === 'complete') {
     pageLoaded = true;
   }
+}
+
+/* =====================================================
+   MOBILE BOTTOM NAV ACTIVE STATE & SCROLL SPY
+   ===================================================== */
+function initMobileBottomNav() {
+  const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+  if (!mobileNavItems.length) return;
+
+  const sections = document.querySelectorAll('section[id], footer[id]');
+
+  window.addEventListener('scroll', () => {
+    let currentSection = '';
+    const scrollPos = window.scrollY + 250;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        currentSection = section.getAttribute('id');
+      }
+    });
+
+    if (currentSection) {
+      mobileNavItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href') === `#${currentSection}`) {
+          item.classList.add('active');
+        }
+      });
+    }
+  });
+
+  mobileNavItems.forEach(item => {
+    item.addEventListener('click', () => {
+      mobileNavItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
 }
