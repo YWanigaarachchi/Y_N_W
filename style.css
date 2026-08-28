@@ -2283,7 +2283,8 @@ footer {
   padding: 10px;
 }
 
-.hero-robot-img {
+.hero-robot-img,
+.hero-robot-video {
   width: 100%;
   height: auto;
   display: block;
