@@ -20,7 +20,6 @@ Futuristic, highly interactive "Zero-G" digital agency portfolio built with raw 
 
 - `index.html` — Zero-G agency landing hero and core business pillars.
 - `about.html` — Professional developer profile linked directly to GitHub avatar, credentials, and milestones.
-- `services.html` — Detailed service tier pricing filter tabs (`NFC Smart Cards`, `Web Development`, `Mobile App Development`).
 - `project.html` — Pure project gallery displaying completed public GitHub repositories:
   - **Siyala_HMS1** (`https://github.com/YWanigaarachchi/Siyala_HMS1`)
   - **lankarest-hms** (`https://github.com/YWanigaarachchi/lankarest-hms`)
