@@ -2246,7 +2246,7 @@ footer {
 .hero-robot-wrapper {
   position: relative;
   width: 100%;
-  max-width: 550px;
+  max-width: 640px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
@@ -2255,11 +2255,11 @@ footer {
 
 .hero-robot-glow {
   position: absolute;
-  width: 115%;
-  height: 115%;
-  background: radial-gradient(circle, rgba(0, 229, 255, 0.4) 0%, rgba(92, 103, 222, 0.2) 45%, transparent 75%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.45) 0%, rgba(92, 103, 222, 0.22) 45%, transparent 75%);
   border-radius: 50%;
-  filter: blur(45px);
+  filter: blur(50px);
   z-index: 0;
   animation: robotGlowPulse 4s infinite ease-in-out alternate;
 }
@@ -2269,31 +2269,18 @@ footer {
   100% { transform: scale(1.18); opacity: 0.95; }
 }
 
-.hero-robot-frame {
-  position: relative;
-  width: 100%;
-  border-radius: 28px;
-  overflow: hidden;
-  border: 1px solid rgba(0, 229, 255, 0.35);
-  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.85), 0 0 45px rgba(0, 229, 255, 0.25);
-  z-index: 2;
-  background: radial-gradient(circle at center, rgba(10, 17, 40, 0.4) 0%, rgba(5, 10, 25, 0.95) 100%);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 10px;
-}
-
-.hero-robot-img,
 .hero-robot-video {
   width: 100%;
   height: auto;
   display: block;
+  position: relative;
+  z-index: 2;
   filter: hue-rotate(175deg) saturate(1.45) contrast(1.12);
-  border-radius: 20px;
+  border-radius: 32px;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   animation: robotFloat 6s infinite ease-in-out;
-  mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 75%, rgba(0,0,0,0.85) 100%);
-  -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 75%, rgba(0,0,0,0.85) 100%);
+  mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 95%);
+  -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 95%);
 }
 
 .hud-corner {
