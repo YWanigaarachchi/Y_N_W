@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YNW Software Solutions - Futuristic UI/UX & Web Development Studio with Direct WhatsApp Integration.">
-    <title>YNW Software Solutions | Creative Digital Studio</title>
+    <meta name="description" content="YNW Software Solutions - Single Page Portfolio | Y. Wanigaarachchi - Lead Architect, Projects, Education, & Contact.">
+    <title>YNW Software Solutions | Y. Wanigaarachchi</title>
     
     <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -22,12 +22,12 @@
 <!-- Drifting Particle Starfield Canvas -->
 <canvas id="particles-canvas"></canvas>
 
-<!-- Global Right-Side Floating WhatsApp Button with Pop-Out Bubble -->
+<!-- Global Right-Side Floating WhatsApp Button -->
 <div class="whatsapp-float-container">
     <div class="whatsapp-popout-bubble">
         <span><i class="fa-brands fa-whatsapp"></i></span> Chat on WhatsApp!
     </div>
-    <a href="#" class="whatsapp-float-btn trigger-footer-modal" data-whatsapp-line="94765855570" data-line-label="WhatsApp Quick Chat" title="Chat on WhatsApp">
+    <a href="https://wa.me/94703608091" target="_blank" class="whatsapp-float-btn" title="Chat on WhatsApp (+94 70 360 8091)">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 </div>
@@ -40,13 +40,15 @@
 <!-- Sticky Frosted Glass Navigation Bar -->
 <nav>
     <div class="nav-inner">
+        <a href="#home" class="logo">YNW<span>.</span></a>
         <div class="nav-center-cluster">
-            <a href="about.html">About</a>
-            <a href="index.html" class="logo">YNW<span>.</span></a>
-            <a href="project.html">Projects</a>
-            <a href="process.html">Process</a>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#education">Education</a>
+            <a href="#projects">Projects</a>
+            <a href="#process">Process</a>
         </div>
-        <a href="contact.html" class="nav-contact-popout-btn"><span>Contact Us</span> <i class="fa-solid fa-paper-plane"></i></a>
+        <a href="#contact" class="nav-contact-popout-btn"><span>Contact</span> <i class="fa-solid fa-paper-plane"></i></a>
         <div class="hamburger">
             <span></span><span></span><span></span>
         </div>
@@ -55,13 +57,15 @@
 
 <!-- Mobile Navigation Menu -->
 <div class="mobile-menu">
-    <a href="about.html">About</a>
-    <a href="project.html">Projects</a>
-    <a href="process.html">Process</a>
-    <a href="contact.html">Contact</a>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#projects">Projects</a>
+    <a href="#process">Process</a>
+    <a href="#contact">Contact</a>
 </div>
 
-<!-- HERO SECTION WITH THREE.JS 3D AI CORE -->
+<!-- 1. HERO SECTION -->
 <section class="hero" id="home">
     <div class="container">
         <div class="hero-grid-layout">
@@ -71,7 +75,7 @@
                     Available for New Projects
                 </div>
                 <h1>Designing the <span class="text-gradient">Future</span> of the Web.</h1>
-                <p>Elevating Web Experiences — Crafting high-performance, intelligent websites with futuristic UI/UX, 3D WebGL visuals, and zero-gravity weightless design aesthetics.</p>
+                <p>YNW Software Solutions — Crafting high-performance websites & mobile apps with futuristic UI/UX, 3D WebGL visuals, and zero-gravity design aesthetics.</p>
                 
                 <!-- Interactive Floating Hero Tag Badges -->
                 <div class="hero-tag-pills-row">
@@ -81,8 +85,8 @@
                 </div>
 
                 <div class="hero-btns">
-                    <a href="project.html" class="btn btn-cyan">View Portfolio <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="#" class="btn btn-whatsapp trigger-footer-modal" data-whatsapp-line="94765855570" data-line-label="General Inquiry (+94 76 585 5570)"><i class="fa-brands fa-whatsapp"></i> Chat WhatsApp</a>
+                    <a href="#projects" class="btn btn-cyan">View Projects <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="https://wa.me/94703608091" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Chat WhatsApp</a>
                 </div>
             </div>
 
@@ -95,87 +99,373 @@
     </div>
 </section>
 
-<!-- CORE AGENCY PILLARS SECTION (EXCLUSIVE TO HOME PAGE) -->
-<section class="section">
+<!-- 2. ABOUT SECTION (WHO AM I?) -->
+<section class="section" id="about">
     <div class="container">
         <div class="section-header">
-            <div class="badge-glow">Engineering Excellence</div>
-            <h2 class="section-title">Next-Gen <span class="text-gradient">Digital Agency</span></h2>
-            <p class="section-subtitle">Pioneering zero-gravity visual art, high-speed architectures, and interactive 3D WebGL systems.</p>
+            <div class="badge-glow">Architectural Vision</div>
+            <h2 class="section-title">Who Am <span class="text-gradient">I</span>?</h2>
+            <p class="section-subtitle">Bridging zero-gravity visual arts with high-performance WebGL & modern frontend technology.</p>
         </div>
 
-        <div class="pricing-grid-5" style="grid-template-columns: repeat(2, 1fr); gap:30px;">
-            <!-- Pillar 1 -->
-            <div class="glass-card">
-                <div style="font-size:2.5rem; color:var(--neon-cyan); margin-bottom:16px;"><i class="fa-solid fa-cubes"></i></div>
-                <h3 style="margin-bottom:12px;">Futuristic UI/UX Systems</h3>
-                <p style="color:var(--text-secondary); line-height:1.7;">Immersive glassmorphism, fluid micro-animations, and visual elegance designed to captivate users at first glance.</p>
-            </div>
-
-            <!-- Pillar 2 -->
-            <div class="glass-card">
-                <div style="font-size:2.5rem; color:var(--soft-indigo); margin-bottom:16px;"><i class="fa-solid fa-atom"></i></div>
-                <h3 style="margin-bottom:12px;">3D WebGL & Canvas Shaders</h3>
-                <p style="color:var(--text-secondary); line-height:1.7;">Cutting-edge Three.js interactive graphics, glowing particle cores, and 3D camera controls embedded directly into the browser DOM.</p>
-            </div>
-
-            <!-- Pillar 3 -->
-            <div class="glass-card">
-                <div style="font-size:2.5rem; color:var(--neon-cyan); margin-bottom:16px;"><i class="fa-solid fa-gauge-high"></i></div>
-                <h3 style="margin-bottom:12px;">High-Performance Architecture</h3>
-                <p style="color:var(--text-secondary); line-height:1.7;">Lightning-fast page load times, semantic HTML5 structure, and search engine optimization engineered for maximum growth.</p>
-            </div>
-
-            <!-- Pillar 4 -->
-            <div class="glass-card">
-                <div style="font-size:2.5rem; color:var(--whatsapp-green); margin-bottom:16px;"><i class="fa-solid fa-shield-halved"></i></div>
-                <h3 style="margin-bottom:12px;">Enterprise Scalability & Support</h3>
-                <p style="color:var(--text-secondary); line-height:1.7;">Secure API integrations, real-time analytics, robust backend systems, and direct WhatsApp project communication.</p>
+        <!-- 3D Tilt Profile Card -->
+        <div class="profile-card-wrapper">
+            <div class="glass-card tilt-card profile-card-content">
+                <div class="profile-avatar-box">
+                    <img src="https://github.com/YWanigaarachchi.png" alt="Y. Wanigaarachchi Profile Picture">
+                </div>
+                <div class="profile-info">
+                    <h3>Y. Wanigaarachchi</h3>
+                    <div class="profile-role" style="color:var(--neon-cyan); font-weight:600; margin-bottom:16px;">Founder & Lead Architect — YNW Software Solutions</div>
+                    <p class="profile-bio">Passionate about engineering weightless, futuristic web applications and mobile software solutions that deliver seamless user interactions. Dedicated to building glassmorphic design systems, Three.js 3D WebGL graphics, and scalable platforms.</p>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Full-Stack Web Dev</span>
+                        <span class="skill-tag">React / Next.js</span>
+                        <span class="skill-tag">Mobile App Dev</span>
+                        <span class="skill-tag">Three.js / WebGL</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Node.js</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- CALL TO ACTION BANNER -->
-<section class="section" style="padding-bottom:120px;">
+<!-- 3. EDUCATION SECTION (ICBT) -->
+<section class="section" id="education">
     <div class="container">
-        <div class="glass-panel" style="padding:60px 40px; text-align:center; border-color:var(--neon-cyan);">
-            <h2 style="font-size:2.5rem; margin-bottom:16px;">Ready to Build Something <span class="text-gradient">Extraordinary</span>?</h2>
-            <p style="max-width:600px; margin:0 auto 32px auto;">Explore our dedicated services, portfolio projects, or connect directly on WhatsApp to launch your next website.</p>
-            <div style="display:flex; justify-content:center; gap:16px; flex-wrap:wrap;">
-                <a href="project.html" class="btn btn-cyan">View Portfolio <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="#" class="btn btn-whatsapp trigger-footer-modal" data-whatsapp-line="94765855570" data-line-label="General Inquiry (+94 76 585 5570)"><i class="fa-brands fa-whatsapp"></i> Chat WhatsApp (+94 76 585 5570)</a>
+        <div class="section-header">
+            <div class="badge-glow">Academic Foundation</div>
+            <h2 class="section-title"><span class="text-gradient">Education</span> & Qualifications</h2>
+            <p class="section-subtitle">Specialized technical education in software engineering and IT.</p>
+        </div>
+
+        <div style="max-width:800px; margin:0 auto;">
+            <div class="glass-card" style="display:flex; gap:24px; align-items:flex-start; padding:36px; border:1px solid var(--neon-cyan);">
+                <div style="font-size:3rem; color:var(--neon-cyan); min-width:60px; text-align:center;">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <span class="badge-glow" style="padding:4px 12px; font-size:0.8rem; margin-bottom:12px; display:inline-block;">Higher Education</span>
+                    <h3 style="font-size:1.8rem; margin-bottom:6px;">ICBT Campus</h3>
+                    <h4 style="color:var(--soft-indigo); font-size:1.1rem; font-weight:600; margin-bottom:14px;">Higher Diploma in Software Engineering & Information Technology</h4>
+                    <p style="color:var(--text-secondary); line-height:1.7; margin-bottom:16px;">
+                        Comprehensive academic curriculum focused on full-stack web engineering, mobile application development, database management systems, data structures & algorithms, and object-oriented software design patterns.
+                    </p>
+                    <div class="skills-tags">
+                        <span class="skill-tag" style="background:rgba(0,229,255,0.1); border-color:rgba(0,229,255,0.3); color:var(--neon-cyan);">ICBT Campus</span>
+                        <span class="skill-tag">Software Engineering</span>
+                        <span class="skill-tag">Database Systems</span>
+                        <span class="skill-tag">OOP & Data Structures</span>
+                        <span class="skill-tag">Web & Mobile Architecture</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Footer with Full Navigation -->
+<!-- 4. PROJECTS SECTION (GITHUB REPOS IN PC MONITORS) -->
+<section class="section" id="projects">
+    <div class="container">
+        <div class="section-header">
+            <div class="badge-glow">Public GitHub Repositories</div>
+            <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
+            <p class="section-subtitle">Public GitHub repositories rendered in sleek PC monitor display frames.</p>
+        </div>
+
+        <!-- PC Monitor Grid -->
+        <div class="pc-monitor-grid">
+            <!-- Project 1: Siyala_HMS1 -->
+            <div class="pc-monitor-card">
+                <div class="pc-monitor-frame">
+                    <div class="pc-monitor-bezel">
+                        <div class="pc-monitor-bar">
+                            <span class="monitor-dot red"></span>
+                            <span class="monitor-dot yellow"></span>
+                            <span class="monitor-dot green"></span>
+                            <div class="monitor-address-bar">github.com/YWanigaarachchi/Siyala_HMS1</div>
+                        </div>
+                        <div class="pc-monitor-screen">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800" alt="Siyala_HMS1 Monitor View">
+                        </div>
+                    </div>
+                    <div class="pc-monitor-stand"></div>
+                    <div class="pc-monitor-base"></div>
+                </div>
+                <div class="pc-project-body">
+                    <div class="skills-tags" style="margin-top:0; margin-bottom:12px;">
+                        <span class="skill-tag">Web App</span>
+                        <span class="skill-tag">Hotel System</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                    </div>
+                    <h3 class="pc-project-title">Siyala_HMS1</h3>
+                    <p class="pc-project-desc">Comprehensive hotel management platform featuring real-time room reservation tracking, guest billing, and front-desk operation analytics.</p>
+                    <a href="https://github.com/YWanigaarachchi/Siyala_HMS1" target="_blank" class="btn btn-cyan" style="width:100%; text-align:center;"><i class="fa-brands fa-github"></i> View Code on GitHub</a>
+                </div>
+            </div>
+
+            <!-- Project 2: lankarest-hms -->
+            <div class="pc-monitor-card">
+                <div class="pc-monitor-frame">
+                    <div class="pc-monitor-bezel">
+                        <div class="pc-monitor-bar">
+                            <span class="monitor-dot red"></span>
+                            <span class="monitor-dot yellow"></span>
+                            <span class="monitor-dot green"></span>
+                            <div class="monitor-address-bar">github.com/YWanigaarachchi/lankarest-hms</div>
+                        </div>
+                        <div class="pc-monitor-screen">
+                            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=80&w=800" alt="lankarest-hms Monitor View">
+                        </div>
+                    </div>
+                    <div class="pc-monitor-stand"></div>
+                    <div class="pc-monitor-base"></div>
+                </div>
+                <div class="pc-project-body">
+                    <div class="skills-tags" style="margin-top:0; margin-bottom:12px;">
+                        <span class="skill-tag">Web App</span>
+                        <span class="skill-tag">Resort Software</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">PHP</span>
+                    </div>
+                    <h3 class="pc-project-title">lankarest-hms</h3>
+                    <p class="pc-project-desc">Web-based resort reservation software for managing suites, restaurant food orders, and automated guest checkout invoices.</p>
+                    <a href="https://github.com/YWanigaarachchi/lankarest-hms" target="_blank" class="btn btn-cyan" style="width:100%; text-align:center;"><i class="fa-brands fa-github"></i> View Code on GitHub</a>
+                </div>
+            </div>
+
+            <!-- Project 3: Resortify-hms -->
+            <div class="pc-monitor-card">
+                <div class="pc-monitor-frame">
+                    <div class="pc-monitor-bezel">
+                        <div class="pc-monitor-bar">
+                            <span class="monitor-dot red"></span>
+                            <span class="monitor-dot yellow"></span>
+                            <span class="monitor-dot green"></span>
+                            <div class="monitor-address-bar">github.com/YWanigaarachchi/Resortify-hms</div>
+                        </div>
+                        <div class="pc-monitor-screen">
+                            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800" alt="Resortify-hms Monitor View">
+                        </div>
+                    </div>
+                    <div class="pc-monitor-stand"></div>
+                    <div class="pc-monitor-base"></div>
+                </div>
+                <div class="pc-project-body">
+                    <div class="skills-tags" style="margin-top:0; margin-bottom:12px;">
+                        <span class="skill-tag">Web App</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">Tailwind</span>
+                        <span class="skill-tag">TypeScript</span>
+                    </div>
+                    <h3 class="pc-project-title">Resortify-hms</h3>
+                    <p class="pc-project-desc">Modern hotel and luxury villa booking management console with online guest registration, inventory control, and payment processing.</p>
+                    <a href="https://github.com/YWanigaarachchi/Resortify-hms" target="_blank" class="btn btn-cyan" style="width:100%; text-align:center;"><i class="fa-brands fa-github"></i> View Code on GitHub</a>
+                </div>
+            </div>
+
+            <!-- Project 4: athithi-hms -->
+            <div class="pc-monitor-card">
+                <div class="pc-monitor-frame">
+                    <div class="pc-monitor-bezel">
+                        <div class="pc-monitor-bar">
+                            <span class="monitor-dot red"></span>
+                            <span class="monitor-dot yellow"></span>
+                            <span class="monitor-dot green"></span>
+                            <div class="monitor-address-bar">github.com/YWanigaarachchi/athithi-hms</div>
+                        </div>
+                        <div class="pc-monitor-screen">
+                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" alt="athithi-hms Monitor View">
+                        </div>
+                    </div>
+                    <div class="pc-monitor-stand"></div>
+                    <div class="pc-monitor-base"></div>
+                </div>
+                <div class="pc-project-body">
+                    <div class="skills-tags" style="margin-top:0; margin-bottom:12px;">
+                        <span class="skill-tag">Mobile App</span>
+                        <span class="skill-tag">React Native</span>
+                        <span class="skill-tag">Hospitality</span>
+                        <span class="skill-tag">Express</span>
+                    </div>
+                    <h3 class="pc-project-title">athithi-hms</h3>
+                    <p class="pc-project-desc">Smart guest portal and mobile management app for room service ordering, concierge messaging, and real-time stay tracking.</p>
+                    <a href="https://github.com/YWanigaarachchi/athithi-hms" target="_blank" class="btn btn-cyan" style="width:100%; text-align:center;"><i class="fa-brands fa-github"></i> View Code on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 5. PROCESS SECTION -->
+<section class="section" id="process">
+    <div class="container">
+        <div class="section-header">
+            <div class="badge-glow">Execution Blueprint</div>
+            <h2 class="section-title">Process & <span class="text-gradient">Workflow</span></h2>
+            <p class="section-subtitle">Vertical timeline connected by an animated laser beam linking floating orb steps.</p>
+        </div>
+
+        <div class="workflow-container">
+            <!-- Glowing Laser Connection Line -->
+            <div class="laser-beam-line">
+                <div class="laser-beam-pulse"></div>
+            </div>
+
+            <!-- Step 1: Research -->
+            <div class="workflow-step">
+                <div class="workflow-orb-wrapper"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <div class="glass-card workflow-card">
+                    <span class="badge-glow" style="padding:4px 12px; font-size:0.75rem; margin-bottom:12px;">Step 01</span>
+                    <h3>1. Research & Discovery</h3>
+                    <p>Deep-dive discovery mapping business goals, target user personas, competitive analysis, and technical requirements to architect an optimal plan.</p>
+                </div>
+            </div>
+
+            <!-- Step 2: Design -->
+            <div class="workflow-step">
+                <div class="workflow-orb-wrapper"><i class="fa-solid fa-pen-ruler"></i></div>
+                <div class="glass-card workflow-card">
+                    <span class="badge-glow" style="padding:4px 12px; font-size:0.75rem; margin-bottom:12px;">Step 02</span>
+                    <h3>2. UI/UX Design & Prototyping</h3>
+                    <p>Crafting wireframes, glassmorphic design systems, high-fidelity responsive mockups, and micro-interactions in Figma.</p>
+                </div>
+            </div>
+
+            <!-- Step 3: Develop -->
+            <div class="workflow-step">
+                <div class="workflow-orb-wrapper"><i class="fa-solid fa-code"></i></div>
+                <div class="glass-card workflow-card">
+                    <span class="badge-glow" style="padding:4px 12px; font-size:0.75rem; margin-bottom:12px;">Step 03</span>
+                    <h3>3. Development & WebGL</h3>
+                    <p>Building clean, modular code with HTML5, CSS3, JavaScript, React, and Three.js WebGL canvas shaders for fluid high-speed rendering.</p>
+                </div>
+            </div>
+
+            <!-- Step 4: Deploy -->
+            <div class="workflow-step">
+                <div class="workflow-orb-wrapper"><i class="fa-solid fa-rocket"></i></div>
+                <div class="glass-card workflow-card">
+                    <span class="badge-glow" style="padding:4px 12px; font-size:0.75rem; margin-bottom:12px;">Step 04</span>
+                    <h3>4. Testing & Deployment</h3>
+                    <p>Rigorous security auditing, SEO indexing, mobile responsiveness checks, and automated zero-downtime cloud deployment.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 6. CONTACT SECTION -->
+<section class="section" id="contact" style="padding-bottom:120px;">
+    <div class="container">
+        <div class="section-header">
+            <div class="badge-glow">Direct Connectivity</div>
+            <h2 class="section-title">Contact <span class="text-gradient">Terminal</span></h2>
+            <p class="section-subtitle">Reach out directly via email or WhatsApp hotline.</p>
+        </div>
+
+        <div class="glass-terminal-wrapper">
+            <!-- Glass Terminal Form Pane -->
+            <div class="glass-panel glass-form-pane">
+                <h3 style="margin-bottom:24px;">Send Direct WhatsApp Message</h3>
+                <form id="contact-terminal-form" onsubmit="
+                    event.preventDefault();
+                    const name = document.getElementById('c-name').value;
+                    const email = document.getElementById('c-email').value;
+                    const msg = document.getElementById('c-msg').value;
+                    const text = `Hi YNW Software Solutions!%0A%0A*New Project Inquiry*%0A------------------------------%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Message:* ${encodeURIComponent(msg)}%0A------------------------------%0APlease get back to me.`;
+                    window.open('https://wa.me/94703608091?text=' + text, '_blank');
+                ">
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+                        <div class="form-group">
+                            <label for="c-name">Your Full Name</label>
+                            <input type="text" id="c-name" class="form-input" placeholder="e.g. John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="c-email">Your Email Address</label>
+                            <input type="email" id="c-email" class="form-input" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="c-msg">Project Details / Message</label>
+                        <textarea id="c-msg" class="form-input" placeholder="Describe your web or mobile app project requirements..." rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-whatsapp" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Transmit via WhatsApp (+94 70 360 8091)</button>
+                </form>
+            </div>
+
+            <!-- Direct Contact Info Cards -->
+            <div class="whatsapp-lines-box">
+                <!-- Email Card -->
+                <div class="whatsapp-card-item">
+                    <div style="display:flex; align-items:center; gap:16px;">
+                        <div class="whatsapp-icon-ring" style="border-color:var(--neon-cyan); color:var(--neon-cyan);"><i class="fa-solid fa-envelope"></i></div>
+                        <div>
+                            <h4 style="font-size:1.1rem; color:var(--text-white);">Email Address</h4>
+                            <p style="font-size:0.9rem; color:var(--neon-cyan); font-weight:600;">ywanigaarachchi@gmail.com</p>
+                        </div>
+                    </div>
+                    <a href="mailto:ywanigaarachchi@gmail.com" class="btn btn-outline" style="padding:10px 18px; font-size:0.85rem;"><i class="fa-solid fa-paper-plane"></i> Send Email</a>
+                </div>
+
+                <!-- Phone / WhatsApp Card -->
+                <div class="whatsapp-card-item">
+                    <div style="display:flex; align-items:center; gap:16px;">
+                        <div class="whatsapp-icon-ring"><i class="fa-brands fa-whatsapp"></i></div>
+                        <div>
+                            <h4 style="font-size:1.1rem; color:var(--text-white);">Phone & WhatsApp</h4>
+                            <p style="font-size:0.9rem; color:var(--whatsapp-green); font-weight:600;">+94 70 360 8091</p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/94703608091" target="_blank" class="btn btn-whatsapp" style="padding:10px 18px; font-size:0.85rem;"><i class="fa-brands fa-whatsapp"></i> Chat WhatsApp</a>
+                </div>
+
+                <!-- GitHub Card -->
+                <div class="social-orb-card" style="padding:18px 24px;">
+                    <div class="social-icon-orb"><i class="fa-brands fa-github"></i></div>
+                    <div style="flex-grow:1;">
+                        <h4 style="color:var(--text-white);">Official GitHub Profile</h4>
+                        <p style="font-size:0.85rem; color:var(--text-muted);">YWanigaarachchi Repositories</p>
+                    </div>
+                    <a href="https://github.com/YWanigaarachchi" target="_blank" class="btn btn-outline" style="padding:8px 16px; font-size:0.82rem;">Visit GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
 <footer>
     <div class="container">
         <div class="footer-grid">
             <div class="footer-col">
-                <a href="index.html" class="logo" style="margin-bottom:16px;">YNW<span>.</span> Software Solutions</a>
-                <p style="font-size:0.95rem; color:var(--text-muted); max-width:320px;">YNW Software Solutions crafts exceptional software experiences — from scalable web applications to high-performance mobile apps powering modern businesses.</p>
+                <a href="#home" class="logo" style="margin-bottom:16px;">YNW<span>.</span> Software Solutions</a>
+                <p style="font-size:0.95rem; color:var(--text-muted); max-width:320px;">YNW Software Solutions — Y. Wanigaarachchi. Building exceptional web and mobile software experiences.</p>
             </div>
 
             <div class="footer-col">
                 <h4>Navigation</h4>
                 <div class="footer-links-list">
-                    <a href="index.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Home</a>
-                    <a href="about.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> About Architect</a>
-                    <a href="project.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Portfolio Gallery</a>
-                    <a href="process.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Process Workflow</a>
-                    <a href="contact.html"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Contact Terminal</a>
+                    <a href="#home"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Home</a>
+                    <a href="#about"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> About</a>
+                    <a href="#education"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Education</a>
+                    <a href="#projects"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Projects</a>
+                    <a href="#process"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Process</a>
+                    <a href="#contact"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Contact</a>
                 </div>
             </div>
 
             <div class="footer-col">
-                <h4>Direct WhatsApp Lines</h4>
+                <h4>Direct Channels</h4>
                 <div class="footer-links-list">
-                    <a href="#" class="trigger-footer-modal" data-whatsapp-line="94765855570" data-line-label="Line 1 (+94 76 585 5570)" style="color:var(--whatsapp-green); font-weight:600;"><i class="fa-brands fa-whatsapp"></i> +94 76 585 5570 (Line 1)</a>
-                    <a href="#" class="trigger-footer-modal" data-whatsapp-line="94710855570" data-line-label="Line 2 (+94 71 085 5570)" style="color:var(--whatsapp-green); font-weight:600;"><i class="fa-brands fa-whatsapp"></i> +94 71 085 5570 (Line 2)</a>
-                    <a href="https://github.com" target="_blank"><i class="fa-brands fa-github"></i> Official GitHub Code Repos</a>
+                    <a href="mailto:ywanigaarachchi@gmail.com" style="color:var(--neon-cyan);"><i class="fa-solid fa-envelope"></i> ywanigaarachchi@gmail.com</a>
+                    <a href="https://wa.me/94703608091" target="_blank" style="color:var(--whatsapp-green); font-weight:600;"><i class="fa-brands fa-whatsapp"></i> +94 70 360 8091</a>
+                    <a href="https://github.com/YWanigaarachchi" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repositories</a>
                 </div>
             </div>
         </div>
