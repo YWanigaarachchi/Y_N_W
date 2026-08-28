@@ -2241,129 +2241,107 @@ footer {
 }
 
 /* =====================================================
-   HERO ROBOT 3D ANIMATION & HOLOGRAM SCANNER
+   INTERACTIVE 3D ANIMATED ROBOT SHOWCASE STYLES
    ===================================================== */
 .hero-robot-wrapper {
   position: relative;
   width: 100%;
-  max-width: 480px;
+  max-width: 440px;
   margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  perspective: 1000px;
-  transform-style: preserve-3d;
 }
 
 .hero-robot-glow {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 140%;
-  height: 140%;
-  background: radial-gradient(circle, rgba(0, 229, 255, 0.45) 0%, rgba(92, 103, 222, 0.25) 45%, transparent 70%);
-  filter: blur(55px);
-  z-index: 1;
-  pointer-events: none;
-  animation: heroGlowPulse 4s infinite ease-in-out alternate;
-}
-
-/* 3D Orbiting Telemetry Rings */
-.robot-orbit-ring {
-  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.35) 0%, rgba(92, 103, 222, 0.15) 50%, transparent 75%);
   border-radius: 50%;
-  border: 1.5px dashed rgba(0, 229, 255, 0.5);
-  pointer-events: none;
-  z-index: 1;
+  filter: blur(40px);
+  z-index: 0;
+  animation: robotGlowPulse 4s infinite ease-in-out alternate;
 }
 
-.robot-orbit-ring.ring-1 {
-  width: 115%;
-  height: 115%;
-  top: -7.5%;
-  left: -7.5%;
-  animation: orbitRotate 14s linear infinite;
-  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
-}
-
-.robot-orbit-ring.ring-2 {
-  width: 130%;
-  height: 130%;
-  top: -15%;
-  left: -15%;
-  border-color: rgba(92, 103, 222, 0.4);
-  animation: orbitRotateReverse 20s linear infinite;
-}
-
-@keyframes orbitRotate {
-  0% { transform: rotateX(65deg) rotateY(15deg) rotateZ(0deg); }
-  100% { transform: rotateX(65deg) rotateY(15deg) rotateZ(360deg); }
-}
-
-@keyframes orbitRotateReverse {
-  0% { transform: rotateX(45deg) rotateY(-25deg) rotateZ(360deg); }
-  100% { transform: rotateX(45deg) rotateY(-25deg) rotateZ(0deg); }
+@keyframes robotGlowPulse {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(1.15); opacity: 0.9; }
 }
 
 .hero-robot-frame {
   position: relative;
-  z-index: 2;
   width: 100%;
-  padding: 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  transform-style: preserve-3d;
-  animation: robot3DFloat 5s infinite ease-in-out alternate;
-  -webkit-mask-image: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 1) 38%, rgba(0, 0, 0, 0) 70%);
-  mask-image: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 1) 38%, rgba(0, 0, 0, 0) 70%);
+  border-radius: 24px;
+  overflow: hidden;
+  border: 2px solid rgba(0, 229, 255, 0.4);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(0, 229, 255, 0.3);
+  z-index: 2;
+  background: #050a18;
 }
 
 .hero-robot-img {
   width: 100%;
   height: auto;
   display: block;
-  mix-blend-mode: lighten;
-  filter: hue-rotate(185deg) saturate(1.55) contrast(1.18) brightness(1.08);
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: translateZ(30px);
+  filter: hue-rotate(175deg) saturate(1.4) contrast(1.1);
+  border-radius: 22px;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: robotFloat 6s infinite ease-in-out;
 }
 
-.hero-robot-frame:hover .hero-robot-img {
-  transform: translateZ(50px) scale(1.06);
-  filter: hue-rotate(185deg) saturate(1.8) contrast(1.25) brightness(1.15);
+@keyframes robotFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.02); }
 }
 
-/* Hologram Scanning Laser Effect */
 .robot-scanline {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, transparent, var(--neon-cyan), #ffffff, var(--neon-cyan), transparent);
-  box-shadow: 0 0 15px var(--neon-cyan), 0 0 25px var(--neon-cyan);
-  z-index: 3;
-  pointer-events: none;
+  height: 6px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  box-shadow: 0 0 15px var(--neon-cyan);
+  z-index: 5;
   opacity: 0.85;
-  animation: scanlineMove 3.5s infinite ease-in-out;
+  animation: robotScan 3.5s infinite linear;
+  pointer-events: none;
 }
 
-@keyframes scanlineMove {
-  0% { top: 5%; opacity: 0; }
-  15% { opacity: 0.9; }
-  85% { opacity: 0.9; }
-  100% { top: 92%; opacity: 0; }
+@keyframes robotScan {
+  0% { top: -5%; }
+  100% { top: 105%; }
 }
 
-@keyframes robot3DFloat {
-  0% { transform: translateY(0px) rotateX(0deg) rotateY(0deg) scale(1); }
-  50% { transform: translateY(-16px) rotateX(3deg) rotateY(-3deg) scale(1.02); }
-  100% { transform: translateY(-8px) rotateX(-2deg) rotateY(4deg) scale(1.01); }
+.robot-orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 229, 255, 0.4);
+  pointer-events: none;
+  z-index: 1;
 }
 
-@keyframes heroGlowPulse {
-  0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.95); }
-  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.12); }
+.robot-orbit-ring.ring-1 {
+  width: 110%;
+  height: 110%;
+  border-top-color: var(--neon-cyan);
+  animation: spinRing 12s linear infinite;
+}
+
+.robot-orbit-ring.ring-2 {
+  width: 125%;
+  height: 125%;
+  border-bottom-color: var(--soft-indigo);
+  animation: spinRingReverse 18s linear infinite;
+}
+
+@keyframes spinRing {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinRingReverse {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
 }
