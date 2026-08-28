@@ -2384,3 +2384,95 @@ footer {
   0% { transform: rotate(360deg); }
   100% { transform: rotate(0deg); }
 }
+
+/* =====================================================
+   MOBILE NAVIGATION (BOTTOM DOCK & CENTERED TOP LOGO)
+   ===================================================== */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  /* Center YNW Logo on Mobile Top Header & Remove Top Nav Menu */
+  nav .nav-inner {
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    width: 100%;
+    position: relative;
+  }
+
+  nav .logo {
+    margin: 0 auto !important;
+    text-align: center;
+    font-size: 1.6rem;
+  }
+
+  .nav-center-cluster,
+  .nav-contact-popout-btn,
+  .hamburger,
+  .mobile-menu {
+    display: none !important;
+  }
+
+  /* Floating Bottom Mobile Nav Dock */
+  .mobile-bottom-nav {
+    display: flex !important;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 440px;
+    height: 64px;
+    background: rgba(10, 16, 32, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 229, 255, 0.35);
+    border-radius: 35px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 229, 255, 0.25);
+    z-index: 9999;
+    padding: 0 12px;
+  }
+
+  .mobile-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    font-weight: 600;
+    gap: 3px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 6px 10px;
+    border-radius: 20px;
+    flex: 1;
+    text-align: center;
+  }
+
+  .mobile-nav-item i {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-nav-item.active,
+  .mobile-nav-item:hover {
+    color: var(--neon-cyan);
+    background: rgba(0, 229, 255, 0.12);
+  }
+
+  .mobile-nav-item.active i {
+    transform: translateY(-2px);
+    color: var(--neon-cyan);
+    filter: drop-shadow(0 0 8px var(--neon-cyan));
+  }
+
+  /* Give space at bottom of page for floating nav */
+  body {
+    padding-bottom: 70px;
+  }
+}
