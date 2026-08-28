@@ -2241,7 +2241,7 @@ footer {
 }
 
 /* =====================================================
-   HERO ROBOT SEAMLESS BACKGROUND BLEND (CUTOUT EFFECT)
+   HERO ROBOT 3D ANIMATION & HOLOGRAM SCANNER
    ===================================================== */
 .hero-robot-wrapper {
   position: relative;
@@ -2251,6 +2251,8 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .hero-robot-glow {
@@ -2258,13 +2260,50 @@ footer {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 130%;
-  height: 130%;
-  background: radial-gradient(circle, rgba(0, 229, 255, 0.4) 0%, rgba(92, 103, 222, 0.2) 40%, transparent 70%);
-  filter: blur(50px);
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.45) 0%, rgba(92, 103, 222, 0.25) 45%, transparent 70%);
+  filter: blur(55px);
   z-index: 1;
   pointer-events: none;
   animation: heroGlowPulse 4s infinite ease-in-out alternate;
+}
+
+/* 3D Orbiting Telemetry Rings */
+.robot-orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(0, 229, 255, 0.5);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.robot-orbit-ring.ring-1 {
+  width: 115%;
+  height: 115%;
+  top: -7.5%;
+  left: -7.5%;
+  animation: orbitRotate 14s linear infinite;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+}
+
+.robot-orbit-ring.ring-2 {
+  width: 130%;
+  height: 130%;
+  top: -15%;
+  left: -15%;
+  border-color: rgba(92, 103, 222, 0.4);
+  animation: orbitRotateReverse 20s linear infinite;
+}
+
+@keyframes orbitRotate {
+  0% { transform: rotateX(65deg) rotateY(15deg) rotateZ(0deg); }
+  100% { transform: rotateX(65deg) rotateY(15deg) rotateZ(360deg); }
+}
+
+@keyframes orbitRotateReverse {
+  0% { transform: rotateX(45deg) rotateY(-25deg) rotateZ(360deg); }
+  100% { transform: rotateX(45deg) rotateY(-25deg) rotateZ(0deg); }
 }
 
 .hero-robot-frame {
@@ -2275,9 +2314,10 @@ footer {
   background: transparent;
   border: none;
   box-shadow: none;
-  animation: robotFloat 6s infinite ease-in-out alternate;
-  -webkit-mask-image: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 68%);
-  mask-image: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 1) 35%, rgba(0, 0, 0, 0) 68%);
+  transform-style: preserve-3d;
+  animation: robot3DFloat 5s infinite ease-in-out alternate;
+  -webkit-mask-image: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 1) 38%, rgba(0, 0, 0, 0) 70%);
+  mask-image: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 1) 38%, rgba(0, 0, 0, 0) 70%);
 }
 
 .hero-robot-img {
@@ -2285,21 +2325,45 @@ footer {
   height: auto;
   display: block;
   mix-blend-mode: lighten;
-  filter: hue-rotate(185deg) saturate(1.5) contrast(1.15) brightness(1.05);
+  filter: hue-rotate(185deg) saturate(1.55) contrast(1.18) brightness(1.08);
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateZ(30px);
 }
 
 .hero-robot-frame:hover .hero-robot-img {
-  transform: scale(1.05);
-  filter: hue-rotate(185deg) saturate(1.7) contrast(1.2) brightness(1.1);
+  transform: translateZ(50px) scale(1.06);
+  filter: hue-rotate(185deg) saturate(1.8) contrast(1.25) brightness(1.15);
 }
 
-@keyframes robotFloat {
-  0% { transform: translateY(0px) rotate(0deg); }
-  100% { transform: translateY(-14px) rotate(1deg); }
+/* Hologram Scanning Laser Effect */
+.robot-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), #ffffff, var(--neon-cyan), transparent);
+  box-shadow: 0 0 15px var(--neon-cyan), 0 0 25px var(--neon-cyan);
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.85;
+  animation: scanlineMove 3.5s infinite ease-in-out;
+}
+
+@keyframes scanlineMove {
+  0% { top: 5%; opacity: 0; }
+  15% { opacity: 0.9; }
+  85% { opacity: 0.9; }
+  100% { top: 92%; opacity: 0; }
+}
+
+@keyframes robot3DFloat {
+  0% { transform: translateY(0px) rotateX(0deg) rotateY(0deg) scale(1); }
+  50% { transform: translateY(-16px) rotateX(3deg) rotateY(-3deg) scale(1.02); }
+  100% { transform: translateY(-8px) rotateX(-2deg) rotateY(4deg) scale(1.01); }
 }
 
 @keyframes heroGlowPulse {
   0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.95); }
-  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.12); }
 }
