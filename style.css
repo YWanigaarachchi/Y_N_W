@@ -2239,3 +2239,68 @@ footer {
   margin-bottom: 20px;
   flex-grow: 1;
 }
+
+/* =====================================================
+   HERO ROBOT SHOWCASE FRAME & BLUE HUE FILTER
+   ===================================================== */
+.hero-robot-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-robot-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110%;
+  height: 110%;
+  background: radial-gradient(circle, rgba(0, 229, 255, 0.45) 0%, rgba(92, 103, 222, 0.25) 50%, transparent 75%);
+  filter: blur(40px);
+  z-index: 1;
+  pointer-events: none;
+  animation: heroGlowPulse 4s infinite ease-in-out alternate;
+}
+
+.hero-robot-frame {
+  position: relative;
+  z-index: 2;
+  border-radius: var(--radius-md);
+  padding: 12px;
+  background: rgba(10, 17, 40, 0.75);
+  border: 1px solid rgba(0, 229, 255, 0.45);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 35px rgba(0, 229, 255, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.hero-robot-frame:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(0, 229, 255, 0.6);
+}
+
+.hero-robot-img {
+  width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius-md) - 8px);
+  display: block;
+  filter: hue-rotate(185deg) saturate(1.45) contrast(1.1);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-robot-frame:hover .hero-robot-img {
+  transform: scale(1.04);
+  filter: hue-rotate(185deg) saturate(1.6) contrast(1.15);
+}
+
+@keyframes heroGlowPulse {
+  0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.95); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+}
