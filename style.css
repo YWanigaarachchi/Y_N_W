@@ -2254,23 +2254,13 @@ footer {
   overflow: visible;
 }
 
-.hero-robot-wrapper::after {
-  content: '';
-  position: absolute;
-  inset: -10%;
-  background: radial-gradient(circle at 50% 45%, rgba(0, 229, 255, 0.2) 0%, rgba(92, 103, 222, 0.1) 50%, transparent 75%);
-  pointer-events: none;
-  z-index: 3;
-  mix-blend-mode: screen;
-}
-
 .hero-robot-glow {
   position: absolute;
-  width: 135%;
-  height: 135%;
-  background: radial-gradient(circle at 50% 50%, rgba(0, 229, 255, 0.55) 0%, rgba(92, 103, 222, 0.3) 45%, transparent 75%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle at 50% 45%, rgba(0, 229, 255, 0.45) 0%, rgba(92, 103, 222, 0.2) 40%, transparent 70%);
   border-radius: 50%;
-  filter: blur(60px);
+  filter: blur(55px);
   z-index: 0;
   animation: robotGlowPulse 4s infinite ease-in-out alternate;
 }
@@ -2286,16 +2276,18 @@ footer {
   display: block;
   position: relative;
   z-index: 2;
-  filter: hue-rotate(190deg) saturate(1.85) brightness(1.05) contrast(1.2) drop-shadow(0 0 35px rgba(0, 229, 255, 0.5));
-  border: none;
-  box-shadow: none;
-  outline: none;
+  filter: hue-rotate(190deg) saturate(1.85) brightness(1.05) contrast(1.2) drop-shadow(0 0 25px rgba(0, 229, 255, 0.4));
+  border: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 0 !important;
+  mix-blend-mode: screen;
   transform: scale(1.45);
   transform-origin: center 45%;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   animation: robotFloat 6s infinite ease-in-out;
-  mask-image: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 1) 32%, rgba(0, 0, 0, 0.8) 48%, rgba(0, 0, 0, 0) 68%);
-  -webkit-mask-image: radial-gradient(circle at 50% 45%, rgba(0, 0, 0, 1) 32%, rgba(0, 0, 0, 0.8) 48%, rgba(0, 0, 0, 0) 68%);
+  mask-image: radial-gradient(ellipse 65% 65% at 50% 45%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0.8) 45%, rgba(0, 0, 0, 0) 65%);
+  -webkit-mask-image: radial-gradient(ellipse 65% 65% at 50% 45%, rgba(0, 0, 0, 1) 25%, rgba(0, 0, 0, 0.8) 45%, rgba(0, 0, 0, 0) 65%);
 }
 
 .hud-corner {
