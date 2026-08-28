@@ -629,16 +629,33 @@ nav.scrolled {
 .nav-inner {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   position: relative;
   width: 100%;
+}
+
+.logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--text-white);
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  text-decoration: none;
+  z-index: 5;
+}
+
+.logo span {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 15px var(--neon-cyan);
 }
 
 .nav-center-cluster {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 36px;
+  gap: 32px;
 }
 
 .nav-center-cluster a {
@@ -654,24 +671,6 @@ nav.scrolled {
 .nav-center-cluster a.active {
   color: var(--neon-cyan);
   text-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
-}
-
-.nav-center-cluster .logo {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: var(--text-white);
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  margin: 0 16px;
-  position: static;
-  transform: none;
-}
-
-.nav-center-cluster .logo span {
-  color: var(--neon-cyan);
-  text-shadow: 0 0 15px var(--neon-cyan);
 }
 
 /* Futuristic Pop-out Contact Us Button on Navbar */
@@ -694,8 +693,7 @@ nav.scrolled {
   transition: all 0.35 cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   white-space: nowrap;
-  position: absolute;
-  right: 18px;
+  position: relative;
   z-index: 5;
   animation: navPopoutGlow 3s infinite ease-in-out alternate;
 }
@@ -2096,4 +2094,148 @@ footer {
 .preloader-enter-btn:hover {
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 0 35px var(--neon-cyan);
+}
+
+/* =====================================================
+   PC MONITOR MOCKUP FRAME STYLES
+   ===================================================== */
+.pc-monitor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+@media (max-width: 992px) {
+  .pc-monitor-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.pc-monitor-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: var(--transition);
+}
+
+.pc-monitor-card:hover {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 15px 40px rgba(0, 229, 255, 0.25);
+  transform: translateY(-6px);
+}
+
+.pc-monitor-frame {
+  position: relative;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.pc-monitor-bezel {
+  background: #090e1d;
+  border: 2px solid rgba(0, 229, 255, 0.35);
+  border-radius: 12px 12px 4px 4px;
+  padding: 8px 8px 10px 8px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(0, 229, 255, 0.1);
+  position: relative;
+}
+
+.pc-monitor-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 2px 8px 8px 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 8px;
+}
+
+.monitor-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.monitor-dot.red { background: #ff5f56; }
+.monitor-dot.yellow { background: #ffbd2e; }
+.monitor-dot.green { background: #27c93f; }
+
+.monitor-address-bar {
+  flex-grow: 1;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  height: 18px;
+  margin: 0 12px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  font-family: monospace;
+}
+
+.pc-monitor-screen {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 4px;
+  background: #040814;
+}
+
+.pc-monitor-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pc-monitor-card:hover .pc-monitor-screen img {
+  transform: scale(1.06);
+}
+
+.pc-monitor-stand {
+  width: 60px;
+  height: 24px;
+  background: linear-gradient(180deg, #18223c, #0b1124);
+  margin: 0 auto;
+  border-left: 1px solid rgba(0, 229, 255, 0.2);
+  border-right: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+.pc-monitor-base {
+  width: 150px;
+  height: 8px;
+  background: linear-gradient(180deg, #1c2744, #080d1a);
+  margin: 0 auto;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 229, 255, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+.pc-project-body {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.pc-project-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text-white);
+}
+
+.pc-project-desc {
+  font-size: 0.92rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  flex-grow: 1;
 }
