@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initServiceCategoryTabs();
   initProjectCategoryTabs();
   initPackageOrderModal();
-  initBackgroundMusic();
 });
 
 /* =====================================================
@@ -648,99 +647,6 @@ function initSmoothScroll() {
   });
 }
 
-/* =====================================================
-   11. FUTURISTIC AMBIENT BACKGROUND MUSIC PLAYER
-   ===================================================== */
-function initBackgroundMusic() {
-  if (document.getElementById('music-toggle-btn')) return;
-
-  const audioHtml = `
-  <audio id="bg-audio-player" loop preload="auto">
-      <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-      <source src="https://actions.google.com/sounds/v1/ambiences/deep_space.ogg" type="audio/ogg">
-  </audio>`;
-  document.body.insertAdjacentHTML('beforeend', audioHtml);
-
-  const toggleButtonHtml = `
-  <div class="top-right-music-widget">
-      <button id="music-toggle-btn" class="music-toggle-btn" title="Toggle Futuristic Ambient Music">
-          <i class="fa-solid fa-music"></i>
-          <span class="sound-wave">
-              <span></span><span></span><span></span><span></span>
-          </span>
-      </button>
-  </div>`;
-  document.body.insertAdjacentHTML('beforeend', toggleButtonHtml);
-
-  const audio = document.getElementById('bg-audio-player');
-  const toggleBtn = document.getElementById('music-toggle-btn');
-  if (!audio || !toggleBtn) return;
-
-  audio.volume = 0.35;
-  let isPlaying = false;
-
-  const playBackgroundMusic = () => {
-    audio.muted = false;
-    audio.volume = 0.35;
-    const playPromise = audio.play();
-    if (playPromise !== undefined) {
-      playPromise.then(() => {
-        toggleBtn.classList.add('playing');
-        isPlaying = true;
-        cleanUpListeners();
-      }).catch(err => {
-        // Keep interaction listeners ready to play unmuted on next click/touch
-      });
-    }
-  };
-
-  function toggleMusic() {
-    if (isPlaying) {
-      if (audio.muted) {
-        playBackgroundMusic();
-      } else {
-        audio.pause();
-        toggleBtn.classList.remove('playing');
-        isPlaying = false;
-      }
-    } else {
-      playBackgroundMusic();
-    }
-  }
-
-  toggleBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleMusic();
-  });
-
-  const interactionEvents = ['click', 'keydown', 'touchstart'];
-
-  const startAudioOnInteraction = (e) => {
-    if (e && e.target && (toggleBtn === e.target || toggleBtn.contains(e.target))) {
-      return;
-    }
-    playBackgroundMusic();
-  };
-
-  const cleanUpListeners = () => {
-    interactionEvents.forEach(event => {
-      document.removeEventListener(event, startAudioOnInteraction);
-    });
-  };
-
-  // Register listeners immediately
-  interactionEvents.forEach(event => {
-    document.addEventListener(event, startAudioOnInteraction, { once: true, passive: true });
-  });
-
-  // Auto-play / unmute when preloader loading effect finishes
-  window.addEventListener('ynwPreloaderFinished', () => {
-    playBackgroundMusic();
-  });
-
-  // Attempt autoplay immediately on load
-  playBackgroundMusic();
-}
 
 /* =====================================================
    12. FUTURISTIC 3D YNW LOGO PRELOADER ENGINE
