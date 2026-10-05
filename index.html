@@ -3,181 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="YNW Software Solutions - Single Page Portfolio | Y. Wanigaarachchi - Lead Architect, Projects, Education, & Contact.">
-    <title>Yasas Wanigaarachchi</title>
+    <meta name="description" content="YNW Software Solutions — High-performance enterprise web platforms, mobile apps, 3D WebGL visuals & modern software engineering. Led by Yasas Wanigaarachchi.">
+    <meta name="keywords" content="YNW Software Solutions, Yasas Wanigaarachchi, SoftGenix, Gen Code Zone, Web Development, Mobile Apps, NFC Smart Cards, Hotel Management Systems">
+    <meta name="author" content="Yasas Wanigaarachchi">
+    <title>YNW Software Solutions | Yasas Wanigaarachchi</title>
     
     <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=2.2">
     
-    <!-- Three.js for 3D AI Core Sphere -->
+    <!-- Three.js for 3D AI Core Sphere & Preloader -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
-<!-- Custom Cursor -->
+<!-- Custom Cyber Cursor -->
 <div class="cursor"></div>
 <div class="cursor-follower"></div>
 
-<!-- Drifting Particle Starfield Canvas -->
+<!-- Drifting Cosmic Canvas -->
 <canvas id="particles-canvas"></canvas>
 
-<!-- Global Right-Side Floating WhatsApp Button -->
+<!-- Ambient Cyber Aurora Background Lights -->
+<div class="ambient-glow glow-cyan"></div>
+<div class="ambient-glow glow-indigo"></div>
+<div class="ambient-glow glow-purple"></div>
+
+<!-- Global Right-Side Floating WhatsApp Button with Notification Badge -->
 <div class="whatsapp-float-container">
     <div class="whatsapp-popout-bubble">
-        <span><i class="fa-brands fa-whatsapp"></i></span> Chat on WhatsApp!
+        <span class="pulse-dot-green"></span> Chat with Lead Architect on WhatsApp!
     </div>
-    <a href="https://wa.me/94703608091" target="_blank" class="whatsapp-float-btn" title="Chat on WhatsApp (+94 70 360 8091)">
+    <a href="https://wa.me/94703608091" target="_blank" rel="noopener noreferrer" class="whatsapp-float-btn" title="Chat on WhatsApp (+94 70 360 8091)">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 </div>
 
-<!-- Global Right-Side Auto-Scroll Button -->
-<div class="auto-scroll-btn" title="Scroll Top / Bottom">
-    <i class="fa-solid fa-arrow-down"></i>
+<!-- Global Smooth Scroll-to-Top Button -->
+<div class="auto-scroll-btn" id="scrollTopBtn" title="Scroll to Top">
+    <i class="fa-solid fa-arrow-up"></i>
+    <svg class="scroll-progress-ring" width="48" height="48">
+        <circle class="scroll-progress-circle" cx="24" cy="24" r="21"></circle>
+    </svg>
 </div>
 
-<!-- Sticky Frosted Glass Navigation Bar -->
-<nav>
-    <div class="nav-inner">
-        <a href="#home" class="logo">YNW<span>.</span></a>
-        <div class="nav-center-cluster">
-            <a href="#home">Home</a>
-            <a href="#brands">Brands</a>
-            <a href="#about">About</a>
-            <a href="#education">Education</a>
-            <a href="#projects">Projects</a>
-            <a href="#process">Process</a>
+<!-- Floating Frosted Glass Navigation Bar -->
+<header class="header-nav">
+    <nav class="nav-container">
+        <a href="#home" class="logo">
+            <span class="logo-mark">YNW<span class="logo-dot">.</span></span>
+            <span class="logo-badge">Solutions</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#home" class="nav-link active">Home</a>
+            <a href="#brands" class="nav-link">Brands</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#services" class="nav-link">Services</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#education" class="nav-link">Education</a>
+            <a href="#process" class="nav-link">Process</a>
         </div>
-        <a href="#contact" class="nav-contact-popout-btn"><span>Contact</span> <i class="fa-solid fa-paper-plane"></i></a>
-        <div class="hamburger">
-            <span></span><span></span><span></span>
+
+        <div class="nav-actions">
+            <a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" class="nav-brand-pill" title="SoftGenix Live Platform">
+                <span class="live-beacon"></span> SoftGenix.lk
+            </a>
+            <a href="#contact" class="btn btn-nav-cta">
+                <span>Start Project</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
+    </nav>
+</header>
+
+<!-- Mobile Navigation Overlay Drawer -->
+<div class="mobile-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+        <div class="logo">YNW<span>.</span></div>
+        <button class="drawer-close" id="drawerCloseBtn"><i class="fa-solid fa-xmark"></i></button>
     </div>
-</nav>
-
-<!-- Mobile Navigation Menu -->
-<div class="mobile-menu">
-    <a href="#home">Home</a>
-    <a href="#brands">Brands</a>
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#projects">Projects</a>
-    <a href="#process">Process</a>
-    <a href="#contact">Contact</a>
+    <div class="drawer-links">
+        <a href="#home" class="drawer-link"><i class="fa-solid fa-house"></i> Home</a>
+        <a href="#brands" class="drawer-link"><i class="fa-solid fa-layer-group"></i> Brands & Ecosystem</a>
+        <a href="#projects" class="drawer-link"><i class="fa-solid fa-laptop-code"></i> Featured Projects</a>
+        <a href="#services" class="drawer-link"><i class="fa-solid fa-cubes"></i> Core Services</a>
+        <a href="#about" class="drawer-link"><i class="fa-solid fa-user-astronaut"></i> About Architect</a>
+        <a href="#education" class="drawer-link"><i class="fa-solid fa-graduation-cap"></i> Education</a>
+        <a href="#process" class="drawer-link"><i class="fa-solid fa-diagram-project"></i> Workflow</a>
+        <a href="#contact" class="drawer-link"><i class="fa-solid fa-paper-plane"></i> Contact Terminal</a>
+    </div>
+    <div class="drawer-footer">
+        <a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width:100%; margin-bottom:12px;">
+            <i class="fa-solid fa-globe"></i> Visit SoftGenix Live
+        </a>
+        <a href="https://wa.me/94703608091" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp" style="width:100%;">
+            <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp (+94 70 360 8091)
+        </a>
+    </div>
 </div>
 
-<!-- 1. HERO SECTION -->
-<section class="hero" id="home">
-    <div class="container">
-        <div class="hero-grid-layout">
+<!-- =====================================================
+     1. HERO SECTION
+     ===================================================== -->
+<section class="hero-section" id="home">
+    <div class="container hero-container">
+        <div class="hero-grid">
+            <!-- Left: Hero Headline & Action -->
             <div class="hero-content">
-                <div class="badge-glow">
-                    <span class="badge-glow-dot"></span>
-                    Available for New Projects
-                </div>
-                <h1>Designing the <span class="text-gradient">Future</span> of the Web.</h1>
-                <p>YNW Software Solutions — Crafting high-performance websites & mobile apps with futuristic UI/UX, 3D WebGL visuals, and zero-gravity design aesthetics.</p>
-                
-                <!-- Interactive Floating Hero Tag Badges -->
-                <div class="hero-tag-pills-row">
-                    <span class="hero-tag-pill"><i class="fa-solid fa-id-card" style="color:var(--neon-cyan);"></i> NFC Smart Cards</span>
-                    <span class="hero-tag-pill"><i class="fa-solid fa-code" style="color:var(--soft-indigo);"></i> Web Development</span>
-                    <span class="hero-tag-pill"><i class="fa-solid fa-mobile-screen-button" style="color:var(--whatsapp-green);"></i> Mobile App Development</span>
+                <div class="status-chip">
+                    <span class="pulse-beacon"></span>
+                    <span>Available for 2026/2027 Enterprise & Bespoke Projects</span>
                 </div>
 
-                <div class="hero-btns">
-                    <a href="#projects" class="btn btn-cyan">View Projects <i class="fa-solid fa-arrow-right"></i></a>
-                    <a href="https://wa.me/94703608091" target="_blank" class="btn btn-whatsapp"><i class="fa-brands fa-whatsapp"></i> Chat WhatsApp</a>
+                <h1 class="hero-title">
+                    Architecting <span class="shimmer-text">Next-Gen</span> Digital Platforms & <span class="gradient-violet">Zero-Gravity</span> Experiences.
+                </h1>
+
+                <p class="hero-desc">
+                    <strong>YNW Software Solutions</strong> — Led by <em>Yasas Wanigaarachchi</em>. Engineering high-performance web applications, enterprise cloud suites, cross-platform mobile apps, and interactive 3D WebGL interfaces.
+                </p>
+
+                <!-- Interactive Hero Tags -->
+                <div class="hero-pill-cluster">
+                    <span class="hero-pill"><i class="fa-solid fa-microchip"></i> SoftGenix Cloud Suite</span>
+                    <span class="hero-pill"><i class="fa-solid fa-code"></i> Full-Stack Web Apps</span>
+                    <span class="hero-pill"><i class="fa-solid fa-mobile-screen"></i> Cross-Platform Mobile</span>
+                    <span class="hero-pill"><i class="fa-solid fa-id-card"></i> NFC Smart Solutions</span>
+                </div>
+
+                <!-- Call to Actions -->
+                <div class="hero-btn-group">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>Explore Showcase & Live Demos</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </a>
+                    <a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" class="btn btn-live-portal" title="Visit SoftGenix Live Platform">
+                        <span class="live-dot-green"></span>
+                        <span>SoftGenix Live</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <a href="https://wa.me/94703608091" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-hero" title="Instant WhatsApp Message">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>+94 70 360 8091</span>
+                    </a>
+                </div>
+
+                <!-- Proof / Metrics Bar -->
+                <div class="hero-metrics-row">
+                    <div class="metric-item">
+                        <span class="metric-val">100%</span>
+                        <span class="metric-lbl">Architecture Quality</span>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric-item">
+                        <span class="metric-val">5+</span>
+                        <span class="metric-lbl">Enterprise Systems</span>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric-item">
+                        <span class="metric-val">&lt; 1.2s</span>
+                        <span class="metric-lbl">High-Speed Load</span>
+                    </div>
+                    <div class="metric-divider"></div>
+                    <div class="metric-item">
+                        <span class="metric-val">24/7</span>
+                        <span class="metric-lbl">Direct Support</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Interactive 3D Animated Cyborg Video Showcase -->
-            <div class="hero-robot-wrapper tilt-card">
-                <div class="hero-robot-glow"></div>
-                <video class="hero-robot-video" autoplay loop muted playsinline preload="auto">
-                    <source src="ai video.mp4" type="video/mp4">
-                    Your browser does not support HTML5 video.
-                </video>
-            </div>
-        </div>
-    </div>
-</section>
+            <!-- Right: Interactive 3D Holographic AI Video Showcase -->
+            <div class="hero-visual">
+                <div class="cyber-hud-card tilt-target">
+                    <!-- Holographic Bezel & Telemetry Bar -->
+                    <div class="hud-top-bar">
+                        <div class="hud-indicator">
+                            <span class="hud-dot green"></span>
+                            <span class="hud-label">SYSTEM // ONLINE</span>
+                        </div>
+                        <div class="hud-telemetry">
+                            <span>FPS: 60.0</span>
+                            <span class="separator">|</span>
+                            <span>LATENCY: 8ms</span>
+                            <span class="separator">|</span>
+                            <span>ENGINE: THREE.JS</span>
+                        </div>
+                    </div>
 
-<!-- 2. BRAND ECOSYSTEM SECTION -->
-<section class="section" id="brands" style="padding-top:60px; padding-bottom:80px;">
-    <div class="container">
-        <div class="section-header">
-            <div class="badge-glow">Brand Ecosystem</div>
-            <h2 class="section-title">Our <span class="text-gradient">Brands</span></h2>
-            <p class="section-subtitle">Sub-brands and platforms engineered under the YNW Software Solutions architecture.</p>
-        </div>
+                    <div class="hud-viewport">
+                        <video class="hud-video" autoplay loop muted playsinline preload="auto">
+                            <source src="ai video.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                        <div class="hud-scanlines"></div>
+                        <div class="hud-corner top-left"></div>
+                        <div class="hud-corner top-right"></div>
+                        <div class="hud-corner bottom-left"></div>
+                        <div class="hud-corner bottom-right"></div>
+                    </div>
 
-        <div class="pricing-grid-5" style="grid-template-columns: repeat(2, 1fr); gap:28px;">
-            <!-- Gen Code Zone - GCZ -->
-            <div class="glass-card" style="position:relative; border: 1px solid rgba(0, 240, 255, 0.4); background: rgba(10, 16, 32, 0.6); display:flex; flex-direction:column; justify-content: space-between;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-                    <div style="font-size:2.2rem; color:var(--neon-cyan);"><i class="fa-solid fa-code"></i></div>
-                    <span style="background: rgba(0, 240, 255, 0.15); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
-                        <i class="fa-solid fa-circle" style="font-size:0.5rem; vertical-align:middle; margin-right:4px; color:var(--neon-cyan);"></i> Active Brand
-                    </span>
-                </div>
-                <div>
-                    <h3 style="font-size:1.6rem; margin-bottom:8px;">Gen Code Zone (GCZ)</h3>
-                    <p style="font-size:0.95rem; color:var(--text-secondary); line-height:1.6; margin-bottom:24px;">Developer resources, software templates, coding tutorials, and web solutions platform powering high-speed software development.</p>
-                </div>
-                <a href="#" class="btn btn-outline" style="text-align:center; padding:12px 20px; font-size:0.9rem; margin-top:auto;">
-                    Gen Code Zone <i class="fa-solid fa-arrow-right" style="margin-left:6px;"></i>
-                </a>
-            </div>
-
-            <!-- SoftGenix - Software Solution -->
-            <div class="glass-card" style="position:relative; border: 1px solid rgba(92, 103, 222, 0.5); background: rgba(15, 10, 30, 0.6); display:flex; flex-direction:column; justify-content: space-between;">
-                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
-                    <div style="font-size:2.2rem; color:var(--soft-indigo);"><i class="fa-solid fa-microchip"></i></div>
-                    <span style="background: rgba(138, 43, 226, 0.2); color: #b197ff; border: 1px solid rgba(138, 43, 226, 0.8); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
-                        <i class="fa-solid fa-circle" style="font-size:0.5rem; vertical-align:middle; margin-right:4px; color:#b197ff;"></i> Active Platform
-                    </span>
-                </div>
-                <div>
-                    <h3 style="font-size:1.6rem; margin-bottom:8px; color:#e2d9ff;">SoftGenix — Software Solution</h3>
-                    <p style="font-size:0.95rem; color:var(--text-secondary); line-height:1.6; margin-bottom:24px;">Next-generation Enterprise Software Suite, Web & Mobile Application Development & AI-driven automation systems.</p>
-                </div>
-                <a href="https://softgenix.lk" target="_blank" class="btn btn-cyan" style="text-align:center; padding:12px 20px; font-size:0.9rem; margin-top:auto;">
-                    Visit SoftGenix Live <i class="fa-solid fa-arrow-up-right-from-square" style="margin-left:6px;"></i>
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- 3. ABOUT SECTION (WHO AM I?) -->
-<section class="section" id="about">
-    <div class="container">
-        <div class="section-header">
-            <div class="badge-glow">Architectural Vision</div>
-            <h2 class="section-title">Who Am <span class="text-gradient">I</span>?</h2>
-            <p class="section-subtitle">Bridging zero-gravity visual arts with high-performance WebGL & modern frontend technology.</p>
-        </div>
-
-        <!-- 3D Tilt Profile Card -->
-        <div class="profile-card-wrapper">
-            <div class="glass-card tilt-card profile-card-content">
-                <div class="profile-avatar-box">
-                    <img src="https://github.com/YWanigaarachchi.png" alt="Y. Wanigaarachchi Profile Picture">
-                </div>
-                <div class="profile-info">
-                    <h3>Y. Wanigaarachchi</h3>
-                    <div class="profile-role" style="color:var(--neon-cyan); font-weight:600; margin-bottom:16px;">Founder & Lead Architect — YNW Software Solutions</div>
-                    <p class="profile-bio">Passionate about engineering weightless, futuristic web applications and mobile software solutions that deliver seamless user interactions. Dedicated to building glassmorphic design systems, Three.js 3D WebGL graphics, and scalable platforms.</p>
-                    <div class="skills-tags">
-                        <span class="skill-tag">Full-Stack Web Dev</span>
-                        <span class="skill-tag">React / Next.js</span>
-                        <span class="skill-tag">Mobile App Dev</span>
-                        <span class="skill-tag">Three.js / WebGL</span>
-                        <span class="skill-tag">Tailwind CSS</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">Node.js</span>
+                    <!-- Floating Micro-Widgets -->
+                    <div class="hud-floating-badge badge-top">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <span>Zero-Gravity UI/UX Core</span>
+                    </div>
+                    <div class="hud-floating-badge badge-bottom">
+                        <i class="fa-solid fa-bolt"></i>
+                        <span>Next.js & WebGL 3D</span>
                     </div>
                 </div>
             </div>
@@ -185,374 +224,943 @@
     </div>
 </section>
 
-<!-- 3. EDUCATION SECTION (ICBT) -->
-<section class="section" id="education">
+<!-- =====================================================
+     2. BRAND ECOSYSTEM & FLAGSHIP PLATFORMS
+     ===================================================== -->
+<section class="section" id="brands">
     <div class="container">
-        <div class="section-header">
-            <div class="badge-glow">Academic Foundation</div>
-            <h2 class="section-title"><span class="text-gradient">Education</span> & Qualifications</h2>
-            <p class="section-subtitle">Specialized technical education in software engineering and IT.</p>
+        <div class="section-heading text-center">
+            <div class="section-tag"><i class="fa-solid fa-cube"></i> Brand Ecosystem</div>
+            <h2 class="section-title">Our <span class="shimmer-text">Brands</span> & Platforms</h2>
+            <p class="section-desc">Innovative platforms, enterprise suites, and developer networks engineered under the YNW Software Solutions architecture.</p>
         </div>
 
-        <div style="max-width:800px; margin:0 auto;">
-            <div class="glass-card" style="display:flex; gap:24px; align-items:flex-start; padding:36px; border:1px solid var(--neon-cyan);">
-                <div style="font-size:3rem; color:var(--neon-cyan); min-width:60px; text-align:center;">
-                    <i class="fa-solid fa-graduation-cap"></i>
+        <div class="brands-grid">
+            <!-- Brand 1: SoftGenix - FLAGSHIP SUITE (Featuring Live Link https://softgenix.lk/) -->
+            <div class="bento-card brand-card brand-softgenix spotlight-card">
+                <div class="brand-top-row">
+                    <div class="brand-icon-box cyan-violet">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <div class="brand-status-pill live-pill">
+                        <span class="pulse-beacon green"></span>
+                        <span>Active Live Production</span>
+                    </div>
                 </div>
-                <div>
-                    <span class="badge-glow" style="padding:4px 12px; font-size:0.8rem; margin-bottom:12px; display:inline-block;">Higher Education</span>
-                    <h3 style="font-size:1.8rem; margin-bottom:6px;">ICBT Campus</h3>
-                    <h4 style="color:var(--soft-indigo); font-size:1.1rem; font-weight:600; margin-bottom:14px;">Higher Diploma in Software Engineering & Information Technology</h4>
-                    <p style="color:var(--text-secondary); line-height:1.7; margin-bottom:16px;">
-                        Comprehensive academic curriculum focused on full-stack web engineering, mobile application development, database management systems, data structures & algorithms, and object-oriented software design patterns.
+
+                <div class="brand-content">
+                    <div class="brand-url-tag">
+                        <i class="fa-solid fa-link"></i> softgenix.lk
+                    </div>
+                    <h3 class="brand-name">SoftGenix — Software Solutions</h3>
+                    <p class="brand-bio">
+                        Next-generation Enterprise Software Suite, bespoke Web & Mobile Application Development, intelligent cloud infrastructure, and AI-driven workflow automation systems engineered for scalable businesses.
                     </p>
-                    <div class="skills-tags">
-                        <span class="skill-tag" style="background:rgba(0,229,255,0.1); border-color:rgba(0,229,255,0.3); color:var(--neon-cyan);">ICBT Campus</span>
-                        <span class="skill-tag">Software Engineering</span>
-                        <span class="skill-tag">Database Systems</span>
-                        <span class="skill-tag">OOP & Data Structures</span>
-                        <span class="skill-tag">Web & Mobile Architecture</span>
+
+                    <div class="brand-features-list">
+                        <span class="feature-tag"><i class="fa-solid fa-check"></i> Enterprise Cloud Architecture</span>
+                        <span class="feature-tag"><i class="fa-solid fa-check"></i> Bespoke Web & Mobile Platforms</span>
+                        <span class="feature-tag"><i class="fa-solid fa-check"></i> AI Automation Pipelines</span>
+                        <span class="feature-tag"><i class="fa-solid fa-check"></i> Real-Time Telemetry & Dashboards</span>
                     </div>
+                </div>
+
+                <!-- SoftGenix Live Preview Trigger & Direct Visit Link -->
+                <div class="brand-actions-row">
+                    <a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" class="btn btn-cyan brand-launch-btn">
+                        <span>Visit SoftGenix Live</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                    <button class="btn btn-outline preview-modal-trigger" data-target="softgenix-preview" title="Quick Screen Preview">
+                        <i class="fa-solid fa-eye"></i> Quick View
+                    </button>
+                </div>
+            </div>
+
+            <!-- Brand 2: Gen Code Zone (GCZ) -->
+            <div class="bento-card brand-card brand-gcz spotlight-card">
+                <div class="brand-top-row">
+                    <div class="brand-icon-box cyan">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <div class="brand-status-pill cyan-pill">
+                        <span class="pulse-beacon cyan"></span>
+                        <span>Developer Platform</span>
+                    </div>
+                </div>
+
+                <div class="brand-content">
+                    <div class="brand-url-tag">
+                        <i class="fa-solid fa-terminal"></i> gencodezone.dev
+                    </div>
+                    <h3 class="brand-name">Gen Code Zone (GCZ)</h3>
+                    <p class="brand-bio">
+                        Developer resource hub, open-source templates, coding tutorials, API blueprints, and rapid deployment web solutions empowering the next generation of software engineers.
+                    </p>
+
+                    <div class="brand-features-list">
+                        <span class="feature-tag"><i class="fa-solid fa-check"></i> Production Code Templates</span>
+                        <span class="feature-tag"><i class="fa-solid fa-check"></i> Step-by-Step Modern Tutorials</span>
+                        <span class="feature-tag"><i class="fa-solid fa-check"></i> Full-Stack Starter Kits</span>
+                        <span class="feature-tag"><i class="fa-solid fa-check"></i> Developer Community Blueprints</span>
+                    </div>
+                </div>
+
+                <div class="brand-actions-row">
+                    <a href="#projects" class="btn btn-outline" style="width:100%;">
+                        <span>Explore GCZ Resources</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Brand 3: YNW Custom Labs & NFC Tech -->
+            <div class="bento-card brand-card brand-nfc spotlight-card">
+                <div class="brand-top-row">
+                    <div class="brand-icon-box purple">
+                        <i class="fa-solid fa-id-card"></i>
+                    </div>
+                    <div class="brand-status-pill purple-pill">
+                        <span class="pulse-beacon purple"></span>
+                        <span>Hardware & Contactless</span>
+                    </div>
+                </div>
+
+                <div class="brand-content">
+                    <div class="brand-url-tag">
+                        <i class="fa-solid fa-wifi"></i> nfc.ynwsolutions.com
+                    </div>
+                    <h3 class="brand-name">YNW Smart NFC & IoT Systems</h3>
+                    <p class="brand-bio">
+                        Smart contactless NFC cards for elite professionals and enterprises, customized dynamic digital profiles, and IoT hardware integrations bridging physical and digital networking.
+                    </p>
+
+                    <div class="brand-features-list">
+                        <span class="feature-tag"><i class="fa-solid fa-check"></i> 1-Tap NFC Smart Cards</span>
+                        <span class="feature-tag"><i class="fa-solid fa-check"></i> Dynamic Digital Profiles</span>
+                        <span class="feature-tag"><i class="fa-solid fa-check"></i> Custom Corporate Branding</span>
+                        <span class="feature-tag"><i class="fa-solid fa-check"></i> Real-Time Tap Analytics</span>
+                    </div>
+                </div>
+
+                <div class="brand-actions-row">
+                    <a href="https://wa.me/94703608091?text=Hi%20YNW%20Solutions!%20I%20am%20interested%20in%20Smart%20NFC%20Cards." target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width:100%;">
+                        <span>Order NFC Smart Cards</span>
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 4. PROJECTS SECTION (GITHUB REPOS IN PC MONITORS) -->
+<!-- =====================================================
+     3. FEATURED PROJECTS SHOWCASE (WITH SOFTGENIX LIVE VIEW)
+     ===================================================== -->
 <section class="section" id="projects">
     <div class="container">
-        <div class="section-header">
-            <div class="badge-glow">Public GitHub Repositories</div>
-            <h2 class="section-title">Featured <span class="text-gradient">Projects</span></h2>
-            <p class="section-subtitle">Public GitHub repositories rendered in sleek PC monitor display frames.</p>
+        <div class="section-heading text-center">
+            <div class="section-tag"><i class="fa-solid fa-laptop-code"></i> Engineering Showcase</div>
+            <h2 class="section-title">Featured <span class="shimmer-text">Projects</span> & Live Demos</h2>
+            <p class="section-desc">Production platforms, hotel management suites, and open-source systems engineered with precision.</p>
         </div>
 
-        <!-- PC Monitor Grid -->
-        <div class="pc-monitor-grid">
-            <!-- Project 1: Siyala_HMS1 -->
-            <div class="pc-monitor-card">
-                <div class="pc-monitor-frame">
-                    <div class="pc-monitor-bezel">
-                        <div class="pc-monitor-bar">
-                            <span class="monitor-dot red"></span>
-                            <span class="monitor-dot yellow"></span>
-                            <span class="monitor-dot green"></span>
-                            <div class="monitor-address-bar">github.com/YWanigaarachchi/Siyala_HMS1</div>
+        <!-- Project Filter Tabs -->
+        <div class="project-filter-tabs">
+            <button class="filter-tab active" data-filter="all">All Projects</button>
+            <button class="filter-tab" data-filter="live">🚀 Live Production</button>
+            <button class="filter-tab" data-filter="hospitality">🏨 Hospitality Suites</button>
+            <button class="filter-tab" data-filter="fullstack">⚡ Web & Mobile Apps</button>
+        </div>
+
+        <div class="projects-container">
+
+            <!-- FLAGSHIP PROJECT 1: SoftGenix Software Solutions (LIVE VIEW: https://softgenix.lk/) -->
+            <div class="project-hero-card spotlight-card" data-category="live fullstack">
+                <div class="project-hero-grid">
+                    <!-- Browser / Monitor Mockup -->
+                    <div class="browser-frame tilt-target">
+                        <div class="browser-header">
+                            <div class="browser-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="browser-address">
+                                <i class="fa-solid fa-lock"></i>
+                                <span class="address-text">https://softgenix.lk/</span>
+                                <span class="live-tag">LIVE</span>
+                            </div>
+                            <div class="browser-actions">
+                                <a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" class="browser-launch" title="Launch softgenix.lk">
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="pc-monitor-screen">
-                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800" alt="Siyala_HMS1 Monitor View">
+                        <div class="browser-viewport">
+                            <img src="softgenix_preview.jpg" alt="SoftGenix Software Solutions Operations Command Live View" class="browser-screen-img">
+                            <div class="browser-overlay">
+                                <a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" class="btn btn-cyan btn-glow">
+                                    <i class="fa-solid fa-globe"></i> Launch SoftGenix Live Platform
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <div class="pc-monitor-stand"></div>
-                    <div class="pc-monitor-base"></div>
-                </div>
-                <div class="pc-project-body">
-                    <div class="skills-tags" style="margin-top:0; margin-bottom:12px;">
-                        <span class="skill-tag">Web App</span>
-                        <span class="skill-tag">Hotel System</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">Node.js</span>
+
+                    <!-- Project Details & Actions -->
+                    <div class="project-hero-info">
+                        <div class="project-badge-row">
+                            <span class="badge-flagship"><i class="fa-solid fa-star"></i> Flagship Production Platform</span>
+                            <span class="badge-live"><span class="pulse-beacon green"></span> Live: softgenix.lk</span>
+                        </div>
+
+                        <h3 class="project-hero-title">SoftGenix — Enterprise Cloud Suite & Operations Command</h3>
+                        
+                        <p class="project-hero-desc">
+                            A flagship next-generation software platform delivering enterprise operations control, high-speed telemetry analytics, client deployment management, and AI-driven automation workflows. Engineered for modern digital enterprises.
+                        </p>
+
+                        <!-- Key Architecture Features -->
+                        <div class="project-spec-grid">
+                            <div class="spec-card">
+                                <span class="spec-label">Platform URL</span>
+                                <span class="spec-val"><a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" style="color:var(--neon-cyan);">https://softgenix.lk/</a></span>
+                            </div>
+                            <div class="spec-card">
+                                <span class="spec-label">Architecture</span>
+                                <span class="spec-val">Next.js • Node • Cloud</span>
+                            </div>
+                            <div class="spec-card">
+                                <span class="spec-label">Uptime Status</span>
+                                <span class="spec-val" style="color:#10b981;">99.98% Operational</span>
+                            </div>
+                            <div class="spec-card">
+                                <span class="spec-label">Role</span>
+                                <span class="spec-val">Architect & Full-Stack</span>
+                            </div>
+                        </div>
+
+                        <div class="skills-tags" style="margin-bottom:24px;">
+                            <span class="skill-tag">Live Platform</span>
+                            <span class="skill-tag">Next.js / React</span>
+                            <span class="skill-tag">Cloud Native</span>
+                            <span class="skill-tag">Operations Telemetry</span>
+                            <span class="skill-tag">AI Automation</span>
+                            <span class="skill-tag">Modern UI/UX</span>
+                        </div>
+
+                        <!-- CTA Row with Live View and Preview -->
+                        <div class="project-btn-group">
+                            <a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" class="btn btn-cyan btn-lg">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                <span>Visit SoftGenix Live View (softgenix.lk)</span>
+                            </a>
+                            <button class="btn btn-outline preview-modal-trigger" data-target="softgenix-preview">
+                                <i class="fa-solid fa-expand"></i>
+                                <span>Preview Modal</span>
+                            </button>
+                        </div>
                     </div>
-                    <h3 class="pc-project-title">Siyala_HMS1</h3>
-                    <p class="pc-project-desc">Comprehensive hotel management platform featuring real-time room reservation tracking, guest billing, and front-desk operation analytics.</p>
-                    <a href="https://github.com/YWanigaarachchi/Siyala_HMS1" target="_blank" class="btn btn-cyan" style="width:100%; text-align:center;"><i class="fa-brands fa-github"></i> View Code on GitHub</a>
                 </div>
             </div>
 
-            <!-- Project 2: lankarest-hms -->
-            <div class="pc-monitor-card">
-                <div class="pc-monitor-frame">
-                    <div class="pc-monitor-bezel">
-                        <div class="pc-monitor-bar">
-                            <span class="monitor-dot red"></span>
-                            <span class="monitor-dot yellow"></span>
-                            <span class="monitor-dot green"></span>
-                            <div class="monitor-address-bar">github.com/YWanigaarachchi/lankarest-hms</div>
+            <!-- PROJECTS GRID FOR GITHUB REPOSITORIES & SYSTEMS -->
+            <div class="projects-subgrid">
+
+                <!-- Project 2: Siyala_HMS1 -->
+                <div class="pc-monitor-card spotlight-card" data-category="hospitality fullstack">
+                    <div class="pc-monitor-frame">
+                        <div class="pc-monitor-bezel">
+                            <div class="pc-monitor-bar">
+                                <span class="monitor-dot red"></span>
+                                <span class="monitor-dot yellow"></span>
+                                <span class="monitor-dot green"></span>
+                                <div class="monitor-address-bar">github.com/YWanigaarachchi/Siyala_HMS1</div>
+                            </div>
+                            <div class="pc-monitor-screen">
+                                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800" alt="Siyala_HMS1 Monitor View">
+                            </div>
                         </div>
-                        <div class="pc-monitor-screen">
-                            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=80&w=800" alt="lankarest-hms Monitor View">
+                        <div class="pc-monitor-stand"></div>
+                        <div class="pc-monitor-base"></div>
+                    </div>
+                    <div class="pc-project-body">
+                        <div class="skills-tags">
+                            <span class="skill-tag">Web App</span>
+                            <span class="skill-tag">Hotel System</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                        </div>
+                        <h3 class="pc-project-title">Siyala_HMS1 — Hotel Management Platform</h3>
+                        <p class="pc-project-desc">Comprehensive hotel management platform featuring real-time room reservation tracking, guest billing, room service management, and front-desk operational analytics.</p>
+                        <div class="project-card-actions">
+                            <a href="https://github.com/YWanigaarachchi/Siyala_HMS1" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width:100%;">
+                                <i class="fa-brands fa-github"></i> View Code on GitHub
+                            </a>
                         </div>
                     </div>
-                    <div class="pc-monitor-stand"></div>
-                    <div class="pc-monitor-base"></div>
                 </div>
-                <div class="pc-project-body">
-                    <div class="skills-tags" style="margin-top:0; margin-bottom:12px;">
-                        <span class="skill-tag">Web App</span>
-                        <span class="skill-tag">Resort Software</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">PHP</span>
+
+                <!-- Project 3: Resortify-hms -->
+                <div class="pc-monitor-card spotlight-card" data-category="hospitality fullstack">
+                    <div class="pc-monitor-frame">
+                        <div class="pc-monitor-bezel">
+                            <div class="pc-monitor-bar">
+                                <span class="monitor-dot red"></span>
+                                <span class="monitor-dot yellow"></span>
+                                <span class="monitor-dot green"></span>
+                                <div class="monitor-address-bar">github.com/YWanigaarachchi/Resortify-hms</div>
+                            </div>
+                            <div class="pc-monitor-screen">
+                                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800" alt="Resortify-hms Monitor View">
+                            </div>
+                        </div>
+                        <div class="pc-monitor-stand"></div>
+                        <div class="pc-monitor-base"></div>
                     </div>
-                    <h3 class="pc-project-title">lankarest-hms</h3>
-                    <p class="pc-project-desc">Web-based resort reservation software for managing suites, restaurant food orders, and automated guest checkout invoices.</p>
-                    <a href="https://github.com/YWanigaarachchi/lankarest-hms" target="_blank" class="btn btn-cyan" style="width:100%; text-align:center;"><i class="fa-brands fa-github"></i> View Code on GitHub</a>
+                    <div class="pc-project-body">
+                        <div class="skills-tags">
+                            <span class="skill-tag">Next.js</span>
+                            <span class="skill-tag">Tailwind</span>
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">Resort Software</span>
+                        </div>
+                        <h3 class="pc-project-title">Resortify-hms — Luxury Villa Booking Engine</h3>
+                        <p class="pc-project-desc">Modern hotel and luxury villa booking management console with online guest check-in, real-time inventory control, and payment gateway integration.</p>
+                        <div class="project-card-actions">
+                            <a href="https://github.com/YWanigaarachchi/Resortify-hms" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width:100%;">
+                                <i class="fa-brands fa-github"></i> View Code on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: lankarest-hms -->
+                <div class="pc-monitor-card spotlight-card" data-category="hospitality fullstack">
+                    <div class="pc-monitor-frame">
+                        <div class="pc-monitor-bezel">
+                            <div class="pc-monitor-bar">
+                                <span class="monitor-dot red"></span>
+                                <span class="monitor-dot yellow"></span>
+                                <span class="monitor-dot green"></span>
+                                <div class="monitor-address-bar">github.com/YWanigaarachchi/lankarest-hms</div>
+                            </div>
+                            <div class="pc-monitor-screen">
+                                <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=80&w=800" alt="lankarest-hms Monitor View">
+                            </div>
+                        </div>
+                        <div class="pc-monitor-stand"></div>
+                        <div class="pc-monitor-base"></div>
+                    </div>
+                    <div class="pc-project-body">
+                        <div class="skills-tags">
+                            <span class="skill-tag">Web App</span>
+                            <span class="skill-tag">Restaurant Orders</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">PHP</span>
+                        </div>
+                        <h3 class="pc-project-title">lankarest-hms — Resort & Dining Management</h3>
+                        <p class="pc-project-desc">Web-based resort reservation software for managing suites, restaurant kitchen food orders, table availability, and automated guest checkout invoices.</p>
+                        <div class="project-card-actions">
+                            <a href="https://github.com/YWanigaarachchi/lankarest-hms" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width:100%;">
+                                <i class="fa-brands fa-github"></i> View Code on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: athithi-hms -->
+                <div class="pc-monitor-card spotlight-card" data-category="hospitality fullstack">
+                    <div class="pc-monitor-frame">
+                        <div class="pc-monitor-bezel">
+                            <div class="pc-monitor-bar">
+                                <span class="monitor-dot red"></span>
+                                <span class="monitor-dot yellow"></span>
+                                <span class="monitor-dot green"></span>
+                                <div class="monitor-address-bar">github.com/YWanigaarachchi/athithi-hms</div>
+                            </div>
+                            <div class="pc-monitor-screen">
+                                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" alt="athithi-hms Monitor View">
+                            </div>
+                        </div>
+                        <div class="pc-monitor-stand"></div>
+                        <div class="pc-monitor-base"></div>
+                    </div>
+                    <div class="pc-project-body">
+                        <div class="skills-tags">
+                            <span class="skill-tag">Mobile App</span>
+                            <span class="skill-tag">React Native</span>
+                            <span class="skill-tag">Guest Concierge</span>
+                            <span class="skill-tag">Express API</span>
+                        </div>
+                        <h3 class="pc-project-title">athithi-hms — Smart Hospitality Mobile App</h3>
+                        <p class="pc-project-desc">Smart guest portal and mobile management application for instant room service ordering, concierge messaging, digital keys, and real-time stay tracking.</p>
+                        <div class="project-card-actions">
+                            <a href="https://github.com/YWanigaarachchi/athithi-hms" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="width:100%;">
+                                <i class="fa-brands fa-github"></i> View Code on GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     4. CORE SERVICES & CAPABILITIES (BENTO GRID)
+     ===================================================== -->
+<section class="section" id="services">
+    <div class="container">
+        <div class="section-heading text-center">
+            <div class="section-tag"><i class="fa-solid fa-cubes"></i> Core Services</div>
+            <h2 class="section-title">Engineered For <span class="shimmer-text">Scale & Performance</span></h2>
+            <p class="section-desc">Comprehensive digital craftsmanship tailored to transform ideas into market-leading software products.</p>
+        </div>
+
+        <div class="services-bento-grid">
+            <!-- Service 1: Custom Web Applications -->
+            <div class="bento-card service-card spotlight-card">
+                <div class="service-icon-box">
+                    <i class="fa-solid fa-code"></i>
+                </div>
+                <h3>Bespoke Web Applications</h3>
+                <p>Full-stack modern web applications powered by React, Next.js, Node.js, and TypeScript. Optimized for sub-second speeds, enterprise security, and fluid usability.</p>
+                <ul class="service-points">
+                    <li><i class="fa-solid fa-circle-check"></i> SaaS & Customer Portals</li>
+                    <li><i class="fa-solid fa-circle-check"></i> High-Speed API Architectures</li>
+                    <li><i class="fa-solid fa-circle-check"></i> SEO & Core Web Vitals 100%</li>
+                </ul>
+            </div>
+
+            <!-- Service 2: Cross-Platform Mobile Apps -->
+            <div class="bento-card service-card spotlight-card">
+                <div class="service-icon-box">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+                <h3>Mobile App Engineering</h3>
+                <p>Native-grade iOS & Android applications built with React Native. Delivering fluid 60FPS animations, offline capability, and seamless cloud syncing.</p>
+                <ul class="service-points">
+                    <li><i class="fa-solid fa-circle-check"></i> iOS & Android Cross-Platform</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Push Notifications & Real-Time Sync</li>
+                    <li><i class="fa-solid fa-circle-check"></i> App Store & Play Store Deployment</li>
+                </ul>
+            </div>
+
+            <!-- Service 3: Enterprise Software & HMS Suites -->
+            <div class="bento-card service-card spotlight-card">
+                <div class="service-icon-box">
+                    <i class="fa-solid fa-hotel"></i>
+                </div>
+                <h3>Enterprise Suites & HMS Systems</h3>
+                <p>Tailored ERP, CRM, and Hotel Management Systems (HMS) that streamline inventory, reservations, multi-branch billing, and staff operations.</p>
+                <ul class="service-points">
+                    <li><i class="fa-solid fa-circle-check"></i> Real-time Room & Villa Booking</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Invoicing, Kitchen POS & Billing</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Role-based Staff Permissions</li>
+                </ul>
+            </div>
+
+            <!-- Service 4: Smart NFC Cards & Contactless Solutions -->
+            <div class="bento-card service-card spotlight-card">
+                <div class="service-icon-box">
+                    <i class="fa-solid fa-id-card"></i>
+                </div>
+                <h3>NFC Smart Cards & Contactless Tech</h3>
+                <p>Next-gen NFC smart business cards and IoT contactless hardware. Instantly share contact details, portfolio links, and social profiles with a single smartphone tap.</p>
+                <ul class="service-points">
+                    <li><i class="fa-solid fa-circle-check"></i> Matte & Metallic Premium Cards</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Cloud-Updated Digital Bio Link</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Zero App Installation Required</li>
+                </ul>
+            </div>
+
+            <!-- Service 5: 3D WebGL & Zero-Gravity UI/UX -->
+            <div class="bento-card service-card spotlight-card">
+                <div class="service-icon-box">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h3>Zero-Gravity UI/UX & 3D WebGL</h3>
+                <p>Immersive interactive visual systems built with Three.js WebGL canvas shaders, micro-interactions, dark glassmorphism, and dynamic animations.</p>
+                <ul class="service-points">
+                    <li><i class="fa-solid fa-circle-check"></i> Three.js 3D Web Graphics</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Interactive Cursor & Tilt Physics</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Award-Winning Design Standards</li>
+                </ul>
+            </div>
+
+            <!-- Service 6: AI Systems & Cloud Automation -->
+            <div class="bento-card service-card spotlight-card">
+                <div class="service-icon-box">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <h3>AI Integration & Automation</h3>
+                <p>Integrating Large Language Models, custom AI agents, automated workflow webhooks, and intelligent data analysis into your everyday business pipeline.</p>
+                <ul class="service-points">
+                    <li><i class="fa-solid fa-circle-check"></i> Custom AI Chatbots & Agents</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Automated WhatsApp Invoicing</li>
+                    <li><i class="fa-solid fa-circle-check"></i> Serverless Cloud Workflows</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     5. ABOUT SECTION (LEAD ARCHITECT)
+     ===================================================== -->
+<section class="section" id="about">
+    <div class="container">
+        <div class="section-heading text-center">
+            <div class="section-tag"><i class="fa-solid fa-user-astronaut"></i> Architectural Vision</div>
+            <h2 class="section-title">Meet The <span class="shimmer-text">Lead Architect</span></h2>
+            <p class="section-desc">Bridging zero-gravity visual arts with high-performance software engineering.</p>
+        </div>
+
+        <div class="profile-bento-grid">
+            <!-- Left: Avatar Card with Status -->
+            <div class="bento-card profile-avatar-card spotlight-card">
+                <div class="avatar-ring-container">
+                    <img src="https://github.com/YWanigaarachchi.png" alt="Yasas Wanigaarachchi Profile" class="avatar-img">
+                    <div class="avatar-status-beacon" title="Active & Coding"></div>
+                </div>
+                <h3 class="profile-name">Yasas Wanigaarachchi</h3>
+                <p class="profile-designation">Founder & Lead Software Architect</p>
+                <div class="profile-location">
+                    <i class="fa-solid fa-location-dot"></i> Sri Lanka • Working Globally
+                </div>
+                <div class="profile-social-row">
+                    <a href="https://github.com/YWanigaarachchi" target="_blank" rel="noopener noreferrer" class="social-btn" title="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://wa.me/94703608091" target="_blank" rel="noopener noreferrer" class="social-btn" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="mailto:ywanigaarachchi@gmail.com" class="social-btn" title="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" class="social-btn" title="SoftGenix"><i class="fa-solid fa-globe"></i></a>
                 </div>
             </div>
 
-            <!-- Project 3: Resortify-hms -->
-            <div class="pc-monitor-card">
-                <div class="pc-monitor-frame">
-                    <div class="pc-monitor-bezel">
-                        <div class="pc-monitor-bar">
-                            <span class="monitor-dot red"></span>
-                            <span class="monitor-dot yellow"></span>
-                            <span class="monitor-dot green"></span>
-                            <div class="monitor-address-bar">github.com/YWanigaarachchi/Resortify-hms</div>
-                        </div>
-                        <div class="pc-monitor-screen">
-                            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800" alt="Resortify-hms Monitor View">
-                        </div>
-                    </div>
-                    <div class="pc-monitor-stand"></div>
-                    <div class="pc-monitor-base"></div>
+            <!-- Right: Bio, Stack & Vision -->
+            <div class="bento-card profile-details-card spotlight-card">
+                <div class="bio-tag-row">
+                    <span class="bio-badge"><i class="fa-solid fa-terminal"></i> Systems Architect</span>
+                    <span class="bio-badge"><i class="fa-solid fa-layer-group"></i> Full-Stack Engineer</span>
+                    <span class="bio-badge"><i class="fa-solid fa-microchip"></i> Creator of SoftGenix</span>
                 </div>
-                <div class="pc-project-body">
-                    <div class="skills-tags" style="margin-top:0; margin-bottom:12px;">
-                        <span class="skill-tag">Web App</span>
-                        <span class="skill-tag">Next.js</span>
-                        <span class="skill-tag">Tailwind</span>
-                        <span class="skill-tag">TypeScript</span>
-                    </div>
-                    <h3 class="pc-project-title">Resortify-hms</h3>
-                    <p class="pc-project-desc">Modern hotel and luxury villa booking management console with online guest registration, inventory control, and payment processing.</p>
-                    <a href="https://github.com/YWanigaarachchi/Resortify-hms" target="_blank" class="btn btn-cyan" style="width:100%; text-align:center;"><i class="fa-brands fa-github"></i> View Code on GitHub</a>
-                </div>
-            </div>
 
-            <!-- Project 4: athithi-hms -->
-            <div class="pc-monitor-card">
-                <div class="pc-monitor-frame">
-                    <div class="pc-monitor-bezel">
-                        <div class="pc-monitor-bar">
-                            <span class="monitor-dot red"></span>
-                            <span class="monitor-dot yellow"></span>
-                            <span class="monitor-dot green"></span>
-                            <div class="monitor-address-bar">github.com/YWanigaarachchi/athithi-hms</div>
-                        </div>
-                        <div class="pc-monitor-screen">
-                            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" alt="athithi-hms Monitor View">
-                        </div>
+                <h3 class="bio-headline">Engineering Zero-Gravity Digital Products for Forward-Thinking Brands</h3>
+                
+                <p class="bio-text">
+                    Passionate software architect with deep expertise across modern web engineering, full-stack systems design, mobile applications, and WebGL graphics. Creator of <strong>SoftGenix</strong> (next-generation software platform) and <strong>Gen Code Zone</strong>.
+                </p>
+                <p class="bio-text">
+                    Dedicated to combining clean, scalable backend architectures with awe-inspiring, ultra-responsive frontend interactions.
+                </p>
+
+                <!-- Technical Skills Matrix -->
+                <div class="tech-stack-showcase">
+                    <h4 class="stack-heading"><i class="fa-solid fa-code"></i> Technical Stack & Competencies</h4>
+                    <div class="skills-tags">
+                        <span class="skill-tag active"><i class="fa-brands fa-react"></i> React / Next.js</span>
+                        <span class="skill-tag active"><i class="fa-brands fa-js"></i> TypeScript / JavaScript</span>
+                        <span class="skill-tag active"><i class="fa-brands fa-node"></i> Node.js & Express</span>
+                        <span class="skill-tag active"><i class="fa-solid fa-database"></i> PostgreSQL / MongoDB</span>
+                        <span class="skill-tag active"><i class="fa-brands fa-react"></i> React Native (Mobile)</span>
+                        <span class="skill-tag active"><i class="fa-solid fa-cubes"></i> Three.js / 3D WebGL</span>
+                        <span class="skill-tag active"><i class="fa-brands fa-css3-alt"></i> Tailwind CSS / Vanilla CSS</span>
+                        <span class="skill-tag active"><i class="fa-brands fa-python"></i> Python & AI Integrations</span>
+                        <span class="skill-tag active"><i class="fa-solid fa-cloud"></i> Cloud Deployment & CI/CD</span>
+                        <span class="skill-tag active"><i class="fa-solid fa-id-card"></i> NFC Smart Hardware</span>
                     </div>
-                    <div class="pc-monitor-stand"></div>
-                    <div class="pc-monitor-base"></div>
-                </div>
-                <div class="pc-project-body">
-                    <div class="skills-tags" style="margin-top:0; margin-bottom:12px;">
-                        <span class="skill-tag">Mobile App</span>
-                        <span class="skill-tag">React Native</span>
-                        <span class="skill-tag">Hospitality</span>
-                        <span class="skill-tag">Express</span>
-                    </div>
-                    <h3 class="pc-project-title">athithi-hms</h3>
-                    <p class="pc-project-desc">Smart guest portal and mobile management app for room service ordering, concierge messaging, and real-time stay tracking.</p>
-                    <a href="https://github.com/YWanigaarachchi/athithi-hms" target="_blank" class="btn btn-cyan" style="width:100%; text-align:center;"><i class="fa-brands fa-github"></i> View Code on GitHub</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 5. PROCESS SECTION -->
+<!-- =====================================================
+     6. EDUCATION & ACADEMIC FOUNDATION
+     ===================================================== -->
+<section class="section" id="education">
+    <div class="container">
+        <div class="section-heading text-center">
+            <div class="section-tag"><i class="fa-solid fa-graduation-cap"></i> Academic Foundation</div>
+            <h2 class="section-title">Education & <span class="shimmer-text">Qualifications</span></h2>
+            <p class="section-desc">Rigorous theoretical and applied computer science foundation.</p>
+        </div>
+
+        <div class="education-card-wrapper">
+            <div class="bento-card education-card spotlight-card">
+                <div class="edu-top-row">
+                    <div class="edu-badge-icon">
+                        <i class="fa-solid fa-building-columns"></i>
+                    </div>
+                    <div class="edu-institution-info">
+                        <span class="edu-level-chip">Higher Education • Diploma</span>
+                        <h3 class="edu-institution-name">ICBT Campus</h3>
+                        <h4 class="edu-degree-title">Higher Diploma in Software Engineering & Information Technology</h4>
+                    </div>
+                    <div class="edu-verified-stamp">
+                        <i class="fa-solid fa-certificate"></i> Verified
+                    </div>
+                </div>
+
+                <p class="edu-desc">
+                    Comprehensive academic curriculum covering full-stack software development, relational & NoSQL database management, object-oriented software engineering patterns, algorithmic complexity, web architecture, and mobile systems engineering.
+                </p>
+
+                <div class="edu-modules-grid">
+                    <div class="module-chip"><i class="fa-solid fa-check"></i> Advanced Software Engineering</div>
+                    <div class="module-chip"><i class="fa-solid fa-check"></i> Relational Database Management (RDBMS)</div>
+                    <div class="module-chip"><i class="fa-solid fa-check"></i> Data Structures & Algorithms</div>
+                    <div class="module-chip"><i class="fa-solid fa-check"></i> Object-Oriented Programming (OOP)</div>
+                    <div class="module-chip"><i class="fa-solid fa-check"></i> Web & Mobile Application Architecture</div>
+                    <div class="module-chip"><i class="fa-solid fa-check"></i> Network Security & IT Governance</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- =====================================================
+     7. PROCESS & LASER ROADMAP
+     ===================================================== -->
 <section class="section" id="process">
     <div class="container">
-        <div class="section-header">
-            <div class="badge-glow">Execution Blueprint</div>
-            <h2 class="section-title">Process & <span class="text-gradient">Workflow</span></h2>
-            <p class="section-subtitle">Vertical timeline connected by an animated laser beam linking floating orb steps.</p>
+        <div class="section-heading text-center">
+            <div class="section-tag"><i class="fa-solid fa-diagram-project"></i> Execution Blueprint</div>
+            <h2 class="section-title">Methodology & <span class="shimmer-text">Workflow</span></h2>
+            <p class="section-desc">A structured, high-speed engineering pipeline from discovery to global deployment.</p>
         </div>
 
-        <div class="workflow-container">
-            <!-- Glowing Laser Connection Line -->
-            <div class="laser-beam-line">
-                <div class="laser-beam-pulse"></div>
+        <div class="workflow-grid">
+            <div class="workflow-card spotlight-card">
+                <div class="workflow-num">01</div>
+                <div class="workflow-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+                <h3>1. Discovery & Architecture</h3>
+                <p>Deep-dive consultation to define target KPIs, system user personas, technical stack selection, and database schema planning.</p>
             </div>
 
-            <!-- Step 1: Research -->
-            <div class="workflow-step">
-                <div class="workflow-orb-wrapper"><i class="fa-solid fa-magnifying-glass"></i></div>
-                <div class="glass-card workflow-card">
-                    <span class="badge-glow" style="padding:4px 12px; font-size:0.75rem; margin-bottom:12px;">Step 01</span>
-                    <h3>1. Research & Discovery</h3>
-                    <p>Deep-dive discovery mapping business goals, target user personas, competitive analysis, and technical requirements to architect an optimal plan.</p>
-                </div>
+            <div class="workflow-card spotlight-card">
+                <div class="workflow-num">02</div>
+                <div class="workflow-icon"><i class="fa-solid fa-pen-ruler"></i></div>
+                <h3>2. Zero-G UI/UX Prototyping</h3>
+                <p>Crafting high-fidelity responsive wireframes, glassmorphic design tokens, component libraries, and interactive prototypes.</p>
             </div>
 
-            <!-- Step 2: Design -->
-            <div class="workflow-step">
-                <div class="workflow-orb-wrapper"><i class="fa-solid fa-pen-ruler"></i></div>
-                <div class="glass-card workflow-card">
-                    <span class="badge-glow" style="padding:4px 12px; font-size:0.75rem; margin-bottom:12px;">Step 02</span>
-                    <h3>2. UI/UX Design & Prototyping</h3>
-                    <p>Crafting wireframes, glassmorphic design systems, high-fidelity responsive mockups, and micro-interactions in Figma.</p>
-                </div>
+            <div class="workflow-card spotlight-card">
+                <div class="workflow-num">03</div>
+                <div class="workflow-icon"><i class="fa-solid fa-code"></i></div>
+                <h3>3. High-Speed Engineering</h3>
+                <p>Clean, modular implementation with modern frameworks (React, Next.js, Node, Three.js). Real-time telemetry and API integrations.</p>
             </div>
 
-            <!-- Step 3: Develop -->
-            <div class="workflow-step">
-                <div class="workflow-orb-wrapper"><i class="fa-solid fa-code"></i></div>
-                <div class="glass-card workflow-card">
-                    <span class="badge-glow" style="padding:4px 12px; font-size:0.75rem; margin-bottom:12px;">Step 03</span>
-                    <h3>3. Development & WebGL</h3>
-                    <p>Building clean, modular code with HTML5, CSS3, JavaScript, React, and Three.js WebGL canvas shaders for fluid high-speed rendering.</p>
-                </div>
-            </div>
-
-            <!-- Step 4: Deploy -->
-            <div class="workflow-step">
-                <div class="workflow-orb-wrapper"><i class="fa-solid fa-rocket"></i></div>
-                <div class="glass-card workflow-card">
-                    <span class="badge-glow" style="padding:4px 12px; font-size:0.75rem; margin-bottom:12px;">Step 04</span>
-                    <h3>4. Testing & Deployment</h3>
-                    <p>Rigorous security auditing, SEO indexing, mobile responsiveness checks, and automated zero-downtime cloud deployment.</p>
-                </div>
+            <div class="workflow-card spotlight-card">
+                <div class="workflow-num">04</div>
+                <div class="workflow-icon"><i class="fa-solid fa-rocket"></i></div>
+                <h3>4. Zero-Downtime Deployment</h3>
+                <p>Rigorous automated testing, security validation, SEO optimization, and cloud deployment with continuous 24/7 uptime monitoring.</p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- 6. CONTACT SECTION -->
-<section class="section" id="contact" style="padding-bottom:120px;">
+<!-- =====================================================
+     8. INTERACTIVE CONTACT & WHATSAPP TERMINAL
+     ===================================================== -->
+<section class="section" id="contact">
     <div class="container">
-        <div class="section-header">
-            <div class="badge-glow">Direct Connectivity</div>
-            <h2 class="section-title">Contact <span class="text-gradient">Terminal</span></h2>
-            <p class="section-subtitle">Reach out directly via email or WhatsApp hotline.</p>
+        <div class="section-heading text-center">
+            <div class="section-tag"><i class="fa-solid fa-paper-plane"></i> Direct Connectivity</div>
+            <h2 class="section-title">Contact <span class="shimmer-text">Terminal</span></h2>
+            <p class="section-desc">Get an instant project consultation or send a message directly to Lead Architect Yasas Wanigaarachchi.</p>
         </div>
 
-        <div class="glass-terminal-wrapper">
-            <!-- Glass Terminal Form Pane -->
-            <div class="glass-panel glass-form-pane">
-                <h3 style="margin-bottom:24px;">Send Direct WhatsApp Message</h3>
-                <form id="contact-terminal-form" onsubmit="
+        <div class="terminal-layout">
+            <!-- Left: Interactive WhatsApp Inquiry Generator -->
+            <div class="bento-card terminal-form-card spotlight-card">
+                <div class="terminal-header">
+                    <div class="terminal-signals">
+                        <span class="sig-dot red"></span>
+                        <span class="sig-dot yellow"></span>
+                        <span class="sig-dot green"></span>
+                    </div>
+                    <div class="terminal-title"><i class="fa-brands fa-whatsapp" style="color:var(--whatsapp-green);"></i> DIRECT WHATSAPP INQUIRY GENERATOR</div>
+                </div>
+
+                <form id="contact-terminal-form" class="terminal-form" onsubmit="
                     event.preventDefault();
-                    const name = document.getElementById('c-name').value;
-                    const email = document.getElementById('c-email').value;
-                    const msg = document.getElementById('c-msg').value;
-                    const text = `Hi YNW Software Solutions!%0A%0A*New Project Inquiry*%0A------------------------------%0A*Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Message:* ${encodeURIComponent(msg)}%0A------------------------------%0APlease get back to me.`;
+                    const name = document.getElementById('term-name').value.trim();
+                    const email = document.getElementById('term-email').value.trim();
+                    const service = document.getElementById('term-service').value;
+                    const msg = document.getElementById('term-msg').value.trim();
+                    
+                    const text = `*New Project Inquiry — YNW Software Solutions*%0A=================================%0A*Client Name:* ${encodeURIComponent(name)}%0A*Email:* ${encodeURIComponent(email)}%0A*Service Required:* ${encodeURIComponent(service)}%0A---------------------------------%0A*Project Brief:*%0A${encodeURIComponent(msg)}%0A=================================%0APlease connect with me at your earliest convenience.`;
+                    
                     window.open('https://wa.me/94703608091?text=' + text, '_blank');
                 ">
-                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+                    <div class="form-row-2col">
                         <div class="form-group">
-                            <label for="c-name">Your Full Name</label>
-                            <input type="text" id="c-name" class="form-input" placeholder="e.g. John Doe" required>
+                            <label for="term-name">Your Full Name</label>
+                            <input type="text" id="term-name" class="form-input" placeholder="e.g. Alexander Stone" required>
                         </div>
                         <div class="form-group">
-                            <label for="c-email">Your Email Address</label>
-                            <input type="email" id="c-email" class="form-input" placeholder="john@example.com" required>
+                            <label for="term-email">Your Email Address</label>
+                            <input type="email" id="term-email" class="form-input" placeholder="alex@company.com" required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="c-msg">Project Details / Message</label>
-                        <textarea id="c-msg" class="form-input" placeholder="Describe your web or mobile app project requirements..." rows="4" required></textarea>
+                        <label for="term-service">Primary Project Category</label>
+                        <select id="term-service" class="form-input" required>
+                            <option value="SoftGenix Enterprise Suite / Cloud Setup">SoftGenix Enterprise Suite / Cloud Solution</option>
+                            <option value="Full-Stack Web Application (React / Next.js)">Full-Stack Web Application (React / Next.js)</option>
+                            <option value="Mobile App Development (iOS & Android)">Mobile App Development (iOS & Android)</option>
+                            <option value="Hotel Management System (HMS) / ERP">Hotel Management System (HMS) / ERP</option>
+                            <option value="Smart NFC Contactless Business Cards">Smart NFC Contactless Business Cards</option>
+                            <option value="Zero-Gravity UI/UX & 3D WebGL Web">Zero-Gravity UI/UX & 3D WebGL Web</option>
+                            <option value="Website Modernization & Redesign">Website Modernization & Full Redesign</option>
+                        </select>
                     </div>
-                    <button type="submit" class="btn btn-whatsapp" style="width:100%;"><i class="fa-brands fa-whatsapp"></i> Transmit via WhatsApp (+94 70 360 8091)</button>
+
+                    <div class="form-group">
+                        <label for="term-msg">Project Requirements & Timeline</label>
+                        <textarea id="term-msg" class="form-input" placeholder="Describe your software objectives, features, estimated launch date, etc..." rows="4" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-whatsapp-submit">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>Transmit Direct to WhatsApp (+94 70 360 8091)</span>
+                    </button>
                 </form>
             </div>
 
-            <!-- Direct Contact Info Cards -->
-            <div class="whatsapp-lines-box">
-                <!-- Email Card -->
-                <div class="whatsapp-card-item">
-                    <div style="display:flex; align-items:center; gap:16px;">
-                        <div class="whatsapp-icon-ring" style="border-color:var(--neon-cyan); color:var(--neon-cyan);"><i class="fa-solid fa-envelope"></i></div>
-                        <div>
-                            <h4 style="font-size:1.1rem; color:var(--text-white);">Email Address</h4>
-                            <p style="font-size:0.9rem; color:var(--neon-cyan); font-weight:600;">ywanigaarachchi@gmail.com</p>
-                        </div>
+            <!-- Right: Direct Channels Cards -->
+            <div class="terminal-channels">
+                <!-- Phone / WhatsApp Hotline -->
+                <div class="bento-card channel-card spotlight-card">
+                    <div class="channel-icon-ring green">
+                        <i class="fa-brands fa-whatsapp"></i>
                     </div>
-                    <a href="mailto:ywanigaarachchi@gmail.com" class="btn btn-outline" style="padding:10px 18px; font-size:0.85rem;"><i class="fa-solid fa-paper-plane"></i> Send Email</a>
+                    <div class="channel-content">
+                        <h4>WhatsApp Hotline</h4>
+                        <p class="channel-val">+94 70 360 8091</p>
+                        <span class="channel-hint">Instant reply • Available 24/7</span>
+                    </div>
+                    <a href="https://wa.me/94703608091" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp-sm">
+                        <i class="fa-brands fa-whatsapp"></i> Chat Now
+                    </a>
                 </div>
 
-                <!-- Phone / WhatsApp Card -->
-                <div class="whatsapp-card-item">
-                    <div style="display:flex; align-items:center; gap:16px;">
-                        <div class="whatsapp-icon-ring"><i class="fa-brands fa-whatsapp"></i></div>
-                        <div>
-                            <h4 style="font-size:1.1rem; color:var(--text-white);">Phone & WhatsApp</h4>
-                            <p style="font-size:0.9rem; color:var(--whatsapp-green); font-weight:600;">+94 70 360 8091</p>
-                        </div>
+                <!-- Email Channel -->
+                <div class="bento-card channel-card spotlight-card">
+                    <div class="channel-icon-ring cyan">
+                        <i class="fa-solid fa-envelope"></i>
                     </div>
-                    <a href="https://wa.me/94703608091" target="_blank" class="btn btn-whatsapp" style="padding:10px 18px; font-size:0.85rem;"><i class="fa-brands fa-whatsapp"></i> Chat WhatsApp</a>
+                    <div class="channel-content">
+                        <h4>Official Email</h4>
+                        <p class="channel-val">ywanigaarachchi@gmail.com</p>
+                        <span class="channel-hint">Send detailed RFPs & attachments</span>
+                    </div>
+                    <a href="mailto:ywanigaarachchi@gmail.com" class="btn btn-outline-sm">
+                        <i class="fa-solid fa-paper-plane"></i> Email
+                    </a>
                 </div>
 
-                <!-- GitHub Card -->
-                <div class="social-orb-card" style="padding:18px 24px;">
-                    <div class="social-icon-orb"><i class="fa-brands fa-github"></i></div>
-                    <div style="flex-grow:1;">
-                        <h4 style="color:var(--text-white);">Official GitHub Profile</h4>
-                        <p style="font-size:0.85rem; color:var(--text-muted);">YWanigaarachchi Repositories</p>
+                <!-- SoftGenix Official Platform -->
+                <div class="bento-card channel-card spotlight-card">
+                    <div class="channel-icon-ring violet">
+                        <i class="fa-solid fa-globe"></i>
                     </div>
-                    <a href="https://github.com/YWanigaarachchi" target="_blank" class="btn btn-outline" style="padding:8px 16px; font-size:0.82rem;">Visit GitHub</a>
+                    <div class="channel-content">
+                        <h4>SoftGenix Live Platform</h4>
+                        <p class="channel-val">https://softgenix.lk/</p>
+                        <span class="channel-hint">Flagship production software suite</span>
+                    </div>
+                    <a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" class="btn btn-cyan-sm">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Site
+                    </a>
+                </div>
+
+                <!-- GitHub Profile -->
+                <div class="bento-card channel-card spotlight-card">
+                    <div class="channel-icon-ring purple">
+                        <i class="fa-brands fa-github"></i>
+                    </div>
+                    <div class="channel-content">
+                        <h4>Official GitHub</h4>
+                        <p class="channel-val">YWanigaarachchi</p>
+                        <span class="channel-hint">Explore public repos & contributions</span>
+                    </div>
+                    <a href="https://github.com/YWanigaarachchi" target="_blank" rel="noopener noreferrer" class="btn btn-outline-sm">
+                        <i class="fa-brands fa-github"></i> Repos
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <a href="#home" class="logo" style="margin-bottom:16px;">YNW<span>.</span> Software Solutions</a>
-                <p style="font-size:0.95rem; color:var(--text-muted); max-width:320px;">YNW Software Solutions — Y. Wanigaarachchi. Building exceptional web and mobile software experiences.</p>
+<!-- =====================================================
+     SOFTGENIX QUICK PREVIEW MODAL
+     ===================================================== -->
+<div class="preview-modal-backdrop" id="softgenixModalBackdrop">
+    <div class="preview-modal-box">
+        <div class="modal-browser-header">
+            <div class="browser-dots">
+                <span class="dot red modal-close-dot"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
             </div>
+            <div class="browser-address">
+                <i class="fa-solid fa-lock"></i>
+                <span>https://softgenix.lk/</span>
+                <span class="live-tag">LIVE VERIFIED</span>
+            </div>
+            <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
 
-            <div class="footer-col">
-                <h4>Navigation</h4>
-                <div class="footer-links-list">
-                    <a href="#home"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Home</a>
-                    <a href="#brands"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Brands</a>
-                    <a href="#about"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> About</a>
-                    <a href="#education"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Education</a>
-                    <a href="#projects"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Projects</a>
-                    <a href="#process"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Process</a>
-                    <a href="#contact"><i class="fa-solid fa-chevron-right" style="font-size:0.7rem; color:var(--neon-cyan); margin-right:6px;"></i> Contact</a>
+        <div class="modal-body">
+            <div class="modal-preview-img-wrap">
+                <img src="softgenix_preview.jpg" alt="SoftGenix Live Preview" class="modal-img">
+            </div>
+            <div class="modal-info-pane">
+                <div class="brand-status-pill live-pill" style="margin-bottom:12px;">
+                    <span class="pulse-beacon green"></span> Live Production
+                </div>
+                <h3>SoftGenix — Software Solutions</h3>
+                <p>
+                    SoftGenix is an enterprise-grade cloud suite and software platform providing end-to-end digital solutions, custom web and mobile architectures, and automated intelligence.
+                </p>
+
+                <div class="modal-stats-grid">
+                    <div class="modal-stat">
+                        <span class="s-label">Direct Domain</span>
+                        <span class="s-val"><a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" style="color:var(--neon-cyan);">softgenix.lk</a></span>
+                    </div>
+                    <div class="modal-stat">
+                        <span class="s-label">Performance</span>
+                        <span class="s-val">Sub-second Latency</span>
+                    </div>
+                    <div class="modal-stat">
+                        <span class="s-label">Cloud Status</span>
+                        <span class="s-val" style="color:#10b981;">Operational 99.98%</span>
+                    </div>
+                </div>
+
+                <div class="modal-actions-row">
+                    <a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" class="btn btn-cyan btn-lg" style="flex:1;">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> Open Live Site (softgenix.lk)
+                    </a>
+                    <a href="https://wa.me/94703608091?text=Hi%20YNW%20Solutions!%20I%20would%20like%20to%20inquire%20about%20SoftGenix%20Platform." target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg">
+                        <i class="fa-brands fa-whatsapp"></i> Inquire via WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- =====================================================
+     FOOTER
+     ===================================================== -->
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-top-grid">
+            <div class="footer-brand-col">
+                <a href="#home" class="logo">
+                    <span class="logo-mark">YNW<span class="logo-dot">.</span></span>
+                    <span class="logo-badge">Solutions</span>
+                </a>
+                <p class="footer-motto">
+                    Architecting next-generation digital products, high-performance web systems, and zero-gravity software experiences.
+                </p>
+                <div class="footer-social-links">
+                    <a href="https://github.com/YWanigaarachchi" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://wa.me/94703608091" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="mailto:ywanigaarachchi@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" aria-label="SoftGenix"><i class="fa-solid fa-globe"></i></a>
                 </div>
             </div>
 
-            <div class="footer-col">
-                <h4>Direct Channels</h4>
-                <div class="footer-links-list">
-                    <a href="mailto:ywanigaarachchi@gmail.com" style="color:var(--neon-cyan);"><i class="fa-solid fa-envelope"></i> ywanigaarachchi@gmail.com</a>
-                    <a href="https://wa.me/94703608091" target="_blank" style="color:var(--whatsapp-green); font-weight:600;"><i class="fa-brands fa-whatsapp"></i> +94 70 360 8091</a>
-                    <a href="https://github.com/YWanigaarachchi" target="_blank"><i class="fa-brands fa-github"></i> GitHub Repositories</a>
+            <div class="footer-links-col">
+                <h4>Navigation</h4>
+                <ul>
+                    <li><a href="#home"><i class="fa-solid fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#brands"><i class="fa-solid fa-chevron-right"></i> Brands</a></li>
+                    <li><a href="#projects"><i class="fa-solid fa-chevron-right"></i> Projects</a></li>
+                    <li><a href="#services"><i class="fa-solid fa-chevron-right"></i> Services</a></li>
+                    <li><a href="#about"><i class="fa-solid fa-chevron-right"></i> About</a></li>
+                    <li><a href="#education"><i class="fa-solid fa-chevron-right"></i> Education</a></li>
+                    <li><a href="#contact"><i class="fa-solid fa-chevron-right"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-col">
+                <h4>Platforms & Brands</h4>
+                <ul>
+                    <li><a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" style="color:var(--neon-cyan);"><i class="fa-solid fa-arrow-up-right-from-square"></i> SoftGenix.lk (Live)</a></li>
+                    <li><a href="#brands"><i class="fa-solid fa-chevron-right"></i> Gen Code Zone (GCZ)</a></li>
+                    <li><a href="#services"><i class="fa-solid fa-chevron-right"></i> YNW Smart NFC Cards</a></li>
+                    <li><a href="https://github.com/YWanigaarachchi/Siyala_HMS1" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Siyala_HMS1</a></li>
+                    <li><a href="https://github.com/YWanigaarachchi/Resortify-hms" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> Resortify-hms</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links-col">
+                <h4>Direct Contact</h4>
+                <div class="footer-contact-item">
+                    <i class="fa-brands fa-whatsapp" style="color:var(--whatsapp-green);"></i>
+                    <a href="https://wa.me/94703608091" target="_blank" rel="noopener noreferrer">+94 70 360 8091</a>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-envelope" style="color:var(--neon-cyan);"></i>
+                    <a href="mailto:ywanigaarachchi@gmail.com">ywanigaarachchi@gmail.com</a>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-location-dot" style="color:var(--accent-violet);"></i>
+                    <span>Colombo, Sri Lanka</span>
                 </div>
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2026 YNW Software Solutions. All rights reserved.</p>
+        <div class="footer-bottom-bar">
+            <p>&copy; 2026 YNW Software Solutions. All rights reserved. Designed & Engineered by Yasas Wanigaarachchi.</p>
+            <div class="footer-sub-links">
+                <a href="#home">Back to Top</a>
+                <span>•</span>
+                <a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer">SoftGenix.lk</a>
+                <span>•</span>
+                <a href="https://wa.me/94703608091" target="_blank" rel="noopener noreferrer">WhatsApp Direct</a>
+            </div>
         </div>
     </div>
 </footer>
 
 <!-- Floating Mobile Bottom Navigation Dock -->
-<div class="mobile-bottom-nav">
-    <a href="#home" class="mobile-nav-item active">
+<div class="mobile-bottom-dock">
+    <a href="#home" class="mobile-dock-btn active">
         <i class="fa-solid fa-house"></i>
         <span>Home</span>
     </a>
-    <a href="#brands" class="mobile-nav-item">
+    <a href="#brands" class="mobile-dock-btn">
         <i class="fa-solid fa-layer-group"></i>
         <span>Brands</span>
     </a>
-    <a href="#about" class="mobile-nav-item">
-        <i class="fa-solid fa-user"></i>
-        <span>About</span>
-    </a>
-    <a href="#projects" class="mobile-nav-item">
+    <a href="#projects" class="mobile-dock-btn">
         <i class="fa-solid fa-laptop-code"></i>
         <span>Projects</span>
     </a>
-    <a href="#contact" class="mobile-nav-item">
+    <a href="https://softgenix.lk" target="_blank" rel="noopener noreferrer" class="mobile-dock-btn live-btn">
+        <i class="fa-solid fa-globe"></i>
+        <span>Live</span>
+    </a>
+    <a href="#contact" class="mobile-dock-btn">
         <i class="fa-solid fa-paper-plane"></i>
         <span>Contact</span>
     </a>
 </div>
 
-<script src="script.js"></script>
+<script src="script.js?v=2.2"></script>
 </body>
 </html>
