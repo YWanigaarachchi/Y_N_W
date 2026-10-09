@@ -1,6 +1,6 @@
-# YNW Software Solutions
+# Yasas Wanigaarachchi — Portfolio
 
-Futuristic, highly interactive "Zero-G" digital agency portfolio built with raw vanilla CSS glassmorphism, Three.js 3D WebGL animations, and seamless WhatsApp inquiry/order pop-out modals.
+Futuristic, highly interactive "Zero-G" developer portfolio built with raw vanilla CSS glassmorphism, Three.js 3D WebGL animations, and seamless WhatsApp inquiry/order pop-out modals.
 
 ---
 
