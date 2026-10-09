@@ -1,6 +1,6 @@
 /* =====================================================
-   YNW SOFTWARE SOLUTIONS — INTERACTION & ANIMATION ENGINE
-   Lead Architect: Yasas Wanigaarachchi
+   YASAS WANIGAARACHCHI — INTERACTION & ANIMATION ENGINE
+   Lead Architect & Software Engineer: Yasas Wanigaarachchi
    ===================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
